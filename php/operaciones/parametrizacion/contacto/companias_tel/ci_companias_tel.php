@@ -61,7 +61,7 @@ class ci_companias_tel extends sgr_ci
 			}catch (toba_error_db $error) {
 				$sql_state = $error->get_sqlstate();
 				if ($sql_state == 'db_23505'){
-					toba::notificacion()->agregar('Ya existe la compaï¿½ï¿½a telefï¿½nica', 'info');
+					toba::notificacion()->agregar('Ya existe la compañía telefónica', 'info');
 				}
 				else {
 					toba::notificacion()->agregar('Error de carga', 'info');
