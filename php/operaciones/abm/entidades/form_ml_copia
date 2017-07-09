@@ -1,0 +1,17 @@
+echo "
+//---- Validacion de ingreso de caracteres ----------------------------------
+
+{$this->objeto_js}.ini = function ()
+{
+  this.ef('correo').input().onkeyup = function()
+  {
+    var ef = {$this->objeto_js}.ef('correo');
+    var texto = ef.get_estado().toLowerCase();
+    var texto_comprobado = texto;
+    var cadena = texto_comprobado.toString();
+    while(cadena.indexOf(',') >= 0)
+    }
+    ef.set_estado(cadena);
+  }
+}
+";

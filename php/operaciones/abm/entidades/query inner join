@@ -1,0 +1,5 @@
+﻿SELECT * --p.id_provincia, p.nombre, pa.nombre pais
+from sgr.provincia p
+inner join sgr.pais pa
+on p.id_pais = pa.id_pais
+order by pa.nombre, p.nombre asc
