@@ -1,0 +1,5 @@
+INSERT INTO sgr.nacionalidad(id_nacionalidad, nombre) values (1,'ARGENTINA');
+INSERT INTO sgr.nacionalidad(id_nacionalidad, nombre) values (2,'BRASILERA');
+INSERT INTO sgr.nacionalidad(id_nacionalidad, nombre) values (3,'CHILENA');
+INSERT INTO sgr.nacionalidad(id_nacionalidad, nombre) values (4,'PARAGUAYA');
+INSERT INTO sgr.nacionalidad(id_nacionalidad, nombre) values (5,'URUGUAYA');

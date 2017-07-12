@@ -1,0 +1,2 @@
+INSERT INTO sgr.tipocorreo(id_tipocorreo, nombre) values (1,'LABORAL');
+INSERT INTO sgr.tipocorreo(id_tipocorreo, nombre) values (2,'PERSONAL');

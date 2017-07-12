@@ -1,5 +1,5 @@
 <?php
-class form_flujos extends sgr_ei_formulario
+class filtro_tipoevento extends sgr_ei_filtro
 {
 	//-----------------------------------------------------------------------------------
 	//---- JAVASCRIPT -------------------------------------------------------------------
@@ -16,9 +16,8 @@ class form_flujos extends sgr_ei_formulario
 			{
 				var ef = {$this->objeto_js}.ef('nombre');
 				var texto = ef.get_estado().toUpperCase();
-				var texto_comprobado = texto.match(/[a-zA-Z\[0-9\:\! ¡¿?_°./\-\'\s]/gi);
-				//--var texto_comprobado = texto.match(/[a-zA-Z\s]/gi);\[0-9\:\! ¡¿?_°./\-\']
-				//--var texto_comprobado = texto.match(/^[a-zA-Z\d_]{4,100}$/i);
+
+				var texto_comprobado = texto.match(/[a-zA-Z\s]/gi);
 				//--var texto_comprobado = texto.match(/[a-zA-Z\[Á-Ú\[0-9\:\! ¡¿?_°./\-\']/gi);
 				var cadena = texto_comprobado.toString();
 				while(cadena.indexOf(',') >= 0)

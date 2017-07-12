@@ -1,0 +1,11 @@
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (1,'CV',1);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (2,'FACTURA',1);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (3,'NOTIFICACION LEGAL',1);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (4,'PUBLICACION',1);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (5,'ENTRANTE',2);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (6,'SALIENTE',2);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (7,'BILLETERA',3);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (8,'CARTERA/BOLSO',3);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (9,'LLAVE',3);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (10,'ROPA',3);
+INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (11,'TELEFONO',3);

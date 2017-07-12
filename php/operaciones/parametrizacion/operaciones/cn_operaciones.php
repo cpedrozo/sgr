@@ -2,6 +2,51 @@
 
 class cn_operaciones extends sgr_cn
 {
+
+  //-----------------------------------------------------------------------------------
+  //---- ABM sgr_tipoevento -----------------------------------------------------------
+  //-----------------------------------------------------------------------------------
+
+  function cargartipoevento($form)
+  {
+    if ($this->dep('dr_tipoevento')->tabla('dt_tipoevento')->hay_cursor()) {
+    $datos = $this->dep('dr_tipoevento')->tabla('dt_tipoevento')->get();
+    $form->set_datos($datos);
+    }
+  }
+
+  function guardartipoevento()
+  {
+    $this->dep('dr_tipoevento')->sincronizar();
+    $this->dep('dr_tipoevento')->resetear();
+  }
+
+  function resettipoevento()
+  {
+    $this->dep('dr_tipoevento')->resetear();
+  }
+
+  function modiftipoevento($datos)
+  {
+    $this->dep('dr_tipoevento')->tabla('dt_tipoevento')->set($datos);
+  }
+
+  function selecciontipoevento($seleccion)
+  {
+    if($this->dep('dr_tipoevento')->cargar($seleccion)){
+      $id_fila = $this->dep('dr_tipoevento')->tabla('dt_tipoevento')->get_id_fila_condicion($seleccion)[0];
+      $this->dep('dr_tipoevento')->tabla('dt_tipoevento')->set_cursor($id_fila);
+    }
+  }
+
+  function borrartipoevento($seleccion)
+  {
+    $this->dep('dr_tipoevento')->tabla('dt_tipoevento')->cargar($seleccion);
+    $id_fila = $this->dep('dr_tipoevento')->tabla('dt_tipoevento')->get_id_fila_condicion($seleccion)[0];
+    $this->dep('dr_tipoevento')->tabla('dt_tipoevento')->set_cursor($id_fila);
+    $this->dep('dr_tipoevento')->tabla('dt_tipoevento')->eliminar_fila($id_fila);
+  }
+
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_eventos --------------------------------------------------------------
   //-----------------------------------------------------------------------------------
@@ -91,48 +136,80 @@ class cn_operaciones extends sgr_cn
   }
 
   //-----------------------------------------------------------------------------------
-  //---- ABM sgr_flujos --------------------------------------------------------------
+  //---- ABM sgr_flujosevento ---------------------------------------------------------
   //-----------------------------------------------------------------------------------
 
-  function cargarflujos($form)
+  function cargar_dr_flujoseventos($seleccion=null)
+    {
+        if (!$this->dep('dr_flujoseventos')->esta_cargada()) {
+            if (isset($seleccion)) {
+                $this->dep('dr_flujoseventos')->cargar($seleccion);
+            } else {
+                $this->dep('dr_flujoseventos')->cargar($seleccion);
+            }
+        }
+    }
+
+  function borrar_dt_flujoseventos($seleccion)
   {
-    if ($this->dep('dr_flujos')->tabla('dt_flujos')->hay_cursor()) {
-    $datos = $this->dep('dr_flujos')->tabla('dt_flujos')->get();
-    $form->set_datos($datos);
+    if ($this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->esta_cargada()) {
+      $id_memoria = $this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->get_id_fila_condicion($seleccion);
+      $this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->eliminar_fila($id_memoria[0]);
     }
   }
 
-  function guardarflujos()
+  function get_flujoseventos()
   {
-    $this->dep('dr_flujos')->sincronizar();
-    $this->dep('dr_flujos')->resetear();
-  }
-
-  function resetflujos()
-  {
-    $this->dep('dr_flujos')->resetear();
-  }
-
-  function modifflujos($datos)
-  {
-    $this->dep('dr_flujos')->tabla('dt_flujos')->set($datos);
-  }
-
-  function seleccionflujos($seleccion)
-  {
-    if($this->dep('dr_flujos')->cargar($seleccion)){
-      $id_fila = $this->dep('dr_flujos')->tabla('dt_flujos')->get_id_fila_condicion($seleccion)[0];
-      $this->dep('dr_flujos')->tabla('dt_flujos')->set_cursor($id_fila);
+    if ($this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->hay_cursor())
+    {
+      return $this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->get();
     }
   }
 
-  function borrarflujos($seleccion)
+  function set_cursorflujoseventos($seleccion)
   {
-    $this->dep('dr_flujos')->tabla('dt_flujos')->cargar($seleccion);
-    $id_fila = $this->dep('dr_flujos')->tabla('dt_flujos')->get_id_fila_condicion($seleccion)[0];
-    $this->dep('dr_flujos')->tabla('dt_flujos')->set_cursor($id_fila);
-    $this->dep('dr_flujos')->tabla('dt_flujos')->eliminar_fila($id_fila);
+    $id = $this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->get_id_fila_condicion($seleccion);
+    $this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->set_cursor($id[0]);
   }
+
+  function guardar_dr_flujoseventos()
+  {
+    $this->dep('dr_flujoseventos')->sincronizar();
+    //--$this->dep('dr_flujoseventos')->resetear();
+  }
+
+  function resetear_dr_flujoseventos()
+  {
+    $this->dep('dr_flujoseventos')->resetear();
+  }
+
+  function set_dt_flujoseventos($datos)
+  {
+    $this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->set($datos);
+  }
+
+  function seleccionflujoseventos($seleccion)
+  {
+    if($this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->cargar($seleccion)){
+      $id_fila = $this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->get_id_fila_condicion($seleccion)[0];
+      $this->dep('dr_flujoseventos')->tabla('dt_flujoseventos')->set_cursor($id_fila);
+    }
+  }
+
+  //-----------------------------------------------------------------------------------
+  //---- ABM form_ml_flujos-----------------------------------------------
+  //-----------------------------------------------------------------------------------
+
+  function getflujos()
+  {
+    return $this->dep('dr_flujoseventos')->tabla('dt_flujos')->get_filas();
+  }
+
+  function procesarflujos($datos)
+  {
+    $this->dep('dr_flujoseventos')->tabla('dt_flujos')->procesar_filas($datos);
+  }
+
 
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_requisitos -----------------------------------------------------------

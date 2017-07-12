@@ -1,6 +1,6 @@
 <?php
 
-class dao_eventos
+class dao_tipoevento
 {
   static function get_datossinfiltro($where='')
   {
@@ -9,9 +9,9 @@ class dao_eventos
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT e.id_evento, e.nombre, te.nombre tipoevento FROM sgr.evento e
-            INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
-            $where_armado ORDER BY tipoevento, nombre ASC
+    $sql = "SELECT *
+            FROM sgr.tipo_evento
+            $where_armado ORDER BY nombre ASC
             LIMIT 5";
     $resultado = consultar_fuente($sql);
     return $resultado;
@@ -24,9 +24,9 @@ class dao_eventos
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT e.id_evento, e.nombre, te.nombre tipoevento FROM sgr.evento e
-            INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
-            $where_armado ORDER BY tipoevento, nombre ASC";
+    $sql = "SELECT *
+            FROM sgr.tipo_evento
+            $where_armado ORDER BY nombre ASC";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }

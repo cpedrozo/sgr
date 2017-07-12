@@ -1,0 +1,16 @@
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (1,'ADMINISTRACION',1);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (2,'COMERCIAL',1);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (3,'GERENCIA',1);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (4,'RRHH',1);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (5,'SISTEMAS',1);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (6,'ADMINISTRACION',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (7,'GERENCIA',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (8,'LIMPIEZA',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (9,'LOGISTICA',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (10,'MANTENIMIENTO',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (11,'MARKETING',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (12,'RRHH',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (13,'SISTEMAS',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (14,'SUPERVISION',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (15,'VENTAS',2);
+INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (16,'VIGILANCIA',2);

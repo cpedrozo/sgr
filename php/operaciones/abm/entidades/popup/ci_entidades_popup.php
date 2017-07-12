@@ -10,6 +10,7 @@ class ci_entidades_popup extends sgr_ci
 	protected $s__datos_filtro;
 	protected $s__sqlwhere;
 	protected $s__datos;
+	protected $s__id;
 
 	//-----------------------------------------------------------------------------------
 	//---- cuadro -----------------------------------------------------------------------
@@ -27,11 +28,18 @@ class ci_entidades_popup extends sgr_ci
 	}
 
 */
+
+	//function conf()
+	//{
+	//  $this->s__id = toba::memoria()->get_parametro('id_integ');
+	//}
+
 	function conf__cuadroentidad($cuadro)
 	{
-		$datos = $this->cn()->get_entidades();
+		$datos = $this->s__id = toba::memoria()->get_parametro('id_entidad');
+		//$datos = $this->cn()->get_entidades();
 		ei_arbol(array($datos));
-		$cuadro->set_datos($datos[0]);
+		$cuadro->set_datos($datos);
 	}
 
 	function evt__cuadro__seleccion($seleccion)

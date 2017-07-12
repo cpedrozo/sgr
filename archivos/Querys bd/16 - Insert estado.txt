@@ -1,0 +1,6 @@
+INSERT INTO sgr.estado(id_estado, nombre) values (1,'NUEVO');
+INSERT INTO sgr.estado(id_estado, nombre) values (2,'RECIBIDO');
+INSERT INTO sgr.estado(id_estado, nombre) values (3,'NOTIFICADO');
+INSERT INTO sgr.estado(id_estado, nombre) values (4,'ENTREGADO');
+INSERT INTO sgr.estado(id_estado, nombre) values (5,'DEVUELTO');
+INSERT INTO sgr.estado(id_estado, nombre) values (6,'CONCRETADO');

@@ -179,5 +179,22 @@ class metodosconsulta
     return $datos;
   }
 
+  static function get_tipoevento()
+  {
+    $sql = "SELECT * FROM sgr.tipo_evento ORDER BY nombre asc";
+    $datos = consultar_fuente($sql);
+    return $datos;
+  }
+
+  static function get_evento_tipo($id_tipoevento='')
+  {
+    $sql = "SELECT * FROM sgr.evento
+            WHERE id_tipoevento = $id_tipoevento
+            ORDER BY nombre ASC";
+    $resultado = consultar_fuente($sql);
+    return $resultado;
+  }
+
+
 }
 ?>
