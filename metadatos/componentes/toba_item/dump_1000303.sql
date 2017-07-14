@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000303]--  Flujos 
+--[1000303]--  Flujos por evento 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,12 +23,12 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Flujos', --nombre
+	'Flujos por evento', --nombre
 	NULL, --descripcion
 	'1000001', --punto_montaje
 	NULL, --actividad_accion
 	'1', --menu
-	'3', --orden
+	'4', --orden
 	'0', --solicitud_registrar
 	NULL, --solicitud_obs_tipo_proyecto
 	NULL, --solicitud_obs_tipo

@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000814]--  cn_flujos 
+--[1000850]--  cn_flujoseventos 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -9,7 +9,7 @@
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'sgr', --proyecto
-	'1000814', --objeto
+	'1000850', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,7 +20,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'operaciones/parametrizacion/operaciones/cn_operaciones.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'cn_flujos', --nombre
+	'cn_flujoseventos', --nombre
 	NULL, --titulo
 	'0', --colapsable
 	NULL, --descripcion
@@ -36,7 +36,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --parametro_e
 	NULL, --parametro_f
 	NULL, --usuario
-	'2017-07-02 14:34:17', --creacion
+	'2017-07-11 17:04:30', --creacion
 	NULL  --posicion_botonera
 );
 --- FIN Grupo de desarrollo 1
@@ -48,9 +48,9 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000647', --dep_id
-	'1000814', --objeto_consumidor
-	'1000857', --objeto_proveedor
+	'1000637', --dep_id
+	'1000850', --objeto_consumidor
+	'1000851', --objeto_proveedor
 	'dr_flujoseventos', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
