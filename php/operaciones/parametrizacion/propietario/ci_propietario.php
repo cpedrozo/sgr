@@ -4,15 +4,27 @@ require_once('operaciones/parametrizacion/propietario/dao_propietario.php');
 
 class ci_propietario extends sgr_ci
 {
-	
+	//-----------------------------------------------------------------------------------
+	//---- Variables ----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+	protected $s__datos_filtro;
+	protected $s__sqlwhere;
+	protected $s__datos;
+
 	//-----------------------------------------------------------------------------------
 	//---- cuadro --------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
 	function conf__cuadro($cuadro)
 	{
-		$datos = dao_propietario::get_datos();
-		$cuadro->set_datos($datos);
+		if (! isset($this->s__datos_filtro)) {
+			$datos = dao_propietario::get_datossinfiltro($this->s__sqlwhere);
+			$cuadro->set_datos($datos);
+		}
+		else{
+			$datos = dao_propietario::get_datos($this->s__sqlwhere);
+			$cuadro->set_datos($datos);
+		}
 	}
 
 	function evt__cuadro__seleccion($seleccion)
@@ -59,6 +71,31 @@ class ci_propietario extends sgr_ci
 		$this->cn()->resetpropietario();
 		$this->set_pantalla('pant_inicial');
 	}
+
+	//-----------------------------------------------------------------------------------
+	//---- filtro -----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+
+	function conf__filtro($filtro)
+	{
+	  if (isset($this->s__datos_filtro))
+		{
+			$filtro->set_datos($this->s__datos_filtro);
+			$this->s__sqlwhere = $filtro->get_sql_where();
+		}
+	}
+
+	function evt__filtro__cancelar()
+	{
+	  unset($this->s__datos_filtro);
+	}
+
+	function evt__filtro__filtrar($datos)
+	{
+	  $this->s__datos_filtro = $datos;
+	}
+
 
 	//-----------------------------------------------------------------------------------
 	//---- frm --------------------------------------------------------------------------

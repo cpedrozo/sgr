@@ -120,7 +120,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 INSERT INTO apex_objeto_ei_filtro (objeto_ei_filtro_proyecto, objeto_ei_filtro, ancho) VALUES (
 	'sgr', --objeto_ei_filtro_proyecto
 	'1000741', --objeto_ei_filtro
-	'60%'  --ancho
+	'100%'  --ancho
 );
 
 ------------------------------------------------------------
