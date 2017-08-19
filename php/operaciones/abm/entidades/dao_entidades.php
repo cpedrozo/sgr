@@ -10,7 +10,7 @@ class dao_entidades
         $where_armado = '';
       }
 
-      $sql = "SELECT e.id_entidad, e.razonsocial, e.cuit,
+      $sql = "SELECT e.id_entidad, e.razonsocial, e.cuit, e.propietario,
           		pa.nombre pais, pro.nombre prov, ci.nombre ciudad
           		FROM sgr.entidad e
           		LEFT JOIN sgr.domicilio d ON e.id_entidad = d.id_entidad
@@ -31,7 +31,7 @@ class dao_entidades
         $where_armado = '';
       }
 
-      $sql = "SELECT e.id_entidad, e.razonsocial, e.cuit,
+      $sql = "SELECT e.id_entidad, e.razonsocial, e.cuit, e.propietario,
           		pa.nombre pais, pro.nombre prov, ci.nombre ciudad
           		FROM sgr.entidad e
           		LEFT JOIN sgr.domicilio d ON e.id_entidad = d.id_entidad

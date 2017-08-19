@@ -18,7 +18,7 @@ class dao_personas
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
               LEFT JOIN sgr.sucursal s ON p.id_sucursal = s.id_sucursal
               LEFT JOIN sgr.dpto dp ON p.id_dpto = dp.id_dpto
-              LEFT JOIN sgr.domicilio d ON e.id_entidad = d.id_entidad
+              LEFT JOIN sgr.domicilio d ON p.id_persona = d.id_persona
               LEFT JOIN sgr.pais pa ON d.id_pais = pa.id_pais
               LEFT JOIN sgr.provincia pro ON d.id_provincia = pro.id_provincia
               LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
@@ -45,7 +45,7 @@ class dao_personas
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
               LEFT JOIN sgr.sucursal s ON p.id_sucursal = s.id_sucursal
               LEFT JOIN sgr.dpto dp ON p.id_dpto = dp.id_dpto
-              LEFT JOIN sgr.domicilio d ON e.id_entidad = d.id_entidad
+              LEFT JOIN sgr.domicilio d ON p.id_persona = d.id_persona
               LEFT JOIN sgr.pais pa ON d.id_pais = pa.id_pais
               LEFT JOIN sgr.provincia pro ON d.id_provincia = pro.id_provincia
               LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad

@@ -120,7 +120,7 @@ INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_obje
 	'1000857', --objeto
 	'1000036', --asoc_id
 	'1000841', --padre_objeto
-	'1000697', --padre_clave
+	'1000740', --padre_clave
 	'1000821', --hijo_objeto
-	'1000670'  --hijo_clave
+	'1000701'  --hijo_clave
 );

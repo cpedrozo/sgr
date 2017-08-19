@@ -176,7 +176,7 @@ INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_obje
 	'1000728', --objeto
 	'1000022', --asoc_id
 	'1000729', --padre_objeto
-	'1000568', --padre_clave
+	'1000748', --padre_clave
 	'1000731', --hijo_objeto
 	'1000566'  --hijo_clave
 );
@@ -185,7 +185,7 @@ INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_obje
 	'1000728', --objeto
 	'1000023', --asoc_id
 	'1000729', --padre_objeto
-	'1000568', --padre_clave
+	'1000748', --padre_clave
 	'1000730', --hijo_objeto
 	'1000646'  --hijo_clave
 );
@@ -194,7 +194,7 @@ INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_obje
 	'1000728', --objeto
 	'1000024', --asoc_id
 	'1000729', --padre_objeto
-	'1000568', --padre_clave
+	'1000748', --padre_clave
 	'1000743', --hijo_objeto
 	'1000637'  --hijo_clave
 );

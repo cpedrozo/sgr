@@ -202,7 +202,21 @@ class cn_operaciones extends sgr_cn
 
   function getflujos()
   {
-    return $this->dep('dr_flujoseventos')->tabla('dt_flujos')->get_filas();
+    return $this->ordenarxorden($this->dep('dr_flujoseventos')->tabla('dt_flujos')->get_filas());
+  }
+
+  function ordenarxorden(array $array) {
+      $array_size = count($array);
+      for($i = 0; $i < $array_size; $i ++) {
+          for($j = 0; $j < $array_size; $j ++) {
+              if ($array[$i]['orden'] < $array[$j]['orden']) {
+                  $tem = $array[$i];
+                  $array[$i] = $array[$j];
+                  $array[$j] = $tem;
+              }
+          }
+      }
+      return $array;
   }
 
   function procesarflujos($datos)

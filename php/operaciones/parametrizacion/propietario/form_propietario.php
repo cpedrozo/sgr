@@ -31,7 +31,7 @@ class form_propietario extends sgr_ei_formulario
       {
         var ef = {$this->objeto_js}.ef('direccion');
         var texto = ef.get_estado().toUpperCase();
-				var texto_comprobado = texto.match(/[a-zA-Z\[0-9 ]/gi);
+				var texto_comprobado = texto.match(/[a-zA-Z\[0-9 ,.]/gi);
         //--var texto_comprobado = texto.match(/[a-zA-Z\s]/gi);
         //--var texto_comprobado = texto.match(/[a-zA-Z\[Á-Ú\[0-9\:\! ¡¿?_°./\-\']/gi);
         var cadena = texto_comprobado.toString();

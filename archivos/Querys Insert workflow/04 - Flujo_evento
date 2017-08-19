@@ -1,0 +1,5 @@
+INSERT INTO sgr.flujo_evento(id_workflow, nombre,id_tipoevento,id_evento) values (1,'RECEPCION FC TELECOM',1,2);
+INSERT INTO sgr.flujo_evento(id_workflow, nombre,id_tipoevento,id_evento) values (2,'RECEPCION FC CVI',1,2);
+INSERT INTO sgr.flujo_evento(id_workflow, nombre,id_tipoevento,id_evento) values (3,'RECEPCION FC BBT',1,2);
+INSERT INTO sgr.flujo_evento(id_workflow, nombre,id_tipoevento,id_evento) values (4,'RECEPCION DE CV',1,1);
+INSERT INTO sgr.flujo_evento(id_workflow, nombre,id_tipoevento,id_evento) values (5,'LLAMADA DE PARQUES NACIONALES',2,5);

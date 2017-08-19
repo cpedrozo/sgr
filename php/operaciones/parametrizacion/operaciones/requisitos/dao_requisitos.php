@@ -9,11 +9,11 @@ class dao_requisitos
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT r.id_requisitos,
-            f.nombre flujo,
-            r.nombre, r.observacion, r.obligatorio, r.orden, r.archivo
+    $sql = "SELECT r.id_requisitos, r.id_estadoorigen, r.id_estadodestino,r.id_workflow,
+            fe.nombre flujo,
+            r.nombre, r.obligatorio, r.orden, r.persona
             FROM sgr.requisitos r
-            INNER JOIN sgr.flujo f ON r.id_flujo = f.id_flujo
+            INNER JOIN sgr.flujo_evento fe ON r.id_workflow = fe.id_workflow
             ORDER BY flujo, nombre ASC
             LIMIT 5";
     $resultado = consultar_fuente($sql);
@@ -27,11 +27,11 @@ class dao_requisitos
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT r.id_requisitos,
-            f.nombre flujo,
-            r.nombre, r.observacion, r.obligatorio, r.orden, r.archivo
+    $sql = "SELECT r.id_requisitos, r.id_estadoorigen, r.id_estadodestino,r.id_workflow,
+            fe.nombre flujo,
+            r.nombre, r.obligatorio, r.orden, r.persona
             FROM sgr.requisitos r
-            INNER JOIN sgr.flujo f ON r.id_flujo = f.id_flujo
+            INNER JOIN sgr.flujo_evento fe ON r.id_workflow = fe.id_workflow
             ORDER BY flujo, nombre ASC";
     $resultado = consultar_fuente($sql);
     return $resultado;

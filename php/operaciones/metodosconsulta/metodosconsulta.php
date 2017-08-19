@@ -144,6 +144,15 @@ class metodosconsulta
     return $datos;
   }
 
+  static function get_entidad_propietario()
+  {
+    $sql = "SELECT * FROM sgr.entidad
+    WHERE propietario = 'true'
+    ORDER BY razonsocial asc";
+    $datos = consultar_fuente($sql);
+    return $datos;
+  }
+
   static function get_estados()
   {
     $sql = "SELECT * FROM sgr.estado ORDER BY nombre asc";
@@ -153,7 +162,7 @@ class metodosconsulta
 
   static function get_flujos()
   {
-    $sql = "SELECT * FROM sgr.flujo ORDER BY nombre asc";
+    $sql = "SELECT * FROM sgr.flujo";// ORDER BY nombre asc;
     $datos = consultar_fuente($sql);
     return $datos;
   }
