@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000797]--  ci_entidades_pop 
+--[1000860]--  ci_flujoseventos - flujosreq 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -9,18 +9,18 @@
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'sgr', --proyecto
-	'1000797', --objeto
+	'1000860', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
 	'toba', --clase_proyecto
 	'toba_ci', --clase
 	'1000001', --punto_montaje
-	'ci_entidades_popup', --subclase
-	'operaciones/abm/entidades/popup/ci_entidades_popup.php', --subclase_archivo
+	'ci_requisitos', --subclase
+	'operaciones/parametrizacion/operaciones/flujoseventos/requisitos/ci_requisitos.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'ci_entidades_pop', --nombre
+	'ci_flujoseventos - flujosreq', --nombre
 	NULL, --titulo
 	'0', --colapsable
 	NULL, --descripcion
@@ -36,8 +36,81 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --parametro_e
 	NULL, --parametro_f
 	NULL, --usuario
-	'2017-06-25 16:08:12', --creacion
+	'2017-08-19 11:30:23', --creacion
 	'abajo'  --posicion_botonera
+);
+--- FIN Grupo de desarrollo 1
+
+------------------------------------------------------------
+-- apex_objeto_eventos
+------------------------------------------------------------
+
+--- INICIO Grupo de desarrollo 1
+INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
+	'sgr', --proyecto
+	'1001254', --evento_id
+	'1000860', --objeto
+	'procesar', --identificador
+	'&Guardar', --etiqueta
+	'1', --maneja_datos
+	NULL, --sobre_fila
+	NULL, --confirmacion
+	NULL, --estilo
+	'apex', --imagen_recurso_origen
+	'guardar.gif', --imagen
+	'1', --en_botonera
+	NULL, --ayuda
+	'1', --orden
+	NULL, --ci_predep
+	'0', --implicito
+	'1', --defecto
+	NULL, --display_datos_cargados
+	NULL, --grupo
+	NULL, --accion
+	NULL, --accion_imphtml_debug
+	NULL, --accion_vinculo_carpeta
+	NULL, --accion_vinculo_item
+	NULL, --accion_vinculo_objeto
+	NULL, --accion_vinculo_popup
+	NULL, --accion_vinculo_popup_param
+	NULL, --accion_vinculo_target
+	NULL, --accion_vinculo_celda
+	NULL, --accion_vinculo_servicio
+	'0', --es_seleccion_multiple
+	'0'  --es_autovinculo
+);
+INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
+	'sgr', --proyecto
+	'1001255', --evento_id
+	'1000860', --objeto
+	'cancelar', --identificador
+	'&Cancelar', --etiqueta
+	'0', --maneja_datos
+	NULL, --sobre_fila
+	NULL, --confirmacion
+	NULL, --estilo
+	'apex', --imagen_recurso_origen
+	NULL, --imagen
+	'1', --en_botonera
+	NULL, --ayuda
+	'2', --orden
+	NULL, --ci_predep
+	'0', --implicito
+	'0', --defecto
+	NULL, --display_datos_cargados
+	NULL, --grupo
+	NULL, --accion
+	NULL, --accion_imphtml_debug
+	NULL, --accion_vinculo_carpeta
+	NULL, --accion_vinculo_item
+	NULL, --accion_vinculo_objeto
+	NULL, --accion_vinculo_popup
+	NULL, --accion_vinculo_popup_param
+	NULL, --accion_vinculo_target
+	NULL, --accion_vinculo_celda
+	NULL, --accion_vinculo_servicio
+	'0', --es_seleccion_multiple
+	'0'  --es_autovinculo
 );
 --- FIN Grupo de desarrollo 1
 
@@ -46,7 +119,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 ------------------------------------------------------------
 INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_etiq, ev_cancelar_etiq, ancho, alto, posicion_botonera, tipo_navegacion, botonera_barra_item, con_toc, incremental, debug_eventos, activacion_procesar, activacion_cancelar, ev_procesar, ev_cancelar, objetos, post_procesar, metodo_despachador, metodo_opciones) VALUES (
 	'sgr', --objeto_mt_me_proyecto
-	'1000797', --objeto_mt_me
+	'1000860', --objeto_mt_me
 	NULL, --ev_procesar_etiq
 	NULL, --ev_cancelar_etiq
 	'90%', --ancho
@@ -74,10 +147,10 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000663', --dep_id
-	'1000797', --objeto_consumidor
-	'1000870', --objeto_proveedor
-	'form_correo', --identificador
+	'1000651', --dep_id
+	'1000860', --objeto_consumidor
+	'1000856', --objeto_proveedor
+	'form', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -86,10 +159,10 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000661', --dep_id
-	'1000797', --objeto_consumidor
-	'1000868', --objeto_proveedor
-	'form_dom', --identificador
+	'1000652', --dep_id
+	'1000860', --objeto_consumidor
+	'1000855', --objeto_proveedor
+	'form_ml_flujos', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -98,22 +171,10 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000660', --dep_id
-	'1000797', --objeto_consumidor
-	'1000867', --objeto_proveedor
-	'form_entidad', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
-	NULL, --parametros_c
-	NULL, --inicializar
-	NULL  --orden
-);
-INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
-	'sgr', --proyecto
-	'1000662', --dep_id
-	'1000797', --objeto_consumidor
-	'1000869', --objeto_proveedor
-	'form_tel', --identificador
+	'1000653', --dep_id
+	'1000860', --objeto_consumidor
+	'1000861', --objeto_proveedor
+	'form_ml_requisitos', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -129,19 +190,19 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
 	'sgr', --objeto_ci_proyecto
-	'1000797', --objeto_ci
-	'1000440', --pantalla
-	'pant_inicial', --identificador
+	'1000860', --objeto_ci
+	'1000455', --pantalla
+	'pant_flujosreq', --identificador
 	'1', --orden
-	'Pantalla Inicial', --etiqueta
+	'Flujos y Requisitos', --etiqueta
 	NULL, --descripcion
 	NULL, --tip
 	'apex', --imagen_recurso_origen
 	NULL, --imagen
 	NULL, --objetos
 	NULL, --eventos
-	'pant_entidades_pop', --subclase
-	'operaciones/abm/entidades/pant_entidades_pop.php', --subclase_archivo
+	NULL, --subclase
+	NULL, --subclase_archivo
 	NULL, --template
 	NULL, --template_impresion
 	'1000001'  --punto_montaje
@@ -153,29 +214,38 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 ------------------------------------------------------------
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'sgr', --proyecto
-	'1000440', --pantalla
-	'1000797', --objeto_ci
+	'1000455', --pantalla
+	'1000860', --objeto_ci
 	'0', --orden
-	'1000660'  --dep_id
+	'1000651'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'sgr', --proyecto
-	'1000440', --pantalla
-	'1000797', --objeto_ci
+	'1000455', --pantalla
+	'1000860', --objeto_ci
 	'1', --orden
-	'1000661'  --dep_id
+	'1000652'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'sgr', --proyecto
-	'1000440', --pantalla
-	'1000797', --objeto_ci
+	'1000455', --pantalla
+	'1000860', --objeto_ci
 	'2', --orden
-	'1000662'  --dep_id
+	'1000653'  --dep_id
 );
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'sgr', --proyecto
-	'1000440', --pantalla
-	'1000797', --objeto_ci
-	'3', --orden
-	'1000663'  --dep_id
+
+------------------------------------------------------------
+-- apex_eventos_pantalla
+------------------------------------------------------------
+INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VALUES (
+	'1000455', --pantalla
+	'1000860', --objeto_ci
+	'1001254', --evento_id
+	'sgr'  --proyecto
+);
+INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VALUES (
+	'1000455', --pantalla
+	'1000860', --objeto_ci
+	'1001255', --evento_id
+	'sgr'  --proyecto
 );

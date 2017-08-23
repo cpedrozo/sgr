@@ -114,20 +114,6 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'sgr', --objeto_proyecto
 	'1000821', --objeto
-	'1000704', --col_id
-	'nombre', --columna
-	'C', --tipo
-	'0', --pk
-	'', --secuencia
-	'50', --largo
-	NULL, --no_nulo
-	'1', --no_nulo_db
-	'0', --externa
-	'flujo'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'sgr', --objeto_proyecto
-	'1000821', --objeto
 	'1000705', --col_id
 	'orden', --columna
 	'E', --tipo

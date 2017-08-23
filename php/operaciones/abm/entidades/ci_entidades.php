@@ -15,8 +15,23 @@ class ci_entidades extends sgr_ci
 	//---- cuadro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
+	function ini()
+	{
+		//ei_arbol($this->controlador()->controlador()->get_id()[1]);
+			if ($this->controlador()->get_id()[1]=='1000866')
+				{
+					$this->dep('cuadro')->eliminar_evento('seleccion2');
+					$this->dep('cuadro')->eliminar_evento('detalles');
+					$this->dep('cuadro')->eliminar_evento('borrar');
+				}
+			else {
+				$this->dep('cuadro')->eliminar_evento('seleccion');
+			}
+	}
+
 	function conf__cuadro($cuadro)
 	{
+		$cuadro->desactivar_modo_clave_segura();
 		if (! isset($this->s__datos_filtro)) {
 			$datos = dao_entidades::get_datossinfiltro($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
@@ -27,7 +42,7 @@ class ci_entidades extends sgr_ci
 		}
 	}
 
-	function evt__cuadro__seleccion($seleccion)
+	function evt__cuadro__seleccion2($seleccion)
 	{
 		$this->cn()->cargar_dr_entidades($seleccion);
 		$this->cn()->set_cursorentidades($seleccion);
@@ -49,11 +64,17 @@ class ci_entidades extends sgr_ci
 			$this->cn()->guardar_dr_entidades();
 			$this->cn()->resetear_dr_entidades();
 		} catch (toba_error_db $error) {
-			ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
+			//ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
 			toba::notificacion()->agregar('Error de carga', 'info');
 			$this->cn()->resetear_dr_entidades();
 			$this->set_pantalla('pant_inicial');
 		}
+	}
+
+	function conf_evt__cuadro__detalles(toba_evento_usuario $evento, $fila)
+	{
+		$datos=$this->dep('cuadro')->get_datos()[$fila];
+		$evento->vinculo()->agregar_parametro('entidad', $datos['id_entidad']);
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -178,6 +199,7 @@ class ci_entidades extends sgr_ci
 	{
 		$this->cn()->procesarcorreo_entidades($datos);
 	}
+
 
 }
 ?>

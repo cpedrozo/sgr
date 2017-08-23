@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000312]--  Detalles de personas 
+--[1000312]--  Detalles de la persona 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Detalles de personas', --nombre
+	'Detalles de la persona', --nombre
 	NULL, --descripcion
 	'1000001', --punto_montaje
 	NULL, --actividad_accion

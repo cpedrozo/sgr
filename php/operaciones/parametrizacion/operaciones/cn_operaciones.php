@@ -200,6 +200,11 @@ class cn_operaciones extends sgr_cn
   //---- ABM form_ml_flujos-----------------------------------------------
   //-----------------------------------------------------------------------------------
 
+  function hay_cursor_flujo()
+  {
+    return $this->dep('dr_flujoseventos')->tabla('dt_flujos')->hay_cursor();
+  }
+
   function getflujos()
   {
     return $this->ordenarxorden($this->dep('dr_flujoseventos')->tabla('dt_flujos')->get_filas());
@@ -224,6 +229,12 @@ class cn_operaciones extends sgr_cn
     $this->dep('dr_flujoseventos')->tabla('dt_flujos')->procesar_filas($datos);
   }
 
+  function seleccionflujo($seleccion)
+  {
+      //$id_fila = $this->dep('dr_flujoseventos')->tabla('dt_flujos')->get_id_fila_condicion($seleccion)[0];
+      $this->dep('dr_flujoseventos')->tabla('dt_flujos')->set_cursor($seleccion);
+  }
+
 
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_requisitos -----------------------------------------------------------
@@ -231,46 +242,63 @@ class cn_operaciones extends sgr_cn
 
   function cargarrequisitos($form)
   {
-    if ($this->dep('dr_requisitos')->tabla('dt_requisitos')->hay_cursor()) {
-    $datos = $this->dep('dr_requisitos')->tabla('dt_requisitos')->get();
+    if ($this->dep('dr_flujoseventos')->tabla('dt_requisitos')->hay_cursor()) {
+    $datos = $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->get();
     $form->set_datos($datos);
     }
   }
 
   function guardarrequisitos()
   {
-    $this->dep('dr_requisitos')->sincronizar();
-    $this->dep('dr_requisitos')->resetear();
+    $this->dep('dr_flujoseventos')->sincronizar();
+    $this->dep('dr_flujoseventos')->resetear();
   }
 
   function resetrequisitos()
   {
-    $this->dep('dr_requisitos')->resetear();
+    $this->dep('dr_flujoseventos')->resetear();
   }
 
   function modifrequisitos($datos)
   {
-    $this->dep('dr_requisitos')->tabla('dt_requisitos')->set($datos);
+    $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->set($datos);
   }
 
   function seleccionrequisitos($seleccion)
   {
-    if($this->dep('dr_requisitos')->cargar($seleccion)){
-      $id_fila = $this->dep('dr_requisitos')->tabla('dt_requisitos')->get_id_fila_condicion($seleccion)[0];
-      $this->dep('dr_requisitos')->tabla('dt_requisitos')->set_cursor($id_fila);
+    if($this->dep('dr_flujoseventos')->cargar($seleccion)){
+      $id_fila = $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->get_id_fila_condicion($seleccion)[0];
+      $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->set_cursor($id_fila);
     }
   }
 
   function borrarrequisitos($seleccion)
   {
-    $this->dep('dr_requisitos')->tabla('dt_requisitos')->cargar($seleccion);
-    $id_fila = $this->dep('dr_requisitos')->tabla('dt_requisitos')->get_id_fila_condicion($seleccion)[0];
-    $this->dep('dr_requisitos')->tabla('dt_requisitos')->set_cursor($id_fila);
-    $this->dep('dr_requisitos')->tabla('dt_requisitos')->eliminar_fila($id_fila);
+    $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->cargar($seleccion);
+    $id_fila = $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->get_id_fila_condicion($seleccion)[0];
+    $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->set_cursor($id_fila);
+    $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->eliminar_fila($id_fila);
+  }
+
+  //-----------------------------------------------------------------------------------
+  //---- ABM form_ml_requisitos--------------------------------------------------------
+  //-----------------------------------------------------------------------------------
+
+  function getrequisitos()
+  {
+    if ($this->dep('dr_flujoseventos')->tabla('dt_flujos')->hay_cursor())
+    {
+      return $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->get_filas();
+    }
+    return [];
+  }
+
+  function procesarrequisitos($datos)
+  {
+    $this->dep('dr_flujoseventos')->tabla('dt_requisitos')->procesar_filas($datos);
   }
 
 
-
-}
+  }
 
 ?>

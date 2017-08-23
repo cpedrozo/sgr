@@ -87,6 +87,18 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	NULL, --inicializar
 	'1'  --orden
 );
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
+	'1000659', --dep_id
+	'1000857', --objeto_consumidor
+	'1000820', --objeto_proveedor
+	'dt_requisitos', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	'3'  --orden
+);
 --- FIN Grupo de desarrollo 1
 
 ------------------------------------------------------------
@@ -110,6 +122,22 @@ INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador
 	NULL, --cascada
 	'1'  --orden
 );
+INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
+	'sgr', --proyecto
+	'1000857', --objeto
+	'1000037', --asoc_id
+	NULL, --identificador
+	'sgr', --padre_proyecto
+	'1000821', --padre_objeto
+	'dt_flujos', --padre_id
+	NULL, --padre_clave
+	'sgr', --hijo_proyecto
+	'1000820', --hijo_objeto
+	'dt_requisitos', --hijo_id
+	NULL, --hijo_clave
+	NULL, --cascada
+	'2'  --orden
+);
 --- FIN Grupo de desarrollo 1
 
 ------------------------------------------------------------
@@ -123,4 +151,31 @@ INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_obje
 	'1000740', --padre_clave
 	'1000821', --hijo_objeto
 	'1000701'  --hijo_clave
+);
+INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
+	'sgr', --proyecto
+	'1000857', --objeto
+	'1000037', --asoc_id
+	'1000821', --padre_objeto
+	'1000701', --padre_clave
+	'1000820', --hijo_objeto
+	'1000711'  --hijo_clave
+);
+INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
+	'sgr', --proyecto
+	'1000857', --objeto
+	'1000037', --asoc_id
+	'1000821', --padre_objeto
+	'1000702', --padre_clave
+	'1000820', --hijo_objeto
+	'1000712'  --hijo_clave
+);
+INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
+	'sgr', --proyecto
+	'1000857', --objeto
+	'1000037', --asoc_id
+	'1000821', --padre_objeto
+	'1000703', --padre_clave
+	'1000820', --hijo_objeto
+	'1000713'  --hijo_clave
 );

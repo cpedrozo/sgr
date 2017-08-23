@@ -204,22 +204,10 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000643', --dep_id
+	'1000650', --dep_id
 	'1000813', --objeto_consumidor
-	'1000856', --objeto_proveedor
-	'form', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
-	NULL, --parametros_c
-	NULL, --inicializar
-	NULL  --orden
-);
-INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
-	'sgr', --proyecto
-	'1000642', --dep_id
-	'1000813', --objeto_consumidor
-	'1000855', --objeto_proveedor
-	'form_ml_flujos', --identificador
+	'1000860', --objeto_proveedor
+	'flujosreq', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -294,15 +282,8 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'sgr', --proyecto
 	'1000448', --pantalla
 	'1000813', --objeto_ci
-	'1', --orden
-	'1000642'  --dep_id
-);
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'sgr', --proyecto
-	'1000448', --pantalla
-	'1000813', --objeto_ci
-	'0', --orden
-	'1000643'  --dep_id
+	'2', --orden
+	'1000650'  --dep_id
 );
 
 ------------------------------------------------------------

@@ -74,10 +74,10 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000604', --dep_id
+	'1000667', --dep_id
 	'1000798', --objeto_consumidor
-	'1000804', --objeto_proveedor
-	'cuadrocorreo', --identificador
+	'1000874', --objeto_proveedor
+	'form_correo', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -86,10 +86,10 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000602', --dep_id
+	'1000665', --dep_id
 	'1000798', --objeto_consumidor
-	'1000802', --objeto_proveedor
-	'cuadrodom', --identificador
+	'1000872', --objeto_proveedor
+	'form_dom', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -98,10 +98,22 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000603', --dep_id
+	'1000664', --dep_id
 	'1000798', --objeto_consumidor
-	'1000803', --objeto_proveedor
-	'cuadrotel', --identificador
+	'1000871', --objeto_proveedor
+	'form_persona', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
+	'1000666', --dep_id
+	'1000798', --objeto_consumidor
+	'1000873', --objeto_proveedor
+	'form_tel', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -120,19 +132,19 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	'1000798', --objeto_ci
 	'1000441', --pantalla
 	'pant_inicial', --identificador
-	NULL, --orden
+	'1', --orden
 	'Pantalla Inicial', --etiqueta
 	NULL, --descripcion
 	NULL, --tip
-	NULL, --imagen_recurso_origen
+	'apex', --imagen_recurso_origen
 	NULL, --imagen
 	NULL, --objetos
 	NULL, --eventos
-	NULL, --subclase
-	NULL, --subclase_archivo
+	'pant_personas_pop', --subclase
+	'operaciones/abm/personas/pant_personas_pop.php', --subclase_archivo
 	NULL, --template
 	NULL, --template_impresion
-	NULL  --punto_montaje
+	'1000001'  --punto_montaje
 );
 --- FIN Grupo de desarrollo 1
 
@@ -144,19 +156,26 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'1000441', --pantalla
 	'1000798', --objeto_ci
 	'0', --orden
-	'1000602'  --dep_id
+	'1000664'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'sgr', --proyecto
 	'1000441', --pantalla
 	'1000798', --objeto_ci
 	'1', --orden
-	'1000603'  --dep_id
+	'1000665'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'sgr', --proyecto
 	'1000441', --pantalla
 	'1000798', --objeto_ci
 	'2', --orden
-	'1000604'  --dep_id
+	'1000666'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'sgr', --proyecto
+	'1000441', --pantalla
+	'1000798', --objeto_ci
+	'3', --orden
+	'1000667'  --dep_id
 );

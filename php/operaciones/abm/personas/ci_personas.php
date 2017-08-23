@@ -27,27 +27,33 @@ class ci_personas extends sgr_ci
 		}
 	}
 
-		function evt__cuadro__seleccion($seleccion)
-		{
-			$this->cn()->cargar_dr_personas($seleccion);
-			$this->cn()->set_cursorpersonas($seleccion);
-			$this->set_pantalla('pant_edicion');
-		}
+	function evt__cuadro__seleccion($seleccion)
+	{
+		$this->cn()->cargar_dr_personas($seleccion);
+		$this->cn()->set_cursorpersonas($seleccion);
+		$this->set_pantalla('pant_edicion');
+	}
 
-		function evt__cuadro__borrar($seleccion)
-		{
-			$this->cn()->cargar_dr_personas($seleccion);
-			$this->cn()->borrar_dt_personas($seleccion);
-			try{
-				$this->cn()->guardar_dr_personas();
-				$this->cn()->resetear_dr_personas();
-			} catch (toba_error_db $error) {
-				ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
-				toba::notificacion()->agregar('Error de carga', 'info');
-				$this->cn()->resetear_dr_personas();
-				$this->set_pantalla('pant_inicial');
-			}
+	function evt__cuadro__borrar($seleccion)
+	{
+		$this->cn()->cargar_dr_personas($seleccion);
+		$this->cn()->borrar_dt_personas($seleccion);
+		try{
+			$this->cn()->guardar_dr_personas();
+			$this->cn()->resetear_dr_personas();
+		} catch (toba_error_db $error) {
+			ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
+			toba::notificacion()->agregar('Error de carga', 'info');
+			$this->cn()->resetear_dr_personas();
+			$this->set_pantalla('pant_inicial');
 		}
+	}
+
+	function conf_evt__cuadro__detalles(toba_evento_usuario $evento, $fila)
+	{
+		$datos=$this->dep('cuadro')->get_datos()[$fila];
+		$evento->vinculo()->agregar_parametro('persona', $datos['id_persona']);
+	}
 
 	//-----------------------------------------------------------------------------------
 	//---- Eventos ----------------------------------------------------------------------

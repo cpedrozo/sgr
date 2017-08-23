@@ -50,6 +50,23 @@ class metodosconsulta
   /////////// DATOS PERSONA ////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
+  static function get_descPopUpEntidad($id_entidad)
+  {
+    $id_entidad = quote($id_entidad);
+
+    $sql = "SELECT e.razonsocial
+            	FROM sgr.entidad e
+             WHERE e.id_entidad = $id_entidad";
+
+    $resultado = consultar_fuente($sql);
+
+    if (count($resultado) > 0) {
+      return $resultado[0]['razonsocial'];
+    } else {
+      return 'Falló, intente nuevamente';
+    }
+  }
+
   static function get_nacionalidad()
   {
   $sql = "SELECT * FROM sgr.nacionalidad ORDER BY nombre asc";

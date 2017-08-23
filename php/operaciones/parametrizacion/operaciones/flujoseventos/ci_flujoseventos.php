@@ -114,35 +114,6 @@ class ci_flujoseventos extends sgr_ci
 	  $this->s__datos_filtro = $datos;
 	}
 
-	//-----------------------------------------------------------------------------------
-	//---- frm --------------------------------------------------------------------------
-	//-----------------------------------------------------------------------------------
-
-	function conf__form(sgr_ei_formulario $form)
-	{
-	  $datos = $this->cn()->get_flujoseventos();
-	  $form->set_datos($datos);
-	}
-
-	function evt__form__modificacion($datos)
-	{
-	  $this->cn()->set_dt_flujoseventos($datos);
-	}
-
-	//-----------------------------------------------------------------------------------
-	//---- form_ml_flujos-------------------------------------------------------------
-	//-----------------------------------------------------------------------------------
-
-	function conf__form_ml_flujos(sgr_ei_formulario_ml $form_ml)
-	{
-	  $datos = $this->cn()->getflujos();
-	  $form_ml->set_datos($datos);
-	}
-
-	function evt__form_ml_flujos__modificacion($datos)
-	{
-	  $this->cn()->procesarflujos($datos);
-	}
 
 }
 ?>

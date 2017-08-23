@@ -1,6 +1,6 @@
 <?php
 
-require_once('operaciones/parametrizacion/operaciones/requisitos/dao_requisitos.php');
+require_once('operaciones/parametrizacion/operaciones/flujoseventos/requisitos/dao_requisitos.php');
 
 class ci_requisitos extends sgr_ci
 {
@@ -64,13 +64,20 @@ class ci_requisitos extends sgr_ci
 	    }
 	  }
 	  $this->cn()->resetrequisitos();
-	  $this->set_pantalla('pant_inicial');
+	  $this->controlador()->set_pantalla('pant_inicial');
 	}
 
 	function evt__cancelar()
 	{
 	  $this->cn()->resetrequisitos();
-	  $this->set_pantalla('pant_inicial');
+	  $this->controlador()->set_pantalla('pant_inicial');
+	}
+
+	function evt__form_ml_flujos__requisitos($seleccion)
+	{
+		$datos=$this->dep('form_ml_flujos')->get_datos();
+		//ei_arbol($datos[$seleccion],'datos');
+		$this->cn()->seleccionflujo($datos[$seleccion]['x_dbr_clave']);
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -97,17 +104,61 @@ class ci_requisitos extends sgr_ci
 	}
 
 	//-----------------------------------------------------------------------------------
-	//---- frm --------------------------------------------------------------------------
+	//---- frm_flujoseventos-------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
-	function conf__form($form)
+	function conf__form(sgr_ei_formulario $form)
 	{
-	  $this->cn()->cargarrequisitos($form);
+	  $datos = $this->cn()->get_flujoseventos();
+	  $form->set_datos($datos);
 	}
 
 	function evt__form__modificacion($datos)
 	{
-	  $this->cn()->modifrequisitos($datos);
+	  $this->cn()->set_dt_flujoseventos($datos);
 	}
+
+	//-----------------------------------------------------------------------------------
+	//---- form_ml_flujos-------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__form_ml_flujos(sgr_ei_formulario_ml $form_ml)
+	{
+	  $datos = $this->cn()->getflujos();
+	  $form_ml->set_datos($datos);
+	}
+
+	function evt__form_ml_flujos__modificacion($datos)
+	{
+	  $this->cn()->procesarflujos($datos);
+	}
+
+	//-----------------------------------------------------------------------------------
+	//---- form_ml_requisitos------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__form_ml_requisitos(sgr_ei_formulario_ml $form_ml_requisitos)
+	{
+	  $datos = $this->cn()->getrequisitos();
+	  $form_ml_requisitos->set_datos($datos);
+	}
+
+	function evt__form_ml_requisitos__modificacion($datos)
+	{
+	  $this->cn()->procesarrequisitos($datos);
+	}
+
+	//-----------------------------------------------------------------------------------
+	//---- pantalla ---------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__pant_flujosreq($pantalla)
+	{
+		if (!$this->cn()->hay_cursor_flujo())
+		{
+			$pantalla->eliminar_dep('form_ml_requisitos');
+		}
+	}
+
 }
 ?>

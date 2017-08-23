@@ -48,6 +48,39 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'sgr', --proyecto
+	'1001256', --evento_id
+	'1000771', --objeto
+	'detalles', --identificador
+	NULL, --etiqueta
+	'1', --maneja_datos
+	'1', --sobre_fila
+	NULL, --confirmacion
+	NULL, --estilo
+	'apex', --imagen_recurso_origen
+	'info_chico', --imagen
+	'0', --en_botonera
+	NULL, --ayuda
+	'1', --orden
+	NULL, --ci_predep
+	NULL, --implicito
+	NULL, --defecto
+	NULL, --display_datos_cargados
+	NULL, --grupo
+	'V', --accion
+	NULL, --accion_imphtml_debug
+	'1000299', --accion_vinculo_carpeta
+	'1000312', --accion_vinculo_item
+	NULL, --accion_vinculo_objeto
+	'1', --accion_vinculo_popup
+	'width: 800px, height: 800px, scrollbars: 0, resizable:0, scrollbars: yes', --accion_vinculo_popup_param
+	NULL, --accion_vinculo_target
+	'popup', --accion_vinculo_celda
+	NULL, --accion_vinculo_servicio
+	'0', --es_seleccion_multiple
+	'0'  --es_autovinculo
+);
+INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
+	'sgr', --proyecto
 	'1001151', --evento_id
 	'1000771', --objeto
 	'seleccion', --identificador
@@ -60,7 +93,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'editable', --imagen
 	'0', --en_botonera
 	NULL, --ayuda
-	'1', --orden
+	'2', --orden
 	NULL, --ci_predep
 	NULL, --implicito
 	NULL, --defecto
@@ -71,10 +104,10 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	NULL, --accion_vinculo_carpeta
 	NULL, --accion_vinculo_item
 	NULL, --accion_vinculo_objeto
-	NULL, --accion_vinculo_popup
-	NULL, --accion_vinculo_popup_param
+	'1', --accion_vinculo_popup
+	'width: 800px, height: 600px, scrollbars: 0, resizable:0', --accion_vinculo_popup_param
 	NULL, --accion_vinculo_target
-	NULL, --accion_vinculo_celda
+	'popup', --accion_vinculo_celda
 	NULL, --accion_vinculo_servicio
 	'0', --es_seleccion_multiple
 	'0'  --es_autovinculo
@@ -93,7 +126,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'borrar', --imagen
 	'0', --en_botonera
 	NULL, --ayuda
-	'2', --orden
+	'3', --orden
 	NULL, --ci_predep
 	NULL, --implicito
 	NULL, --defecto

@@ -1,5 +1,5 @@
 <?php
-class form_requisitos extends sgr_ei_formulario
+class form_requisitos extends sgr_ei_formulario_ml
 {
 	//-----------------------------------------------------------------------------------
 	//---- JAVASCRIPT -------------------------------------------------------------------
