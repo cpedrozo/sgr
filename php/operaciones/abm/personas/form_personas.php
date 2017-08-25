@@ -61,7 +61,8 @@ class form_personas extends sgr_ei_formulario
 		  {
 		    this.ef('apellido').mostrar();
 		    this.ef('nombre').mostrar();
-		    this.ef('dni').mostrar();
+				this.ef('id_tipo_doc').mostrar();
+				this.ef('doc').mostrar();
 		    this.ef('fnac').mostrar();
 		    this.ef('id_genero').mostrar();
 		    this.ef('id_sucursal').mostrar();
@@ -74,7 +75,8 @@ class form_personas extends sgr_ei_formulario
 			else if (resultado=='NO'){
 		    this.ef('apellido').mostrar();
 		    this.ef('nombre').mostrar();
-		    this.ef('dni').mostrar();
+				this.ef('id_tipo_doc').mostrar();
+				this.ef('doc').mostrar();
 		    this.ef('fnac').mostrar();
 		    this.ef('id_genero').mostrar();
 		    this.ef('id_sucursal').ocultar();
@@ -87,7 +89,8 @@ class form_personas extends sgr_ei_formulario
 		  else {
 		    this.ef('apellido').ocultar();
 		    this.ef('nombre').ocultar();
-		    this.ef('dni').ocultar();
+				this.ef('id_tipo_doc').ocultar();
+				this.ef('doc').ocultar();
 		    this.ef('fnac').ocultar();
 		    this.ef('id_genero').ocultar();
 		    this.ef('id_sucursal').ocultar();

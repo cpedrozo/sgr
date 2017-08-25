@@ -11,6 +11,7 @@ class ci_tipotel extends sgr_ci
 	//---- cuadro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
+
 	function conf__cuadro($cuadro)
 	{
 		//if (isset($this->s__datos_filtro)) {
@@ -23,14 +24,6 @@ class ci_tipotel extends sgr_ci
 		//}
 	}
 
-
-/*
-	function conf__cuadro($cuadro)
-	{
-		$datos = dao_tipotel::get_datos();
-		$cuadro->set_datos($datos);
-	}
-	*/
 
 	function evt__cuadro__seleccion($seleccion)
 	{

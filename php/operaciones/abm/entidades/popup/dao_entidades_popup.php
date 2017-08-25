@@ -20,11 +20,11 @@ class dao_entidades_popup
     static function get_datosdom($id_entidad)
     {
       $sql = "SELECT
-              d.barrio, d.calle, d.num, d.piso, c.nombre||', '||pro.nombre||', '||pa.nombre localidad
+              d.barrio, d.calle, d.num, d.piso, ci.nombre||', '||pro.nombre||', '||pa.nombre localidad
               FROM sgr.domicilio d
-              LEFT JOIN sgr.ciudad c ON d.id_ciudad = c.id_ciudad
-              LEFT JOIN sgr.pais pa ON d.id_pais = pa.id_pais
-              LEFT JOIN sgr.provincia pro ON d.id_provincia = pro.id_provincia
+              LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
+        			LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
+        			LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
               WHERE d.id_entidad = $id_entidad";
       $resultado = consultar_fuente($sql);
       if(count($resultado)>0)

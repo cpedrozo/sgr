@@ -74,6 +74,13 @@ class metodosconsulta
   return $datos;
   }
 
+  static function get_tipo_doc()
+  {
+  $sql = "SELECT * FROM sgr.tipo_doc ORDER BY nombre asc";
+  $datos = consultar_fuente($sql);
+  return $datos;
+  }
+
   static function get_ecivil()
   {
   $sql = "SELECT * FROM sgr.estadocivil ORDER BY nombre asc";

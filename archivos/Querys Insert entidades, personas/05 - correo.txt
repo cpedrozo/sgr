@@ -1,0 +1,10 @@
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (1,'info@london.com',DEFAULT,'1','2');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (2,'consultas@dfs.com',DEFAULT,'2','2');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (3,'info@shoppinga.com',DEFAULT,'3','2');
+
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (4,'almiron@dfs.com','1',DEFAULT,'2');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (5,'barboza@dfs.com','2',DEFAULT,'2');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (6,'pedrozo@dfs.com','3',DEFAULT,'2');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (7,'aguirre@gmail.com','4',DEFAULT,'1');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (8,'gutierrez@gmail.com','5',DEFAULT,'1');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (9,'garcia@gmail.com','6',DEFAULT,'1');

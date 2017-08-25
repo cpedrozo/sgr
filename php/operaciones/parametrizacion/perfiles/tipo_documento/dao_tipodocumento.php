@@ -1,7 +1,15 @@
 <?php
 
-class dao_tipotel
+class dao_tipodocumento
 {
+  /*
+  static function get_datos()
+  {
+  	$sql = "SELECT * FROM sgr.rol";
+  	$datos = consultar_fuente($sql);
+    return $datos;
+  }
+  */
 
     static function get_datos($where='')
     {
@@ -11,13 +19,12 @@ class dao_tipotel
         $where_armado = '';
       }
 
-      $sql = "SELECT id_tipotel, nombre, case when interno then 'Activo' else 'Inactivo' end interno
-              FROM sgr.tipotel
+      $sql = "SELECT *
+              FROM sgr.tipo_doc
               $where_armado";
 
       $resultado = consultar_fuente($sql);
       return $resultado;
     }
-
 }
 ?>

@@ -6,16 +6,6 @@ class cn_parametrizacion extends sgr_cn
   //---- ABM sgr_propietario ----------------------------------------------------------
   //-----------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------------------------
-// ver con el prof. No me funciona sin pasar el form, haciendo un return no carga los datos para modificar....
-//------------------------------------------------------------------------------------------------------------
-
-// function cargarentidades()
-// {
-//   if ($this->dep('dr_entidades')->tabla('dt_entidades')->hay_cursor()) {
-//     return $this->dep('dr_entidades')->tabla('dt_entidades')->get();
-// }
-
   function cargarpropietario($form)
   {
     if ($this->dep('dr_propietario')->tabla('dt_propietario')->hay_cursor()) {
@@ -23,10 +13,6 @@ class cn_parametrizacion extends sgr_cn
     $form->set_datos($datos);
     }
   }
-
-//------------------------------------------------------------------------------------------------------------
-// ver con el prof. No me funciona sin pasar el form, haciendo un return no carga los datos para modificar....
-//------------------------------------------------------------------------------------------------------------
 
   function guardarpropietario()
   {
@@ -60,7 +46,7 @@ class cn_parametrizacion extends sgr_cn
     $this->dep('dr_propietario')->tabla('dt_propietario')->eliminar_fila($id_fila);
   }
 
-      //$this->set_pantalla('pant_inicial');
+
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_companiastelefonicas -------------------------------------------------
   //-----------------------------------------------------------------------------------
@@ -601,6 +587,49 @@ class cn_parametrizacion extends sgr_cn
     $this->dep('dr_genero')->tabla('dt_genero')->eliminar_fila($id_fila);
   }
 
+  //-----------------------------------------------------------------------------------
+  //---- ABM sgr_tipo_doc -------------------------------------------------------------
+  //-----------------------------------------------------------------------------------
+
+  function cargartipodocumento($form)
+  {
+    if ($this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->hay_cursor()) {
+      $datos = $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->get();
+      $form->set_datos($datos);
+    }
+  }
+
+  function guardartipodocumento()
+  {
+    $this->dep('dr_tipodocumento')->sincronizar();
+    $this->dep('dr_tipodocumento')->resetear();
+  }
+
+  function resettipodocumento()
+  {
+    $this->dep('dr_tipodocumento')->resetear();
+  }
+
+  function modiftipodocumento($datos)
+  {
+    $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->set($datos);
+  }
+
+  function selecciontipodocumento($seleccion)
+  {
+    if($this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->cargar($seleccion)){
+      $id_fila = $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->get_id_fila_condicion($seleccion)[0];
+      $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->set_cursor($id_fila);
+    }
+  }
+
+  function borrartipodocumento($seleccion)
+  {
+    $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->cargar($seleccion);
+    $id_fila = $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->get_id_fila_condicion($seleccion)[0];
+    $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->set_cursor($id_fila);
+    $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->eliminar_fila($id_fila);
+  }
 
 }
 

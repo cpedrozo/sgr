@@ -375,13 +375,13 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'1001371', --objeto_ei_formulario_fila
 	'1000773', --objeto_ei_formulario
 	'sgr', --objeto_ei_formulario_proyecto
-	'dni', --identificador
+	'doc', --identificador
 	'ef_editable', --elemento_formulario
-	'dni', --columnas
+	'doc', --columnas
 	'1', --obligatorio
 	'1', --oculto_relaja_obligatorio
-	'4', --orden
-	'DNI', --etiqueta
+	'5', --orden
+	'Documento', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	NULL, --colapsado
@@ -460,7 +460,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'fnac', --columnas
 	'1', --obligatorio
 	'1', --oculto_relaja_obligatorio
-	'5', --orden
+	'6', --orden
 	'Nacimiento', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -540,7 +540,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'id_genero', --columnas
 	'1', --obligatorio
 	'1', --oculto_relaja_obligatorio
-	'6', --orden
+	'7', --orden
 	'Género', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -620,7 +620,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'id_sucursal', --columnas
 	'1', --obligatorio
 	'1', --oculto_relaja_obligatorio
-	'7', --orden
+	'11', --orden
 	'Sucursal', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -700,7 +700,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'id_dpto', --columnas
 	'1', --obligatorio
 	'1', --oculto_relaja_obligatorio
-	'8', --orden
+	'12', --orden
 	'Departamento', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -780,7 +780,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'id_rol', --columnas
 	'1', --obligatorio
 	'1', --oculto_relaja_obligatorio
-	'9', --orden
+	'13', --orden
 	'Rol', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -860,7 +860,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'id_nacionalidad', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'10', --orden
+	'8', --orden
 	'Nacionalidad', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -940,7 +940,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'id_estadocivil', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'11', --orden
+	'9', --orden
 	'Estado Civil', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1020,7 +1020,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'id_entidad', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'12', --orden
+	'10', --orden
 	'Compañía', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1070,6 +1070,86 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'metodosconsulta', --popup_carga_desc_clase
 	'operaciones/metodosconsulta/metodosconsulta.php', --popup_carga_desc_include
 	'1', --popup_puede_borrar_estado
+	NULL, --fieldset_fin
+	NULL, --check_valor_si
+	NULL, --check_valor_no
+	NULL, --check_desc_si
+	NULL, --check_desc_no
+	NULL, --check_ml_toggle
+	NULL, --fijo_sin_estado
+	NULL, --editor_ancho
+	NULL, --editor_alto
+	NULL, --editor_botonera
+	NULL, --selec_cant_minima
+	NULL, --selec_cant_maxima
+	NULL, --selec_utilidades
+	NULL, --selec_tamano
+	NULL, --selec_ancho
+	NULL, --selec_serializar
+	NULL, --selec_cant_columnas
+	NULL, --upload_extensiones
+	'1000001', --punto_montaje
+	NULL  --placeholder
+);
+INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_formulario, objeto_ei_formulario_proyecto, identificador, elemento_formulario, columnas, obligatorio, oculto_relaja_obligatorio, orden, etiqueta, etiqueta_estilo, descripcion, colapsado, desactivado, estilo, total, inicializacion, permitir_html, deshabilitar_rest_func, estado_defecto, solo_lectura, solo_lectura_modificacion, carga_metodo, carga_clase, carga_include, carga_dt, carga_consulta_php, carga_sql, carga_fuente, carga_lista, carga_col_clave, carga_col_desc, carga_maestros, carga_cascada_relaj, cascada_mantiene_estado, carga_permite_no_seteado, carga_no_seteado, carga_no_seteado_ocultar, edit_tamano, edit_maximo, edit_mascara, edit_unidad, edit_rango, edit_filas, edit_columnas, edit_wrap, edit_resaltar, edit_ajustable, edit_confirmar_clave, edit_expreg, popup_item, popup_proyecto, popup_editable, popup_ventana, popup_carga_desc_metodo, popup_carga_desc_clase, popup_carga_desc_include, popup_puede_borrar_estado, fieldset_fin, check_valor_si, check_valor_no, check_desc_si, check_desc_no, check_ml_toggle, fijo_sin_estado, editor_ancho, editor_alto, editor_botonera, selec_cant_minima, selec_cant_maxima, selec_utilidades, selec_tamano, selec_ancho, selec_serializar, selec_cant_columnas, upload_extensiones, punto_montaje, placeholder) VALUES (
+	'1001476', --objeto_ei_formulario_fila
+	'1000773', --objeto_ei_formulario
+	'sgr', --objeto_ei_formulario_proyecto
+	'id_tipo_doc', --identificador
+	'ef_combo', --elemento_formulario
+	'id_tipo_doc', --columnas
+	'1', --obligatorio
+	'1', --oculto_relaja_obligatorio
+	'4', --orden
+	'Tipo Documento', --etiqueta
+	NULL, --etiqueta_estilo
+	NULL, --descripcion
+	'0', --colapsado
+	'0', --desactivado
+	NULL, --estilo
+	NULL, --total
+	NULL, --inicializacion
+	'0', --permitir_html
+	'0', --deshabilitar_rest_func
+	NULL, --estado_defecto
+	'0', --solo_lectura
+	'0', --solo_lectura_modificacion
+	'get_tipo_doc', --carga_metodo
+	NULL, --carga_clase
+	NULL, --carga_include
+	NULL, --carga_dt
+	'1000002', --carga_consulta_php
+	NULL, --carga_sql
+	'sgr', --carga_fuente
+	NULL, --carga_lista
+	'id_tipo_doc', --carga_col_clave
+	'nombre', --carga_col_desc
+	NULL, --carga_maestros
+	'0', --carga_cascada_relaj
+	'0', --cascada_mantiene_estado
+	'1', --carga_permite_no_seteado
+	'--Seleccione--', --carga_no_seteado
+	'0', --carga_no_seteado_ocultar
+	NULL, --edit_tamano
+	NULL, --edit_maximo
+	NULL, --edit_mascara
+	NULL, --edit_unidad
+	NULL, --edit_rango
+	NULL, --edit_filas
+	NULL, --edit_columnas
+	NULL, --edit_wrap
+	NULL, --edit_resaltar
+	NULL, --edit_ajustable
+	NULL, --edit_confirmar_clave
+	NULL, --edit_expreg
+	NULL, --popup_item
+	NULL, --popup_proyecto
+	NULL, --popup_editable
+	NULL, --popup_ventana
+	NULL, --popup_carga_desc_metodo
+	NULL, --popup_carga_desc_clase
+	NULL, --popup_carga_desc_include
+	NULL, --popup_puede_borrar_estado
 	NULL, --fieldset_fin
 	NULL, --check_valor_si
 	NULL, --check_valor_no

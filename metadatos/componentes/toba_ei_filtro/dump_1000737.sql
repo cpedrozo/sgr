@@ -137,7 +137,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'p.nombre', --expresion
 	'Provincia', --etiqueta
 	NULL, --descripcion
-	'1', --obligatorio
+	'0', --obligatorio
 	'1', --inicial
 	'2', --orden
 	NULL, --estado_defecto

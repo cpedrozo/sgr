@@ -11,12 +11,12 @@ class dao_entidades
       }
 
       $sql = "SELECT e.id_entidad, e.razonsocial, e.cuit, case when e.propietario then 'Si' else 'No' end propietario,
-          		pa.nombre pais, pro.nombre prov, ci.nombre ciudad
+          		ci.nombre ciudad, pro.nombre prov, pa.nombre pais
           		FROM sgr.entidad e
           		LEFT JOIN sgr.domicilio d ON e.id_entidad = d.id_entidad
-              LEFT JOIN sgr.pais pa ON d.id_pais = pa.id_pais
-          		LEFT JOIN sgr.provincia pro ON d.id_provincia = pro.id_provincia
           		LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
+        			LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
+        			LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
               $where_armado ORDER BY razonsocial ASC
               LIMIT 5";
       $resultado = consultar_fuente($sql);
@@ -32,12 +32,12 @@ class dao_entidades
       }
 
       $sql = "SELECT e.id_entidad, e.razonsocial, e.cuit, case when e.propietario then 'Si' else 'No' end propietario,
-          		pa.nombre pais, pro.nombre prov, ci.nombre ciudad
+          		ci.nombre ciudad, pro.nombre prov, pa.nombre pais
           		FROM sgr.entidad e
           		LEFT JOIN sgr.domicilio d ON e.id_entidad = d.id_entidad
-              LEFT JOIN sgr.pais pa ON d.id_pais = pa.id_pais
-          		LEFT JOIN sgr.provincia pro ON d.id_provincia = pro.id_provincia
           		LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
+        			LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
+        			LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
               $where_armado ORDER BY razonsocial ASC";
       $resultado = consultar_fuente($sql);
       return $resultado;

@@ -1,6 +1,6 @@
-INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,nombre,orden) values (5,1,2,'NULL',1);
-INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,nombre,orden) values (5,2,3,'NULL',2);
-INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,nombre,orden) values (3,1,2,'NULL',1);
-INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,nombre,orden) values (3,2,4,'NULL',2);
-INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,nombre,orden) values (3,4,6,'NULL',3);
-INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,nombre,orden) values (3,4,5,'NULL',3);
+INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,orden) values (5,1,2,1);
+INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,orden) values (5,2,3,2);
+INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,orden) values (3,1,2,1);
+INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,orden) values (3,2,4,2);
+INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,orden) values (3,4,6,3);
+INSERT INTO sgr.flujo(id_workflow,id_estadoorigen,id_estadodestino,orden) values (3,4,5,3);
