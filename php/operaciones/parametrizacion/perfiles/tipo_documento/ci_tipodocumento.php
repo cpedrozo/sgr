@@ -4,8 +4,12 @@ require_once('operaciones/parametrizacion/perfiles/tipo_documento/dao_tipodocume
 
 class ci_tipodocumento extends sgr_ci
 {
-	protected $s__datos;
+	//-----------------------------------------------------------------------------------
+	//---- Variables ----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
 	protected $s__datos_filtro;
+	protected $s__sqlwhere;
+	protected $s__datos;
 
 	//-----------------------------------------------------------------------------------
 	//---- cuadro -----------------------------------------------------------------------
@@ -13,14 +17,14 @@ class ci_tipodocumento extends sgr_ci
 
 	function conf__cuadro($cuadro)
 	{
-		//if (isset($this->s__datos_filtro)) {
-			$filtro = $this->dep('filtro');
-			$filtro->set_datos($this->s__datos_filtro);
-			$sql_where = $filtro->get_sql_where();
-
-			$datos = dao_tipodocumento::get_datos($sql_where);
-			$cuadro->set_datos($datos);
-		//}
+	  if (! isset($this->s__datos_filtro)) {
+	    $datos = dao_tipodocumento::get_datossinfiltro($this->s__sqlwhere);
+	    $cuadro->set_datos($datos);
+	  }
+	  else{
+	    $datos = dao_tipodocumento::get_datos($this->s__sqlwhere);
+	    $cuadro->set_datos($datos);
+	  }
 	}
 
 	function evt__cuadro__seleccion($seleccion)

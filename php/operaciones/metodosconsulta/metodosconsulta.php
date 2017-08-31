@@ -21,8 +21,9 @@ class metodosconsulta
   return $datos;
   }
 
-  static function get_prov_pais($id_pais='')
+  static function get_prov_pais($id_pais)
   {
+    $id_pais = quote ($id_pais);
     $sql = "SELECT * FROM sgr.provincia
             WHERE id_pais = $id_pais
             ORDER BY nombre ASC";
@@ -37,13 +38,30 @@ class metodosconsulta
   return $datos;
   }
 
-  static function get_ciudad_prov($id_provincia='')
+  static function get_ciudad_prov($id_provincia)
   {
+    $id_provincia = quote ($id_provincia);
     $sql = "SELECT * FROM sgr.ciudad
             WHERE id_provincia = $id_provincia
             ORDER BY nombre ASC";
     $resultado = consultar_fuente($sql);
     return $resultado;
+  }
+  //////////////////////////////////////////////////////////////////////////////
+  /////////// CARGA EXTERNA PROVINCIA, PAIS/////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
+  static function get_idextdomicilio($id_ciudad)
+  {
+    $id_ciudad = quote($id_ciudad);
+
+    $sql = "SELECT pr.id_pais,
+            pr.id_provincia
+            FROM sgr.provincia pr
+            JOIN sgr.ciudad ci ON ci.id_provincia = pr.id_provincia
+            WHERE ci.id_ciudad = $id_ciudad";
+    $resultado = consultar_fuente($sql);
+    return $resultado[0];
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -53,13 +71,10 @@ class metodosconsulta
   static function get_descPopUpEntidad($id_entidad)
   {
     $id_entidad = quote($id_entidad);
-
     $sql = "SELECT e.razonsocial
             	FROM sgr.entidad e
              WHERE e.id_entidad = $id_entidad";
-
     $resultado = consultar_fuente($sql);
-
     if (count($resultado) > 0) {
       return $resultado[0]['razonsocial'];
     } else {
@@ -109,8 +124,9 @@ class metodosconsulta
   return $datos;
   }
 
-  static function get_dpto_suc($id_sucursal='')
+  static function get_dpto_suc($id_sucursal)
   {
+    $id_sucursal = quote ($id_sucursal);
     $sql = "SELECT * FROM sgr.dpto
             WHERE id_sucursal = $id_sucursal
             ORDER BY nombre ASC";
@@ -191,9 +207,9 @@ class metodosconsulta
     return $datos;
   }
 
-  static function get_flujo_evento()
+  static function get_workflow()
   {
-    $sql = "SELECT * FROM sgr.flujo_evento ORDER BY nombre asc";
+    $sql = "SELECT * FROM sgr.workflow ORDER BY nombre asc";
     $datos = consultar_fuente($sql);
     return $datos;
   }
@@ -219,8 +235,9 @@ class metodosconsulta
     return $datos;
   }
 
-  static function get_evento_tipo($id_tipoevento='')
+  static function get_evento_tipo($id_tipoevento)
   {
+    $id_tipoevento = quote ($id_tipoevento);
     $sql = "SELECT * FROM sgr.evento
             WHERE id_tipoevento = $id_tipoevento
             ORDER BY nombre ASC";

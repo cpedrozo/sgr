@@ -4,11 +4,12 @@ class dao_personas_popup
 {
     static function get_datospersona($id_persona)
     {
-      $sql = "SELECT p.id_persona, p.apellido, p.nombre, p.dni, p.fnac, g.nombre genero,
+      $sql = "SELECT p.id_persona, p.apellido, p.nombre, td.nombre tipodoc, p.doc, p.fnac, g.nombre genero,
               e.razonsocial entidad,
               s.nombre sucursal, dp.nombre dpto, r.nombre rol,
               n.nombre nacionalidad, ec.nombre ecivil
               FROM sgr.persona p
+              LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
               LEFT JOIN sgr.genero g ON p.id_genero = g.id_genero
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
               LEFT JOIN sgr.sucursal s ON p.id_sucursal = s.id_sucursal

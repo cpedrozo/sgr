@@ -76,8 +76,7 @@ class ci_requisitos extends sgr_ci
 	function evt__form_ml_flujos__requisitos($seleccion)
 	{
 		$datos=$this->dep('form_ml_flujos')->get_datos();
-		//ei_arbol($datos[$seleccion],'datos');
-		$this->cn()->seleccionflujo($datos[$seleccion]['x_dbr_clave']);
+		$this->cn()->seleccionflujo($seleccion);
 	}
 
 	//-----------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 <?php
-class cn_abm extends sgr_cn
+class cn_personas extends sgr_cn
 {
 
   //-----------------------------------------------------------------------------------

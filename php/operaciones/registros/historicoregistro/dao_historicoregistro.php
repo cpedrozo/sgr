@@ -1,15 +1,7 @@
 <?php
 
-class dao_tipodocumento
+class dao_historicoregistro
 {
-  /*
-  static function get_datos()
-  {
-  	$sql = "SELECT * FROM sgr.rol";
-  	$datos = consultar_fuente($sql);
-    return $datos;
-  }
-  */
   static function get_datossinfiltro($where='')
   {
     if ($where) {
@@ -19,8 +11,8 @@ class dao_tipodocumento
     }
 
     $sql = "SELECT *
-            FROM sgr.tipo_doc
-            $where_armado ORDER BY nombre ASC
+            FROM sgr.registro
+            --$where_armado ORDER BY id_registro ASC
             LIMIT 5";
 
     $resultado = consultar_fuente($sql);
@@ -36,11 +28,12 @@ class dao_tipodocumento
     }
 
     $sql = "SELECT *
-            FROM sgr.tipo_doc
-            $where_armado";
+            FROM sgr.registro
+            --$where_armado ORDER BY id_registro ASC";
 
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
+
 }
 ?>
