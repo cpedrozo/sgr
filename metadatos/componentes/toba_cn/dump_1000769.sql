@@ -16,8 +16,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_cn', --clase
 	'1000001', --punto_montaje
-	'cn_abm', --subclase
-	'operaciones/abm/cn_abm.php', --subclase_archivo
+	'cn_personas', --subclase
+	'operaciones/abm/cn_personas.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'cn_personas', --nombre

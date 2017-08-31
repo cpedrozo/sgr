@@ -57,22 +57,3 @@ INSERT INTO apex_objeto_datos_rel (proyecto, objeto, debug, clave, ap, punto_mon
 	'1', --sinc_orden_automatico
 	'1'  --sinc_lock_optimista
 );
-
-------------------------------------------------------------
--- apex_objeto_dependencias
-------------------------------------------------------------
-
---- INICIO Grupo de desarrollo 1
-INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
-	'sgr', --proyecto
-	'1000616', --dep_id
-	'1000824', --objeto_consumidor
-	'1000818', --objeto_proveedor
-	'dt_eventos', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
-	NULL, --parametros_c
-	NULL, --inicializar
-	'1'  --orden
-);
---- FIN Grupo de desarrollo 1

@@ -13,4 +13,13 @@ INSERT INTO apex_consulta_php (proyecto, consulta_php, clase, archivo_clase, arc
 	NULL, --descripcion
 	'1000001'  --punto_montaje
 );
+INSERT INTO apex_consulta_php (proyecto, consulta_php, clase, archivo_clase, archivo, descripcion, punto_montaje) VALUES (
+	'sgr', --proyecto
+	'1000003', --consulta_php
+	'flujosyregistros', --clase
+	'flujosyregistros', --archivo_clase
+	'operaciones/metodosconsulta/flujosyregistros.php', --archivo
+	NULL, --descripcion
+	'1000001'  --punto_montaje
+);
 --- FIN Grupo de desarrollo 1

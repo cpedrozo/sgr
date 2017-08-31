@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000828]--  - dr_requisitos 
+--[1000886]--  - dr_registro 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -9,7 +9,7 @@
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'sgr', --proyecto
-	'1000828', --objeto
+	'1000886', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,7 +20,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'- dr_requisitos', --nombre
+	'- dr_registro', --nombre
 	NULL, --titulo
 	NULL, --colapsable
 	NULL, --descripcion
@@ -36,7 +36,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --parametro_e
 	NULL, --parametro_f
 	NULL, --usuario
-	'2017-07-02 15:10:51', --creacion
+	'2017-08-26 10:27:37', --creacion
 	NULL  --posicion_botonera
 );
 --- FIN Grupo de desarrollo 1
@@ -46,7 +46,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 ------------------------------------------------------------
 INSERT INTO apex_objeto_datos_rel (proyecto, objeto, debug, clave, ap, punto_montaje, ap_clase, ap_archivo, sinc_susp_constraints, sinc_orden_automatico, sinc_lock_optimista) VALUES (
 	'sgr', --proyecto
-	'1000828', --objeto
+	'1000886', --objeto
 	'0', --debug
 	NULL, --clave
 	'2', --ap
@@ -65,14 +65,49 @@ INSERT INTO apex_objeto_datos_rel (proyecto, objeto, debug, clave, ap, punto_mon
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000621', --dep_id
-	'1000828', --objeto_consumidor
-	'1000820', --objeto_proveedor
-	'dt_requisitos', --identificador
+	'1000676', --dep_id
+	'1000886', --objeto_consumidor
+	'1000839', --objeto_proveedor
+	'dt_estadoactualflujo', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	'3'  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
+	'1000674', --dep_id
+	'1000886', --objeto_consumidor
+	'1000838', --objeto_proveedor
+	'dt_registro', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
 	NULL, --inicializar
 	'1'  --orden
+);
+--- FIN Grupo de desarrollo 1
+
+------------------------------------------------------------
+-- apex_objeto_datos_rel_asoc
+------------------------------------------------------------
+
+--- INICIO Grupo de desarrollo 1
+INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
+	'sgr', --proyecto
+	'1000886', --objeto
+	'1000040', --asoc_id
+	NULL, --identificador
+	'sgr', --padre_proyecto
+	'1000838', --padre_objeto
+	'dt_registro', --padre_id
+	NULL, --padre_clave
+	'sgr', --hijo_proyecto
+	'1000839', --hijo_objeto
+	'dt_estadoactualflujo', --hijo_id
+	NULL, --hijo_clave
+	NULL, --cascada
+	'3'  --orden
 );
 --- FIN Grupo de desarrollo 1
