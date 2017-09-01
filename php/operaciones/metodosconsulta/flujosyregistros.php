@@ -3,27 +3,11 @@
 class flujosyregistros
 {
 
-  //////////////////////////////////////////////////////////////////////////////
-  /////////// carga externa tipo evento ////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////  ci_nuevoregistro.php con ajax para mostrar posibles estados destino  ///////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  static function get_idexttipoevento($id_evento)
-  {
-    $id_evento = quote($id_evento);
-
-    $sql = "SELECT e.id_tipoevento
-              FROM sgr.evento e
-              WHERE e.id_evento = $id_evento";
-    $resultado = consultar_fuente($sql);
-    return $resultado[0];
-  }
-
-
-  //////////////////////////////////////////////////////////////////////////////
-  /////////// estados y registros //////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////
-
-  static function get_estadodestino($id_estadoorigen, $id_workflow) //ci_nuevoregistro.php con ajax para mostrar posibles estados destino.
+  static function get_estadodestino($id_estadoorigen, $id_workflow)
   {
   $id_estadoorigen = quote ($id_estadoorigen);
   $id_worfklow = quote ($id_workflow);
@@ -37,7 +21,11 @@ class flujosyregistros
   return $datos;
   }
 
-  static function get_requisitosxestado($id_estadoorigen, $id_estadodestino, $id_workflow) //form_workflow.php con ajax para mostrar requisitos.
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////  form_workflow.php con ajax para mostrar requisitos  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  static function get_requisitosxestado($id_estadoorigen, $id_estadodestino, $id_workflow)
   {
   $id_estadoorigen = quote ($id_estadoorigen);
   $id_estadodestino = quote ($id_estadodestino);
@@ -51,7 +39,11 @@ class flujosyregistros
   return $datos;
   }
 
-  static function get_requisitosxestadoNuevo($id_estadodestino, $id_workflow) //form_workflow.php con ajax para mostrar requisitos.
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////  form_workflow.php con ajax para mostrar requisitos  //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  static function get_requisitosxestadoNuevo($id_estadodestino, $id_workflow)
   {
   $sql = "SELECT id_estado
           FROM sgr.estado
@@ -61,17 +53,11 @@ class flujosyregistros
   return self::get_requisitosxestado($datos[0]['id_estado'],$id_estadodestino, $id_workflow);
   }
 
-  static function get_flujo_trabajo($id_evento) //ci_nuevoregistro - form (toba), seleccionar flujo de trabajo para un alta de registro.
-  {
-    $id_evento = quote ($id_evento);
-    $sql = "SELECT * FROM sgr.workflow
-            WHERE id_evento = $id_evento
-            ORDER BY nombre ASC";
-    $resultado = consultar_fuente($sql);
-    return $resultado;
-  }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////// ci_nuevoregistro.php con ajax para mostrar el campo persona ///////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  static function get_personaboolean($id_requisitos) //ci_nuevoregistro.php con ajax para mostrar el campo persona.
+  static function get_personaboolean($id_requisitos)
   {
     $sql = "SELECT id_requisitos, obligatorio, persona FROM sgr.requisitos
           where id_requisitos = $id_requisitos";

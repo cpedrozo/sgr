@@ -486,7 +486,7 @@ CREATE TABLE sgr.registro (
                 observacion VARCHAR(350),
                 archivo BYTEA,
                 get_usuario VARCHAR NOT NULL,
-                fecha_inicio TIMESTAMP DEFAULT current timestamp NOT NULL,
+                fecha_inicio TIMESTAMP DEFAULT current_timestamp NOT NULL,
                 fecha_fin TIMESTAMP,
                 CONSTRAINT registro_pk PRIMARY KEY (id_registro)
 );
@@ -513,7 +513,7 @@ CREATE SEQUENCE sgr.estado_actual_flujo_id_estado_actual_seq;
 
 CREATE TABLE sgr.estado_actual_flujo (
                 id_estado_actual BIGINT NOT NULL DEFAULT nextval('sgr.estado_actual_flujo_id_estado_actual_seq'),
-                fecha_inicio TIMESTAMP DEFAULT current timestamp NOT NULL,
+                fecha_inicio TIMESTAMP DEFAULT current_timestamp NOT NULL,
                 fecha_fin TIMESTAMP,
                 activo BOOLEAN,
                 id_estado BIGINT NOT NULL,

@@ -15,8 +15,23 @@ class ci_personas extends sgr_ci
 	//---- cuadro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
+	function ini()
+	{
+		//ei_arbol($this->controlador()->controlador()->get_id()[1]);
+			if ($this->controlador()->get_id()[1]=='1000898')
+				{
+					$this->dep('cuadro')->eliminar_evento('seleccion2');
+					$this->dep('cuadro')->eliminar_evento('detalles');
+					$this->dep('cuadro')->eliminar_evento('borrar');
+				}
+			else {
+				$this->dep('cuadro')->eliminar_evento('seleccion');
+			}
+	}
+
 	function conf__cuadro($cuadro)
 	{
+		$cuadro->desactivar_modo_clave_segura();
 		if (! isset($this->s__datos_filtro)) {
 			$datos = dao_personas::get_datossinfiltro($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
@@ -27,7 +42,7 @@ class ci_personas extends sgr_ci
 		}
 	}
 
-	function evt__cuadro__seleccion($seleccion)
+	function evt__cuadro__seleccion2($seleccion)
 	{
 		$this->cn()->cargar_dr_personas($seleccion);
 		$this->cn()->set_cursorpersonas($seleccion);
