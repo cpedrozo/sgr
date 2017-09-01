@@ -158,7 +158,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000005', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -558,7 +558,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000005', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -638,7 +638,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000005', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -715,8 +715,8 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --solo_lectura
 	'0', --solo_lectura_modificacion
 	'get_dpto_suc', --carga_metodo
-	'metodosconsulta', --carga_clase
-	'operaciones/metodosconsulta/metodosconsulta.php', --carga_include
+	'abmpersona', --carga_clase
+	'operaciones/metodosconsulta/abmpersona.php', --carga_include
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	NULL, --carga_sql
@@ -798,7 +798,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000005', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -878,7 +878,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000005', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -958,7 +958,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000005', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -1118,7 +1118,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000005', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista

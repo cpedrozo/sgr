@@ -147,7 +147,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000005', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -202,8 +202,8 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'0', --opciones_es_multiple
 	'ef_combo', --opciones_ef
 	'get_dpto_suc', --carga_metodo
-	'metodosconsulta', --carga_clase
-	'operaciones/metodosconsulta/metodosconsulta.php', --carga_include
+	'abmpersona', --carga_clase
+	'operaciones/metodosconsulta/abmpersona.php', --carga_include
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	NULL, --carga_sql
@@ -495,7 +495,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000004', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -550,8 +550,8 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'0', --opciones_es_multiple
 	'ef_combo', --opciones_ef
 	'get_prov_pais', --carga_metodo
-	'metodosconsulta', --carga_clase
-	'operaciones/metodosconsulta/metodosconsulta.php', --carga_include
+	'abmdomicilioycontacto', --carga_clase
+	'operaciones/metodosconsulta/abmdomicilioycontacto.php', --carga_include
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	NULL, --carga_sql
@@ -608,8 +608,8 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'0', --opciones_es_multiple
 	'ef_combo', --opciones_ef
 	'get_ciudad_prov', --carga_metodo
-	'metodosconsulta', --carga_clase
-	'operaciones/metodosconsulta/metodosconsulta.php', --carga_include
+	'abmdomicilioycontacto', --carga_clase
+	'operaciones/metodosconsulta/abmdomicilioycontacto.php', --carga_include
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	NULL, --carga_sql
@@ -654,7 +654,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'1000064', --objeto_ei_filtro_col
 	'1000772', --objeto_ei_filtro
 	'sgr', --objeto_ei_filtro_proyecto
-	'cadena', --tipo
+	'opciones', --tipo
 	'tipo_doc', --nombre
 	'tipo_doc', --expresion
 	'Tipo Documento', --etiqueta
@@ -664,20 +664,20 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'6', --orden
 	NULL, --estado_defecto
 	'0', --opciones_es_multiple
-	NULL, --opciones_ef
-	NULL, --carga_metodo
+	'ef_combo', --opciones_ef
+	'get_tipo_doc', --carga_metodo
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	NULL, --carga_consulta_php
+	'1000005', --carga_consulta_php
 	NULL, --carga_sql
-	NULL, --carga_fuente
+	'sgr', --carga_fuente
 	NULL, --carga_lista
-	NULL, --carga_col_clave
-	NULL, --carga_col_desc
-	'0', --carga_permite_no_seteado
-	NULL, --carga_no_seteado
-	NULL, --carga_no_seteado_ocultar
+	'id_tipo_doc', --carga_col_clave
+	'nombre', --carga_col_desc
+	'1', --carga_permite_no_seteado
+	'--Seleccione--', --carga_no_seteado
+	'0', --carga_no_seteado_ocultar
 	NULL, --carga_maestros
 	NULL, --edit_tamano
 	NULL, --edit_maximo
@@ -694,7 +694,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL, --popup_carga_desc_clase
 	NULL, --popup_carga_desc_include
 	NULL, --popup_puede_borrar_estado
-	NULL, --punto_montaje
+	'1000001', --punto_montaje
 	NULL, --check_valor_si
 	NULL, --check_valor_no
 	NULL, --check_desc_si

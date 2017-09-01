@@ -223,8 +223,8 @@ INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, t
 	'dao', --tipo
 	'1', --sincro_continua
 	'get_idextdomicilio', --metodo
-	'metodosconsulta', --clase
-	'operaciones/metodosconsulta/metodosconsulta.php', --include
+	'cargasexternas', --clase
+	'operaciones/metodosconsulta/cargasexternas.php', --include
 	'1000001', --punto_montaje
 	NULL, --sql
 	'0', --dato_estricto

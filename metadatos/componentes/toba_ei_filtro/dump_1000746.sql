@@ -263,7 +263,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000004', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -318,8 +318,8 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'0', --opciones_es_multiple
 	'ef_combo', --opciones_ef
 	'get_prov_pais', --carga_metodo
-	'metodosconsulta', --carga_clase
-	'operaciones/metodosconsulta/metodosconsulta.php', --carga_include
+	'abmdomicilioycontacto', --carga_clase
+	'operaciones/metodosconsulta/abmdomicilioycontacto.php', --carga_include
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	NULL, --carga_sql
@@ -376,8 +376,8 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'0', --opciones_es_multiple
 	'ef_combo', --opciones_ef
 	'get_ciudad_prov', --carga_metodo
-	'metodosconsulta', --carga_clase
-	'operaciones/metodosconsulta/metodosconsulta.php', --carga_include
+	'abmdomicilioycontacto', --carga_clase
+	'operaciones/metodosconsulta/abmdomicilioycontacto.php', --carga_include
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	NULL, --carga_sql
