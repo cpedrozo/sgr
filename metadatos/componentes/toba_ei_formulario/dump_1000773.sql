@@ -1067,8 +1067,8 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --popup_editable
 	'width:800,height:600', --popup_ventana
 	'get_descPopUpEntidad', --popup_carga_desc_metodo
-	'metodosconsulta', --popup_carga_desc_clase
-	'operaciones/metodosconsulta/metodosconsulta.php', --popup_carga_desc_include
+	'abmpersona', --popup_carga_desc_clase
+	'operaciones/metodosconsulta/abmpersona.php', --popup_carga_desc_include
 	'1', --popup_puede_borrar_estado
 	NULL, --fieldset_fin
 	NULL, --check_valor_si

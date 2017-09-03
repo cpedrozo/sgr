@@ -1,7 +1,7 @@
 INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (1,'DNI');
 INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (2,'LE');
 INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (3,'LC');
-INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (4,'CEDULA DE IDENTIDAD');
+INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (4,'CI');
 INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (5,'PASAPORTE EXTRANJERO');
 INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (6,'RG');
 INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (7,'CPF');
