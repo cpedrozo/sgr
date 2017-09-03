@@ -11,7 +11,7 @@ class dao_entidades
       }
 
       $sql = "SELECT e.id_entidad, e.razonsocial, e.cuit, case when e.propietario then 'Si' else 'No' end propietario,
-          		ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad --ci.nombre ciudad, pro.nombre prov, pa.nombre pais
+          		ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad ---ci.nombre ciudad, pro.nombre prov, pa.nombre pais
           		FROM sgr.entidad e
           		LEFT JOIN sgr.domicilio d ON e.id_entidad = d.id_entidad
           		LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad

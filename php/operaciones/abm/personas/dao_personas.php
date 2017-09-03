@@ -14,7 +14,7 @@ class dao_personas
               td.nombre||': '||p.doc documento, --p.apellido, p.nombre,
               e.razonsocial entidad,
               dp.nombre||' ('||s.nombre||')' suc_dpto,
-              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad, --ci.nombre ciudad, pro.nombre prov, pa.nombre pais,
+              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad, ---ci.nombre ciudad, pro.nombre prov, pa.nombre pais,
               p.apellido||', '||p.nombre apynom
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
