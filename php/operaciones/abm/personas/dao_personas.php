@@ -10,10 +10,12 @@ class dao_personas
         $where_armado = '';
       }
 
-      $sql = "SELECT p.id_persona, p.apellido, p.nombre, td.nombre tipo_doc, p.doc,
+      $sql = "SELECT p.id_persona,
+              td.nombre||': '||p.doc documento, --p.apellido, p.nombre,
               e.razonsocial entidad,
-              s.nombre sucursal, dp.nombre dpto,
-              ci.nombre ciudad, pro.nombre prov, pa.nombre pais
+              dp.nombre||' ('||s.nombre||')' suc_dpto,
+              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad, --ci.nombre ciudad, pro.nombre prov, pa.nombre pais,
+              p.apellido||', '||p.nombre apynom
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
@@ -38,10 +40,12 @@ class dao_personas
         $where_armado = '';
       }
 
-      $sql = "SELECT p.id_persona, p.apellido, p.nombre, td.nombre tipo_doc, p.doc,
+      $sql = "SELECT p.id_persona,
+              td.nombre||': '||p.doc documento, --p.apellido, p.nombre,
               e.razonsocial entidad,
-              s.nombre sucursal, dp.nombre dpto,
-              ci.nombre ciudad, pro.nombre prov, pa.nombre pais
+              dp.nombre||' ('||s.nombre||')' suc_dpto,
+              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad, --ci.nombre ciudad, pro.nombre prov, pa.nombre pais,
+              p.apellido||', '||p.nombre apynom
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
