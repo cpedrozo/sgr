@@ -30,7 +30,7 @@ class flujosyregistros
   $id_estadoorigen = quote ($id_estadoorigen);
   $id_estadodestino = quote ($id_estadodestino);
   $id_worfklow = quote ($id_workflow);
-  $sql = "SELECT r.id_requisitos, r.id_estadoorigen, r.id_estadodestino, r.id_workflow, r.nombre, r.orden, r.persona, r.obligatorio
+  $sql = "SELECT row_number() over () nro_requisito, r.id_requisitos, r.id_estadoorigen, r.id_estadodestino, r.id_workflow, r.nombre, r.orden, r.persona, r.obligatorio
           FROM sgr.requisitos r
           WHERE r.id_estadoorigen = $id_estadoorigen
           AND r.id_estadodestino = $id_estadodestino

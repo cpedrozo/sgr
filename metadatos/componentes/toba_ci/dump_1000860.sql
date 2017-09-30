@@ -58,7 +58,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	NULL, --estilo
 	'apex', --imagen_recurso_origen
 	'guardar.gif', --imagen
-	'1', --en_botonera
+	'0', --en_botonera
 	NULL, --ayuda
 	'1', --orden
 	NULL, --ci_predep
@@ -91,7 +91,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	NULL, --estilo
 	'apex', --imagen_recurso_origen
 	NULL, --imagen
-	'1', --en_botonera
+	'0', --en_botonera
 	NULL, --ayuda
 	'2', --orden
 	NULL, --ci_predep
@@ -122,7 +122,7 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 	'1000860', --objeto_mt_me
 	NULL, --ev_procesar_etiq
 	NULL, --ev_cancelar_etiq
-	'90%', --ancho
+	'100%', --ancho
 	NULL, --alto
 	NULL, --posicion_botonera
 	NULL, --tipo_navegacion

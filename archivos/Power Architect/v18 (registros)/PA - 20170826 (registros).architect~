@@ -19,10 +19,10 @@
     <column id="COL3" populated="true" UUID="e5c6d816-52fa-40fa-953d-8cd738e638e2" autoIncrement="false" autoIncrementSequenceName="estado_actual_flujo_fecha_inicio_seq" defaultValue="current timestamp" name="fecha_inicio" nullable="0" physicalName="fecha_inicio" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
      <remarks></remarks>
     </column>
-    <column id="COL4" populated="true" UUID="400db001-a756-46ac-b9d4-0c888d24766b" autoIncrement="false" autoIncrementSequenceName="estado_actual_flujo_fecha_fin_seq" defaultValue="" name="fecha_fin" nullable="1" physicalName="fecha_fin" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
+    <column id="COL4" populated="true" UUID="400db001-a756-46ac-b9d4-0c888d24766b" autoIncrement="false" autoIncrementSequenceName="estado_actual_flujo_fecha_fin_seq" defaultValue="NULL" name="fecha_fin" nullable="1" physicalName="fecha_fin" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
      <remarks></remarks>
     </column>
-    <column id="COL5" populated="true" UUID="836680b6-5a70-4242-b2c3-05a6d69e6d5f" autoIncrement="false" autoIncrementSequenceName="estado_actual_flujo_activo_seq" defaultValue="" name="activo" nullable="1" physicalName="activo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
+    <column id="COL5" populated="true" UUID="836680b6-5a70-4242-b2c3-05a6d69e6d5f" autoIncrement="false" autoIncrementSequenceName="estado_actual_flujo_activo_seq" defaultValue="TRUE" name="activo" nullable="1" physicalName="activo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
      <remarks></remarks>
     </column>
     <column id="COL6" populated="true" UUID="07f9d0c0-be5d-455c-bd6c-d5b62f15663c" autoIncrement="false" autoIncrementSequenceName="estado_id_estado_seq_1" defaultValue="" name="id_estado" nullable="0" physicalName="id_estado" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
@@ -63,7 +63,7 @@
     <column id="COL16" populated="true" UUID="cb368ccd-7f73-41bc-923a-24defa032e54" autoIncrement="false" autoIncrementSequenceName="registro_get_usuario_seq" defaultValue="" name="get_usuario" nullable="0" physicalName="get_usuario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>toma del framework</remarks>
     </column>
-    <column id="COL17" populated="true" UUID="4e3a76cf-a171-4c82-8826-2e6b292446db" autoIncrement="false" autoIncrementSequenceName="registro_fecha_inicio_seq" defaultValue="current timestamp" name="fecha_inicio" nullable="0" physicalName="fecha_inicio" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
+    <column id="COL17" populated="true" UUID="4e3a76cf-a171-4c82-8826-2e6b292446db" autoIncrement="false" autoIncrementSequenceName="registro_fecha_inicio_seq" defaultValue="current_timestamp" name="fecha_inicio" nullable="0" physicalName="fecha_inicio" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
      <remarks></remarks>
     </column>
     <column id="COL18" populated="true" UUID="0afbfaf6-0227-4a77-a50a-5281e32f6a04" autoIncrement="false" autoIncrementSequenceName="registro_fecha_fin_seq" defaultValue="" name="fecha_fin" nullable="1" physicalName="fecha_fin" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
@@ -1033,7 +1033,7 @@ F/M/Otro</remarks>
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="sgr"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="sgr"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="0.9999999999999989" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
@@ -1042,7 +1042,7 @@ F/M/Otro</remarks>
   <table-pane table-ref="TAB21" x="141" y="520" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB31" x="23" y="666" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB42" x="438" y="535" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB50" x="703" y="580" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB50" x="673" y="562" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB60" x="1470" y="810" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB70" x="1209" y="541" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB82" x="1178" y="381" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>

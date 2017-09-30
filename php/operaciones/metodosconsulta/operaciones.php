@@ -30,6 +30,15 @@ class operaciones
     return $datos;
   }
 
+  static function get_estado_inicial()
+  {
+    $sql = "SELECT * FROM sgr.estado
+    WHERE inicio = true
+    ORDER BY nombre asc";
+    $datos = consultar_fuente($sql);
+    return $datos;
+  }
+
   static function get_flujos()
   {
     $sql = "SELECT * FROM sgr.flujo";// ORDER BY nombre asc;
@@ -53,7 +62,6 @@ class operaciones
     $datos = consultar_fuente($sql);
     return $datos;
   }
-
 
   static function get_eventos()
   {
@@ -86,6 +94,14 @@ class operaciones
     return $resultado;
   }
 
+  static function get_usuarios()
+  {
+    $resultado = toba::instancia()->get_lista_usuarios();
+    foreach ($resultado as $key => $value) {
+      $resultado[$key]['user'] = $value['usuario'].': '.$value['nombre'];
+    }
+    return $resultado;
+  }
 
 }
 ?>

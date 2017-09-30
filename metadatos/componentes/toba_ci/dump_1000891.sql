@@ -48,22 +48,22 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'sgr', --proyecto
-	'1001275', --evento_id
+	'1001276', --evento_id
 	'1000891', --objeto
-	'procesar', --identificador
-	'&Guardar', --etiqueta
-	'1', --maneja_datos
+	'cancelar', --identificador
+	'&Cancelar', --etiqueta
+	'0', --maneja_datos
 	NULL, --sobre_fila
 	NULL, --confirmacion
 	NULL, --estilo
 	'apex', --imagen_recurso_origen
-	'guardar.gif', --imagen
+	'prohibido', --imagen
 	'1', --en_botonera
 	NULL, --ayuda
 	'1', --orden
 	NULL, --ci_predep
 	'0', --implicito
-	'1', --defecto
+	'0', --defecto
 	NULL, --display_datos_cargados
 	NULL, --grupo
 	NULL, --accion
@@ -81,22 +81,22 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 );
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'sgr', --proyecto
-	'1001276', --evento_id
+	'1001275', --evento_id
 	'1000891', --objeto
-	'cancelar', --identificador
-	'&Cancelar', --etiqueta
-	'0', --maneja_datos
+	'procesar', --identificador
+	'&Guardar', --etiqueta
+	'1', --maneja_datos
 	NULL, --sobre_fila
 	NULL, --confirmacion
 	NULL, --estilo
 	'apex', --imagen_recurso_origen
-	'prohibido', --imagen
+	'guardar.gif', --imagen
 	'1', --en_botonera
 	NULL, --ayuda
 	'2', --orden
 	NULL, --ci_predep
 	'0', --implicito
-	'0', --defecto
+	'1', --defecto
 	NULL, --display_datos_cargados
 	NULL, --grupo
 	NULL, --accion
@@ -132,12 +132,12 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'0', --defecto
 	NULL, --display_datos_cargados
 	NULL, --grupo
-	NULL, --accion
-	NULL, --accion_imphtml_debug
-	NULL, --accion_vinculo_carpeta
-	NULL, --accion_vinculo_item
+	'V', --accion
+	'0', --accion_imphtml_debug
+	'1000300', --accion_vinculo_carpeta
+	'1000305', --accion_vinculo_item
 	NULL, --accion_vinculo_objeto
-	NULL, --accion_vinculo_popup
+	'0', --accion_vinculo_popup
 	NULL, --accion_vinculo_popup_param
 	NULL, --accion_vinculo_target
 	NULL, --accion_vinculo_celda
@@ -204,9 +204,9 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000683', --dep_id
+	'1000696', --dep_id
 	'1000891', --objeto_consumidor
-	'1000893', --objeto_proveedor
+	'1000889', --objeto_proveedor
 	'form', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
@@ -216,10 +216,34 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
-	'1000689', --dep_id
+	'1000697', --dep_id
 	'1000891', --objeto_consumidor
-	'1000900', --objeto_proveedor
-	'form_ml_reg', --identificador
+	'1000890', --objeto_proveedor
+	'form_estado_actual', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
+	'1000698', --dep_id
+	'1000891', --objeto_consumidor
+	'1000896', --objeto_proveedor
+	'form_ml_requisitos', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
+	'1000699', --dep_id
+	'1000891', --objeto_consumidor
+	'1000895', --objeto_proveedor
+	'form_workflow', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -287,22 +311,36 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'sgr', --proyecto
 	'1000465', --pantalla
 	'1000891', --objeto_ci
-	'2', --orden
-	'1000683'  --dep_id
-);
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'sgr', --proyecto
-	'1000465', --pantalla
-	'1000891', --objeto_ci
 	'0', --orden
 	'1000684'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'sgr', --proyecto
-	'1000465', --pantalla
+	'1000466', --pantalla
+	'1000891', --objeto_ci
+	'0', --orden
+	'1000696'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'sgr', --proyecto
+	'1000466', --pantalla
+	'1000891', --objeto_ci
+	'1', --orden
+	'1000697'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'sgr', --proyecto
+	'1000466', --pantalla
 	'1000891', --objeto_ci
 	'3', --orden
-	'1000689'  --dep_id
+	'1000698'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'sgr', --proyecto
+	'1000466', --pantalla
+	'1000891', --objeto_ci
+	'2', --orden
+	'1000699'  --dep_id
 );
 
 ------------------------------------------------------------

@@ -16,8 +16,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_ei_formulario', --clase
 	'1000001', --punto_montaje
-	NULL, --subclase
-	NULL, --subclase_archivo
+	'form_estado_actual', --subclase
+	'operaciones/registros/historicoregistro/form_estado_actual.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'ci_nuevoregistro - form_estado_actual', --nombre
@@ -136,12 +136,12 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'1000890', --objeto_ei_formulario
 	'sgr', --objeto_ei_formulario_proyecto
 	'id_estado', --identificador
-	'ef_fijo', --elemento_formulario
+	'ef_combo', --elemento_formulario
 	'id_estado', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'1', --orden
-	'Estado', --etiqueta
+	'Estado actual', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
@@ -154,11 +154,11 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --estado_defecto
 	'0', --solo_lectura
 	'0', --solo_lectura_modificacion
-	NULL, --carga_metodo
+	'get_estado_inicial', --carga_metodo
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'1000002', --carga_consulta_php
+	'1000007', --carga_consulta_php
 	NULL, --carga_sql
 	'sgr', --carga_fuente
 	NULL, --carga_lista
@@ -167,7 +167,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_maestros
 	'0', --carga_cascada_relaj
 	'0', --cascada_mantiene_estado
-	'1', --carga_permite_no_seteado
+	'0', --carga_permite_no_seteado
 	'--Seleccione--', --carga_no_seteado
 	'0', --carga_no_seteado_ocultar
 	NULL, --edit_tamano

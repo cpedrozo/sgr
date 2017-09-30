@@ -10,9 +10,12 @@ class dao_historicoregistro
       $where_armado = '';
     }
 
-    $sql = "SELECT *
-            FROM sgr.registro
-            --$where_armado ORDER BY id_registro ASC
+    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, r.get_usuario, r.fecha_fin
+            FROM sgr.registro r
+            INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
+            INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
+            INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
+            ORDER BY tipoevento_y_wf ASC
             LIMIT 5";
 
     $resultado = consultar_fuente($sql);
@@ -27,13 +30,16 @@ class dao_historicoregistro
       $where_armado = '';
     }
 
-    $sql = "SELECT *
-            FROM sgr.registro
-            --$where_armado ORDER BY id_registro ASC";
+    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, r.get_usuario, r.fecha_fin
+            FROM sgr.registro r
+            INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
+            INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
+            INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
+            $where_armado
+            ORDER BY tipoevento_y_wf ASC";
 
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
-
 }
 ?>

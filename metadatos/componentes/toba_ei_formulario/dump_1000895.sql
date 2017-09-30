@@ -135,9 +135,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'1001499', --objeto_ei_formulario_fila
 	'1000895', --objeto_ei_formulario
 	'sgr', --objeto_ei_formulario_proyecto
-	'id_estadodestino', --identificador
+	'id_estado', --identificador
 	'ef_combo', --elemento_formulario
-	'id_estadodestino', --columnas
+	'id_estado', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'1', --orden

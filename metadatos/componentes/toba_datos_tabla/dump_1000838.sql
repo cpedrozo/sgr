@@ -181,4 +181,81 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'0', --externa
 	'registro'  --tabla
 );
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'sgr', --objeto_proyecto
+	'1000838', --objeto
+	'1000794', --col_id
+	'id_tipoevento', --columna
+	'N', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'sgr', --objeto_proyecto
+	'1000838', --objeto
+	'1000795', --col_id
+	'id_evento', --columna
+	'N', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
 --- FIN Grupo de desarrollo 1
+
+------------------------------------------------------------
+-- apex_objeto_db_registros_ext
+------------------------------------------------------------
+
+--- INICIO Grupo de desarrollo 1
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'sgr', --objeto_proyecto
+	'1000838', --objeto
+	'1000003', --externa_id
+	'dao', --tipo
+	'1', --sincro_continua
+	'get_idextworkflow', --metodo
+	'cargasexternas', --clase
+	'operaciones/metodosconsulta/cargasexternas.php', --include
+	'1000001', --punto_montaje
+	NULL, --sql
+	'0', --dato_estricto
+	NULL, --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
+--- FIN Grupo de desarrollo 1
+
+------------------------------------------------------------
+-- apex_objeto_db_registros_ext_col
+------------------------------------------------------------
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'sgr', --objeto_proyecto
+	'1000838', --objeto
+	'1000003', --externa_id
+	'1000771', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'sgr', --objeto_proyecto
+	'1000838', --objeto
+	'1000003', --externa_id
+	'1000794', --col_id
+	'1'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'sgr', --objeto_proyecto
+	'1000838', --objeto
+	'1000003', --externa_id
+	'1000795', --col_id
+	'1'  --es_resultado
+);

@@ -48,6 +48,39 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'sgr', --proyecto
+	'1001271', --evento_id
+	'1000884', --objeto
+	'cancelar', --identificador
+	'&Cancelar', --etiqueta
+	'0', --maneja_datos
+	NULL, --sobre_fila
+	'¿Desea cancelar la carga actual?', --confirmacion
+	NULL, --estilo
+	'apex', --imagen_recurso_origen
+	'prohibido', --imagen
+	'1', --en_botonera
+	NULL, --ayuda
+	'1', --orden
+	NULL, --ci_predep
+	'0', --implicito
+	'0', --defecto
+	NULL, --display_datos_cargados
+	NULL, --grupo
+	NULL, --accion
+	'0', --accion_imphtml_debug
+	NULL, --accion_vinculo_carpeta
+	NULL, --accion_vinculo_item
+	NULL, --accion_vinculo_objeto
+	'0', --accion_vinculo_popup
+	NULL, --accion_vinculo_popup_param
+	NULL, --accion_vinculo_target
+	NULL, --accion_vinculo_celda
+	NULL, --accion_vinculo_servicio
+	'0', --es_seleccion_multiple
+	'0'  --es_autovinculo
+);
+INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
+	'sgr', --proyecto
 	'1001270', --evento_id
 	'1000884', --objeto
 	'procesar', --identificador
@@ -60,7 +93,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'guardar.gif', --imagen
 	'1', --en_botonera
 	NULL, --ayuda
-	'1', --orden
+	'2', --orden
 	NULL, --ci_predep
 	'0', --implicito
 	'1', --defecto
@@ -81,49 +114,16 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 );
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'sgr', --proyecto
-	'1001271', --evento_id
-	'1000884', --objeto
-	'cancelar', --identificador
-	'&Cancelar', --etiqueta
-	'0', --maneja_datos
-	NULL, --sobre_fila
-	NULL, --confirmacion
-	NULL, --estilo
-	'apex', --imagen_recurso_origen
-	'prohibido', --imagen
-	'1', --en_botonera
-	NULL, --ayuda
-	'2', --orden
-	NULL, --ci_predep
-	'0', --implicito
-	'0', --defecto
-	NULL, --display_datos_cargados
-	NULL, --grupo
-	NULL, --accion
-	NULL, --accion_imphtml_debug
-	NULL, --accion_vinculo_carpeta
-	NULL, --accion_vinculo_item
-	NULL, --accion_vinculo_objeto
-	NULL, --accion_vinculo_popup
-	NULL, --accion_vinculo_popup_param
-	NULL, --accion_vinculo_target
-	NULL, --accion_vinculo_celda
-	NULL, --accion_vinculo_servicio
-	'0', --es_seleccion_multiple
-	'0'  --es_autovinculo
-);
-INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
-	'sgr', --proyecto
 	'1001272', --evento_id
 	'1000884', --objeto
-	'nuevo', --identificador
-	'Nuevo', --etiqueta
+	'historico', --identificador
+	'&Histórico', --etiqueta
 	'0', --maneja_datos
 	NULL, --sobre_fila
 	NULL, --confirmacion
-	NULL, --estilo
+	'ei-boton-izq', --estilo
 	'apex', --imagen_recurso_origen
-	'consulta_php', --imagen
+	'info_0.png', --imagen
 	'1', --en_botonera
 	NULL, --ayuda
 	'3', --orden
@@ -132,12 +132,12 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'0', --defecto
 	NULL, --display_datos_cargados
 	NULL, --grupo
-	NULL, --accion
-	NULL, --accion_imphtml_debug
-	NULL, --accion_vinculo_carpeta
-	NULL, --accion_vinculo_item
+	'V', --accion
+	'0', --accion_imphtml_debug
+	'1000300', --accion_vinculo_carpeta
+	'1000306', --accion_vinculo_item
 	NULL, --accion_vinculo_objeto
-	NULL, --accion_vinculo_popup
+	'0', --accion_vinculo_popup
 	NULL, --accion_vinculo_popup_param
 	NULL, --accion_vinculo_target
 	NULL, --accion_vinculo_celda
@@ -252,25 +252,6 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	NULL, --template_impresion
 	'1000001'  --punto_montaje
 );
-INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
-	'sgr', --objeto_ci_proyecto
-	'1000884', --objeto_ci
-	'1000464', --pantalla
-	'pant_edicion', --identificador
-	'2', --orden
-	'Edicion registro', --etiqueta
-	NULL, --descripcion
-	NULL, --tip
-	'apex', --imagen_recurso_origen
-	NULL, --imagen
-	NULL, --objetos
-	NULL, --eventos
-	NULL, --subclase
-	NULL, --subclase_archivo
-	NULL, --template
-	NULL, --template_impresion
-	'1000001'  --punto_montaje
-);
 --- FIN Grupo de desarrollo 1
 
 ------------------------------------------------------------
@@ -312,5 +293,17 @@ INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VAL
 	'1000463', --pantalla
 	'1000884', --objeto_ci
 	'1001270', --evento_id
+	'sgr'  --proyecto
+);
+INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VALUES (
+	'1000463', --pantalla
+	'1000884', --objeto_ci
+	'1001271', --evento_id
+	'sgr'  --proyecto
+);
+INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VALUES (
+	'1000463', --pantalla
+	'1000884', --objeto_ci
+	'1001272', --evento_id
 	'sgr'  --proyecto
 );

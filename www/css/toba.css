@@ -37,3 +37,10 @@
     font-weight: bold;
     text-align: center;
 }
+
+.ef-ver-fijo {
+    border: none;
+    width: 20px;
+    text-align: center;
+    background-color: transparent;
+}
