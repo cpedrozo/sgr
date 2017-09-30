@@ -1,0 +1,6 @@
+INSERT INTO sgr.requisitos_registro(id_registro, id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, observacion, archivo, completo, id_persona) values (11,1,1,2,4,NULL,NULL,TRUE,4);
+INSERT INTO sgr.requisitos_registro(id_registro, id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, observacion, archivo, completo, id_persona) values (11,2,1,2,4,NULL,NULL,TRUE,);
+INSERT INTO sgr.requisitos_registro(id_registro, id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, observacion, archivo, completo, id_persona) values (11,3,1,2,4,NULL,NULL,TRUE,);
+INSERT INTO sgr.requisitos_registro(id_registro, id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, observacion, archivo, completo, id_persona) values (14,1,1,2,4,NULL,NULL,TRUE,1);
+INSERT INTO sgr.requisitos_registro(id_registro, id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, observacion, archivo, completo, id_persona) values (14,2,1,2,4,NULL,NULL,TRUE,);
+INSERT INTO sgr.requisitos_registro(id_registro, id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, observacion, archivo, completo, id_persona) values (14,3,1,2,4,NULL,NULL,TRUE,);

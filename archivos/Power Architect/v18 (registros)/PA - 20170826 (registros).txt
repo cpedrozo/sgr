@@ -1,6 +1,5 @@
 CREATE SCHEMA sgr;
 
-
 CREATE SEQUENCE sgr.tipo_doc_id_tipo_doc_seq_1;
 
 CREATE TABLE sgr.tipo_doc (
@@ -514,8 +513,8 @@ CREATE SEQUENCE sgr.estado_actual_flujo_id_estado_actual_seq;
 CREATE TABLE sgr.estado_actual_flujo (
                 id_estado_actual BIGINT NOT NULL DEFAULT nextval('sgr.estado_actual_flujo_id_estado_actual_seq'),
                 fecha_inicio TIMESTAMP DEFAULT current_timestamp NOT NULL,
-                fecha_fin TIMESTAMP,
-                activo BOOLEAN,
+                fecha_fin TIMESTAMP DEFAULT NULL,
+                activo BOOLEAN DEFAULT TRUE,
                 id_estado BIGINT NOT NULL,
                 id_registro BIGINT NOT NULL,
                 CONSTRAINT estado_actual_flujo_pk PRIMARY KEY (id_estado_actual)

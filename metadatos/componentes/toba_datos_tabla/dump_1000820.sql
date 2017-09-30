@@ -72,7 +72,7 @@ INSERT INTO apex_objeto_db_registros (objeto_proyecto, objeto, max_registros, mi
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'sgr', --objeto_proyecto
 	'1000820', --objeto
-	'1000710', --col_id
+	'1000801', --col_id
 	'id_requisitos', --columna
 	'E', --tipo
 	'1', --pk
@@ -86,21 +86,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'sgr', --objeto_proyecto
 	'1000820', --objeto
-	'1000711', --col_id
-	'id_workflow', --columna
-	'E', --tipo
-	'1', --pk
-	'', --secuencia
-	NULL, --largo
-	NULL, --no_nulo
-	'1', --no_nulo_db
-	'0', --externa
-	'requisitos'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'sgr', --objeto_proyecto
-	'1000820', --objeto
-	'1000712', --col_id
+	'1000802', --col_id
 	'id_estadoorigen', --columna
 	'E', --tipo
 	'1', --pk
@@ -114,7 +100,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'sgr', --objeto_proyecto
 	'1000820', --objeto
-	'1000713', --col_id
+	'1000803', --col_id
 	'id_estadodestino', --columna
 	'E', --tipo
 	'1', --pk
@@ -128,7 +114,21 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'sgr', --objeto_proyecto
 	'1000820', --objeto
-	'1000714', --col_id
+	'1000804', --col_id
+	'id_workflow', --columna
+	'E', --tipo
+	'1', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'1', --no_nulo_db
+	'0', --externa
+	'requisitos'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'sgr', --objeto_proyecto
+	'1000820', --objeto
+	'1000805', --col_id
 	'nombre', --columna
 	'C', --tipo
 	'0', --pk
@@ -142,7 +142,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'sgr', --objeto_proyecto
 	'1000820', --objeto
-	'1000715', --col_id
+	'1000806', --col_id
 	'obligatorio', --columna
 	'L', --tipo
 	'0', --pk
@@ -156,7 +156,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'sgr', --objeto_proyecto
 	'1000820', --objeto
-	'1000716', --col_id
+	'1000807', --col_id
 	'orden', --columna
 	'E', --tipo
 	'0', --pk
@@ -170,7 +170,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'sgr', --objeto_proyecto
 	'1000820', --objeto
-	'1000717', --col_id
+	'1000808', --col_id
 	'persona', --columna
 	'L', --tipo
 	'0', --pk

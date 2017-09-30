@@ -1,0 +1,2 @@
+INSERT INTO sgr.propietario(id_propietario, nombre, direccion, telefono, cuit, logo_grande, logo_chico, activo) values (1,'DUTY FREE SHOP','Ruta 12, Km 1645,5','(03757) 421050','30707036938',NULL,NULL,TRUE);
+INSERT INTO sgr.propietario(id_propietario, nombre, direccion, telefono, cuit, logo_grande, logo_chico, activo) values (2,'LONDON SUPPLY','Olga Cosettini 734','(011) 4321-7300','30707887342',NULL,NULL,FALSE);
