@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/metodosconsulta/flujosyregistros.php');
+require_once('operaciones/metodosconsulta/operaciones.php');
 
 class ci_nuevoregistro extends sgr_ci
 {
@@ -67,9 +68,19 @@ class ci_nuevoregistro extends sgr_ci
 		$this->cn()->cargarestadoactual($form);
 	}
 
+	function get_estado_inicial()
+	{
+		return operaciones::get_estado_inicial();
+	}
+
 	//-----------------------------------------------------------------------------------
 	//---- form_workflow ----------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
+
+	function conf__form_workflow($form)
+	{
+		$form->set_modoEdicion(false);
+	}
 
 	function evt__form_workflow__modificacion($datos)
 	{

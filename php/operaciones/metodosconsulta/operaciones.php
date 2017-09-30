@@ -30,11 +30,18 @@ class operaciones
     return $datos;
   }
 
-  static function get_estado_inicial()
+  static function get_estado_inicial($id_estado=null)
   {
-    $sql = "SELECT * FROM sgr.estado
-    WHERE inicio = true
-    ORDER BY nombre asc";
+    if (!isset($id_estado)) {
+      $sql = "SELECT * FROM sgr.estado
+      WHERE inicio = true
+      ORDER BY nombre asc";
+
+    } else {
+      $sql = "SELECT * FROM sgr.estado
+      WHERE id_estado = $id_estado
+      ORDER BY nombre asc";
+    }
     $datos = consultar_fuente($sql);
     return $datos;
   }

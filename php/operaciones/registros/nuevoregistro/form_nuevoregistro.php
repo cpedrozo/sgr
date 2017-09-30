@@ -4,7 +4,7 @@ class form_nuevoregistro extends sgr_ei_formulario
 	//-----------------------------------------------------------------------------------
 	//---- JAVASCRIPT -------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
-//
+	//
 	function extender_objeto_js()
 	{
 		echo "
@@ -37,29 +37,33 @@ class form_nuevoregistro extends sgr_ei_formulario
 		{$this->objeto_js}.evt__id_workflow__procesar = function(es_inicial)
 		{
 			if (!es_inicial) {
-				console.log('me ejecuto');
-				var ids_flujo = [];
-				ids_flujo['id_workflow'] = {$this->objeto_js}.ef('id_workflow').get_estado();
-				ids_flujo['id_estadoorigen'] = js_form_1000890_form_estado_actual.ef('id_estado').get_estado();
-				this.controlador.ajax('traerinfo_flujodetrabajo', ids_flujo, this, this.respflujo);
+					this.sgrcp_id_workflow__procesar();
+			} else {
+				if (js_form_1000895_form_workflow.modoEdicion) {
+					this.sgrcp_id_workflow__procesar();
+				}
 			}
 		}
 
+		{$this->objeto_js}.sgrcp_id_workflow__procesar = function ()
+		{
+			var ids_flujo = [];
+			ids_flujo['id_workflow'] = {$this->objeto_js}.ef('id_workflow').get_estado();
+			ids_flujo['id_estadoorigen'] = js_form_1000890_form_estado_actual.ef('id_estado').get_estado();
+			this.controlador.ajax('traerinfo_flujodetrabajo', ids_flujo, this, this.respflujo);
+		}
+
+
     {$this->objeto_js}.respflujo = function(datos2)
 		{
-      console.log('esta es la respuesta que busca ud');
       var opciones = [];
       datos2.forEach(function(elemento)
       {
         opciones[elemento['iddestino']] = elemento['nombredestino'];
       })
-      console.log(opciones);
       js_form_1000895_form_workflow.ef('id_estado').set_opciones(opciones);
-      console.log(datos2);
 		}
 		";
 	}
-
-
 }
 ?>

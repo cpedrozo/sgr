@@ -15,6 +15,7 @@ class dao_historicoregistro
             INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
             INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
             INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
+            WHERE r.fecha_fin is null
             ORDER BY tipoevento_y_wf ASC
             LIMIT 5";
 
@@ -30,7 +31,7 @@ class dao_historicoregistro
       $where_armado = '';
     }
 
-    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, r.get_usuario, r.fecha_fin
+    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, r.get_usuario, to_char(r.fecha_fin::TIMESTAMP, 'DD / MM / YYYY HH24:MI:SS') fecha_fin
             FROM sgr.registro r
             INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
             INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento

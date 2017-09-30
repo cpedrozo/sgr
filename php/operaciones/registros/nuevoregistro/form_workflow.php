@@ -1,13 +1,36 @@
 <?php
 class form_workflow extends sgr_ei_formulario
 {
+
+	protected $s__datos = [];
+
+	function set_modoEdicion($value='')
+	{
+		$this->s__datos['modoEdicion'] = $value;
+	}
+
+	function get_modoEdicion()
+	{
+		if (isset($this->s__datos['modoEdicion'])) {
+			return $this->s__datos['modoEdicion'];
+		} else {
+			return null;
+		}
+	}
+
 	//-----------------------------------------------------------------------------------
 	//---- JAVASCRIPT -------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
 	function extender_objeto_js()
 	{
+		if ($this->get_modoEdicion()) {
+			$valorModoEdicion = 'true';
+		} else {
+			$valorModoEdicion = 'false';
+		}
 		echo "
+		{$this->objeto_js}.modoEdicion = $valorModoEdicion;
 		//---- Procesamiento de EFs --------------------------------
 
 		/**

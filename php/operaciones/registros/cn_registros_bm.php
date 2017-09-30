@@ -101,6 +101,13 @@ class cn_registros_bm extends sgr_cn
 
   function modifestadoactual($datos)
   {
+    if (isset($datos['activo'])) {
+      if ($datos['activo'] == 'Si') {
+        $datos['activo'] = true;
+      } else {
+        $datos['activo'] = false;
+      }
+    }
     $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set($datos);
   }
 
@@ -137,8 +144,18 @@ class cn_registros_bm extends sgr_cn
     return $datos;
   }
 
-  function procesarrequisitos_registro($datos)
+  function procesarrequisitos_registro($datos, $cache_ml)
   {
+    foreach ($datos as $key => $value) {
+      foreach ($cache_ml as $key2 => $value2) {
+        if ($value['nro_requisito'] == $value2['nro_requisito']) {
+          $datos[$key]['id_requisitos'] = $value2['id_requisitos'];
+          $datos[$key]['id_estadoorigen'] = $value2['id_estadoorigen'];
+          $datos[$key]['id_estadodestino'] = $value2['id_estadodestino'];
+          $datos[$key]['id_workflow'] = $value2['id_workflow'];
+        }
+      }
+    }
     $this->dep('dr_registro')->tabla('dt_requisitos_registro')->procesar_filas($datos);
   }
 

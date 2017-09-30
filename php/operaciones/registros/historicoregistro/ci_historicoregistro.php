@@ -2,6 +2,7 @@
 
 require_once('operaciones/registros/historicoregistro/dao_historicoregistro.php');
 require_once('operaciones/metodosconsulta/flujosyregistros.php');
+require_once('operaciones/metodosconsulta/operaciones.php');
 
 class ci_historicoregistro extends sgr_ci
 {
@@ -35,9 +36,17 @@ class ci_historicoregistro extends sgr_ci
 			else {
 				toba::notificacion()->agregar('Error de carga', 'info');
 			}
+		}
 		$this->cn()->resetear_dr_registro();
 		$this->set_pantalla('pant_inicial');
-		}
+	}
+
+	function evt__procesar2()
+	{
+		$datos = $this->cn()->get_registro();
+		$datos ['fecha_fin'] = date(DATE_ATOM);
+		$this->cn()->set_dt_registro($datos);
+		$this->evt__procesar();
 	}
 
 	function evt__cancelar()
@@ -145,12 +154,22 @@ class ci_historicoregistro extends sgr_ci
 		$respuesta->set($datos);
 	}
 
+	function get_estado_inicial()
+	{
+		if (isset($this->s__datos['estadoactual'][0]['id_estado'])) {
+			return operaciones::get_estado_inicial($this->s__datos['estadoactual'][0]['id_estado']);
+		} else {
+			return [];
+		}
+	}
+
 	//-----------------------------------------------------------------------------------
 	//---- form_workflow ----------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
 	function conf__form_workflow($form)
 	{
+		$form->set_modoEdicion(true);
 		$this->cn()->cargarestado($form);
 	}
 
@@ -162,12 +181,6 @@ class ci_historicoregistro extends sgr_ci
 	//-----------------------------------------------------------------------------------
 	//---- form_ml_requisitos -----------------------------------------------------------
 	//-----------------------------------------------------------------------------------
-
-	function conf__form_ml_requisitos(sgr_ei_formulario_ml $form_ml)
-	{
-		$datos = $this->cn()->getrequisitos_registro();
-		$form_ml->set_datos($datos);
-	}
 
 	function evt__form_ml_requisitos__modificacion($datos)
 	{
