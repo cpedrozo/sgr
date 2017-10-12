@@ -51,7 +51,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'1001287', --evento_id
 	'1000884', --objeto
 	'nuevo', --identificador
-	'Nuevo', --etiqueta
+	'&Nuevo', --etiqueta
 	'0', --maneja_datos
 	NULL, --sobre_fila
 	'¿Desea cancelar la carga actual e iniciar una nueva?', --confirmacion
