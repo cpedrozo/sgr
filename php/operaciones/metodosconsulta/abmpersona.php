@@ -73,6 +73,16 @@ class abmpersona
     return $resultado;
   }
 
+  static function get_sector_dpto($id_dpto)
+  {
+    $id_dpto = quote ($id_dpto);
+    $sql = "SELECT * FROM sgr.sector
+            WHERE id_dpto = $id_dpto
+            ORDER BY id_sector ASC";
+    $resultado = consultar_fuente($sql);
+    return $resultado;
+  }
+
   static function get_camposempleado()
   {
     $sql = "SELECT * FROM sgr.camposempleado ORDER BY nombre asc";

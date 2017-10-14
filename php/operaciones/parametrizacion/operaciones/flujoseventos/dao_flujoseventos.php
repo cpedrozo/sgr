@@ -10,11 +10,12 @@ class dao_flujoseventos
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT wf.id_workflow, wf.nombre, te.nombre tipoevento, e.nombre evento
+    $sql = "SELECT wf.id_workflow, wf.nombre,
+            te.nombre||': '||e.nombre evento
             FROM sgr.workflow wf
             INNER JOIN sgr.evento e ON wf.id_evento = e.id_evento
             INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
-            $where_armado ORDER BY tipoevento, evento ASC
+            $where_armado ORDER BY evento ASC
             LIMIT 5";
     $resultado = consultar_fuente($sql);
     return $resultado;

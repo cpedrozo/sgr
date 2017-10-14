@@ -267,7 +267,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000449', --objeto_cuadro_col
 	'suc_dpto', --clave
 	'4', --orden
-	'Departamento (Sucursal)', --titulo
+	'Departamento - Sector (Sucursal)', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'0', --estilo
 	NULL, --ancho

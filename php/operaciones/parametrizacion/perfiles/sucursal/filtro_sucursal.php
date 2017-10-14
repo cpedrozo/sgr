@@ -26,6 +26,34 @@ class filtro_sucursal extends sgr_ei_filtro
 				}
 				ef.set_estado(cadena);
 			}
+			this.ef('provincia').input().onkeyup = function()
+			{
+				var ef = {$this->objeto_js}.ef('provincia');
+				var texto = ef.get_estado().toUpperCase();
+
+				var texto_comprobado = texto.match(/[a-zA-Z\s]/gi);
+				//--var texto_comprobado = texto.match(/[a-zA-Z\[Á-Ú\[0-9\:\! ¡¿?_°./\-\']/gi);
+				var cadena = texto_comprobado.toString();
+				while(cadena.indexOf(',') >= 0)
+				{
+					cadena = cadena.replace(',','');
+				}
+				ef.set_estado(cadena);
+			}
+			this.ef('ciudad').input().onkeyup = function()
+			{
+				var ef = {$this->objeto_js}.ef('ciudad');
+				var texto = ef.get_estado().toUpperCase();
+
+				var texto_comprobado = texto.match(/[a-zA-Z\s]/gi);
+				//--var texto_comprobado = texto.match(/[a-zA-Z\[Á-Ú\[0-9\:\! ¡¿?_°./\-\']/gi);
+				var cadena = texto_comprobado.toString();
+				while(cadena.indexOf(',') >= 0)
+				{
+					cadena = cadena.replace(',','');
+				}
+				ef.set_estado(cadena);
+			}
 		}
 		";
 	}

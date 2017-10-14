@@ -6,14 +6,15 @@ class dao_personas_popup
     {
       $sql = "SELECT p.id_persona, p.apellido, p.nombre, td.nombre tipodoc, p.doc, p.fnac, g.nombre genero,
               e.razonsocial entidad,
-              s.nombre sucursal, dp.nombre dpto, r.nombre rol,
+              s.nombre sucursal, dp.nombre||' - '||se.nombre||' ('||s.nombre||')' dpto, r.nombre rol,
               n.nombre nacionalidad, ec.nombre ecivil
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
               LEFT JOIN sgr.genero g ON p.id_genero = g.id_genero
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
-              LEFT JOIN sgr.sucursal s ON p.id_sucursal = s.id_sucursal
-              LEFT JOIN sgr.dpto dp ON p.id_dpto = dp.id_dpto
+              LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
+              LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
+              LEFT JOIN sgr.sucursal s ON dp.id_sucursal = s.id_sucursal
               LEFT JOIN sgr.rol r ON p.id_rol = r.id_rol
               LEFT JOIN sgr.nacionalidad n ON p.id_nacionalidad = n.id_nacionalidad
               LEFT JOIN sgr.estadocivil ec ON p.id_estadocivil = ec.id_estadocivil

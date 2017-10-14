@@ -169,7 +169,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000779', --objeto_cuadro
 	'1000454', --objeto_cuadro_col
 	'nombre', --clave
-	'1', --orden
+	'2', --orden
 	'Departamento', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -200,7 +200,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000779', --objeto_cuadro
 	'1000455', --objeto_cuadro_col
 	'sucursal', --clave
-	'2', --orden
+	'1', --orden
 	'Sucursal', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'0', --estilo

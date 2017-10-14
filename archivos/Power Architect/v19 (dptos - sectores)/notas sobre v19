@@ -1,0 +1,7 @@
+Se quitó de la tabla persona el id_sucursal, id_dpto
+Se incorporó en la tabla persona el id_sector que implícitamente traerá la sucursal y dpto.
+Se quitó de la tabla sucursal el id_provincia, ya que con el id_ciudad lo traerá implícitamente.
+
+
+
+en el form de alta persona, ocultar el campo compania cuando se trate de un empleado.

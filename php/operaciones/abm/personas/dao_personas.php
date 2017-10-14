@@ -13,14 +13,15 @@ class dao_personas
       $sql = "SELECT p.id_persona,
               td.nombre||': '||p.doc documento, --p.apellido, p.nombre,
               e.razonsocial entidad,
-              dp.nombre||' ('||s.nombre||')' suc_dpto,
+              dp.nombre||' - '||se.nombre||' ('||s.nombre||')' suc_dpto,
               ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad, ---ci.nombre ciudad, pro.nombre prov, pa.nombre pais,
               p.apellido||', '||p.nombre apynom
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
-              LEFT JOIN sgr.sucursal s ON p.id_sucursal = s.id_sucursal
-              LEFT JOIN sgr.dpto dp ON p.id_dpto = dp.id_dpto
+              LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
+              LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
+              LEFT JOIN sgr.sucursal s ON dp.id_sucursal = s.id_sucursal
               LEFT JOIN sgr.domicilio d ON p.id_persona = d.id_persona
               LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
               LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
@@ -43,14 +44,15 @@ class dao_personas
       $sql = "SELECT p.id_persona,
               td.nombre||': '||p.doc documento, --p.apellido, p.nombre,
               e.razonsocial entidad,
-              dp.nombre||' ('||s.nombre||')' suc_dpto,
-              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad, --ci.nombre ciudad, pro.nombre prov, pa.nombre pais,
+              dp.nombre||' - '||se.nombre||' ('||s.nombre||')' suc_dpto,
+              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad, ---ci.nombre ciudad, pro.nombre prov, pa.nombre pais,
               p.apellido||', '||p.nombre apynom
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
-              LEFT JOIN sgr.sucursal s ON p.id_sucursal = s.id_sucursal
-              LEFT JOIN sgr.dpto dp ON p.id_dpto = dp.id_dpto
+              LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
+              LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
+              LEFT JOIN sgr.sucursal s ON dp.id_sucursal = s.id_sucursal
               LEFT JOIN sgr.domicilio d ON p.id_persona = d.id_persona
               LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
               LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia

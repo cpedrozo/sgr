@@ -497,6 +497,53 @@ class cn_parametrizacion extends sgr_cn
     $this->dep('dr_departamento')->tabla('dt_departamento')->eliminar_fila($id_fila);
   }
 
+  /////////////////////////////////////////////////////////////////////////////////////
+  //-----------------------------------------------------------------------------------
+  //---- ABM sgr_sector ---------------------------------------------------------------
+  //-----------------------------------------------------------------------------------
+  /////////////////////////////////////////////////////////////////////////////////////
+
+  function cargarsector($form)
+  {
+    if ($this->dep('dr_sector')->tabla('dt_sector')->hay_cursor()) {
+      $datos = $this->dep('dr_sector')->tabla('dt_sector')->get();
+      $form->set_datos($datos);
+      //return $form;
+    }
+  }
+
+  function guardarsector()
+  {
+    $this->dep('dr_sector')->sincronizar();
+    $this->dep('dr_sector')->resetear();
+  }
+
+  function resetsector()
+  {
+    $this->dep('dr_sector')->resetear();
+  }
+
+  function modifsector($datos)
+  {
+    $this->dep('dr_sector')->tabla('dt_sector')->set($datos);
+  }
+
+  function seleccionsector($seleccion)
+  {
+    if($this->dep('dr_sector')->tabla('dt_sector')->cargar($seleccion)){
+      $id_fila = $this->dep('dr_sector')->tabla('dt_sector')->get_id_fila_condicion($seleccion)[0];
+      $this->dep('dr_sector')->tabla('dt_sector')->set_cursor($id_fila);
+    }
+  }
+
+  function borrarsector($seleccion)
+  {
+    $this->dep('dr_sector')->tabla('dt_sector')->cargar($seleccion);
+    $id_fila = $this->dep('dr_sector')->tabla('dt_sector')->get_id_fila_condicion($seleccion)[0];
+    $this->dep('dr_sector')->tabla('dt_sector')->set_cursor($id_fila);
+    $this->dep('dr_sector')->tabla('dt_sector')->eliminar_fila($id_fila);
+  }
+
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_rol ------------------------------------------------------------------
   //-----------------------------------------------------------------------------------

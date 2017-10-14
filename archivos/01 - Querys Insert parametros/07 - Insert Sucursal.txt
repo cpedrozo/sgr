@@ -1,2 +1,2 @@
-INSERT INTO sgr.sucursal(id_sucursal, nombre, id_provincia, id_ciudad) values (1,'LONDON',1,204);
-INSERT INTO sgr.sucursal(id_sucursal, nombre, id_provincia, id_ciudad) values (2,'DFS',13,10053);
+﻿INSERT INTO sgr.sucursal(id_sucursal, nombre, id_ciudad) values (1,'LONDON',204);
+INSERT INTO sgr.sucursal(id_sucursal, nombre, id_ciudad) values (2,'DFS',10053);
