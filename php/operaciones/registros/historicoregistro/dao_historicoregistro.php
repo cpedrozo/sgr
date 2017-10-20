@@ -17,7 +17,7 @@ class dao_historicoregistro
             INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
             WHERE r.fecha_fin is null
             ORDER BY tipoevento_y_wf ASC
-            LIMIT 5";
+            limit 10";
 
     $resultado = consultar_fuente($sql);
     return $resultado;

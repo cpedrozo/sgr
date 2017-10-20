@@ -11,10 +11,10 @@ class dao_personas
       }
 
       $sql = "SELECT p.id_persona,
-              td.nombre||': '||p.doc documento, --p.apellido, p.nombre,
+              td.nombre||': '||p.doc documento,
               e.razonsocial entidad,
               dp.nombre||' - '||se.nombre||' ('||s.nombre||')' suc_dpto,
-              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad, ---ci.nombre ciudad, pro.nombre prov, pa.nombre pais,
+              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
               p.apellido||', '||p.nombre apynom
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
@@ -26,8 +26,8 @@ class dao_personas
               LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
               LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
               LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
-              $where_armado ORDER BY p.apellido, p.nombre ASC
-              LIMIT 5";
+              ORDER BY p.apellido, p.nombre, suc_dpto ASC
+              limit 10";
 
       $resultado = consultar_fuente($sql);
       return $resultado;
@@ -42,10 +42,10 @@ class dao_personas
       }
 
       $sql = "SELECT p.id_persona,
-              td.nombre||': '||p.doc documento, --p.apellido, p.nombre,
+              td.nombre||': '||p.doc documento,
               e.razonsocial entidad,
               dp.nombre||' - '||se.nombre||' ('||s.nombre||')' suc_dpto,
-              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad, ---ci.nombre ciudad, pro.nombre prov, pa.nombre pais,
+              ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
               p.apellido||', '||p.nombre apynom
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
@@ -57,7 +57,7 @@ class dao_personas
               LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
               LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
               LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
-              $where_armado ORDER BY p.apellido, p.nombre ASC";
+              $where_armado ORDER BY p.apellido, p.nombre, suc_dpto ASC";
 
       $resultado = consultar_fuente($sql);
       return $resultado;

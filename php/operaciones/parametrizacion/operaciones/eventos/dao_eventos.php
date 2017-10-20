@@ -12,7 +12,7 @@ class dao_eventos
     $sql = "SELECT e.id_evento, e.nombre, te.nombre tipoevento FROM sgr.evento e
             INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
             $where_armado ORDER BY tipoevento, nombre ASC
-            LIMIT 5";
+            limit 10";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }

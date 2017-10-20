@@ -13,7 +13,7 @@ class dao_nuevoregistro
     $sql = "SELECT *
             FROM sgr.registro
             --$where_armado ORDER BY id_registro ASC
-            LIMIT 5";
+            limit 10";
 
     $resultado = consultar_fuente($sql);
     return $resultado;

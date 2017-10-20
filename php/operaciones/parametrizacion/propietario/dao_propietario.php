@@ -13,7 +13,7 @@ class dao_propietario
     	$sql = "SELECT *
               FROM sgr.propietario
               WHERE activo = 'true'
-              LIMIT 5";
+              limit 10";
       $resultado = consultar_fuente($sql);
       return $resultado;
     }

@@ -22,7 +22,7 @@ class dao_provincia
               FROM sgr.provincia p
               LEFT JOIN sgr.pais pa ON p.id_pais = pa.id_pais
               $where_armado ORDER BY pais, nombre ASC
-              LIMIT 5";
+              limit 10";
       $resultado = consultar_fuente($sql);
       return $resultado;
     }

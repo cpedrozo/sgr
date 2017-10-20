@@ -18,7 +18,7 @@ class dao_entidades
         			LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
         			LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
               $where_armado ORDER BY razonsocial ASC
-              LIMIT 5";
+              limit 10";
       $resultado = consultar_fuente($sql);
       return $resultado;
     }

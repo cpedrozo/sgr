@@ -100,7 +100,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_tipos_de_correo')->tabla('dt_tipocorreo')->hay_cursor()) {
       $datos = $this->dep('dr_tipos_de_correo')->tabla('dt_tipocorreo')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -145,7 +144,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_tipos_de_telefono')->tabla('dt_tipotel')->hay_cursor()) {
       $datos = $this->dep('dr_tipos_de_telefono')->tabla('dt_tipotel')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -191,7 +189,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_estado_civil')->tabla('dt_estadocivil')->hay_cursor()) {
       $datos = $this->dep('dr_estado_civil')->tabla('dt_estadocivil')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -236,7 +233,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_nacionalidad')->tabla('dt_nacionalidad')->hay_cursor()) {
       $datos = $this->dep('dr_nacionalidad')->tabla('dt_nacionalidad')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -281,7 +277,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_pais')->tabla('dt_pais')->hay_cursor()) {
       $datos = $this->dep('dr_pais')->tabla('dt_pais')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -326,7 +321,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_provincia')->tabla('dt_provincia')->hay_cursor()) {
       $datos = $this->dep('dr_provincia')->tabla('dt_provincia')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -371,7 +365,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_ciudad')->tabla('dt_ciudad')->hay_cursor()) {
       $datos = $this->dep('dr_ciudad')->tabla('dt_ciudad')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -416,7 +409,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_sucursal')->tabla('dt_sucursal')->hay_cursor()) {
       $datos = $this->dep('dr_sucursal')->tabla('dt_sucursal')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -461,7 +453,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_departamento')->tabla('dt_departamento')->hay_cursor()) {
       $datos = $this->dep('dr_departamento')->tabla('dt_departamento')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -508,7 +499,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_sector')->tabla('dt_sector')->hay_cursor()) {
       $datos = $this->dep('dr_sector')->tabla('dt_sector')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -553,7 +543,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_rol')->tabla('dt_rol')->hay_cursor()) {
       $datos = $this->dep('dr_rol')->tabla('dt_rol')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -598,7 +587,6 @@ class cn_parametrizacion extends sgr_cn
     if ($this->dep('dr_genero')->tabla('dt_genero')->hay_cursor()) {
       $datos = $this->dep('dr_genero')->tabla('dt_genero')->get();
       $form->set_datos($datos);
-      //return $form;
     }
   }
 
@@ -676,6 +664,50 @@ class cn_parametrizacion extends sgr_cn
     $id_fila = $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->get_id_fila_condicion($seleccion)[0];
     $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->set_cursor($id_fila);
     $this->dep('dr_tipodocumento')->tabla('dt_tipodocumento')->eliminar_fila($id_fila);
+  }
+
+  //-----------------------------------------------------------------------------------
+  //---- ABM sgr_rubro ----------------------------------------------------------------
+  //-----------------------------------------------------------------------------------
+
+  function cargarrubro($form)
+  {
+    if ($this->dep('dr_rubro')->tabla('dt_rubro')->hay_cursor()) {
+      $datos = $this->dep('dr_rubro')->tabla('dt_rubro')->get();
+      $form->set_datos($datos);
+    }
+  }
+
+  function guardarrubro()
+  {
+    $this->dep('dr_rubro')->sincronizar();
+    $this->dep('dr_rubro')->resetear();
+  }
+
+  function resetrubro()
+  {
+    $this->dep('dr_rubro')->resetear();
+  }
+
+  function modifrubro($datos)
+  {
+    $this->dep('dr_rubro')->tabla('dt_rubro')->set($datos);
+  }
+
+  function seleccionrubro($seleccion)
+  {
+    if($this->dep('dr_rubro')->tabla('dt_rubro')->cargar($seleccion)){
+      $id_fila = $this->dep('dr_rubro')->tabla('dt_rubro')->get_id_fila_condicion($seleccion)[0];
+      $this->dep('dr_rubro')->tabla('dt_rubro')->set_cursor($id_fila);
+    }
+  }
+
+  function borrarrubro($seleccion)
+  {
+    $this->dep('dr_rubro')->tabla('dt_rubro')->cargar($seleccion);
+    $id_fila = $this->dep('dr_rubro')->tabla('dt_rubro')->get_id_fila_condicion($seleccion)[0];
+    $this->dep('dr_rubro')->tabla('dt_rubro')->set_cursor($id_fila);
+    $this->dep('dr_rubro')->tabla('dt_rubro')->eliminar_fila($id_fila);
   }
 
 }

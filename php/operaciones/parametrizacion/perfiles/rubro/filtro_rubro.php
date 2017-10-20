@@ -1,5 +1,5 @@
 <?php
-class filtro_agenda extends sgr_ei_filtro
+class filtro_rubro extends sgr_ei_filtro
 {
 	//-----------------------------------------------------------------------------------
 	//---- JAVASCRIPT -------------------------------------------------------------------
@@ -26,22 +26,7 @@ class filtro_agenda extends sgr_ei_filtro
 				}
 				ef.set_estado(cadena);
 			}
-
-      this.ef('apellido').input().onkeyup = function()
-      {
-        var ef = {$this->objeto_js}.ef('apellido');
-        var texto = ef.get_estado().toUpperCase();
-
-        var texto_comprobado = texto.match(/[a-zA-Z\s]/gi);
-        //--var texto_comprobado = texto.match(/[a-zA-Z\[Á-Ú\[0-9\:\! ¡¿?_°./\-\']/gi);
-        var cadena = texto_comprobado.toString();
-        while(cadena.indexOf(',') >= 0)
-        {
-          cadena = cadena.replace(',','');
-        }
-        ef.set_estado(cadena);
-      }
-    }
+		}
 		";
 	}
 

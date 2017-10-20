@@ -12,7 +12,7 @@ class dao_estados
     $sql = "SELECT *
             FROM sgr.estado
             $where_armado ORDER BY nombre ASC
-            LIMIT 5";
+            limit 10";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }

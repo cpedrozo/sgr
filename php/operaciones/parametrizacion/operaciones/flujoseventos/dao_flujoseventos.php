@@ -16,7 +16,7 @@ class dao_flujoseventos
             INNER JOIN sgr.evento e ON wf.id_evento = e.id_evento
             INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
             $where_armado ORDER BY evento ASC
-            LIMIT 5";
+            limit 10";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
@@ -54,7 +54,7 @@ class dao_flujoseventos
   //           INNER JOIN sgr.estado ON f.id_estadodestino = e.id_estado
   //           INNER JOIN sgr.workflow wf ON f.id_workflow = wf.id_workflow
   //           $where_armado ORDER BY origen, destino ASC
-  //           LIMIT 5";
+  //           limit 10";
   //   $resultado = consultar_fuente($sql);
   //   return $resultado;
   // }

@@ -12,7 +12,7 @@ class dao_tipoevento
     $sql = "SELECT *
             FROM sgr.tipo_evento
             $where_armado ORDER BY nombre ASC
-            LIMIT 5";
+            limit 10";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }

@@ -16,8 +16,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_ei_filtro', --clase
 	'1000001', --punto_montaje
-	'filtro_agenda', --subclase
-	'operaciones/agenda/filtro_agenda.php', --subclase_archivo
+	'filtro_datospersonas', --subclase
+	'operaciones/consultar/datospersonas/filtro_datospersonas.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'ci_agenda - filtro', --nombre
@@ -366,7 +366,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'sgr', --objeto_ei_filtro_proyecto
 	'cadena', --tipo
 	'nombre', --nombre
-	'nombre', --expresion
+	'p.nombre', --expresion
 	'Nombre', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio

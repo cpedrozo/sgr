@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000911]--  ci_agenda 
+--[1000911]--  ci_datospersonas 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -16,11 +16,11 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_ci', --clase
 	'1000001', --punto_montaje
-	'ci_agenda', --subclase
-	'operaciones/agenda/ci_agenda.php', --subclase_archivo
+	'ci_datospersonas', --subclase
+	'operaciones/consultar/datospersonas/ci_datospersonas.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'ci_agenda', --nombre
+	'ci_datospersonas', --nombre
 	NULL, --titulo
 	'0', --colapsable
 	NULL, --descripcion

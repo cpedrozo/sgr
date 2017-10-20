@@ -17,7 +17,6 @@ class ci_ciudad extends sgr_ci
 			$filtro = $this->dep('filtro');
 			$filtro->set_datos($this->s__datos_filtro);
 			$sql_where = $filtro->get_sql_where();
-
 			$datos = dao_ciudad::get_datossinfiltro($sql_where);
 			$cuadro->set_datos($datos);
 		}
@@ -25,20 +24,10 @@ class ci_ciudad extends sgr_ci
 			$filtro = $this->dep('filtro');
 			$filtro->set_datos($this->s__datos_filtro);
 			$sql_where = $filtro->get_sql_where();
-
 			$datos = dao_ciudad::get_datos($sql_where);
 			$cuadro->set_datos($datos);
 		}
 	}
-
-
-	/*
-	function conf__cuadro($cuadro)
-	{
-		$datos = dao_ciudad::get_datos();
-		$cuadro->set_datos($datos);
-	}
-	*/
 
 	function evt__cuadro__seleccion($seleccion)
 	{
@@ -88,7 +77,6 @@ class ci_ciudad extends sgr_ci
 		//-----------------------------------------------------------------------------------
 		//---- filtro -----------------------------------------------------------------------
 		//-----------------------------------------------------------------------------------
-
 
 	function conf__filtro($filtro)
 	{

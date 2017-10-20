@@ -1,7 +1,7 @@
 <?php
-require_once('operaciones/agenda/dao_agenda.php');
+require_once('operaciones/consultar/datosentidades/dao_datosentidades.php');
 
-class ci_agenda extends sgr_ci
+class ci_datosentidades extends sgr_ci
 {
 
 	//-----------------------------------------------------------------------------------
@@ -18,11 +18,11 @@ class ci_agenda extends sgr_ci
 	function conf__cuadrotel($cuadro)
 	{
 		if (! isset($this->s__datos_filtro)) {
-			$datos = dao_agenda::get_datossinfiltrotel($this->s__sqlwhere);
+			$datos = dao_datosentidades::get_datossinfiltrotel($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
 		}
 		else{
-			$datos = dao_agenda::get_datostel($this->s__sqlwhere);
+			$datos = dao_datosentidades::get_datostel($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
 		}
 	}
@@ -30,11 +30,11 @@ class ci_agenda extends sgr_ci
 	function conf__cuadrodom($cuadro)
 	{
 		if (! isset($this->s__datos_filtro)) {
-			$datos = dao_agenda::get_datossinfiltrodom($this->s__sqlwhere);
+			$datos = dao_datosentidades::get_datossinfiltrodom($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
 		}
 		else{
-			$datos = dao_agenda::get_datosdom($this->s__sqlwhere);
+			$datos = dao_datosentidades::get_datosdom($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
 		}
 	}
@@ -42,11 +42,11 @@ class ci_agenda extends sgr_ci
 	function conf__cuadrocorreo($cuadro)
 	{
 		if (! isset($this->s__datos_filtro)) {
-			$datos = dao_agenda::get_datossinfiltrocorreo($this->s__sqlwhere);
+			$datos = dao_datosentidades::get_datossinfiltrocorreo($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
 		}
 		else{
-			$datos = dao_agenda::get_datoscorreo($this->s__sqlwhere);
+			$datos = dao_datosentidades::get_datoscorreo($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
 		}
 	}

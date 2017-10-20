@@ -1,0 +1,1 @@
+﻿SELECT setval('sgr.estado_actual_flujo_id_estado_actual_seq', 4);

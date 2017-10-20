@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000318]--  Agenda 
+--[1000318]--  Datos Personas 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -13,7 +13,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	'1000318', --item
 	NULL, --padre_id
 	'sgr', --padre_proyecto
-	'1', --padre
+	'1000319', --padre
 	'0', --carpeta
 	'0', --nivel_acceso
 	'web', --solicitud_tipo
@@ -23,12 +23,12 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Agenda', --nombre
+	'Datos Personas', --nombre
 	NULL, --descripcion
 	'1000001', --punto_montaje
 	NULL, --actividad_accion
 	'1', --menu
-	'2', --orden
+	'0', --orden
 	'0', --solicitud_registrar
 	NULL, --solicitud_obs_tipo_proyecto
 	NULL, --solicitud_obs_tipo

@@ -15,7 +15,7 @@ class dao_requisitos
             FROM sgr.requisitos r
             INNER JOIN sgr.workflow wf ON r.id_workflow = wf.id_workflow
             ORDER BY flujo, nombre ASC
-            LIMIT 5";
+            limit 10";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }

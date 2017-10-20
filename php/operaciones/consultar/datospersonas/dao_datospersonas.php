@@ -1,6 +1,6 @@
 <?php
 
-class dao_agenda
+class dao_datospersonas
 {
   static function get_datostel($where='')
   {
@@ -10,7 +10,7 @@ class dao_agenda
       $where_armado = '';
     }
     $sql = "SELECT p.apellido||', '||p.nombre apynom,
-            t.id_telefono, tt.nombre tipo, c.nombre compania, t.numero, t.interno,
+            t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||' ('||coalesce(t.interno, '-')||')' num,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.telefono t
             LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel
@@ -20,7 +20,7 @@ class dao_agenda
             LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
             LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
             $where_armado AND t.id_persona IS NOT NULL
-            ORDER BY apynom, tipo, compania ASC";
+            ORDER BY apynom, tipoycompania ASC";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
@@ -33,7 +33,7 @@ class dao_agenda
       $where_armado = '';
     }
     $sql = "SELECT p.apellido||', '||p.nombre apynom,
-            t.id_telefono, tt.nombre tipo, c.nombre compania, t.numero, t.interno,
+            t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||' ('||coalesce(t.interno, '-')||')' num,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.telefono t
             LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel
@@ -42,9 +42,9 @@ class dao_agenda
             LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
             LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
             LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
-            $where_armado AND t.id_persona IS NOT NULL
-            ORDER BY apynom, tipo, compania ASC
-            LIMIT 5";
+            WHERE t.id_persona IS NOT NULL
+            ORDER BY apynom, tipoycompania ASC
+            LIMIT 10";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
@@ -58,7 +58,7 @@ class dao_agenda
     }
     $sql = "SELECT p.apellido||', '||p.nombre apynom,
             d.id_domicilio,
-            d.barrio, d.calle, d.num, d.piso, ci.nombre||', '||pro.nombre||', '||pa.nombre localidad,
+            d.calle||': '||d.num||' ('||d.barrio||')' dir, d.piso, ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.domicilio d
             LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
@@ -83,7 +83,7 @@ class dao_agenda
     }
     $sql = "SELECT p.apellido||', '||p.nombre apynom,
             d.id_domicilio,
-            d.barrio, d.calle, d.num, d.piso, ci.nombre||', '||pro.nombre||', '||pa.nombre localidad,
+            d.calle||': '||d.num||' ('||d.barrio||')' dir, d.piso, ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.domicilio d
             LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
@@ -93,9 +93,9 @@ class dao_agenda
             LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
             LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
             LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
-            $where_armado AND d.id_persona IS NOT NULL
+            WHERE d.id_persona IS NOT NULL
             ORDER BY apynom, localidad ASC
-            LIMIT 5";
+            LIMIT 10";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
@@ -138,9 +138,9 @@ class dao_agenda
             LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
             LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
             LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
-            $where_armado AND c.id_persona IS NOT NULL
+            WHERE c.id_persona IS NOT NULL
             ORDER BY apynom, tipocorreo ASC
-            LIMIT 5";
+            LIMIT 10";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }

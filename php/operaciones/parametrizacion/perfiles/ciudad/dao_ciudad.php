@@ -13,7 +13,7 @@ class dao_ciudad
               FROM sgr.ciudad c
               LEFT JOIN sgr.provincia p ON c.id_provincia = p.id_provincia
               $where_armado ORDER BY provincia, nombre ASC
-              LIMIT 5";
+              limit 10";
       $resultado = consultar_fuente($sql);
       return $resultado;
     }

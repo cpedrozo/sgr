@@ -793,7 +793,7 @@ F/M/Otro</remarks>
     <column id="COL247" populated="true" UUID="c9272294-b2cd-431f-af68-5583aeab90f4" autoIncrement="false" autoIncrementSequenceName="sexo_id_sexo_seq_1_1" defaultValue="" name="id_genero" nullable="0" physicalName="id_genero" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL248" populated="true" UUID="d99022e7-5872-4923-ac87-346ee5f29d66" autoIncrement="false" autoIncrementSequenceName="sector_id_sector_seq" defaultValue="" name="id_sector" nullable="0" physicalName="id_sector" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
+    <column id="COL248" populated="true" UUID="d99022e7-5872-4923-ac87-346ee5f29d66" autoIncrement="false" autoIncrementSequenceName="sector_id_sector_seq" defaultValue="" name="id_sector" nullable="1" physicalName="id_sector" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL249" populated="true" UUID="663243fa-84c4-403d-82f2-39dfdac80e56" autoIncrement="false" autoIncrementSequenceName="rol_id_rol_seq_1" defaultValue="" name="id_rol" nullable="1" physicalName="id_rol" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >

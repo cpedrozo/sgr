@@ -21,7 +21,7 @@ class dao_sector
             FROM sgr.sector s
             LEFT JOIN sgr.dpto d ON s.id_dpto = d.id_dpto
             $where_armado ORDER BY d.nombre, s.nombre ASC
-            LIMIT 5";
+            limit 10";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
