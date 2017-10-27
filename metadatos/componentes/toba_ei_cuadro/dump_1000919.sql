@@ -127,7 +127,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000919', --objeto_cuadro
 	'1000636', --objeto_cuadro_col
 	'dir', --clave
-	'2', --orden
+	'3', --orden
 	'Calle: Núm (Barrio)', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -158,7 +158,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000919', --objeto_cuadro
 	'1000637', --objeto_cuadro_col
 	'piso', --clave
-	'3', --orden
+	'4', --orden
 	'Piso', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -189,7 +189,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000919', --objeto_cuadro
 	'1000638', --objeto_cuadro_col
 	'localidad', --clave
-	'4', --orden
+	'2', --orden
 	'Localidad', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo

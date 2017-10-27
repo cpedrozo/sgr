@@ -74,6 +74,42 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
+	'1000726', --dep_id
+	'1000798', --objeto_consumidor
+	'1000931', --objeto_proveedor
+	'cuadro_correo', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
+	'1000727', --dep_id
+	'1000798', --objeto_consumidor
+	'1000932', --objeto_proveedor
+	'cuadro_dom', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
+	'1000728', --dep_id
+	'1000798', --objeto_consumidor
+	'1000933', --objeto_proveedor
+	'cuadro_tel', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
 	'1000667', --dep_id
 	'1000798', --objeto_consumidor
 	'1000874', --objeto_proveedor
@@ -140,8 +176,8 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	NULL, --imagen
 	NULL, --objetos
 	NULL, --eventos
-	'pant_personas_pop', --subclase
-	'operaciones/abm/personas/pant_personas_pop.php', --subclase_archivo
+	NULL, --subclase
+	NULL, --subclase_archivo
 	NULL, --template
 	NULL, --template_impresion
 	'1000001'  --punto_montaje
@@ -162,20 +198,20 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'sgr', --proyecto
 	'1000441', --pantalla
 	'1000798', --objeto_ci
-	'1', --orden
-	'1000665'  --dep_id
-);
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'sgr', --proyecto
-	'1000441', --pantalla
-	'1000798', --objeto_ci
 	'2', --orden
-	'1000666'  --dep_id
+	'1000726'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'sgr', --proyecto
 	'1000441', --pantalla
 	'1000798', --objeto_ci
 	'3', --orden
-	'1000667'  --dep_id
+	'1000727'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'sgr', --proyecto
+	'1000441', --pantalla
+	'1000798', --objeto_ci
+	'1', --orden
+	'1000728'  --dep_id
 );

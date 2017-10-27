@@ -23,56 +23,48 @@ class dao_personas_popup
       return $resultado[0];
     }
 
-    static function get_datosdom($id_persona)
+    /////////////////////////////////////////////////////////////////////////////
+    /////////cuadros ////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
+
+    static function get_datosdom2($id_persona)
     {
       $sql = "SELECT
-              d.barrio, d.calle, d.num, d.piso, ci.nombre||', '||pro.nombre||', '||pa.nombre localidad
+              d.id_domicilio,
+              d.calle||': '||d.num||' ('||d.barrio||')' dir, d.piso, ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad
               FROM sgr.domicilio d
               LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
-        			LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
-        			LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
+              LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
+              LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
+              LEFT JOIN sgr.persona p ON d.id_persona = p.id_persona
               WHERE d.id_persona = $id_persona";
       $resultado = consultar_fuente($sql);
-      if(count($resultado)>0)
-      {
-        return $resultado[0];
-      }
-      else {
-        return [];
-      }
+      return $resultado;
     }
 
-    static function get_datostel($id_persona)
+    static function get_datostel2($id_persona)
     {
-      $sql = "SELECT tt.nombre tipo, c.nombre compania, t.numero, t.interno
+      $sql = "SELECT
+              t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||' ('||coalesce(t.interno, '-')||')' num
               FROM sgr.telefono t
               LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel
               LEFT JOIN sgr.compania c ON t.id_compania = c.id_compania
+              LEFT JOIN sgr.persona p ON t.id_persona = p.id_persona
               WHERE t.id_persona = $id_persona";
       $resultado = consultar_fuente($sql);
-      if(count($resultado)>0)
-      {
-        return $resultado[0];
-      }
-      else {
-        return [];
-      }
+      return $resultado;
     }
 
-    static function get_datoscorreo($id_persona)
+    static function get_datoscorreo2($id_persona)
     {
-      $sql = "SELECT tc.nombre tipocorreo, c.correo
+      $sql = "SELECT
+              c.id_correo, tc.nombre tipocorreo, c.correo
               FROM sgr.correo c
               LEFT JOIN sgr.tipocorreo tc ON c.id_tipocorreo = tc.id_tipocorreo
+              LEFT JOIN sgr.persona p ON c.id_persona = p.id_persona
               WHERE c.id_persona = $id_persona";
       $resultado = consultar_fuente($sql);
-      if(count($resultado)>0)
-      {
-        return $resultado[0];
-      }
-      else {
-        return [];
-      }
+      return $resultado;
     }
 
 }

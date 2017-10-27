@@ -12,7 +12,7 @@ class ci_personas_popup extends sgr_ci
 	protected $s__datos;
 
 	//-----------------------------------------------------------------------------------
-	//---- cuadro -----------------------------------------------------------------------
+	//---- form -------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
 	function conf__form_persona($form)
@@ -54,5 +54,40 @@ class ci_personas_popup extends sgr_ci
 			$form->set_datos($datos);
 		}
 	}
+
+		//-----------------------------------------------------------------------------------
+		//---- cuadro -----------------------------------------------------------------------
+		//-----------------------------------------------------------------------------------
+
+		function conf__cuadro_dom($cuadro)
+		{
+			$id_persona = toba::memoria()->get_parametro('persona');
+			if (isset($id_persona))
+			{
+				$datos = dao_personas_popup::get_datosdom2($id_persona);
+				$cuadro->set_datos($datos);
+			}
+		}
+
+		function conf__cuadro_tel($cuadro)
+		{
+			$id_persona = toba::memoria()->get_parametro('persona');
+			if (isset($id_persona))
+			{
+				$datos = dao_personas_popup::get_datostel2($id_persona);
+				$cuadro->set_datos($datos);
+			}
+		}
+
+		function conf__cuadro_correo($cuadro)
+		{
+			$id_persona = toba::memoria()->get_parametro('persona');
+			if (isset($id_persona))
+			{
+				$datos = dao_personas_popup::get_datoscorreo2($id_persona);
+				$cuadro->set_datos($datos);
+			}
+		}
+
 }
 ?>

@@ -178,7 +178,7 @@ INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_obje
 	'1000767', --padre_objeto
 	'1000809', --padre_clave
 	'1000731', --hijo_objeto
-	'1000565'  --hijo_clave
+	'1000844'  --hijo_clave
 );
 INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
 	'sgr', --proyecto

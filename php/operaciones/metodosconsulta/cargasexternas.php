@@ -24,6 +24,17 @@ class cargasexternas
   /////////// CARGA EXTERNA DPTO, SUCURSAL /////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
+  static function get_idextsuc($id_dpto)
+  {
+    $id_dpto = quote($id_dpto);
+
+    $sql = "SELECT d.id_sucursal
+            FROM sgr.dpto d
+            WHERE d.id_dpto = $id_dpto";
+    $resultado = consultar_fuente($sql);
+    return $resultado[0];
+  }
+
   static function get_idextdpto_suc($id_sector)
   {
     $id_sector = quote($id_sector);
@@ -64,6 +75,19 @@ class cargasexternas
             e.id_evento
             FROM sgr.evento e
             JOIN sgr.workflow wf ON wf.id_evento = e.id_evento
+            WHERE wf.id_workflow = $id_workflow";
+    $resultado = consultar_fuente($sql);
+    return $resultado[0];
+  }
+
+  static function get_idextworkflow_sucydpto($id_workflow)
+  {
+    $id_workflow = quote($id_workflow);
+
+    $sql = "SELECT d.id_dpto,
+            d.id_sucursal
+            FROM sgr.dpto d
+            JOIN sgr.workflow wf ON wf.id_dpto = d.id_dpto
             WHERE wf.id_workflow = $id_workflow";
     $resultado = consultar_fuente($sql);
     return $resultado[0];

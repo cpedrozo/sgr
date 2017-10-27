@@ -54,5 +54,40 @@ class ci_entidades_popup extends sgr_ci
 			$form->set_datos($datos);
 		}
 	}
+
+	//-----------------------------------------------------------------------------------
+	//---- cuadro -----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__cuadro_dom($cuadro)
+	{
+		$id_entidad = toba::memoria()->get_parametro('entidad');
+		if (isset($id_entidad))
+		{
+			$datos = dao_entidades_popup::get_datosdom2($id_entidad);
+			$cuadro->set_datos($datos);
+		}
+	}
+
+	function conf__cuadro_tel($cuadro)
+	{
+		$id_entidad = toba::memoria()->get_parametro('entidad');
+		if (isset($id_entidad))
+		{
+			$datos = dao_entidades_popup::get_datostel2($id_entidad);
+			$cuadro->set_datos($datos);
+		}
+	}
+
+	function conf__cuadro_correo($cuadro)
+	{
+		$id_entidad = toba::memoria()->get_parametro('entidad');
+		if (isset($id_entidad))
+		{
+			$datos = dao_entidades_popup::get_datoscorreo2($id_entidad);
+			$cuadro->set_datos($datos);
+		}
+	}
+
 }
 ?>

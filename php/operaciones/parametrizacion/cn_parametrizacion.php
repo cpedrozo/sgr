@@ -448,45 +448,75 @@ class cn_parametrizacion extends sgr_cn
   //---- ABM sgr_departamento----------------------------------------------------------
   //-----------------------------------------------------------------------------------
 
-  function cargardepartamento($form)
-  {
-    if ($this->dep('dr_departamento')->tabla('dt_departamento')->hay_cursor()) {
-      $datos = $this->dep('dr_departamento')->tabla('dt_departamento')->get();
-      $form->set_datos($datos);
-    }
-  }
+  function cargar_dr_departamento($seleccion=null)
+	  {
+	      if (!$this->dep('dr_departamento')->esta_cargada()) {
+	          if (isset($seleccion)) {
+	              $this->dep('dr_departamento')->cargar($seleccion);
+	          } else {
+	              $this->dep('dr_departamento')->cargar($seleccion);
+	          }
+	      }
+	  }
 
-  function guardardepartamento()
-  {
-    $this->dep('dr_departamento')->sincronizar();
-    $this->dep('dr_departamento')->resetear();
-  }
+	function borrar_dt_departamento($seleccion)
+	{
+	  if ($this->dep('dr_departamento')->tabla('dt_departamento')->esta_cargada()) {
+	    $id_memoria = $this->dep('dr_departamento')->tabla('dt_departamento')->get_id_fila_condicion($seleccion);
+	    $this->dep('dr_departamento')->tabla('dt_departamento')->eliminar_fila($id_memoria[0]);
+	  }
+	}
 
-  function resetdepartamento()
-  {
-    $this->dep('dr_departamento')->resetear();
-  }
+	function get_departamento()
+	{
+	  if ($this->dep('dr_departamento')->tabla('dt_departamento')->hay_cursor())
+	  {
+	    return $this->dep('dr_departamento')->tabla('dt_departamento')->get();
+	  }
+	}
 
-  function modifdepartamento($datos)
-  {
-    $this->dep('dr_departamento')->tabla('dt_departamento')->set($datos);
-  }
+	function set_cursordepartamento($seleccion)
+	{
+	  $id = $this->dep('dr_departamento')->tabla('dt_departamento')->get_id_fila_condicion($seleccion);
+	  $this->dep('dr_departamento')->tabla('dt_departamento')->set_cursor($id[0]);
+	}
 
-  function selecciondepartamento($seleccion)
-  {
-    if($this->dep('dr_departamento')->tabla('dt_departamento')->cargar($seleccion)){
-      $id_fila = $this->dep('dr_departamento')->tabla('dt_departamento')->get_id_fila_condicion($seleccion)[0];
-      $this->dep('dr_departamento')->tabla('dt_departamento')->set_cursor($id_fila);
-    }
-  }
+	function guardar_dr_departamento()
+	{
+	  $this->dep('dr_departamento')->sincronizar();
+	  //$this->dep('dr_departamento')->resetear();
+	}
 
-  function borrardepartamento($seleccion)
-  {
-    $this->dep('dr_departamento')->tabla('dt_departamento')->cargar($seleccion);
-    $id_fila = $this->dep('dr_departamento')->tabla('dt_departamento')->get_id_fila_condicion($seleccion)[0];
-    $this->dep('dr_departamento')->tabla('dt_departamento')->set_cursor($id_fila);
-    $this->dep('dr_departamento')->tabla('dt_departamento')->eliminar_fila($id_fila);
-  }
+	function resetear_dr_departamento()
+	{
+	  $this->dep('dr_departamento')->resetear();
+	}
+
+	function set_dt_departamento($datos)
+	{
+	  $this->dep('dr_departamento')->tabla('dt_departamento')->set($datos);
+	}
+
+	function selecciondepartamento($seleccion)
+	{
+	  if($this->dep('dr_departamento')->tabla('dt_departamento')->cargar($seleccion)){
+	    $id_fila = $this->dep('dr_departamento')->tabla('dt_departamento')->get_id_fila_condicion($seleccion)[0];
+	    $this->dep('dr_departamento')->tabla('dt_departamento')->set_cursor($id_fila);
+	  }
+	}
+
+  function get_correo()
+	{
+	  if ($this->dep('dr_departamento')->tabla('dt_correo')->hay_cursor())
+	  {
+	    return $this->dep('dr_departamento')->tabla('dt_correo')->get();
+	  }
+	}
+
+  function set_dt_correo($datos)
+	{
+	  $this->dep('dr_departamento')->tabla('dt_correo')->set($datos);
+	}
 
   /////////////////////////////////////////////////////////////////////////////////////
   //-----------------------------------------------------------------------------------

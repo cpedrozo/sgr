@@ -65,6 +65,18 @@ INSERT INTO apex_objeto_datos_rel (proyecto, objeto, debug, clave, ap, punto_mon
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
+	'1000721', --dep_id
+	'1000778', --objeto_consumidor
+	'1000731', --objeto_proveedor
+	'dt_correo', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	'2'  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
 	'1000580', --dep_id
 	'1000778', --objeto_consumidor
 	'1000766', --objeto_proveedor
@@ -76,3 +88,39 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	'1'  --orden
 );
 --- FIN Grupo de desarrollo 1
+
+------------------------------------------------------------
+-- apex_objeto_datos_rel_asoc
+------------------------------------------------------------
+
+--- INICIO Grupo de desarrollo 1
+INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
+	'sgr', --proyecto
+	'1000778', --objeto
+	'1000046', --asoc_id
+	NULL, --identificador
+	'sgr', --padre_proyecto
+	'1000766', --padre_objeto
+	'dt_departamento', --padre_id
+	NULL, --padre_clave
+	'sgr', --hijo_proyecto
+	'1000731', --hijo_objeto
+	'dt_correo', --hijo_id
+	NULL, --hijo_clave
+	NULL, --cascada
+	'1'  --orden
+);
+--- FIN Grupo de desarrollo 1
+
+------------------------------------------------------------
+-- apex_objeto_rel_columnas_asoc
+------------------------------------------------------------
+INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
+	'sgr', --proyecto
+	'1000778', --objeto
+	'1000046', --asoc_id
+	'1000766', --padre_objeto
+	'1000585', --padre_clave
+	'1000731', --hijo_objeto
+	'1000847'  --hijo_clave
+);

@@ -1,110 +1,142 @@
 <?php
-
-require_once ('operaciones/parametrizacion/perfiles/departamento/dao_departamento.php');
+require_once('operaciones/parametrizacion/perfiles/departamento/dao_departamento.php');
 
 class ci_departamento extends sgr_ci
 {
-	protected $s__datos;
+
+	//-----------------------------------------------------------------------------------
+	//---- Variables ----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
 	protected $s__datos_filtro;
+	protected $s__sqlwhere;
+	protected $s__datos;
 
 	//-----------------------------------------------------------------------------------
 	//---- cuadro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
-	function conf__cuadro($cuadro)
-	{
-		//if (isset($this->s__datos_filtro)) {
-			$filtro = $this->dep('filtro');
-			$filtro->set_datos($this->s__datos_filtro);
-			$sql_where = $filtro->get_sql_where();
-
-			$datos = dao_departamento::get_datos($sql_where);
-			$cuadro->set_datos($datos);
-		//}
-	}
-
-	function evt__cuadro__seleccion($seleccion)
-	{
-		$this->cn()->selecciondepartamento($seleccion);
-		$this->set_pantalla('pant_edicion');
-	}
-
-	function evt__cuadro__borrar($seleccion)
-	{
-		$this->cn()->borrardepartamento($seleccion);
-		$this->evt__procesar();
-	}
-
-	//-----------------------------------------------------------------------------------
-	//---- Eventos ----------------------------------------------------------------------
-	//-----------------------------------------------------------------------------------
-
-	function evt__nuevo()
-	{
-		$this->cn()->resetdepartamento();
-		$this->set_pantalla('pant_edicion');
-	}
-
-	function evt__procesar()
-	{
-		try{
-			$this->cn()->guardardepartamento();
-		}catch (toba_error_db $error) {
-			$sql_state = $error->get_sqlstate();
-			if ($sql_state == 'db_23505'){
-				toba::notificacion()->agregar('Ya existe el departamento', 'info');
+		function conf__cuadro($cuadro)
+		{
+			if (! isset($this->s__datos_filtro)) {
+				$datos = dao_departamento::get_datossinfiltro($this->s__sqlwhere);
+				$cuadro->set_datos($datos);
 			}
-			else {
-				toba::notificacion()->agregar('Error de carga', 'info');
+			else{
+				$datos = dao_departamento::get_datos($this->s__sqlwhere);
+				$cuadro->set_datos($datos);
 			}
 		}
-		$this->cn()->resetdepartamento();
-		$this->set_pantalla('pant_inicial');
-	}
 
-	function evt__cancelar()
-	{
-		$this->cn()->resetdepartamento();
-		$this->set_pantalla('pant_inicial');
-	}
+		function evt__cuadro__seleccion($seleccion)
+		{
+			$this->cn()->cargar_dr_departamento($seleccion);
+			$this->cn()->set_cursordepartamento($seleccion);
+			$this->set_pantalla('pant_edicion');
+		}
+
+		function evt__cuadro__borrar($seleccion)
+		{
+			$this->cn()->cargar_dr_departamento($seleccion);
+			$this->cn()->borrar_dt_departamento($seleccion);
+			try{
+				$this->cn()->guardar_dr_departamento();
+				$this->cn()->resetear_dr_departamento();
+			} catch (toba_error_db $error) {
+				ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
+				toba::notificacion()->agregar('Error de carga', 'info');
+				$this->cn()->resetear_dr_departamento();
+				$this->set_pantalla('pant_inicial');
+			}
+		}
+
+		//-----------------------------------------------------------------------------------
+		//---- Eventos ----------------------------------------------------------------------
+		//-----------------------------------------------------------------------------------
+
+		function evt__nuevo()
+		{
+			$this->cn()->resetear_dr_departamento();
+			$this->set_pantalla('pant_edicion');
+		}
+
+		function evt__procesar()
+		{
+			try{
+				$this->cn()->guardar_dr_departamento();
+			}catch (toba_error_db $error) {
+				$sql_state = $error->get_sqlstate();
+				if ($sql_state == 'db_23505'){
+					toba::notificacion()->agregar('Ya existe el departamento', 'info');
+				}
+				else {
+					//ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
+					toba::notificacion()->agregar('Error de carga', 'info');
+				}
+			}
+			$this->cn()->resetear_dr_departamento();
+			$this->set_pantalla('pant_inicial');
+		}
+
+		function evt__cancelar()
+		{
+			$this->cn()->resetear_dr_departamento();
+			$this->set_pantalla('pant_inicial');
+		}
+
+			//-----------------------------------------------------------------------------------
+			//---- filtro -----------------------------------------------------------------------
+			//-----------------------------------------------------------------------------------
+
+
+		function conf__filtro($filtro)
+		{
+		  if (isset($this->s__datos_filtro))
+			{
+				$filtro->set_datos($this->s__datos_filtro);
+				$this->s__sqlwhere = $filtro->get_sql_where();
+			}
+		}
+
+		function evt__filtro__cancelar()
+		{
+		  unset($this->s__datos_filtro);
+		}
+
+		function evt__filtro__filtrar($datos)
+		{
+		  $this->s__datos_filtro = $datos;
+		}
 
 
 		//-----------------------------------------------------------------------------------
-		//---- filtro -----------------------------------------------------------------------
+		//---- frm --------------------------------------------------------------------------
 		//-----------------------------------------------------------------------------------
 
+		function conf__form(sgr_ei_formulario $form)
+		{
+			$datos = $this->cn()->get_departamento();
+			$form->set_datos($datos);
+		}
 
-	function conf__filtro($filtro)
-	{
-	  if (isset($this->s__datos_filtro)) {
-	    $filtro->set_datos($this->s__datos_filtro);
-	  }
-	}
+		function evt__form__modificacion($datos)
+		{
+			$this->cn()->set_dt_departamento($datos);
+		}
 
-	function evt__filtro__cancelar()
-	{
-	  unset($this->s__datos_filtro);
-	}
+		//-----------------------------------------------------------------------------------
+		//---- frm_correo -------------------------------------------------------------------
+		//-----------------------------------------------------------------------------------
 
-	function evt__filtro__filtrar($datos)
-	{
-	  $this->s__datos_filtro = $datos;
-	}
+		function conf__form_correo(sgr_ei_formulario $form)
+		{
+			$datos = $this->cn()->get_correo();
+			$form->set_datos($datos);
+		}
 
-	//-----------------------------------------------------------------------------------
-	//---- frm --------------------------------------------------------------------------
-	//-----------------------------------------------------------------------------------
+		function evt__form_correo__modificacion($datos)
+		{
+			$this->cn()->set_dt_correo($datos);
+		}
 
-	function conf__form($form)
-	{
-		$this->cn()->cargardepartamento($form);
-	}
-
-	function evt__form__modificacion($datos)
-	{
-		$this->cn()->modifdepartamento($datos);
-	}
 }
-
-
 ?>
