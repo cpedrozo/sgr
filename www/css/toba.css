@@ -44,3 +44,19 @@
     text-align: center;
     background-color: transparent;
 }
+
+.ef-ver-fijo_suc_dpto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000;
+	font-weight: 500;
+	font-size: 14px;
+	padding: 5px 0px 9px 15px;
+}
+
+.ei-form-etiq-oblig2 {
+	float: left;
+	margin-right: 4px;
+	line-height: 23px;
+	font-weight: bold;
+	padding: 2px 0px 9px 0px;
+}

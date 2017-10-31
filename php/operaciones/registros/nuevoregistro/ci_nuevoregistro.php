@@ -1,5 +1,4 @@
 <?php
-
 require_once('operaciones/metodosconsulta/flujosyregistros.php');
 require_once('operaciones/metodosconsulta/operaciones.php');
 
@@ -108,10 +107,12 @@ class ci_nuevoregistro extends sgr_ci
 		}
 		else {
 			$datos = flujosyregistros::get_estadodestino($variable['id_estadoorigen'],$variable['id_workflow']);
+			$datos2 = flujosyregistros::get_dpto($variable['id_workflow']);
 			$datos[] = ['iddestino' => 'nopar', 'nombredestino' => '[Sin definir]'];
 			$this->informar_a_toba_opciones_ef($datos, 'iddestino', 'form_workflow', 'id_estado');
-			//ei_arbol($datos);
-			$respuesta->set($datos);
+			$datos3['estadosdestino'] = $datos;
+			$datos3['dpto'] = $datos2;
+			$respuesta->set($datos3);
 		}
 	}
 
@@ -149,5 +150,4 @@ class ci_nuevoregistro extends sgr_ci
 	}
 
 }
-
 ?>

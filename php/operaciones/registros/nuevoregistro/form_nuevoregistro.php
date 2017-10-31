@@ -51,17 +51,33 @@ class form_nuevoregistro extends sgr_ei_formulario
 			ids_flujo['id_workflow'] = {$this->objeto_js}.ef('id_workflow').get_estado();
 			ids_flujo['id_estadoorigen'] = js_form_1000890_form_estado_actual.ef('id_estado').get_estado();
 			this.controlador.ajax('traerinfo_flujodetrabajo', ids_flujo, this, this.respflujo);
+			vinculador.agregar_parametros(js_form_1000896_form_ml_requisitos.ef('id_persona')._vinculo, {id_workflow_filtrodefecto: ids_flujo['id_workflow']});
 		}
 
 
     {$this->objeto_js}.respflujo = function(datos2)
 		{
-      var opciones = [];
-      datos2.forEach(function(elemento)
-      {
-        opciones[elemento['iddestino']] = elemento['nombredestino'];
-      })
-      js_form_1000895_form_workflow.ef('id_estado').set_opciones(opciones);
+			if (typeof datos2 === 'object') {
+				console.log('datos2')
+				console.log(datos2)
+				if (('estadosdestino' in datos2) && ('dpto' in datos2)) {
+					var datos = datos2.dpto;
+					datos2 = datos2.estadosdestino;
+					console.log('datos2 otra vez')
+					console.log(datos2)
+					var opciones = [];
+					datos2.forEach(function(elemento)
+					{
+						opciones[elemento['iddestino']] = elemento['nombredestino'];
+					})
+					js_form_1000895_form_workflow.ef('id_estado').set_opciones(opciones);
+
+					console.log('datos')
+					datos = datos[0];
+					this.ef('id_sucursal').set_estado(datos['suc']);
+					this.ef('id_dpto').set_estado(datos['dpto']);
+				}
+			}
 		}
 		";
 	}

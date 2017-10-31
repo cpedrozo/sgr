@@ -507,9 +507,16 @@ class cn_parametrizacion extends sgr_cn
 
   function get_correo()
 	{
-	  if ($this->dep('dr_departamento')->tabla('dt_correo')->hay_cursor())
+	  if ($this->dep('dr_departamento')->tabla('dt_departamento')->hay_cursor())
 	  {
-	    return $this->dep('dr_departamento')->tabla('dt_correo')->get();
+      if (!$this->dep('dr_departamento')->tabla('dt_correo')->hay_cursor())
+       {
+         $datos=$this->dep('dr_departamento')->tabla('dt_correo')->get_filas();
+         if (count($datos)>0){
+           $datos=$this->dep('dr_departamento')->tabla('dt_correo')->set_cursor(0);
+         }
+       }
+      return $this->dep('dr_departamento')->tabla('dt_correo')->get();
 	  }
 	}
 

@@ -80,6 +80,15 @@ class cn_registros_bm extends sgr_cn
   //---- ABM sgr_form_estado_actual ---------------------------------------------------
   //-----------------------------------------------------------------------------------
 
+
+  function get_estadoactual()
+  {
+    if ($this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->hay_cursor())
+    {
+      return $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->get();
+    }
+  }
+
   function cargarestadoactual($form)
   {
     if ($this->dep('dr_registro')->tabla('dt_registro')->hay_cursor()) {
@@ -125,7 +134,12 @@ class cn_registros_bm extends sgr_cn
 
   function modifestado($datos)
   {
-    $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set($datos);
+    $datos_viejo = $this->get_estadoactual();
+    $datos_viejo['activo'] = false;
+    $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set($datos_viejo);
+    $id_fila = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->anexar_datos([$datos]);
+    $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->forzar_insercion(false, $id_fila);
+    $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set_cursor($id_fila[0]);
   }
 
   //-----------------------------------------------------------------------------------

@@ -16,6 +16,11 @@ class ci_flujoseventos extends sgr_ci
 	//---- cuadro --------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
+	function get_seleccion()
+	{
+		return $this->s__datos['seleccion'];
+	}
+
 	function conf__cuadro($cuadro)
 	{
 	  if (! isset($this->s__datos_filtro)) {
@@ -30,6 +35,7 @@ class ci_flujoseventos extends sgr_ci
 
 	function evt__cuadro__seleccion($seleccion)
 	{
+		$this->s__datos['seleccion'] = $seleccion;
 	  $this->cn()->cargar_dr_flujoseventos($seleccion);
 	  $this->cn()->set_cursorflujoseventos($seleccion);
 	  $this->set_pantalla('pant_edicion');

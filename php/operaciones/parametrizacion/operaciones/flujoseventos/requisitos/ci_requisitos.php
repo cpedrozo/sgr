@@ -1,5 +1,4 @@
 <?php
-
 require_once('operaciones/parametrizacion/operaciones/flujoseventos/requisitos/dao_requisitos.php');
 
 class ci_requisitos extends sgr_ci
@@ -50,20 +49,25 @@ class ci_requisitos extends sgr_ci
 	  $this->set_pantalla('pant_edicion');
 	}
 
+	function guardar_registros()
+	{
+		try{
+			$this->cn()->guardarrequisitos();
+		}catch (toba_error_db $error) {
+			$sql_state = $error->get_sqlstate();
+			if ($sql_state == 'db_23505'){
+				toba::notificacion()->agregar('Ya existe el requisito', 'info');
+			}
+			else {
+				toba::notificacion()->agregar('Error de carga', 'info');
+			}
+		}
+		$this->cn()->resetrequisitos();
+	}
+
 	function evt__procesar()
 	{
-	  try{
-	    $this->cn()->guardarrequisitos();
-	  }catch (toba_error_db $error) {
-	    $sql_state = $error->get_sqlstate();
-	    if ($sql_state == 'db_23505'){
-	      toba::notificacion()->agregar('Ya existe el requisito', 'info');
-	    }
-	    else {
-	      toba::notificacion()->agregar('Error de carga', 'info');
-	    }
-	  }
-	  $this->cn()->resetrequisitos();
+		$this->guardar_registros();
 	  $this->controlador()->set_pantalla('pant_inicial');
 	}
 
@@ -145,6 +149,14 @@ class ci_requisitos extends sgr_ci
 	function evt__form_ml_requisitos__modificacion($datos)
 	{
 	  $this->cn()->procesarrequisitos($datos);
+	}
+
+	function evt__form_ml_requisitos__guardar($datos)
+	{
+		$this->evt__form_ml_requisitos__modificacion($datos);
+		$this->guardar_registros();
+		$seleccion = $this->controlador()->get_seleccion();
+		$this->controlador()->evt__cuadro__seleccion($seleccion);
 	}
 
 	//-----------------------------------------------------------------------------------

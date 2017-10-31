@@ -1,3 +1,9 @@
 INSERT INTO sgr.requisitos(id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, nombre, obligatorio, orden, persona) values (1,1,2,4,'Foto',TRUE,1,TRUE);
 INSERT INTO sgr.requisitos(id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, nombre, obligatorio, orden, persona) values (2,1,2,4,'Antecedentes policiales',TRUE,2,FALSE);
 INSERT INTO sgr.requisitos(id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, nombre, obligatorio, orden, persona) values (3,1,2,4,'Una manzana',TRUE,3,FALSE);
+
+
+
+
+INSERT INTO sgr.requisitos ( id_estadoorigen, id_estadodestino, id_workflow, nombre, obligatorio, orden, persona ) 
+ VALUES ('2', '4', '4', 'Receptor', '1', DEFAULT, '1')

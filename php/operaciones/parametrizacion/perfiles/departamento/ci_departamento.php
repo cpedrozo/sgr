@@ -130,7 +130,11 @@ class ci_departamento extends sgr_ci
 		function conf__form_correo(sgr_ei_formulario $form)
 		{
 			$datos = $this->cn()->get_correo();
-			$form->set_datos($datos);
+			if (count($datos) == 0){
+				$form->set_datos_defecto(dao_departamento::get_tipocorreo());
+			} else {
+				$form->set_datos($datos);
+			}
 		}
 
 		function evt__form_correo__modificacion($datos)

@@ -36,5 +36,15 @@ class dao_departamento
       $resultado = consultar_fuente($sql);
       return $resultado;
     }
+
+    static function get_tipocorreo()
+    {
+      $sql = "SELECT id_tipocorreo
+              FROM sgr.tipocorreo
+              WHERE nombre like '%LABORAL%'";
+
+      $resultado = consultar_fuente($sql);
+      return $resultado[0];
+    }
 }
 ?>

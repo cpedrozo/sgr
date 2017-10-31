@@ -21,6 +21,18 @@ class flujosyregistros
   return $datos;
   }
 
+  static function get_dpto($id_workflow)
+  {
+  $id_worfklow = quote ($id_workflow);
+  $sql = "SELECT w.id_workflow, d.nombre dpto, s.nombre suc, d.id_dpto, s.id_sucursal
+          FROM sgr.workflow w
+          JOIN sgr.dpto d on w.id_dpto = d.id_dpto
+          JOIN sgr.sucursal s on d.id_sucursal = s.id_sucursal
+          WHERE w.id_workflow = $id_worfklow";
+  $datos = consultar_fuente($sql);
+  return $datos;
+  }
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////  form_workflow.php con ajax para mostrar requisitos  //////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +82,5 @@ class flujosyregistros
       return 'no';
     }
   }
-
 }
 ?>

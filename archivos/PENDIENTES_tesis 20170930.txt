@@ -9,9 +9,6 @@ PROCESOS INTELIGENTES
   Mediante el empleado cargado al dar de alta el registro en el sistema
 (si no posee e-mail informar por pantalla al usuario que no se notificó)
 
-3	Selección simplificada de destinatarios: Indica a quien corresponde la documentación
-  En el Workflow se debe dar de alta a qué dpto. corresponde cada documento
-
 4	Notificación de retiros pendientes: Informar a los dptos. que tienen retiros pendientes
   En la tabla de requisitos_registro se tiene el dato del empleado, mediante éste se obtendrá el dpto. al que corresponde. Y con el dpto. se obtendrá la dirección de email del mismo para notificar que tienen pendiente de retiro una o más documentación/es.
 
@@ -19,11 +16,18 @@ PROCESOS INTELIGENTES
 
 	Llamadas / Documentos / Objetos / Personas
 
-
-// Agregar campo para mostrar el numero de registro (simil numero de gestion - hekpdesk)
-// Los comentarios del paso de estado deben ser 1 por fase, no por paso.
+RESUELTO
+// Al finalizar un registro no se guarda el último estado, tampoco los valores del campo observacion. Si guardo los cambios con "GUARDAR" si persisten los cambios...
+Por otra parte, cuando paso de un estado a otro, en lugar de crear un nuevo registro, modifica el anterior, de esta manera, no tengo histórico.
 
 // Al modificar un flujo por evento, cada vez que cargo un requisito, tengo que darle guardar, al darle guardar me lleva a la pant inicio, si quiero seguiro modificando tengo que volver a entrar, es engorroso.
 
-// Al finalizar un registro no se guarda el último estado, tampoco los valores del campo observacion. Si guardo los cambios con "GUARDAR" si persisten los cambios...
-Por otra parte, cuando paso de un estado a otro, en lugar de crear un nuevo registro, modifica el anterior, de esta manera, no tengo histórico.
+// Los comentarios del paso de estado deben ser 1 por fase, no por paso.
+
+// Agregar campo para mostrar el numero de registro (simil numero de gestion - hekpdesk)
+
+
+
+3	Selección simplificada de destinatarios: Indica a quien corresponde la documentación
+  En el Workflow se debe dar de alta a qué dpto. corresponde cada documento
+Al momento de seleccionar una persona vinculada al registro filtra automaticamente el personal del dpto afectado.

@@ -199,9 +199,11 @@ class ci_historicoregistro extends sgr_ci
 		}
 		else {
 			$datos = flujosyregistros::get_estadodestino($variable['id_estadoorigen'],$variable['id_workflow']);
+			$datos2 = flujosyregistros::get_dpto($variable['id_workflow']);
 			$datos[] = ['iddestino' => 'nopar', 'nombredestino' => '[Sin definir]'];
 			$this->informar_a_toba_opciones_ef($datos, 'iddestino', 'form_workflow', 'id_estado');
-			//ei_arbol($datos);
+			$datos['estadosdestino'] = $datos;
+			$datos['dpto'] = $datos2;
 			$respuesta->set($datos);
 		}
 	}

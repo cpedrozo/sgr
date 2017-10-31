@@ -1,6 +1,6 @@
 <?php
 require_once('operaciones/abm/personas/dao_personas.php');
-
+require_once('operaciones/metodosconsulta/flujosyregistros.php');
 class ci_personas extends sgr_ci
 {
 
@@ -108,9 +108,28 @@ class ci_personas extends sgr_ci
 		//---- filtro -----------------------------------------------------------------------
 		//-----------------------------------------------------------------------------------
 
+	function crear_valores_filtro_sucursal_segun_workflow($id_workflow)
+	{
+		$ids = flujosyregistros::get_dpto($id_workflow);
+		$datos_filtro = ['id_sucursal' => ['condicion' =>	'es_igual_a',
+																			 'valor' 	   => $ids[0]['id_sucursal']],
+										 'id_dpto'     => ['condicion' =>	'es_igual_a',
+								 									     'valor' 	   => $ids[0]['id_dpto']]];
+		return $datos_filtro;
+	}
 
 	function conf__filtro($filtro)
 	{
+		if (!isset($this->s__datos['id_workflow_filtrodefecto'])) {
+			$id_workflow_filtrodefecto = toba::memoria()->get_parametro('id_workflow_filtrodefecto');
+			if (isset($id_workflow_filtrodefecto)) {
+				$this->s__datos['id_workflow_filtrodefecto'] = $id_workflow_filtrodefecto;
+				if (!isset($this->s__datos_filtro)) {
+					$this->s__datos_filtro = [];
+				}
+				$this->s__datos_filtro = array_merge($this->s__datos_filtro, $this->crear_valores_filtro_sucursal_segun_workflow($id_workflow_filtrodefecto));
+			}
+		}
 	  if (isset($this->s__datos_filtro))
 		{
 			$filtro->set_datos($this->s__datos_filtro);
