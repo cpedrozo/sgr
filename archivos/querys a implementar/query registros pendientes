@@ -1,0 +1,10 @@
+﻿SELECT r.id_registro||': '||w.nombre||' - '||r.nombre registro, d.nombre dpto, c.correo, r.fecha_fin
+FROM sgr.registro r
+JOIN sgr.workflow w on r.id_workflow = w.id_workflow
+JOIN sgr.dpto d on w.id_dpto = d.id_dpto
+JOIN sgr.correo c on d.id_dpto = c.id_dpto
+WHERE r.fecha_fin is null
+--AND w.notifica is TRUE
+ORDER BY 1 ASC
+
+select * from sgr.registro

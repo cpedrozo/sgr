@@ -616,17 +616,17 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'1000889', --objeto_ei_formulario
 	'sgr', --objeto_ei_formulario_proyecto
 	'id_sucursal', --identificador
-	'ef_combo', --elemento_formulario
+	'ef_fijo', --elemento_formulario
 	'id_sucursal', --columnas
-	'1', --obligatorio
+	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'4', --orden
 	'Sucursal', --etiqueta
-	NULL, --etiqueta_estilo
+	'ei-form-etiq-oblig2', --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
 	'0', --desactivado
-	NULL, --estilo
+	'ef-ver-fijo_suc_dpto', --estilo
 	NULL, --total
 	NULL, --inicializacion
 	'0', --permitir_html
@@ -634,7 +634,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --estado_defecto
 	'0', --solo_lectura
 	'0', --solo_lectura_modificacion
-	'get_sucursal', --carga_metodo
+	NULL, --carga_metodo
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
@@ -676,7 +676,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --check_desc_si
 	NULL, --check_desc_no
 	NULL, --check_ml_toggle
-	NULL, --fijo_sin_estado
+	'0', --fijo_sin_estado
 	NULL, --editor_ancho
 	NULL, --editor_alto
 	NULL, --editor_botonera
@@ -696,17 +696,17 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'1000889', --objeto_ei_formulario
 	'sgr', --objeto_ei_formulario_proyecto
 	'id_dpto', --identificador
-	'ef_combo', --elemento_formulario
+	'ef_fijo', --elemento_formulario
 	'id_dpto', --columnas
-	'1', --obligatorio
+	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'5', --orden
 	'Departamento', --etiqueta
-	NULL, --etiqueta_estilo
+	'ei-form-etiq-oblig2', --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
 	'0', --desactivado
-	NULL, --estilo
+	'ef-ver-fijo_suc_dpto', --estilo
 	NULL, --total
 	NULL, --inicializacion
 	'0', --permitir_html
@@ -714,9 +714,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --estado_defecto
 	'0', --solo_lectura
 	'0', --solo_lectura_modificacion
-	'get_dpto_suc', --carga_metodo
-	'metodosconsulta', --carga_clase
-	'operaciones/metodosconsulta/metodosconsulta.php', --carga_include
+	NULL, --carga_metodo
+	'abmdomicilioycontacto', --carga_clase
+	'operaciones/metodosconsulta/abmdomicilioycontacto.php', --carga_include
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	NULL, --carga_sql
@@ -724,7 +724,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_lista
 	'id_dpto', --carga_col_clave
 	'nombre', --carga_col_desc
-	'id_sucursal', --carga_maestros
+	NULL, --carga_maestros
 	'0', --carga_cascada_relaj
 	'0', --cascada_mantiene_estado
 	'1', --carga_permite_no_seteado
@@ -756,7 +756,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --check_desc_si
 	NULL, --check_desc_no
 	NULL, --check_ml_toggle
-	NULL, --fijo_sin_estado
+	'0', --fijo_sin_estado
 	NULL, --editor_ancho
 	NULL, --editor_alto
 	NULL, --editor_botonera

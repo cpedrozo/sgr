@@ -11,7 +11,7 @@
  </source-databases>
  <target-database id="ppdb" dbcs-ref="DS0">
   <table id="TAB1" populated="true" UUID="f484ca41-ad8e-4143-8c07-40051ae3108b" name="estado_actual_flujo" objectType="TABLE" physicalName="estado_actual_flujo" >
-   <remarks></remarks>
+   <remarks>contiene historico de cambios de estado</remarks>
    <folder id="FOLTAB11" populated="true" name="Columns" physicalName="Columns" type="1">
     <column id="COL2" populated="true" UUID="f19bc265-14cd-49fc-984c-afa072837274" autoIncrement="true" autoIncrementSequenceName="estado_actual_flujo_id_estado_actual_seq" defaultValue="" name="id_estado_actual" nullable="0" physicalName="id_estado_actual" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
@@ -22,10 +22,10 @@
     <column id="COL4" populated="true" UUID="836680b6-5a70-4242-b2c3-05a6d69e6d5f" autoIncrement="false" autoIncrementSequenceName="estado_actual_flujo_activo_seq" defaultValue="TRUE" name="activo" nullable="1" physicalName="activo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
      <remarks></remarks>
     </column>
-    <column id="COL5" populated="true" UUID="07f9d0c0-be5d-455c-bd6c-d5b62f15663c" autoIncrement="false" autoIncrementSequenceName="estado_id_estado_seq_1" defaultValue="" name="id_estado" nullable="0" physicalName="id_estado" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
+    <column id="COL5" populated="true" UUID="07f9d0c0-be5d-455c-bd6c-d5b62f15663c" autoIncrement="false" autoIncrementSequenceName="estado_actual_flujo_id_estado_seq" defaultValue="" name="id_estado" nullable="0" physicalName="id_estado" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL6" populated="true" UUID="fe26bdcd-7bea-4965-b53d-cfba61db226c" autoIncrement="false" autoIncrementSequenceName="registro_id_registro_seq" defaultValue="" name="id_registro" nullable="0" physicalName="id_registro" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
+    <column id="COL6" populated="true" UUID="fe26bdcd-7bea-4965-b53d-cfba61db226c" autoIncrement="false" autoIncrementSequenceName="estado_actual_flujo_id_registro_seq" defaultValue="" name="id_registro" nullable="0" physicalName="id_registro" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     </folder>
@@ -1092,7 +1092,7 @@ F/M/Otro</remarks>
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="sgr"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="sgr"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="0.9999999999999989" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">

@@ -1,0 +1,7 @@
+﻿select ea.id_estado_actual, ea.fecha_inicio, ea.activo, e.nombre estado, r.id_registro||': '||r.nombre registro --, ea.observacion, p.apellido||', '||p.nombre apynom
+from sgr.estado_actual_flujo ea
+JOIN sgr.estado e on ea.id_estado = e.id_estado
+JOIN sgr.registro r on ea.id_registro = r.id_registro
+--JOIN sgr.persona p on ea.id_persona = p.id_persona
+where ea.id_registro = 14
+order by 2 asc

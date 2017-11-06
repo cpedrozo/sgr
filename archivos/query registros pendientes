@@ -1,4 +1,0 @@
-﻿SELECT d.nombre, c.correo
-FROM sgr.dpto d
-JOIN sgr.correo c on d.id_dpto = c.id_dpto
-JOIN sgr.registro r on 

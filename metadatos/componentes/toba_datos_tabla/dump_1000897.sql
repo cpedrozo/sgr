@@ -223,6 +223,20 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'1', --externa
 	NULL  --tabla
 );
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'sgr', --objeto_proyecto
+	'1000897', --objeto
+	'1000852', --col_id
+	'id_requisitos_registro', --columna
+	'E', --tipo
+	'1', --pk
+	'requisitos_registro_id_requisitos_registro_seq', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'1', --no_nulo_db
+	'0', --externa
+	'requisitos_registro'  --tabla
+);
 --- FIN Grupo de desarrollo 1
 
 ------------------------------------------------------------
