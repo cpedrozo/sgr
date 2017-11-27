@@ -1,0 +1,10 @@
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (1,'(011) 4321-7300','333','3','4','1',DEFAULT);
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (2,'(03757) 420420','444','3','4','2',DEFAULT);
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (3,'(03757) 421421','555','3','4','3',DEFAULT);
+
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (4,'3757-540420','-','1','1',DEFAULT,'1');
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (5,'(03757) 420420','120','3','4',DEFAULT,'2');
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (6,'(03757) 420420','121','3','4',DEFAULT,'3');
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (7,'3757-404040','-','1','2',DEFAULT,'4');
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (8,'(03757) 423212','-','2','4',DEFAULT,'5');
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (9,'(03757) 421413','-','2','4',DEFAULT,'6');

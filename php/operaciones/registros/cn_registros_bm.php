@@ -89,7 +89,7 @@ class cn_registros_bm extends sgr_cn
     }
   }
 
-  function cargarestadoactual($form)
+  function get_estadoactual_activo()
   {
     if ($this->dep('dr_registro')->tabla('dt_registro')->hay_cursor()) {
       if (!$this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->hay_cursor()) {
@@ -100,12 +100,19 @@ class cn_registros_bm extends sgr_cn
       $datos = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->get();
       $datos['activo']=$datos['activo']?'Si':'No';
       $ea = [];
-      $ea[]=['id_estado'=>$datos['id_estado'],'nombre'=>$datos['nombre']];
-      $form->set_datos($datos);
+      $ea[]=[['id_estado'=>$datos['id_estado'],'nombre'=>$datos['nombre']]];
+      $ea[]=$datos;
       return $ea;
     } else {
       return [];
     }
+  }
+
+  function cargarestadoactual($form)
+  {
+    $ea = $this->get_estadoactual_activo();
+    $form->set_datos($ea[1]);
+    return $ea[0];
   }
 
   function modifestadoactual($datos)
@@ -128,6 +135,9 @@ class cn_registros_bm extends sgr_cn
   {
     if ($this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->hay_cursor()) {
       $datos = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->get();
+      $datos2 = $this->get_estadoactual_activo()[1];
+      $datos['observacion'] = $datos2['observacion'];
+      $datos['id_persona'] = $datos2['id_persona'];
       $form->set_datos($datos);
     }
   }

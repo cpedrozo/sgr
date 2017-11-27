@@ -86,20 +86,6 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'sgr', --objeto_proyecto
 	'1000839', --objeto
-	'1000765', --col_id
-	'fecha_inicio', --columna
-	'T', --tipo
-	'0', --pk
-	'', --secuencia
-	NULL, --largo
-	NULL, --no_nulo
-	'1', --no_nulo_db
-	'0', --externa
-	'estado_actual_flujo'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'sgr', --objeto_proyecto
-	'1000839', --objeto
 	'1000767', --col_id
 	'activo', --columna
 	'L', --tipo
@@ -152,6 +138,48 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'0', --no_nulo_db
 	'1', --externa
 	NULL  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'sgr', --objeto_proyecto
+	'1000839', --objeto
+	'1000853', --col_id
+	'fecha', --columna
+	'T', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'1', --no_nulo_db
+	'0', --externa
+	'estado_actual_flujo'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'sgr', --objeto_proyecto
+	'1000839', --objeto
+	'1000854', --col_id
+	'observacion', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'350', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'estado_actual_flujo'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'sgr', --objeto_proyecto
+	'1000839', --objeto
+	'1000855', --col_id
+	'id_persona', --columna
+	'E', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'estado_actual_flujo'  --tabla
 );
 --- FIN Grupo de desarrollo 1
 

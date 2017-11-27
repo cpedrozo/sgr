@@ -1,0 +1,104 @@
+ 
+Info: Ejecutando archivo drop-database.sql
+Ok drop-database.sql
+ 
+Info: Ejecutando archivo Power_Architect/script_db/script create db.txt
+Ok Power_Architect/script_db/script create db.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/01 - Insert Paises.txt
+Ok 01 - Querys Insert parametros/01 - Insert Paises.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/02 - Insert Prov.txt
+Ok 01 - Querys Insert parametros/02 - Insert Prov.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/03 - Insert Ciudades.txt
+Ok 01 - Querys Insert parametros/03 - Insert Ciudades.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/04 - Insert TipoTel.txt
+Ok 01 - Querys Insert parametros/04 - Insert TipoTel.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/05 - Insert Compania.txt
+Ok 01 - Querys Insert parametros/05 - Insert Compania.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/06 - Insert Nacionalidad.txt
+Ok 01 - Querys Insert parametros/06 - Insert Nacionalidad.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/07 - Insert Sucursal.txt
+Ok 01 - Querys Insert parametros/07 - Insert Sucursal.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/08 - Insert Dpto.txt
+Ok 01 - Querys Insert parametros/08 - Insert Dpto.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/09 - Insert Sector.txt
+Ok 01 - Querys Insert parametros/09 - Insert Sector.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/09 - Insert tipocorreo.txt
+Ok 01 - Querys Insert parametros/09 - Insert tipocorreo.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/10 - Insert Rol.txt
+Ok 01 - Querys Insert parametros/10 - Insert Rol.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/11 - Insert Genero.txt
+Ok 01 - Querys Insert parametros/11 - Insert Genero.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/12 - Insert EstadoCivil.txt
+Ok 01 - Querys Insert parametros/12 - Insert EstadoCivil.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/13 - Insert camposempleado.txt
+Ok 01 - Querys Insert parametros/13 - Insert camposempleado.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/14 - Insert tipo_doc.txt
+Ok 01 - Querys Insert parametros/14 - Insert tipo_doc.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/15 - Inser propietario.txt
+Ok 01 - Querys Insert parametros/15 - Inser propietario.txt
+ 
+Info: Ejecutando archivo 01 - Querys Insert parametros/16 - Insert rubro.txt
+Ok 01 - Querys Insert parametros/16 - Insert rubro.txt
+ 
+Info: Ejecutando archivo 02 - Querys Insert entidades, personas/01 - entidades.txt
+Ok 02 - Querys Insert entidades, personas/01 - entidades.txt
+ 
+Info: Ejecutando archivo 02 - Querys Insert entidades, personas/02 - personas.txt
+Ok 02 - Querys Insert entidades, personas/02 - personas.txt
+ 
+Info: Ejecutando archivo 02 - Querys Insert entidades, personas/03 - domicilio.txt
+Ok 02 - Querys Insert entidades, personas/03 - domicilio.txt
+ 
+Info: Ejecutando archivo 02 - Querys Insert entidades, personas/04 - tel.txt
+Ok 02 - Querys Insert entidades, personas/04 - tel.txt
+ 
+Info: Ejecutando archivo 02 - Querys Insert entidades, personas/05 - correo.txt
+Ok 02 - Querys Insert entidades, personas/05 - correo.txt
+ 
+Info: Ejecutando archivo 03 - Querys Insert workflow/01 - TipoEvento
+Ok 03 - Querys Insert workflow/01 - TipoEvento
+ 
+Info: Ejecutando archivo 03 - Querys Insert workflow/02 - Evento
+Ok 03 - Querys Insert workflow/02 - Evento
+ 
+Info: Ejecutando archivo 03 - Querys Insert workflow/03 - Estado
+Ok 03 - Querys Insert workflow/03 - Estado
+ 
+Info: Ejecutando archivo 03 - Querys Insert workflow/04 - Workflow
+Ok 03 - Querys Insert workflow/04 - Workflow
+ 
+Info: Ejecutando archivo 03 - Querys Insert workflow/05 - Flujo
+Ok 03 - Querys Insert workflow/05 - Flujo
+ 
+Info: Ejecutando archivo 04 - Querys Insert registro, estado_actual_flujo/01 - Insert Requisitos
+Ok 04 - Querys Insert registro, estado_actual_flujo/01 - Insert Requisitos
+ 
+Info: Ejecutando archivo 04 - Querys Insert registro, estado_actual_flujo/02 - Insert Registro
+Ok 04 - Querys Insert registro, estado_actual_flujo/02 - Insert Registro
+ 
+Info: Ejecutando archivo 04 - Querys Insert registro, estado_actual_flujo/03 - Requisitos_registro
+Ok 04 - Querys Insert registro, estado_actual_flujo/03 - Requisitos_registro
+ 
+Info: Ejecutando archivo 04 - Querys Insert registro, estado_actual_flujo/04 - Insert estado_actual_flujo.txt
+ setval 
+--------
+      3
+(1 row)
+
+Ok 04 - Querys Insert registro, estado_actual_flujo/04 - Insert estado_actual_flujo.txt

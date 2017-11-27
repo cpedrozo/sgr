@@ -1,0 +1,841 @@
+CREATE SCHEMA sgr;
+
+CREATE SEQUENCE sgr.rubro_id_rubro_seq_1;
+
+CREATE TABLE sgr.rubro (
+                id_rubro BIGINT NOT NULL DEFAULT nextval('sgr.rubro_id_rubro_seq_1'),
+                nombre VARCHAR(50) NOT NULL,
+                CONSTRAINT rubro_pk PRIMARY KEY (id_rubro)
+);
+
+
+ALTER SEQUENCE sgr.rubro_id_rubro_seq_1 OWNED BY sgr.rubro.id_rubro;
+
+CREATE UNIQUE INDEX rubro_idx
+ ON sgr.rubro
+ ( nombre );
+
+CREATE SEQUENCE sgr.tipo_doc_id_tipo_doc_seq_1;
+
+CREATE TABLE sgr.tipo_doc (
+                id_tipo_doc BIGINT NOT NULL DEFAULT nextval('sgr.tipo_doc_id_tipo_doc_seq_1'),
+                nombre VARCHAR(30) NOT NULL,
+                CONSTRAINT tipo_doc_pk PRIMARY KEY (id_tipo_doc)
+);
+
+
+ALTER SEQUENCE sgr.tipo_doc_id_tipo_doc_seq_1 OWNED BY sgr.tipo_doc.id_tipo_doc;
+
+CREATE SEQUENCE sgr.tipo_evento_id_tipoevento_seq_1_1;
+
+CREATE TABLE sgr.tipo_evento (
+                id_tipoevento BIGINT NOT NULL DEFAULT nextval('sgr.tipo_evento_id_tipoevento_seq_1_1'),
+                nombre VARCHAR(30) NOT NULL,
+                CONSTRAINT tipo_evento_pk PRIMARY KEY (id_tipoevento)
+);
+
+
+ALTER SEQUENCE sgr.tipo_evento_id_tipoevento_seq_1_1 OWNED BY sgr.tipo_evento.id_tipoevento;
+
+CREATE UNIQUE INDEX tipo_evento_idx
+ ON sgr.tipo_evento
+ ( nombre );
+
+CREATE SEQUENCE sgr.camposempleado_id_camposempleado_seq_1;
+
+CREATE TABLE sgr.camposempleado (
+                id_camposempleado BIGINT NOT NULL DEFAULT nextval('sgr.camposempleado_id_camposempleado_seq_1'),
+                nombre VARCHAR(5) NOT NULL,
+                CONSTRAINT camposempleado_pk PRIMARY KEY (id_camposempleado)
+);
+
+
+ALTER SEQUENCE sgr.camposempleado_id_camposempleado_seq_1 OWNED BY sgr.camposempleado.id_camposempleado;
+
+CREATE UNIQUE INDEX camposempleado_idx
+ ON sgr.camposempleado
+ ( nombre );
+
+CREATE SEQUENCE sgr.genero_id_genero_seq;
+
+CREATE TABLE sgr.genero (
+                id_genero BIGINT NOT NULL DEFAULT nextval('sgr.genero_id_genero_seq'),
+                nombre VARCHAR(10) NOT NULL,
+                CONSTRAINT genero_pk PRIMARY KEY (id_genero)
+);
+COMMENT ON TABLE sgr.genero IS 'Género de las personas
+F/M/Otro';
+
+
+ALTER SEQUENCE sgr.genero_id_genero_seq OWNED BY sgr.genero.id_genero;
+
+CREATE UNIQUE INDEX sexo_idx
+ ON sgr.genero
+ ( nombre );
+
+CREATE SEQUENCE sgr.tipocorreo_id_tipocorreo_seq_1;
+
+CREATE TABLE sgr.tipocorreo (
+                id_tipocorreo BIGINT NOT NULL DEFAULT nextval('sgr.tipocorreo_id_tipocorreo_seq_1'),
+                nombre VARCHAR(15) NOT NULL,
+                CONSTRAINT tipocorreo_pk PRIMARY KEY (id_tipocorreo)
+);
+
+
+ALTER SEQUENCE sgr.tipocorreo_id_tipocorreo_seq_1 OWNED BY sgr.tipocorreo.id_tipocorreo;
+
+CREATE UNIQUE INDEX tipocorreo_idx
+ ON sgr.tipocorreo
+ ( nombre );
+
+CREATE SEQUENCE sgr.propietario_id_propietario_seq;
+
+CREATE TABLE sgr.propietario (
+                id_propietario BIGINT NOT NULL DEFAULT nextval('sgr.propietario_id_propietario_seq'),
+                nombre VARCHAR(100) NOT NULL,
+                direccion VARCHAR(150) NOT NULL,
+                telefono VARCHAR(21),
+                cuit VARCHAR(13) NOT NULL,
+                logo_grande BYTEA,
+                logo_chico BYTEA,
+                activo BOOLEAN,
+                CONSTRAINT propietario_pk PRIMARY KEY (id_propietario)
+);
+COMMENT ON TABLE sgr.propietario IS 'Datos de la empresa que usa el sw para exhibir en membretes';
+
+
+ALTER SEQUENCE sgr.propietario_id_propietario_seq OWNED BY sgr.propietario.id_propietario;
+
+CREATE SEQUENCE sgr.estado_id_estado_seq_1_1;
+
+CREATE TABLE sgr.estado (
+                id_estado BIGINT NOT NULL DEFAULT nextval('sgr.estado_id_estado_seq_1_1'),
+                nombre VARCHAR(30) NOT NULL,
+                inicio BOOLEAN NOT NULL,
+                fin BOOLEAN NOT NULL,
+                CONSTRAINT estado_pk PRIMARY KEY (id_estado)
+);
+COMMENT ON TABLE sgr.estado IS 'Nuevo/Recibido/Notificado/Entregado/Devuelto/Concretado';
+
+
+ALTER SEQUENCE sgr.estado_id_estado_seq_1_1 OWNED BY sgr.estado.id_estado;
+
+CREATE INDEX evento_idx
+ ON sgr.estado
+ ( nombre );
+
+CREATE UNIQUE INDEX evento_idx1
+ ON sgr.estado
+ ( nombre );
+
+CREATE SEQUENCE sgr.estadocivil_id_estadocivil_seq;
+
+CREATE TABLE sgr.estadocivil (
+                id_estadocivil BIGINT NOT NULL DEFAULT nextval('sgr.estadocivil_id_estadocivil_seq'),
+                nombre VARCHAR(15) NOT NULL,
+                CONSTRAINT estadocivil_pk PRIMARY KEY (id_estadocivil)
+);
+
+
+ALTER SEQUENCE sgr.estadocivil_id_estadocivil_seq OWNED BY sgr.estadocivil.id_estadocivil;
+
+CREATE UNIQUE INDEX estadocivil_idx
+ ON sgr.estadocivil
+ ( nombre );
+
+CREATE SEQUENCE sgr.rol_id_rol_seq;
+
+CREATE TABLE sgr.rol (
+                id_rol BIGINT NOT NULL DEFAULT nextval('sgr.rol_id_rol_seq'),
+                nombre VARCHAR NOT NULL,
+                CONSTRAINT rol_pk PRIMARY KEY (id_rol)
+);
+COMMENT ON TABLE sgr.rol IS 'Gerente / Subgerente / Administrativo / Otro';
+
+
+ALTER SEQUENCE sgr.rol_id_rol_seq OWNED BY sgr.rol.id_rol;
+
+CREATE INDEX rol_idx
+ ON sgr.rol
+ ( nombre );
+
+CREATE UNIQUE INDEX rol_idx1
+ ON sgr.rol
+ ( nombre );
+
+CREATE SEQUENCE sgr.nacionalidad_id_nacionalidad_seq;
+
+CREATE TABLE sgr.nacionalidad (
+                id_nacionalidad BIGINT NOT NULL DEFAULT nextval('sgr.nacionalidad_id_nacionalidad_seq'),
+                nombre VARCHAR(30) NOT NULL,
+                CONSTRAINT nacionalidad_pk PRIMARY KEY (id_nacionalidad)
+);
+
+
+ALTER SEQUENCE sgr.nacionalidad_id_nacionalidad_seq OWNED BY sgr.nacionalidad.id_nacionalidad;
+
+CREATE INDEX nacionalidad_idx
+ ON sgr.nacionalidad
+ ( nombre );
+
+CREATE UNIQUE INDEX nacionalidad_idx1
+ ON sgr.nacionalidad
+ ( nombre );
+
+CREATE SEQUENCE sgr.compania_id_compania_seq;
+
+CREATE TABLE sgr.compania (
+                id_compania BIGINT NOT NULL DEFAULT nextval('sgr.compania_id_compania_seq'),
+                nombre VARCHAR(15) NOT NULL,
+                CONSTRAINT compania_pk PRIMARY KEY (id_compania)
+);
+
+
+ALTER SEQUENCE sgr.compania_id_compania_seq OWNED BY sgr.compania.id_compania;
+
+CREATE UNIQUE INDEX compania_idx
+ ON sgr.compania
+ ( nombre );
+
+CREATE SEQUENCE sgr.pais_id_pais_seq;
+
+CREATE TABLE sgr.pais (
+                id_pais BIGINT NOT NULL DEFAULT nextval('sgr.pais_id_pais_seq'),
+                nombre VARCHAR(15) NOT NULL,
+                CONSTRAINT pais_pk PRIMARY KEY (id_pais)
+);
+
+
+ALTER SEQUENCE sgr.pais_id_pais_seq OWNED BY sgr.pais.id_pais;
+
+CREATE INDEX pais_idx
+ ON sgr.pais
+ ( nombre );
+
+CREATE UNIQUE INDEX pais_idx1
+ ON sgr.pais
+ ( nombre );
+
+CREATE SEQUENCE sgr.entidad_id_entidad_seq;
+
+CREATE TABLE sgr.entidad (
+                id_entidad BIGINT NOT NULL DEFAULT nextval('sgr.entidad_id_entidad_seq'),
+                id_rubro BIGINT NOT NULL,
+                razonsocial VARCHAR(50) NOT NULL,
+                cuit VARCHAR(13) NOT NULL,
+                fbaja TIMESTAMP,
+                propietario BOOLEAN NOT NULL,
+                CONSTRAINT entidad_pk PRIMARY KEY (id_entidad)
+);
+
+
+ALTER SEQUENCE sgr.entidad_id_entidad_seq OWNED BY sgr.entidad.id_entidad;
+
+CREATE UNIQUE INDEX entidad_idx
+ ON sgr.entidad
+ ( cuit );
+
+CREATE UNIQUE INDEX entidad_idx1
+ ON sgr.entidad
+ ( razonsocial );
+
+CREATE SEQUENCE sgr.provincia_id_provincia_seq;
+
+CREATE TABLE sgr.provincia (
+                id_provincia BIGINT NOT NULL DEFAULT nextval('sgr.provincia_id_provincia_seq'),
+                nombre VARCHAR(50) NOT NULL,
+                id_pais BIGINT NOT NULL,
+                CONSTRAINT provincia_pk PRIMARY KEY (id_provincia)
+);
+
+
+ALTER SEQUENCE sgr.provincia_id_provincia_seq OWNED BY sgr.provincia.id_provincia;
+
+CREATE INDEX provincia_idx
+ ON sgr.provincia
+ ( nombre );
+
+CREATE UNIQUE INDEX provincia_idx1
+ ON sgr.provincia
+ ( nombre );
+
+CREATE SEQUENCE sgr.ciudad_id_ciudad_seq;
+
+CREATE TABLE sgr.ciudad (
+                id_ciudad BIGINT NOT NULL DEFAULT nextval('sgr.ciudad_id_ciudad_seq'),
+                nombre VARCHAR(50) NOT NULL,
+                id_provincia BIGINT NOT NULL,
+                CONSTRAINT ciudad_pk PRIMARY KEY (id_ciudad)
+);
+
+
+ALTER SEQUENCE sgr.ciudad_id_ciudad_seq OWNED BY sgr.ciudad.id_ciudad;
+
+CREATE INDEX ciudad_idx
+ ON sgr.ciudad
+ ( nombre );
+
+CREATE INDEX ciudad_idx1
+ ON sgr.ciudad
+ ( nombre );
+
+CREATE SEQUENCE sgr.sucursal_id_sucursal_seq;
+
+CREATE TABLE sgr.sucursal (
+                id_sucursal BIGINT NOT NULL DEFAULT nextval('sgr.sucursal_id_sucursal_seq'),
+                nombre VARCHAR(30) NOT NULL,
+                id_ciudad BIGINT NOT NULL,
+                CONSTRAINT sucursal_pk PRIMARY KEY (id_sucursal)
+);
+COMMENT ON TABLE sgr.sucursal IS 'Sede del empleado';
+
+
+ALTER SEQUENCE sgr.sucursal_id_sucursal_seq OWNED BY sgr.sucursal.id_sucursal;
+
+CREATE INDEX negocio_idx
+ ON sgr.sucursal
+ ( nombre );
+
+CREATE UNIQUE INDEX negocio_idx1
+ ON sgr.sucursal
+ ( nombre );
+
+CREATE SEQUENCE sgr.dpto_id_dpto_seq_1_1_1;
+
+CREATE TABLE sgr.dpto (
+                id_dpto BIGINT NOT NULL DEFAULT nextval('sgr.dpto_id_dpto_seq_1_1_1'),
+                nombre VARCHAR(50) NOT NULL,
+                id_sucursal BIGINT NOT NULL,
+                CONSTRAINT dpto_pk PRIMARY KEY (id_dpto)
+);
+
+
+ALTER SEQUENCE sgr.dpto_id_dpto_seq_1_1_1 OWNED BY sgr.dpto.id_dpto;
+
+CREATE UNIQUE INDEX dpto_idx
+ ON sgr.dpto
+ ( nombre, id_sucursal );
+
+CREATE SEQUENCE sgr.sector_id_sector_seq_1_1;
+
+CREATE TABLE sgr.sector (
+                id_sector BIGINT NOT NULL DEFAULT nextval('sgr.sector_id_sector_seq_1_1'),
+                nombre VARCHAR(50) NOT NULL,
+                id_dpto BIGINT NOT NULL,
+                CONSTRAINT sector_pk PRIMARY KEY (id_sector)
+);
+
+
+ALTER SEQUENCE sgr.sector_id_sector_seq_1_1 OWNED BY sgr.sector.id_sector;
+
+CREATE UNIQUE INDEX sector_idx
+ ON sgr.sector
+ ( nombre, id_dpto );
+
+CREATE SEQUENCE sgr.persona_id_persona_seq_3_1_1;
+
+CREATE TABLE sgr.persona (
+                id_persona BIGINT NOT NULL DEFAULT nextval('sgr.persona_id_persona_seq_3_1_1'),
+                id_camposempleado BIGINT NOT NULL,
+                apellido VARCHAR(50) NOT NULL,
+                nombre VARCHAR(50) NOT NULL,
+                id_tipo_doc BIGINT NOT NULL,
+                doc VARCHAR(20) NOT NULL,
+                fnac DATE NOT NULL,
+                id_genero BIGINT NOT NULL,
+                id_sector BIGINT,
+                id_rol BIGINT,
+                id_nacionalidad BIGINT NOT NULL,
+                id_estadocivil BIGINT NOT NULL,
+                fbaja TIMESTAMP,
+                id_entidad BIGINT,
+                CONSTRAINT persona_pk PRIMARY KEY (id_persona)
+);
+
+
+ALTER SEQUENCE sgr.persona_id_persona_seq_3_1_1 OWNED BY sgr.persona.id_persona;
+
+CREATE SEQUENCE sgr.correo_id_correo_seq;
+
+CREATE TABLE sgr.correo (
+                id_correo BIGINT NOT NULL DEFAULT nextval('sgr.correo_id_correo_seq'),
+                correo VARCHAR(70) NOT NULL,
+                id_persona BIGINT,
+                id_entidad BIGINT,
+                id_tipocorreo BIGINT NOT NULL,
+                id_dpto BIGINT,
+                CONSTRAINT correo_pk PRIMARY KEY (id_correo)
+);
+
+
+ALTER SEQUENCE sgr.correo_id_correo_seq OWNED BY sgr.correo.id_correo;
+
+CREATE UNIQUE INDEX email_idx
+ ON sgr.correo
+ ( correo );
+
+CREATE SEQUENCE sgr.domicilio_id_domicilio_seq;
+
+CREATE TABLE sgr.domicilio (
+                id_domicilio BIGINT NOT NULL DEFAULT nextval('sgr.domicilio_id_domicilio_seq'),
+                barrio VARCHAR(30) NOT NULL,
+                calle VARCHAR(50) NOT NULL,
+                num VARCHAR(6) NOT NULL,
+                piso VARCHAR(3) NOT NULL,
+                id_entidad BIGINT,
+                id_persona BIGINT,
+                id_ciudad BIGINT NOT NULL,
+                CONSTRAINT domicilio_pk PRIMARY KEY (id_domicilio)
+);
+
+
+ALTER SEQUENCE sgr.domicilio_id_domicilio_seq OWNED BY sgr.domicilio.id_domicilio;
+
+CREATE SEQUENCE sgr.tipotel_id_tipotel_seq;
+
+CREATE TABLE sgr.tipotel (
+                id_tipotel BIGINT NOT NULL DEFAULT nextval('sgr.tipotel_id_tipotel_seq'),
+                nombre VARCHAR(15) NOT NULL,
+                interno BOOLEAN NOT NULL,
+                CONSTRAINT tipotel_pk PRIMARY KEY (id_tipotel)
+);
+
+
+ALTER SEQUENCE sgr.tipotel_id_tipotel_seq OWNED BY sgr.tipotel.id_tipotel;
+
+CREATE UNIQUE INDEX tipotel_idx
+ ON sgr.tipotel
+ ( nombre );
+
+CREATE SEQUENCE sgr.telefono_id_telefono_seq;
+
+CREATE TABLE sgr.telefono (
+                id_telefono BIGINT NOT NULL DEFAULT nextval('sgr.telefono_id_telefono_seq'),
+                numero VARCHAR(30) NOT NULL,
+                interno VARCHAR(6),
+                id_tipotel BIGINT NOT NULL,
+                id_compania BIGINT NOT NULL,
+                id_entidad BIGINT,
+                id_persona BIGINT,
+                CONSTRAINT telefono_pk PRIMARY KEY (id_telefono)
+);
+
+
+ALTER SEQUENCE sgr.telefono_id_telefono_seq OWNED BY sgr.telefono.id_telefono;
+
+CREATE SEQUENCE sgr.evento_id_evento_seq_1;
+
+CREATE TABLE sgr.evento (
+                id_evento BIGINT NOT NULL DEFAULT nextval('sgr.evento_id_evento_seq_1'),
+                nombre VARCHAR(30) NOT NULL,
+                fbaja TIMESTAMP,
+                id_tipoevento BIGINT NOT NULL,
+                CONSTRAINT evento_pk PRIMARY KEY (id_evento)
+);
+COMMENT ON TABLE sgr.evento IS '# Llamadas (Entrante/Saliente)
+
+# Documentos (Factura/CV/Invitación/Notif legal/Publicación)
+
+# Objetos extraviados (Llave/Billetera/Cartera/Ropa/Teléfono)';
+
+
+ALTER SEQUENCE sgr.evento_id_evento_seq_1 OWNED BY sgr.evento.id_evento;
+
+CREATE INDEX tipogenevento_idx
+ ON sgr.evento
+ ( nombre );
+
+CREATE UNIQUE INDEX tipogenevento_idx1
+ ON sgr.evento
+ ( nombre );
+
+CREATE SEQUENCE sgr.workflow_id_workflow_seq;
+
+CREATE TABLE sgr.workflow (
+                id_workflow BIGINT NOT NULL DEFAULT nextval('sgr.workflow_id_workflow_seq'),
+                nombre VARCHAR(30) NOT NULL,
+                id_evento BIGINT NOT NULL,
+                id_dpto BIGINT NOT NULL,
+                notifica BOOLEAN DEFAULT FALSE NOT NULL,
+                CONSTRAINT workflow_pk PRIMARY KEY (id_workflow)
+);
+COMMENT ON TABLE sgr.workflow IS 'Llamada - Entrante
+	- Saliente
+
+Doc''s	- Factura
+	- CV
+	- Invitación
+	- Notif legal
+	- Publicación
+
+Objeto	- Llave
+	- Billetera
+	- Cartera
+	- Ropa
+	- Teléfono';
+
+
+ALTER SEQUENCE sgr.workflow_id_workflow_seq OWNED BY sgr.workflow.id_workflow;
+
+CREATE INDEX genevento_idx
+ ON sgr.workflow
+ ( nombre );
+
+CREATE UNIQUE INDEX genevento_idx1
+ ON sgr.workflow
+ ( nombre );
+
+CREATE TABLE sgr.flujo (
+                id_workflow BIGINT NOT NULL,
+                id_estadoorigen BIGINT NOT NULL,
+                id_estadodestino BIGINT NOT NULL,
+                orden INTEGER,
+                CONSTRAINT flujo_pk PRIMARY KEY (id_workflow, id_estadoorigen, id_estadodestino)
+);
+COMMENT ON TABLE sgr.flujo IS 'Pasos';
+
+
+CREATE SEQUENCE sgr.requisitos_id_requisitos_seq;
+
+CREATE TABLE sgr.requisitos (
+                id_requisitos BIGINT NOT NULL DEFAULT nextval('sgr.requisitos_id_requisitos_seq'),
+                id_estadoorigen BIGINT NOT NULL,
+                id_estadodestino BIGINT NOT NULL,
+                id_workflow BIGINT NOT NULL,
+                nombre VARCHAR(30) NOT NULL,
+                obligatorio BOOLEAN,
+                orden INTEGER,
+                persona BOOLEAN NOT NULL,
+                CONSTRAINT requisitos_pk PRIMARY KEY (id_requisitos, id_estadoorigen, id_estadodestino, id_workflow)
+);
+COMMENT ON TABLE sgr.requisitos IS 'requisitos por cada paso del workflow';
+
+
+ALTER SEQUENCE sgr.requisitos_id_requisitos_seq OWNED BY sgr.requisitos.id_requisitos;
+
+CREATE SEQUENCE sgr.registro_id_registro_seq_1;
+
+CREATE TABLE sgr.registro (
+                id_registro BIGINT NOT NULL DEFAULT nextval('sgr.registro_id_registro_seq_1'),
+                id_workflow BIGINT NOT NULL,
+                nombre VARCHAR(100) NOT NULL,
+                observacion VARCHAR(350),
+                archivo BYTEA,
+                get_usuario VARCHAR NOT NULL,
+                fecha_inicio TIMESTAMP DEFAULT current_timestamp NOT NULL,
+                fecha_fin TIMESTAMP,
+                CONSTRAINT registro_pk PRIMARY KEY (id_registro)
+);
+COMMENT ON COLUMN sgr.registro.get_usuario IS 'toma del framework';
+
+
+ALTER SEQUENCE sgr.registro_id_registro_seq_1 OWNED BY sgr.registro.id_registro;
+
+CREATE SEQUENCE sgr.requisitos_registro_id_requisitos_registro_seq;
+
+CREATE TABLE sgr.requisitos_registro (
+                id_requisitos_registro BIGINT NOT NULL DEFAULT nextval('sgr.requisitos_registro_id_requisitos_registro_seq'),
+                id_registro BIGINT NOT NULL,
+                id_requisitos BIGINT NOT NULL,
+                id_estadoorigen BIGINT NOT NULL,
+                id_estadodestino BIGINT NOT NULL,
+                id_workflow BIGINT NOT NULL,
+                observacion VARCHAR(350),
+                archivo BYTEA,
+                completo BOOLEAN NOT NULL,
+                id_persona BIGINT,
+                CONSTRAINT requisitos_registro_pk PRIMARY KEY (id_requisitos_registro)
+);
+
+
+ALTER SEQUENCE sgr.requisitos_registro_id_requisitos_registro_seq OWNED BY sgr.requisitos_registro.id_requisitos_registro;
+
+CREATE SEQUENCE sgr.estado_actual_flujo_id_estado_actual_seq;
+
+CREATE TABLE sgr.estado_actual_flujo (
+                id_estado_actual BIGINT NOT NULL DEFAULT nextval('sgr.estado_actual_flujo_id_estado_actual_seq'),
+                fecha TIMESTAMP DEFAULT current_timestamp NOT NULL,
+                activo BOOLEAN DEFAULT TRUE,
+                id_estado BIGINT NOT NULL,
+                id_registro BIGINT NOT NULL,
+                observacion VARCHAR(350),
+                id_persona BIGINT,
+                CONSTRAINT estado_actual_flujo_pk PRIMARY KEY (id_estado_actual)
+);
+COMMENT ON TABLE sgr.estado_actual_flujo IS 'contiene historico de cambios de estado';
+
+
+ALTER SEQUENCE sgr.estado_actual_flujo_id_estado_actual_seq OWNED BY sgr.estado_actual_flujo.id_estado_actual;
+
+ALTER TABLE sgr.entidad ADD CONSTRAINT rubro_entidad_fk
+FOREIGN KEY (id_rubro)
+REFERENCES sgr.rubro (id_rubro)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.persona ADD CONSTRAINT tipo_doc_persona_fk
+FOREIGN KEY (id_tipo_doc)
+REFERENCES sgr.tipo_doc (id_tipo_doc)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.evento ADD CONSTRAINT tipo_evento_evento_fk
+FOREIGN KEY (id_tipoevento)
+REFERENCES sgr.tipo_evento (id_tipoevento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.persona ADD CONSTRAINT camposempleado_persona_fk
+FOREIGN KEY (id_camposempleado)
+REFERENCES sgr.camposempleado (id_camposempleado)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.persona ADD CONSTRAINT sexo_persona_fk
+FOREIGN KEY (id_genero)
+REFERENCES sgr.genero (id_genero)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.correo ADD CONSTRAINT tipocorreo_correo_fk
+FOREIGN KEY (id_tipocorreo)
+REFERENCES sgr.tipocorreo (id_tipocorreo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.flujo ADD CONSTRAINT evento_workflow_fk
+FOREIGN KEY (id_estadoorigen)
+REFERENCES sgr.estado (id_estado)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.flujo ADD CONSTRAINT evento_workflow_fk1
+FOREIGN KEY (id_estadodestino)
+REFERENCES sgr.estado (id_estado)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.estado_actual_flujo ADD CONSTRAINT estado_estado_actual_flujo_fk
+FOREIGN KEY (id_estado)
+REFERENCES sgr.estado (id_estado)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.persona ADD CONSTRAINT estadocivil_persona_fk1
+FOREIGN KEY (id_estadocivil)
+REFERENCES sgr.estadocivil (id_estadocivil)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.persona ADD CONSTRAINT rol_persona_fk
+FOREIGN KEY (id_rol)
+REFERENCES sgr.rol (id_rol)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.persona ADD CONSTRAINT nacionalidad_persona_fk
+FOREIGN KEY (id_nacionalidad)
+REFERENCES sgr.nacionalidad (id_nacionalidad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.telefono ADD CONSTRAINT compania_telefono_fk
+FOREIGN KEY (id_compania)
+REFERENCES sgr.compania (id_compania)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.provincia ADD CONSTRAINT pais_provincia_fk
+FOREIGN KEY (id_pais)
+REFERENCES sgr.pais (id_pais)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.correo ADD CONSTRAINT mp_personas_mp_email_fk
+FOREIGN KEY (id_entidad)
+REFERENCES sgr.entidad (id_entidad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.domicilio ADD CONSTRAINT mp_personas_mp_domicilios_fk
+FOREIGN KEY (id_entidad)
+REFERENCES sgr.entidad (id_entidad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.telefono ADD CONSTRAINT persona_telefono_fk
+FOREIGN KEY (id_entidad)
+REFERENCES sgr.entidad (id_entidad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.persona ADD CONSTRAINT entidad_persona_fk
+FOREIGN KEY (id_entidad)
+REFERENCES sgr.entidad (id_entidad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.ciudad ADD CONSTRAINT mp_provincias_mp_localidad_fk
+FOREIGN KEY (id_provincia)
+REFERENCES sgr.provincia (id_provincia)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.domicilio ADD CONSTRAINT mp_localidad_mp_domicilios_fk
+FOREIGN KEY (id_ciudad)
+REFERENCES sgr.ciudad (id_ciudad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.sucursal ADD CONSTRAINT ciudad_sucursal_fk
+FOREIGN KEY (id_ciudad)
+REFERENCES sgr.ciudad (id_ciudad)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.dpto ADD CONSTRAINT sucursal_dpto_fk
+FOREIGN KEY (id_sucursal)
+REFERENCES sgr.sucursal (id_sucursal)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.sector ADD CONSTRAINT dpto_sector_fk
+FOREIGN KEY (id_dpto)
+REFERENCES sgr.dpto (id_dpto)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.correo ADD CONSTRAINT dpto_correo_fk
+FOREIGN KEY (id_dpto)
+REFERENCES sgr.dpto (id_dpto)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.workflow ADD CONSTRAINT dpto_workflow_fk
+FOREIGN KEY (id_dpto)
+REFERENCES sgr.dpto (id_dpto)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.persona ADD CONSTRAINT sector_persona_fk
+FOREIGN KEY (id_sector)
+REFERENCES sgr.sector (id_sector)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.telefono ADD CONSTRAINT persona_telefono_fk1
+FOREIGN KEY (id_persona)
+REFERENCES sgr.persona (id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.correo ADD CONSTRAINT persona_correo_fk
+FOREIGN KEY (id_persona)
+REFERENCES sgr.persona (id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.domicilio ADD CONSTRAINT persona_domicilio_fk
+FOREIGN KEY (id_persona)
+REFERENCES sgr.persona (id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.requisitos_registro ADD CONSTRAINT persona_requisitos_registro_fk
+FOREIGN KEY (id_persona)
+REFERENCES sgr.persona (id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.estado_actual_flujo ADD CONSTRAINT persona_estado_actual_flujo_fk
+FOREIGN KEY (id_persona)
+REFERENCES sgr.persona (id_persona)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.telefono ADD CONSTRAINT mp_tipos_telefonos_mp_telefonos_fk
+FOREIGN KEY (id_tipotel)
+REFERENCES sgr.tipotel (id_tipotel)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.workflow ADD CONSTRAINT evento_flujo_evento_fk
+FOREIGN KEY (id_evento)
+REFERENCES sgr.evento (id_evento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.flujo ADD CONSTRAINT flujo_evento_flujo_fk
+FOREIGN KEY (id_workflow)
+REFERENCES sgr.workflow (id_workflow)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.registro ADD CONSTRAINT flujo_evento_registro_fk
+FOREIGN KEY (id_workflow)
+REFERENCES sgr.workflow (id_workflow)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.requisitos ADD CONSTRAINT workflow_requisitos_fk
+FOREIGN KEY (id_estadoorigen, id_estadodestino, id_workflow)
+REFERENCES sgr.flujo (id_estadoorigen, id_estadodestino, id_workflow)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.requisitos_registro ADD CONSTRAINT requisitos_requisitos_registro_fk
+FOREIGN KEY (id_workflow, id_estadodestino, id_requisitos, id_estadoorigen)
+REFERENCES sgr.requisitos (id_workflow, id_estadodestino, id_requisitos, id_estadoorigen)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.requisitos_registro ADD CONSTRAINT regevento_requisitos_eventos_fk
+FOREIGN KEY (id_registro)
+REFERENCES sgr.registro (id_registro)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE sgr.estado_actual_flujo ADD CONSTRAINT registro_estado_actual_flujo_fk
+FOREIGN KEY (id_registro)
+REFERENCES sgr.registro (id_registro)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;

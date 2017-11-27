@@ -1,0 +1,10 @@
+INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (1,'Puerto Madero','Olga Cosettini','741','2','1',DEFAULT,'48');
+INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (2,'Zona Aduanera','Ruta 12 Km 1645,5','-','-','2',DEFAULT,'10053');
+INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (3,'Barrio uno','La primera','123','-','3',DEFAULT,'10053');
+
+INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (4,'Santa Rosa','Los Alelies','1','-',DEFAULT,1,'10053');
+INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (5,'Las Orquideas','Los Tulipanes','2','-',DEFAULT,2,'10053');
+INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (6,'San Martin','Av. Castelli','3','-',DEFAULT,3,'10053');
+INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (7,'Villa Nueva','Los Cedros','4','-',DEFAULT,4,'10053');
+INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (8,'Villa 14','Los lapachos','5','-',DEFAULT,5,'10053');
+INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (9,'Belen','J. I. Rucci','6','-',DEFAULT,6,'10053');

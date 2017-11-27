@@ -153,6 +153,20 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'1', --externa
 	NULL  --tabla
 );
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'sgr', --objeto_proyecto
+	'1000841', --objeto
+	'1000856', --col_id
+	'notifica', --columna
+	'L', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'1', --no_nulo_db
+	'0', --externa
+	'workflow'  --tabla
+);
 --- FIN Grupo de desarrollo 1
 
 ------------------------------------------------------------

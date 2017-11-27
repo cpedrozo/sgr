@@ -1,5 +1,5 @@
-﻿INSERT INTO sgr.workflow(id_workflow, nombre,id_evento, id_dpto) values (1,'RECEPCION FC TELECOM',2, 6);
-INSERT INTO sgr.workflow(id_workflow, nombre,id_evento, id_dpto) values (2,'RECEPCION FC CVI',2, 6);
-INSERT INTO sgr.workflow(id_workflow, nombre,id_evento, id_dpto) values (3,'RECEPCION FC BBT',2, 6);
-INSERT INTO sgr.workflow(id_workflow, nombre,id_evento, id_dpto) values (4,'RECEPCION DE CV',1, 13);
-INSERT INTO sgr.workflow(id_workflow, nombre,id_evento, id_dpto) values (5,'LLAMADA DE PARQUES NACIONALES',5, 8);
+INSERT INTO sgr.workflow(id_workflow, nombre,id_evento,id_dpto,notifica) values (1,'RECEPCION FC TELECOM',2,6);
+INSERT INTO sgr.workflow(id_workflow, nombre,id_evento,id_dpto,notifica) values (2,'RECEPCION FC CVI',2,6);
+INSERT INTO sgr.workflow(id_workflow, nombre,id_evento,id_dpto,notifica) values (3,'RECEPCION FC BBT',2,6);
+INSERT INTO sgr.workflow(id_workflow, nombre,id_evento,id_dpto,notifica) values (4,'RECEPCION DE CV',1,13);
+INSERT INTO sgr.workflow(id_workflow, nombre,id_evento,id_dpto,notifica) values (5,'LLAMADA DE PARQUES NACIONALES',5,8);

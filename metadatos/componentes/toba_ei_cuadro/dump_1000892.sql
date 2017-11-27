@@ -294,10 +294,10 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000655', --objeto_cuadro_col
 	'id_registro', --clave
 	'1', --orden
-	'Trámite Nº', --titulo
+	'Nº Gestión', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'70', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar

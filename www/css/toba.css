@@ -2,6 +2,20 @@
 	Incluir aquí las reglas css propias de este proyecto
 */
 
+#cuerpo_js_form_1000943_form_ml_detalles_registro table tbody tr .ei-ml-fila{
+	border-top: 1px solid #585C98;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#cuerpo_js_form_1000943_form_ml_detalles_registro table tbody tr .ei-ml-fila-selec{
+	border-top: 1px solid #585C98;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: transparent !important;
+	color: #000 !important;
+}
+
 .unMensajeAprender {
 	position: fixed;
   left: 50%;
@@ -21,28 +35,26 @@
 }
 
 .ef-entidadespopup {
-    text-align: left;
-    padding-top: 7px;
+  text-align: left;
+  padding-top: 7px;
 }
 
 .ef-entidadespopup::before {
-    content: '\A';
+  content: '\A';
 }
 
 .ef-sga-info-amariilo {
-    border: none;
-    color: #220033;
-    background-color: #FCFFA8;
-    padding: 5px 5px 5px 5px;
-    font-weight: bold;
-    text-align: center;
+  border: none;
+  color: #220033;
+  background-color: #FCFFA8;
+  padding: 5px 5px 5px 5px;
+  font-weight: bold;
+  text-align: center;
 }
 
-.ef-ver-fijo {
-    border: none;
-    width: 20px;
-    text-align: center;
-    background-color: transparent;
+.ef-textarea2 {
+	background-color: transparent;
+	border: 0px solid #000000;
 }
 
 .ef-ver-fijo_suc_dpto {
@@ -59,4 +71,49 @@
 	line-height: 23px;
 	font-weight: bold;
 	padding: 2px 0px 9px 0px;
+}
+
+.ei-form-etiq-oblig3 {
+	float: left;
+	margin-right: 0px;
+	line-height: 20px;
+	font-weight: bold;
+	padding: 2px 0px 9px 0px;
+	font-size: 11px;
+}
+
+.ei-form-etiq-oblig4 {
+	float: left;
+	margin-right: 0px;
+	line-height: 20px;
+	font-weight: 500;
+	padding: 2px 0px 9px 0px;
+	font-size: 11px;
+}
+
+.ef-ver-fijo {
+  border: none;
+  width: 20px;
+  text-align: center;
+  background-color: transparent;
+}
+
+.ef-ver-fijo2 {
+  border: none;
+  width: 20px;
+  text-align: left;
+  background-color: transparent;
+	font-weight: bold;
+	padding: 8px 10px 0px 10px;
+	font-size: 11px;
+	margin-left: 0px;
+}
+
+.ef-ver-fijo3 {
+  border: none;
+  width: 20px;
+  text-align: center;
+  background-color: transparent;
+	margin-right: 500px;
+	padding: 7px;
 }
