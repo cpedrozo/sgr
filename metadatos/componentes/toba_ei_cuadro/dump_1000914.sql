@@ -159,7 +159,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000630', --objeto_cuadro_col
 	'apynom', --clave
 	'1', --orden
-	'Apellido, Nombre', --titulo
+	'Legajo: Apellido, Nombre', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
 	NULL, --ancho

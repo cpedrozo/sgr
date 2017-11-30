@@ -9,7 +9,8 @@ class dao_datospersonas
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT p.apellido||', '||p.nombre apynom,
+    $sql = "SELECT t.id_telefono,
+            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
             t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||' ('||coalesce(t.interno, '-')||')' num,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.telefono t
@@ -32,7 +33,8 @@ class dao_datospersonas
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT p.apellido||', '||p.nombre apynom,
+    $sql = "SELECT t.id_telefono,
+            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
             t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||' ('||coalesce(t.interno, '-')||')' num,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.telefono t
@@ -56,8 +58,8 @@ class dao_datospersonas
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT p.apellido||', '||p.nombre apynom,
-            d.id_domicilio,
+    $sql = "SELECT d.id_domicilio,
+            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
             d.calle||': '||d.num||' ('||d.barrio||')' dir, d.piso, ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.domicilio d
@@ -81,8 +83,8 @@ class dao_datospersonas
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT p.apellido||', '||p.nombre apynom,
-            d.id_domicilio,
+    $sql = "SELECT d.id_domicilio,
+            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
             d.calle||': '||d.num||' ('||d.barrio||')' dir, d.piso, ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.domicilio d
@@ -107,8 +109,9 @@ class dao_datospersonas
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT p.apellido||', '||p.nombre apynom,
-            c.id_correo, tc.nombre tipocorreo, c.correo,
+    $sql = "SELECT c.id_correo,
+            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
+            tc.nombre tipocorreo, c.correo,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.correo c
             LEFT JOIN sgr.tipocorreo tc ON c.id_tipocorreo = tc.id_tipocorreo
@@ -129,8 +132,9 @@ class dao_datospersonas
     } else {
       $where_armado = '';
     }
-    $sql = "SELECT p.apellido||', '||p.nombre apynom,
-            c.id_correo, tc.nombre tipocorreo, c.correo,
+    $sql = "SELECT c.id_correo,
+            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
+            tc.nombre tipocorreo, c.correo,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.correo c
             LEFT JOIN sgr.tipocorreo tc ON c.id_tipocorreo = tc.id_tipocorreo

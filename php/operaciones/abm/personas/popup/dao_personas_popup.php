@@ -4,7 +4,9 @@ class dao_personas_popup
 {
     static function get_datospersona($id_persona)
     {
-      $sql = "SELECT p.id_persona, p.apellido, p.nombre, td.nombre tipodoc, p.doc, p.fnac, g.nombre genero,
+      $sql = "SELECT p.id_persona,
+              coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
+              td.nombre tipodoc, p.doc, p.fnac, g.nombre genero,
               e.razonsocial entidad,
               s.nombre sucursal, dp.nombre||' - '||se.nombre||' ('||s.nombre||')' dpto, r.nombre rol,
               n.nombre nacionalidad, ec.nombre ecivil

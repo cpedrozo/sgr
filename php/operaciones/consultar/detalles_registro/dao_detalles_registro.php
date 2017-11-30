@@ -61,7 +61,7 @@ class dao_detalles_registro
   static function cargar_ml($seleccion)
   {
     $consulta = $seleccion['id_registro'];
-    $sql = "SELECT id_estado_actual, e.nombre, ea.observacion, p.apellido||', '||p.nombre apynom, to_char(fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS') fecha
+    $sql = "SELECT id_estado_actual, e.nombre, ea.observacion, coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom, to_char(fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS') fecha
             FROM sgr.estado_actual_flujo ea
             JOIN sgr.estado e ON ea.id_estado = e.id_estado
             JOIN sgr.persona p ON ea.id_persona = p.id_persona

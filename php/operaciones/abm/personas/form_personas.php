@@ -59,7 +59,8 @@ class form_personas extends sgr_ei_formulario
 
 		  if (resultado=='SI')
 		  {
-		    this.ef('apellido').mostrar();
+				this.ef('legajo').mostrar();
+			  this.ef('apellido').mostrar();
 		    this.ef('nombre').mostrar();
 				this.ef('id_tipo_doc').mostrar();
 				this.ef('doc').mostrar();
@@ -73,6 +74,7 @@ class form_personas extends sgr_ei_formulario
 				this.ef('id_entidad').ocultar();
 		  }
 			else if (resultado=='NO'){
+				this.ef('legajo').ocultar();
 		    this.ef('apellido').mostrar();
 		    this.ef('nombre').mostrar();
 				this.ef('id_tipo_doc').mostrar();
