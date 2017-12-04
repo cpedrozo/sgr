@@ -16,6 +16,7 @@ class ci_personas extends sgr_ci
 
 	function ini()
 	{
+		//ei_arbol($this->controlador()->controlador()->get_id()[1]);
 			if ($this->controlador()->get_id()[1]=='1000898')
 				{
 					$this->dep('cuadro')->eliminar_evento('seleccion2');
@@ -45,24 +46,21 @@ class ci_personas extends sgr_ci
 		$this->cn()->cargar_dr_personas($seleccion);
 		$this->cn()->set_cursorpersonas($seleccion);
 		$this->set_pantalla('pant_edicion');
-		$this->s__datos['seleccion'] = $seleccion;
 	}
 
 	function evt__cuadro__borrar($seleccion)
 	{
 		$this->s__datos['baja'] = $seleccion;
 		$this->s__datos['datos_empleado'] = dao_personas::get_empleadobaja($this->s__datos['baja']['id_persona']);
-		$this->s__datos['esempleado'] = dao_personas::esempleado($this->s__datos['baja']['id_persona']);
-		$this->cn()->cargar_dr_personas($seleccion);
-		$this->cn()->borrar_dt_personas($seleccion);
+		//$this->cn()->cargar_dr_personas($seleccion);
+		//$this->cn()->borrar_dt_personas($seleccion);
 		try{
-			$this->cn()->guardar_dr_personas();
+			//$this->cn()->guardar_dr_personas();
 			unset($this->s__datos['datos_anteriores_form']);
-			if ($this->s__datos['esempleado']){
-				$this->enviar_mail();
-			}
+			$this->enviar_mail();
 			$this->cn()->resetear_dr_personas();
 		} catch (toba_error_db $error) {
+			//ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
 			toba::notificacion()->agregar('Error de carga', 'info');
 			$this->cn()->resetear_dr_personas();
 			$this->set_pantalla('pant_inicial');
@@ -89,10 +87,7 @@ class ci_personas extends sgr_ci
 	{
 		try{
 			$this->cn()->guardar_dr_personas();
-			$this->s__datos['idpersona_alta'] = $this->cn()->get_personas()['id_persona'];
-			if (dao_personas::esempleado($this->s__datos['idpersona_alta'])){
-				$this->enviar_mail();
-			}
+			$this->enviar_mail();
 			$this->cn()->resetear_dr_personas();
 			$this->set_pantalla('pant_inicial');
 		}catch (toba_error_db $error) {
@@ -164,12 +159,13 @@ class ci_personas extends sgr_ci
 	{
 		$datos = $this->cn()->get_personas();
 		$form->set_datos($datos);
-		$this->s__datos['datos_anteriores_form'] = isset($datos) ? dao_personas::get_empleadobaja($datos['id_persona']) : '';
+		$this->s__datos['datos_anteriores_form'] = isset($datos) ? $datos : '';
 	}
 
 	function evt__form__modificacion($datos)
 	{
 		$this->cn()->set_dt_personas($datos);
+		$this->s__datos['datos_nuevos_form'] = $datos;
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -241,90 +237,145 @@ class ci_personas extends sgr_ci
 			$asunto = 'Se dio de alta el empleado '.$this->s__datos['datos_nuevos_form']['apellido'].', '.$this->s__datos['datos_nuevos_form']['nombre'];
 		}
 		else if ($this->s__datos['operacion'] == 'modificacion') {
-			$asunto = 'Se modificaron uno o mas datos del empleado '.$this->s__datos['datos_anteriores_form']['apynom'];
+			$asunto = 'Se modificaron uno o mas datos del empleado '.$this->s__datos['datos_anteriores_form']['apellido'].', '.$this->s__datos['datos_anteriores_form']['nombre'];
 		}
 		else//($this->s__datos['operacion'] == 'baja')
 		$asunto = 'Se dio de baja el empleado '.$this->s__datos['datos_empleado']['apynom'];
 		//$mail = new toba_mail($receptor, $asunto, $cuerpo_mail);
 		//$mail->set_html(true);
 		//$mail->enviar();
-    try {
+  /*  try {
         $mail = new toba_mail(dao_personas::get_correorrhh(), $asunto, $cuerpo_mail);
         $mail->set_html(true);
         $mail->enviar();
     } catch (toba_error $e) {
         toba::logger()->debug('Envio email ABM empleado: '. $e->getMessage());
         toba::notificacion()->agregar('Se produjo un error al intentar enviar el email.');
-    }
+    }*/
+		ei_arbol([$asunto, $cuerpo_mail]);
 	}
 
 	function get_datos_cambiados()
 	{
 		$camposform = ['id_camposempleado','apellido','nombre','id_tipo_doc','doc','fnac','id_genero','id_sector','id_rol','id_nacionalidad','id_estadocivil','fbaja','id_entidad','id_sucursal','id_dpto'];
+		$camposdom = ['barrio','calle','num','piso','id_entidad','id_persona','id_ciudad','id_pais','id_provincia'];
+		$campostel = ['numero','interno','id_tipotel','id_compania','id_entidad','id_persona'];
+		$camposcorreo = ['correo','id_persona','id_entidad','id_tipocorreo','id_dpto'];
 		$camposdao = ['apynom', 'legajo', 'tipodoc', 'fnac', 'genero', 'rol', 'sector', 'nacionalidad', 'ecivil', 'entidad'];
 		if (isset($this->s__datos['datos_anteriores_form'])){
+			ei_arbol('esta seteado');
 			if (!is_array($this->s__datos['datos_anteriores_form'])){
-				$this->s__datos['datos_nuevos_form'] = dao_personas::get_empleadobaja($this->s__datos['idpersona_alta']);
+				ei_arbol('es nulo');
 				$this->s__datos['operacion'] = 'alta';
-				$respuesta = 'Se dio de alta el empleado '.$this->s__datos['datos_nuevos_form']['legajo'].': '.$this->s__datos['datos_nuevos_form']['apellido'].', '.$this->s__datos['datos_nuevos_form']['nombre'].'<br/><br/>
-				<table style="width:40%">
-			  <tr style="text-align:left">
+				$respuesta = 'Se dio de alta el empleado '.$this->s__datos['datos_nuevos_form']['legajo'].': '.$this->s__datos['datos_nuevos_form']['apellido'].', '.$this->s__datos['datos_nuevos_form']['nombre'].'<br/>
+				<table style="width:100%">
+			  <tr>
 					<th>Campo</th>
 			    <th>Dato</th>
 			  </tr>';
-				foreach ($camposdao as $value) {
-						$valornuevo = $this->s__datos['datos_nuevos_form'][$value];
-						if (!is_null ($valornuevo)){
-						$respuesta = $respuesta.'<tr style="text-align:left">
+				foreach ($camposform as $value) {
+						$otroValor = $this->s__datos['datos_nuevos_form'][$value];
+						$respuesta = $respuesta."<tr>
 							<td>$value</td>
-					    <td>$valornuevo</td>
-					  </tr>';
-						}
+					    <td>$otroValor</td>
+					  </tr>";
+				}
+				foreach ($camposdom as $value) {
+					$otroValor = $this->s__datos['datos_nuevos_form'][$value];
+						$respuesta = $respuesta."<tr>
+							<td>$value</td>
+					    <td>$otroValor</td>
+					  </tr>";
+				}
+				foreach ($campostel as $value) {
+					$otroValor = $this->s__datos['datos_nuevos_form'][$value];
+						$respuesta = $respuesta."<tr>
+							<td>$value</td>
+					    <td>$otroValor</td>
+					  </tr>";
+				}
+				foreach ($camposcorreo as $value) {
+					$otroValor = $this->s__datos['datos_nuevos_form'][$value];
+						$respuesta = $respuesta."<tr>
+							<td>$value</td>
+					    <td>$otroValor</td>
+					  </tr>";
 				}
 				$respuesta = $respuesta.'</table>';
 			}
 			else {
+				ei_arbol('no es nulo, modificacion');
 				$this->s__datos['operacion'] = 'modificacion';
-				$this->s__datos['datos_nuevos_form'] = dao_personas::get_empleadobaja($this->s__datos['seleccion']['id_persona']);
-				$respuesta = 'Se modifico el legajo '.$this->s__datos['datos_anteriores_form']['legajo'].': '.$this->s__datos['datos_anteriores_form']['apynom'].'<br/><br/>
-				<table style="width:40%">
-			  <tr style="text-align:left">
+				$respuesta = 'Se modifico el legajo '.$this->s__datos['datos_anteriores_form']['legajo'].': '.$this->s__datos['datos_anteriores_form']['apellido'].', '.$this->s__datos['datos_anteriores_form']['nombre'].'<br/>
+				<table style="width:100%">
+			  <tr>
 					<th>Campo</th>
 			    <th>Anterior</th>
 			    <th>Actual</th>
 			  </tr>';
-				foreach ($camposdao as $value) {
+				ei_arbol(['datos anteriores'=>$this->s__datos['datos_anteriores_form'],'datos_nuevos'=>$this->s__datos['datos_nuevos_form']]);
+				foreach ($camposform as $value) {
 					if ($this->s__datos['datos_anteriores_form'][$value]<>$this->s__datos['datos_nuevos_form'][$value]){
 						$valornuevo = $this->s__datos['datos_nuevos_form'][$value];
 						$valorviejo = $this->s__datos['datos_anteriores_form'][$value];
-						if (!(is_null ($valorviejo) and is_null($valornuevo))){
-						$respuesta = $respuesta."<tr style='text-align:left'>
+						$respuesta = $respuesta."<tr>
 							<td>$value</td>
 					    <td>$valorviejo</td>
 					    <td>$valornuevo</td>
 					  </tr>";
-						}
+					}
+				}
+				foreach ($camposdom as $value) {
+					if ($this->s__datos['datos_anteriores_dom'][$value]<>$this->s__datos['datos_nuevos_dom'][$value]){
+						$valorviejo = $this->s__datos['datos_anteriores_dom'][$value];
+						$valornuevo = $this->s__datos['datos_nuevos_dom'][$value];
+						$respuesta = $respuesta."<tr>
+							<td>$value</td>
+					    <td>$valorviejo</td>
+					    <td>$valonuevo</td>
+					  </tr>";
+					}
+				}
+				foreach ($campostel as $value) {
+					if ($this->s__datos['datos_anteriores_tel'][$value]<>$this->s__datos['datos_nuevos_tel'][$value]){
+						$valorviejo = $this->s__datos['datos_anteriores_tel'][$value];
+						$valornuevo = $this->s__datos['datos_nuevos_tel'][$value];
+						$respuesta = $respuesta."<tr>
+							<td>$value</td>
+					    <td>$valorviejo</td>
+					    <td>$valornuevo</td>
+					  </tr>";
+					}
+				}
+				foreach ($camposcorreo as $value) {
+					if ($this->s__datos['datos_anteriores_correo'][$value]<>$this->s__datos['datos_nuevos_correo'][$value]){
+						$valorviejo = $this->s__datos['datos_anteriores_correo'][$value];
+						$valornuevo = $this->s__datos['datos_nuevos_correo'][$value];
+						$respuesta = $respuesta."<tr>
+							<td>$value</td>
+					    <td>$valorviejo</td>
+					    <td>$valornuevo</td>
+					  </tr>";
 					}
 				}
 				$respuesta = $respuesta.'</table>';
 			}
 		}
 		else {
+			ei_arbol('no esta seteado');
 			$this->s__datos['operacion'] = 'baja';
-			$respuesta = 'Se dio de baja el empleado '.$this->s__datos['datos_empleado']['legajo'].': '.$this->s__datos['datos_empleado']['apynom'].'<br/><br/>
-			<table style="width:40%">
-			<tr style="text-align:left">
+			$respuesta = 'Se dio de baja el empleado '.$this->s__datos['datos_empleado']['legajo'].': '.$this->s__datos['datos_empleado']['apynom'].'<br/>
+			<table style="width:100%">
+			<tr>
 				<th>Campo</th>
 				<th>Dato</th>
 			</tr>';
 			foreach ($camposdao as $value) {
-				$valorempleado = $this->s__datos['datos_empleado'][$value];
-					if (!is_null ($valorempleado)){
-						$respuesta = $respuesta."<tr style='text-align:left'>
+					$valorempleado = $this->s__datos['datos_empleado'][$value];
+					$respuesta = $respuesta."<tr>
 						<td>$value</td>
 						<td>$valorempleado</td>
-						</tr>";
-					}
+					</tr>";
 			}
 			$respuesta = $respuesta.'</table>';
 		}

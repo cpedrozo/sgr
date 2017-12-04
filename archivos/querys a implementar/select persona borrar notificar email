@@ -1,0 +1,11 @@
+﻿SELECT p.apellido||', '||p.nombre apynom, legajo, td.nombre tipodoc, fnac, g.nombre genero, r.nombre rol, s.nombre sector, n.nombre nacionalidad, ec.nombre ecivil, e.razonsocial entidad
+FROM sgr.persona p
+LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
+LEFT JOIN sgr.genero g ON p.id_genero = g.id_genero
+LEFT JOIN sgr.rol r ON p.id_rol = r.id_rol
+LEFT JOIN sgr.sector s ON p.id_sector = s.id_sector
+LEFT JOIN sgr.nacionalidad n ON p.id_nacionalidad = n.id_nacionalidad
+LEFT JOIN sgr.estadocivil ec ON p.id_estadocivil = ec.id_estadocivil
+LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
+WHERE id_persona = 16
+AND p.id_camposempleado = 1

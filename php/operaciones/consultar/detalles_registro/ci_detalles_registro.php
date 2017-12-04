@@ -88,5 +88,38 @@ class ci_detalles_registro extends sgr_ci
 		$form_ml->set_datos($datos);
 	}
 
+/*
+	//-----------------------------------------------------------------------------------
+	//---- notif_email ------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function evt__enviar_mail($seleccion)
+	{
+		$this->enviar_mail();
+	}
+
+	function enviar_mail()
+	{
+		//Se envia el mail a la direccion especificada por el usuario.
+    $asunto = 'xxxAsunto de pruebaxxx';
+    $cuerpo_mail = '<p>Este mail fue enviado a esta cuenta porque se <strong>solicito un cambio de contraseña</strong>.'
+    . 'Si usted solicito dicho cambio haga click en el siguiente link: </br></br>'
+    .'</br> El mismo será válido unicamente por 24hs.</p>';
+
+    //Guardo el random asociado al usuario y envio el mail
+		$mail = new toba_mail('piguazu@gmail.com', $asunto, $cuerpo_mail);
+		$mail->set_html(true);
+		$mail->enviar();
+    /*try {
+        $mail = new toba_mail('piguazu@gmail.com', $asunto, $cuerpo_mail);
+        $mail->set_html(true);
+        $mail->enviar();
+    } catch (toba_error $e) {
+        toba::instancia()->get_db()->abortar_transaccion();
+        toba::logger()->debug('Proceso de envio de random a cuenta: '. $e->getMessage());
+        throw new toba_error('Se produjo un error en el proceso de cambio, contactese con un administrador del sistema.');
+    }
+	}
+*/
 }
 ?>

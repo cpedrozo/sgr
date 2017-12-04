@@ -747,6 +747,53 @@ class cn_parametrizacion extends sgr_cn
     $this->dep('dr_rubro')->tabla('dt_rubro')->eliminar_fila($id_fila);
   }
 
+  /////////////////////////////////////////////////////////////////////////////////////
+  //-----------------------------------------------------------------------------------
+  //---- ABM sgr_notificaciones -------------------------------------------------------
+  //-----------------------------------------------------------------------------------
+  /////////////////////////////////////////////////////////////////////////////////////
+
+  function cargar_notificaciones($form)
+  {
+    if ($this->dep('dr_notificaciones')->tabla('dt_notificaciones')->hay_cursor()) {
+      $datos = $this->dep('dr_notificaciones')->tabla('dt_notificaciones')->get();
+      $form->set_datos($datos);
+    }
+  }
+
+  function guardar_notificaciones()
+  {
+    $this->dep('dr_notificaciones')->sincronizar();
+    $this->dep('dr_notificaciones')->resetear();
+  }
+
+  function reset_notificaciones()
+  {
+    $this->dep('dr_notificaciones')->resetear();
+  }
+
+  function modif_notificaciones($datos)
+  {
+    $this->dep('dr_notificaciones')->tabla('dt_notificaciones')->set($datos);
+  }
+
+  function seleccion_notificaciones($seleccion)
+  {
+    if($this->dep('dr_notificaciones')->tabla('dt_notificaciones')->cargar($seleccion)){
+      $id_fila = $this->dep('dr_notificaciones')->tabla('dt_notificaciones')->get_id_fila_condicion($seleccion)[0];
+      $this->dep('dr_notificaciones')->tabla('dt_notificaciones')->set_cursor($id_fila);
+    }
+  }
+
+  function borrar_notificaciones($seleccion)
+  {
+    $this->dep('dr_notificaciones')->tabla('dt_notificaciones')->cargar($seleccion);
+    $id_fila = $this->dep('dr_notificaciones')->tabla('dt_notificaciones')->get_id_fila_condicion($seleccion)[0];
+    $this->dep('dr_notificaciones')->tabla('dt_notificaciones')->set_cursor($id_fila);
+    $this->dep('dr_notificaciones')->tabla('dt_notificaciones')->eliminar_fila($id_fila);
+  }
+
+
 }
 
 ?>

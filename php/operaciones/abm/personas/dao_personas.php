@@ -68,7 +68,6 @@ class dao_personas
       $sql = "SELECT id_tipotel, interno FROM sgr.tipotel
             where id_tipotel = $id_tipotel";
       $resultado = consultar_fuente($sql);
-      //ei_arbol($resultado);
       if($resultado[0]['interno']==true)
       {
         return 'si';
@@ -76,6 +75,40 @@ class dao_personas
       else {
         return 'no';
       }
+    }
+
+    static function get_empleadobaja($id_persona)
+    {
+      $sql = "SELECT p.apellido||', '||p.nombre apynom, legajo, td.nombre tipodoc, fnac, g.nombre genero, r.nombre rol, s.nombre sector, n.nombre nacionalidad, ec.nombre ecivil, e.razonsocial entidad
+              FROM sgr.persona p
+              LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
+              LEFT JOIN sgr.genero g ON p.id_genero = g.id_genero
+              LEFT JOIN sgr.rol r ON p.id_rol = r.id_rol
+              LEFT JOIN sgr.sector s ON p.id_sector = s.id_sector
+              LEFT JOIN sgr.nacionalidad n ON p.id_nacionalidad = n.id_nacionalidad
+              LEFT JOIN sgr.estadocivil ec ON p.id_estadocivil = ec.id_estadocivil
+              LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
+              WHERE id_persona = $id_persona";
+      $resultado = consultar_fuente($sql);
+      return $resultado[0];
+    }
+
+    static function get_correorrhh()
+    {
+      $sql = "SELECT correo
+              FROM sgr.notificaciones
+              WHERE nombre like '%EMPLEADOS%'";
+      $resultado = consultar_fuente($sql);
+      return $resultado[0]['correo'];
+    }
+
+    static function esempleado($id_persona)
+    {
+      $sql = "SELECT id_camposempleado
+              FROM sgr.persona
+              WHERE id_persona = $id_persona";
+      $resultado = consultar_fuente($sql);
+      return $resultado[0]['id_camposempleado'] == 1;
     }
 
 }

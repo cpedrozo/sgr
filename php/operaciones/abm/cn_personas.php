@@ -145,7 +145,6 @@ class cn_personas extends sgr_cn
   function guardar_dr_personas()
   {
     $this->dep('dr_personas')->sincronizar();
-    //$this->dep('dr_personas')->resetear();
   }
 
   function resetear_dr_personas()

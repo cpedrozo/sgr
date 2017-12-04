@@ -1,0 +1,5 @@
+java -jar ~/toba_2_7_6/php/3ros/JavaBridge/WEB-INF/lib/JavaBridge.jar SERVLET:8081
+
+
+
+crontab -e

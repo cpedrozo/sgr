@@ -68,6 +68,7 @@ class form_personas extends sgr_ei_formulario
 		    this.ef('id_genero').mostrar();
 		    this.ef('id_sucursal').mostrar();
 		    this.ef('id_dpto').mostrar();
+				this.ef('id_sector').mostrar();
 		    this.ef('id_rol').mostrar();
 		    this.ef('id_nacionalidad').mostrar();
 		    this.ef('id_estadocivil').mostrar();
@@ -83,12 +84,14 @@ class form_personas extends sgr_ei_formulario
 		    this.ef('id_genero').mostrar();
 		    this.ef('id_sucursal').ocultar();
 		    this.ef('id_dpto').ocultar();
+				this.ef('id_sector').ocultar();
 		    this.ef('id_rol').ocultar();
 		    this.ef('id_nacionalidad').mostrar();
 		    this.ef('id_estadocivil').mostrar();
 				this.ef('id_entidad').mostrar();
 		  }
 		  else {
+				this.ef('legajo').ocultar();
 		    this.ef('apellido').ocultar();
 		    this.ef('nombre').ocultar();
 				this.ef('id_tipo_doc').ocultar();
@@ -97,6 +100,7 @@ class form_personas extends sgr_ei_formulario
 		    this.ef('id_genero').ocultar();
 		    this.ef('id_sucursal').ocultar();
 		    this.ef('id_dpto').ocultar();
+				this.ef('id_sector').ocultar();
 		    this.ef('id_rol').ocultar();
 		    this.ef('id_nacionalidad').ocultar();
 		    this.ef('id_estadocivil').ocultar();

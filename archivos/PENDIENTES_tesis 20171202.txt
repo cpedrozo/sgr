@@ -1,0 +1,10 @@
+PROCESOS INTELIGENTES
+
+2 Notificación de llamadas recibidas: Informar a la persona afectada
+  Mediante el empleado cargado al dar de alta el registro en el sistema
+(si no posee e-mail informar por pantalla al usuario que no se notificó)
+
+
+	REPORTING
+
+	Llamadas / Documentos / Objetos / Personas
