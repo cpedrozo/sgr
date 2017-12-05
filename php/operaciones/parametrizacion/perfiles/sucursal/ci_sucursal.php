@@ -13,14 +13,12 @@ class ci_sucursal extends sgr_ci
 
 	function conf__cuadro($cuadro)
 	{
-		//if (isset($this->s__datos_filtro)) {
 			$filtro = $this->dep('filtro');
 			$filtro->set_datos($this->s__datos_filtro);
 			$sql_where = $filtro->get_sql_where();
 
 			$datos = dao_sucursal::get_datos($sql_where);
 			$cuadro->set_datos($datos);
-		//}
 	}
 
 	function evt__cuadro__seleccion($seleccion)
@@ -49,6 +47,9 @@ class ci_sucursal extends sgr_ci
 	{
 		try{
 			$this->cn()->guardarsucursal();
+			$this->set_registroExitoso();
+			$this->cn()->resetsucursal();
+			$this->set_pantalla('pant_inicial');
 		}catch (toba_error_db $error) {
 			$sql_state = $error->get_sqlstate();
 			if ($sql_state == 'db_23505'){
@@ -58,8 +59,6 @@ class ci_sucursal extends sgr_ci
 				toba::notificacion()->agregar('Error de carga', 'info');
 			}
 		}
-		$this->cn()->resetsucursal();
-		$this->set_pantalla('pant_inicial');
 	}
 
 	function evt__cancelar()

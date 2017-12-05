@@ -1,5 +1,22 @@
 CREATE SCHEMA sgr;
 
+CREATE SEQUENCE sgr.notificaciones_id_notificaciones_seq;
+
+CREATE TABLE sgr.notificaciones (
+                id_notificaciones BIGINT NOT NULL DEFAULT nextval('sgr.notificaciones_id_notificaciones_seq'),
+                nombre VARCHAR(50) NOT NULL,
+                observacion VARCHAR(250),
+                correo VARCHAR(50) NOT NULL,
+                CONSTRAINT notificaciones_pk PRIMARY KEY (id_notificaciones)
+);
+
+
+ALTER SEQUENCE sgr.notificaciones_id_notificaciones_seq OWNED BY sgr.notificaciones.id_notificaciones;
+
+CREATE UNIQUE INDEX notificaciones_idx
+ ON sgr.notificaciones
+ ( nombre );
+
 CREATE SEQUENCE sgr.rubro_id_rubro_seq_1;
 
 CREATE TABLE sgr.rubro (
@@ -337,6 +354,7 @@ CREATE SEQUENCE sgr.persona_id_persona_seq_3_1_1;
 CREATE TABLE sgr.persona (
                 id_persona BIGINT NOT NULL DEFAULT nextval('sgr.persona_id_persona_seq_3_1_1'),
                 id_camposempleado BIGINT NOT NULL,
+                legajo BIGINT,
                 apellido VARCHAR(50) NOT NULL,
                 nombre VARCHAR(50) NOT NULL,
                 id_tipo_doc BIGINT NOT NULL,
@@ -519,7 +537,6 @@ CREATE TABLE sgr.registro (
                 id_registro BIGINT NOT NULL DEFAULT nextval('sgr.registro_id_registro_seq_1'),
                 id_workflow BIGINT NOT NULL,
                 nombre VARCHAR(100) NOT NULL,
-                observacion VARCHAR(350),
                 archivo BYTEA,
                 get_usuario VARCHAR NOT NULL,
                 fecha_inicio TIMESTAMP DEFAULT current_timestamp NOT NULL,

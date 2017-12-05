@@ -23,6 +23,14 @@ class cn_registros_alta extends sgr_cn
     $this->dep('dr_registro')->tabla('dt_registro')->set($datos);
   }
 
+  /*function get_personas()
+  {
+    if ($this->dep('dr_personas')->tabla('dt_personas')->hay_cursor())
+    {
+      return $this->dep('dr_personas')->tabla('dt_personas')->get();
+    }
+  }*/
+
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_form_estado_actual ---------------------------------------------------
   //-----------------------------------------------------------------------------------
@@ -35,7 +43,6 @@ class cn_registros_alta extends sgr_cn
     $datos = consultar_fuente($sql);
     $form->set_datos($datos);
   }
-
 
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_form_workflow --------------------------------------------------------

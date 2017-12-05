@@ -23,15 +23,6 @@ class ci_estado_civil extends sgr_ci
 		//}
 	}
 
-
-	/*
-	function conf__cuadro($cuadro)
-	{
-		$datos = dao_estado_civil::get_datos();
-		$cuadro->set_datos($datos);
-	}
-	*/
-
 	function evt__cuadro__seleccion($seleccion)
 	{
 		$this->cn()->seleccionestadocivil($seleccion);
@@ -58,6 +49,9 @@ class ci_estado_civil extends sgr_ci
 	{
 		try{
 			$this->cn()->guardarestadocivil();
+			$this->set_registroExitoso();
+			$this->cn()->resetestadocivil();
+			$this->set_pantalla('pant_inicial');
 		}catch (toba_error_db $error) {
 			$sql_state = $error->get_sqlstate();
 			if ($sql_state == 'db_23505'){
@@ -67,8 +61,6 @@ class ci_estado_civil extends sgr_ci
 				toba::notificacion()->agregar('Error de carga', 'info');
 			}
 		}
-		$this->cn()->resetestadocivil();
-		$this->set_pantalla('pant_inicial');
 	}
 
 	function evt__cancelar()

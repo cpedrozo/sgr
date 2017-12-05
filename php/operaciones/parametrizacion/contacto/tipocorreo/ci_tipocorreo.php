@@ -24,15 +24,6 @@ class ci_tipocorreo extends sgr_ci
 		//}
 	}
 
-
-	/*
-	function conf__cuadro($cuadro)
-	{
-		$datos = dao_tipocorreo::get_datos();
-		$cuadro->set_datos($datos);
-	}
-	*/
-
 	function evt__cuadro__seleccion($seleccion)
 	{
 		$this->cn()->selecciontipocorreo($seleccion);
@@ -59,6 +50,9 @@ class ci_tipocorreo extends sgr_ci
 	{
 		try{
 			$this->cn()->guardartipocorreo();
+			$this->set_registroExitoso();
+			$this->cn()->resettipocorreo();
+			$this->set_pantalla('pant_inicial');
 		}catch (toba_error_db $error) {
 			$sql_state = $error->get_sqlstate();
 			if ($sql_state == 'db_23505'){
@@ -68,8 +62,6 @@ class ci_tipocorreo extends sgr_ci
 				toba::notificacion()->agregar('Error de carga', 'info');
 			}
 		}
-		$this->cn()->resettipocorreo();
-		$this->set_pantalla('pant_inicial');
 	}
 
 	function evt__cancelar()

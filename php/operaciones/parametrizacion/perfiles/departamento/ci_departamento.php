@@ -63,18 +63,18 @@ class ci_departamento extends sgr_ci
 		{
 			try{
 				$this->cn()->guardar_dr_departamento();
+				$this->set_registroExitoso();
+				$this->cn()->resetear_dr_departamento();
+				$this->set_pantalla('pant_inicial');
 			}catch (toba_error_db $error) {
 				$sql_state = $error->get_sqlstate();
 				if ($sql_state == 'db_23505'){
 					toba::notificacion()->agregar('Ya existe el departamento', 'info');
 				}
 				else {
-					//ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
 					toba::notificacion()->agregar('Error de carga', 'info');
 				}
 			}
-			$this->cn()->resetear_dr_departamento();
-			$this->set_pantalla('pant_inicial');
 		}
 
 		function evt__cancelar()

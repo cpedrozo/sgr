@@ -78,6 +78,11 @@ class ci_detalles_registro extends sgr_ci
 	//---- form_ml_detalles_registro-----------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
+	function evt__cancelar()
+	{
+		$this->set_pantalla('pant_inicial');
+	}
+
 	function conf__form_ml_detalles_registro($form_ml)
 	{
 		if (isset($this->s__datos['seleccion']))

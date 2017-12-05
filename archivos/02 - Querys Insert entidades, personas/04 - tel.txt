@@ -248,7 +248,7 @@ INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, 
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (248,'(03757) 15546471',DEFAULT,'1','4',DEFAULT,'248');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (249,'(03757) 15553891',DEFAULT,'1','4',DEFAULT,'249');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (250,'(03757) 15613601',DEFAULT,'1','4',DEFAULT,'250');
-INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (251,'(03757) 155567610',DEFAULT,'6','4',DEFAULT,'251');
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (251,'(03757) 155567610',DEFAULT,'1','4',DEFAULT,'251');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (252,'(03757) 15511904',DEFAULT,'1','1',DEFAULT,'252');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (253,'(03757) 15417101',DEFAULT,'1','4',DEFAULT,'253');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (254,'(03757) 15419096',DEFAULT,'1','4',DEFAULT,'254');
@@ -603,14 +603,14 @@ INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, 
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (603,'(03757) 15434294',DEFAULT,'1','4',DEFAULT,'603');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (604,'(03757) 15456842',DEFAULT,'1','4',DEFAULT,'604');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (605,'(03757) 15611452',DEFAULT,'1','2',DEFAULT,'605');
-INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (606,'(03757) 15501398',DEFAULT,'6','4',DEFAULT,'606');
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (606,'(03757) 15501398',DEFAULT,'1','4',DEFAULT,'606');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (607,'(03757) 15616639',DEFAULT,'1','4',DEFAULT,'607');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (608,'(03757) 15400261',DEFAULT,'1','4',DEFAULT,'608');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (609,'(03757) 15515642',DEFAULT,'1','4',DEFAULT,'609');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (610,'(03757) 15511828',DEFAULT,'1','2',DEFAULT,'610');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (611,'(03757) 15514295',DEFAULT,'1','4',DEFAULT,'611');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (612,'(03757) 15605300',DEFAULT,'1','4',DEFAULT,'612');
-INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (613,'(03757) 15518050',DEFAULT,'6','4',DEFAULT,'613');
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (613,'(03757) 15518050',DEFAULT,'1','4',DEFAULT,'613');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (614,'(03757) 15431168',DEFAULT,'1','1',DEFAULT,'614');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (615,'(03757) 15609750',DEFAULT,'1','4',DEFAULT,'615');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (616,'(03757) 15670062',DEFAULT,'1','4',DEFAULT,'616');
@@ -685,7 +685,7 @@ INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, 
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (685,'(03757) 15300287',DEFAULT,'1','4',DEFAULT,'685');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (686,'(03757) 15461591',DEFAULT,'1','2',DEFAULT,'686');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (687,'(03757) 15543007',DEFAULT,'1','4',DEFAULT,'687');
-INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (688,'(03757) 15674077',DEFAULT,'6','4',DEFAULT,'688');
+INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (688,'(03757) 15674077',DEFAULT,'1','4',DEFAULT,'688');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (689,'(03757) 15543149',DEFAULT,'1','4',DEFAULT,'689');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (690,'(03757) 15448514',DEFAULT,'1','4',DEFAULT,'690');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (691,'(03757) 15438552',DEFAULT,'1','4',DEFAULT,'691');

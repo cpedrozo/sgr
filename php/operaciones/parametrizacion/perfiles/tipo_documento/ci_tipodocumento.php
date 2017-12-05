@@ -54,6 +54,9 @@ class ci_tipodocumento extends sgr_ci
 	{
 		try{
 			$this->cn()->guardartipodocumento();
+			$this->set_registroExitoso();
+			$this->cn()->resettipodocumento();
+			$this->set_pantalla('pant_inicial');
 		}catch (toba_error_db $error) {
 			$sql_state = $error->get_sqlstate();
 			if ($sql_state == 'db_23505'){
@@ -63,8 +66,6 @@ class ci_tipodocumento extends sgr_ci
 				toba::notificacion()->agregar('Error de carga', 'info');
 			}
 		}
-		$this->cn()->resettipodocumento();
-		$this->set_pantalla('pant_inicial');
 	}
 
 	function evt__cancelar()

@@ -16,15 +16,15 @@ class ci_personas extends sgr_ci
 
 	function ini()
 	{
-			if ($this->controlador()->get_id()[1]=='1000898')
-				{
-					$this->dep('cuadro')->eliminar_evento('seleccion2');
-					$this->dep('cuadro')->eliminar_evento('detalles');
-					$this->dep('cuadro')->eliminar_evento('borrar');
-				}
-			else {
-				$this->dep('cuadro')->eliminar_evento('seleccion');
+		if ($this->controlador()->get_id()[1]=='1000898')
+			{
+				$this->dep('cuadro')->eliminar_evento('seleccion2');
+				$this->dep('cuadro')->eliminar_evento('detalles');
+				$this->dep('cuadro')->eliminar_evento('borrar');
 			}
+		else {
+			$this->dep('cuadro')->eliminar_evento('seleccion');
+		}
 	}
 
 	function conf__cuadro($cuadro)
@@ -93,6 +93,7 @@ class ci_personas extends sgr_ci
 			if (dao_personas::esempleado($this->s__datos['idpersona_alta'])){
 				$this->enviar_mail();
 			}
+			$this->set_registroExitoso();
 			$this->cn()->resetear_dr_personas();
 			$this->set_pantalla('pant_inicial');
 		}catch (toba_error_db $error) {

@@ -1,6 +1,7 @@
 <?php
 require_once('operaciones/metodosconsulta/flujosyregistros.php');
 require_once('operaciones/metodosconsulta/operaciones.php');
+require_once('operaciones/abm/personas/dao_personas.php');
 
 class ci_nuevoregistro extends sgr_ci
 {
@@ -26,6 +27,10 @@ class ci_nuevoregistro extends sgr_ci
 		$registroExitoso = false;
 		try{
 			$this->cn()->guardarregistro();
+			/*$this->s__datos['idpersona_alta'] = $this->cn()->get_personas()['id_persona'];
+			if (dao_personas::esempleado($this->s__datos['idpersona_alta'])){
+				$this->enviar_mail();
+			}*/
 			$registroExitoso = true;
 		}catch (toba_error_db $error) {
 			$sql_state = $error->get_sqlstate();

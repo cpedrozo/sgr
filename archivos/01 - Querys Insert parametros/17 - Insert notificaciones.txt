@@ -1,0 +1,1 @@
+INSERT INTO sgr.notificaciones(nombre, observacion, correo) values ('RRHH - ABM EMPLEADOS','Notifica novedades ABM Personas','piguazu+rrhh@gmail.com');
