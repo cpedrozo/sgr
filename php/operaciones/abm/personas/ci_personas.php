@@ -74,7 +74,7 @@ class ci_personas extends sgr_ci
 		$datos=$this->dep('cuadro')->get_datos()[$fila];
 		$evento->vinculo()->agregar_parametro('persona', $datos['id_persona']);
 	}
-
+//
 	//-----------------------------------------------------------------------------------
 	//---- Eventos ----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ class ci_personas extends sgr_ci
 			if (dao_personas::esempleado($this->s__datos['idpersona_alta'])){
 				$this->enviar_mail();
 			}
-			$this->set_registroExitoso();
+			//$this->set_registroExitoso();
 			$this->cn()->resetear_dr_personas();
 			$this->set_pantalla('pant_inicial');
 		}catch (toba_error_db $error) {
@@ -181,13 +181,11 @@ class ci_personas extends sgr_ci
 	{
 		$datos = $this->cn()->getdomicilio_personas();
 		$form_ml->set_datos($datos);
-		$this->s__datos['datos_anteriores_dom'] = $datos;
 	}
 
 	function evt__form_ml_domicilio__modificacion($datos)
 	{
 		$this->cn()->procesardomicilio_personas($datos);
-		$this->s__datos['datos_nuevos_dom'] = $datos;
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -198,13 +196,11 @@ class ci_personas extends sgr_ci
 	{
 		$datos = $this->cn()->gettelefono_personas();
 		$form_ml->set_datos($datos);
-		$this->s__datos['datos_anteriores_tel'] = $datos;
 	}
 
 	function evt__form_ml_tel__modificacion($datos)
 	{
 		$this->cn()->procesartelefono_personas($datos);
-		$this->s__datos['datos_nuevos_tel'] = $datos;
 	}
 
 	function ajax__traerinfo_tipotel($id_renglon, toba_ajax_respuesta $respuesta)
@@ -221,13 +217,11 @@ class ci_personas extends sgr_ci
 	{
 		$datos = $this->cn()->getcorreo_personas();
 		$form_ml->set_datos($datos);
-		$this->s__datos['datos_anteriores_correo'] = $datos;
 	}
 
 	function evt__form_ml_correo__modificacion($datos)
 	{
 		$this->cn()->procesarcorreo_personas($datos);
-		$this->s__datos['datos_nuevos_correo'] = $datos;
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -239,16 +233,13 @@ class ci_personas extends sgr_ci
 		$cuerpo_mail = $this->get_datos_cambiados();
 
 		if ($this->s__datos['operacion'] == 'alta'){
-			$asunto = 'Se dio de alta el empleado '.$this->s__datos['datos_nuevos_form']['apellido'].', '.$this->s__datos['datos_nuevos_form']['nombre'];
+			$asunto = 'Se dio de alta el empleado '.$this->s__datos['datos_nuevos_form']['legajo'].': '.$this->s__datos['datos_nuevos_form']['apynom'];
 		}
 		else if ($this->s__datos['operacion'] == 'modificacion') {
 			$asunto = 'Se modificaron uno o mas datos del empleado '.$this->s__datos['datos_anteriores_form']['apynom'];
 		}
-		else//($this->s__datos['operacion'] == 'baja')
+		else
 		$asunto = 'Se dio de baja el empleado '.$this->s__datos['datos_empleado']['apynom'];
-		//$mail = new toba_mail($receptor, $asunto, $cuerpo_mail);
-		//$mail->set_html(true);
-		//$mail->enviar();
     try {
         $mail = new toba_mail(dao_personas::get_correorrhh(), $asunto, $cuerpo_mail);
         $mail->set_html(true);
@@ -262,12 +253,12 @@ class ci_personas extends sgr_ci
 	function get_datos_cambiados()
 	{
 		$camposform = ['id_camposempleado','apellido','nombre','id_tipo_doc','doc','fnac','id_genero','id_sector','id_rol','id_nacionalidad','id_estadocivil','fbaja','id_entidad','id_sucursal','id_dpto'];
-		$camposdao = ['apynom', 'legajo', 'tipodoc', 'fnac', 'genero', 'rol', 'sector', 'nacionalidad', 'ecivil', 'entidad'];
+		$camposdao = ['apynom','legajo','tipodoc','doc','fnac','genero','rol','sector','nacionalidad','ecivil','entidad'];
 		if (isset($this->s__datos['datos_anteriores_form'])){
 			if (!is_array($this->s__datos['datos_anteriores_form'])){
 				$this->s__datos['datos_nuevos_form'] = dao_personas::get_empleadobaja($this->s__datos['idpersona_alta']);
 				$this->s__datos['operacion'] = 'alta';
-				$respuesta = 'Se dio de alta el empleado '.$this->s__datos['datos_nuevos_form']['legajo'].': '.$this->s__datos['datos_nuevos_form']['apellido'].', '.$this->s__datos['datos_nuevos_form']['nombre'].'<br/><br/>
+				$respuesta = 'Detalles del empleado '.$this->s__datos['datos_nuevos_form']['legajo'].': '.$this->s__datos['datos_nuevos_form']['apynom'].'<br/><br/>
 				<table style="width:40%">
 			  <tr style="text-align:left">
 					<th>Campo</th>
@@ -276,10 +267,10 @@ class ci_personas extends sgr_ci
 				foreach ($camposdao as $value) {
 						$valornuevo = $this->s__datos['datos_nuevos_form'][$value];
 						if (!is_null ($valornuevo)){
-						$respuesta = $respuesta.'<tr style="text-align:left">
+						$respuesta = $respuesta."<tr style='text-align:left'>
 							<td>$value</td>
 					    <td>$valornuevo</td>
-					  </tr>';
+					  </tr>";
 						}
 				}
 				$respuesta = $respuesta.'</table>';

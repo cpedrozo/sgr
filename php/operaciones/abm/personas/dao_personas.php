@@ -10,7 +10,7 @@ class dao_personas
         $where_armado = '';
       }
 
-      $sql = "SELECT p.id_persona,
+      $sql = "SELECT p.id_persona, ce.nombre esempleado,
               td.nombre||': '||p.doc documento,
               e.razonsocial entidad,
               dp.nombre||' - '||se.nombre||' ('||s.nombre||')' suc_dpto,
@@ -26,6 +26,7 @@ class dao_personas
               LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
               LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
               LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
+              LEFT JOIN sgr.camposempleado ce ON p.id_camposempleado = ce.id_camposempleado
               ORDER BY p.apellido, p.nombre, suc_dpto ASC
               limit 10";
 
@@ -41,7 +42,7 @@ class dao_personas
         $where_armado = '';
       }
 
-      $sql = "SELECT p.id_persona,
+      $sql = "SELECT p.id_persona, ce.nombre esempleado,
               td.nombre||': '||p.doc documento,
               e.razonsocial entidad,
               dp.nombre||' - '||se.nombre||' ('||s.nombre||')' suc_dpto,
@@ -57,6 +58,7 @@ class dao_personas
               LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
               LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
               LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
+              LEFT JOIN sgr.camposempleado ce ON p.id_camposempleado = ce.id_camposempleado
               $where_armado ORDER BY p.apellido, p.nombre, suc_dpto ASC";
 
       $resultado = consultar_fuente($sql);
@@ -79,7 +81,7 @@ class dao_personas
 
     static function get_empleadobaja($id_persona)
     {
-      $sql = "SELECT p.apellido||', '||p.nombre apynom, legajo, td.nombre tipodoc, fnac, g.nombre genero, r.nombre rol, s.nombre sector, n.nombre nacionalidad, ec.nombre ecivil, e.razonsocial entidad
+      $sql = "SELECT p.apellido||', '||p.nombre apynom, legajo, td.nombre tipodoc, doc, fnac, g.nombre genero, r.nombre rol, s.nombre sector, n.nombre nacionalidad, ec.nombre ecivil, e.razonsocial entidad
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
               LEFT JOIN sgr.genero g ON p.id_genero = g.id_genero

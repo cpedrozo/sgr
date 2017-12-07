@@ -1,5 +1,9 @@
 PROCESOS INTELIGENTES
 
+1 Cuando se modifique un tel, correo o domicilio de empleado el email viene vacío,
+ En esos casos controlar con un if y en lugar de armar la tabla, solo dejar el msj
+ que notifica que hubo algún cambio.
+
 2 Notificación de llamadas recibidas: Informar a la persona afectada
   Mediante el empleado cargado al dar de alta el registro en el sistema
 (si no posee e-mail informar por pantalla al usuario que no se notificó)

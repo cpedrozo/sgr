@@ -5,11 +5,11 @@ class cn_registros_alta extends sgr_cn
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_registros (form) -----------------------------------------------------
   //-----------------------------------------------------------------------------------
-
+  //
   function guardarregistro()
   {
     $this->dep('dr_registro')->sincronizar();
-    $this->dep('dr_registro')->resetear();
+    //$this->dep('dr_registro')->resetear(); comentado 20171206
   }
 
   function resetregistro()
@@ -23,13 +23,21 @@ class cn_registros_alta extends sgr_cn
     $this->dep('dr_registro')->tabla('dt_registro')->set($datos);
   }
 
-  /*function get_personas()
+  function get_registro()
   {
-    if ($this->dep('dr_personas')->tabla('dt_personas')->hay_cursor())
+    if ($this->dep('dr_registro')->tabla('dt_registro')->hay_cursor())
     {
-      return $this->dep('dr_personas')->tabla('dt_personas')->get();
+      return $this->dep('dr_registro')->tabla('dt_registro')->get();
     }
-  }*/
+  }
+
+  function get_estado_actual()
+  {
+    if ($this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->hay_cursor())
+    {
+      return $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->get();
+    }
+  }
 
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_form_estado_actual ---------------------------------------------------

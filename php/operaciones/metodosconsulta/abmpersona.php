@@ -7,12 +7,21 @@ class abmpersona
   /////////// DATOS PERSONA ////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
+static function get_esempleado()
+{
+  $sql = "SELECT id_camposempleado, nombre
+          FROM sgr.camposempleado
+          ORDER BY nombre DESC";
+  $datos = consultar_fuente($sql);
+  return $datos;
+}
+
   static function get_descPopUpEntidad($id_entidad)
   {
     $id_entidad = quote($id_entidad);
     $sql = "SELECT e.razonsocial
-            	FROM sgr.entidad e
-             WHERE e.id_entidad = $id_entidad";
+            FROM sgr.entidad e
+            WHERE e.id_entidad = $id_entidad";
     $resultado = consultar_fuente($sql);
     if (count($resultado) > 0) {
       return $resultado[0]['razonsocial'];
