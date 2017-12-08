@@ -33,7 +33,7 @@ class ci_nuevoregistro extends sgr_ci
 			if (dao_personas::esempleado($this->s__datos['id_persona'])){
 				$this->enviar_mail();
 			}
-			//$registroExitoso = true;
+			$registroExitoso = true;
 		}catch (toba_error_db $error) {
 			$sql_state = $error->get_sqlstate();
 			if ($sql_state == 'db_23505'){
@@ -170,7 +170,7 @@ class ci_nuevoregistro extends sgr_ci
         $mail->enviar();
     } catch (toba_error $e) {
         toba::logger()->debug('Envio email Nuevo Registro: '. $e->getMessage());
-        toba::notificacion()->agregar('Se produjo un error al intentar enviar el email.');
+        toba::notificacion()->agregar('Se produjo un error al intentar enviar el email', 'warning');
     }
 	}
 

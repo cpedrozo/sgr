@@ -93,7 +93,7 @@ class ci_personas extends sgr_ci
 			if (dao_personas::esempleado($this->s__datos['idpersona_alta'])){
 				$this->enviar_mail();
 			}
-			//$this->set_registroExitoso();
+			$this->set_registroExitoso();
 			$this->cn()->resetear_dr_personas();
 			$this->set_pantalla('pant_inicial');
 		}catch (toba_error_db $error) {
@@ -166,6 +166,7 @@ class ci_personas extends sgr_ci
 		$datos = $this->cn()->get_personas();
 		$form->set_datos($datos);
 		$this->s__datos['datos_anteriores_form'] = isset($datos) ? dao_personas::get_empleadobaja($datos['id_persona']) : '';
+		$this->s__datos['form_jasper'] = $datos;
 	}
 
 	function evt__form__modificacion($datos)
@@ -246,7 +247,7 @@ class ci_personas extends sgr_ci
         $mail->enviar();
     } catch (toba_error $e) {
         toba::logger()->debug('Envio email ABM empleado: '. $e->getMessage());
-        toba::notificacion()->agregar('Se produjo un error al intentar enviar el email.');
+        toba::notificacion()->agregar('Se produjo un error al intentar enviar el email.', 'warning');
     }
 	}
 
@@ -322,6 +323,27 @@ class ci_personas extends sgr_ci
 		}
 		return $respuesta;
 	}
+
+/*
+	//-----------------------------------------------------------------------------------
+	//---- reportes ---------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function vista_jasperreports(toba_vista_jasperreports $jasper)
+	{
+		$path_toba = toba::proyecto()->get_path();
+		$path_reporte = $path_toba . '/exportaciones/jasper/sgr/personas.jasper';
+		$jasper->set_path_reporte($path_reporte);
+    $usuario = toba::usuario()->get_nombre();
+    $nombre_archivo = $this->s__datos['form_jasper']['apellido'] . '_' . $this->s__datos['form_jasper']['nombre'] . '.pdf';
+    $id_persona = $this->s__datos['form_jasper']['id_persona'];
+    $reporte->set_parametro('usuariotoba','S',$usuario);
+    $reporte->set_parametro('idpersona','E',$idpersona);
+    $reporte->set_nombre_archivo($nombre_archivo);
+    $db = toba::db('sgr');
+    $reporte->set_conexion($db);
+	}
+*/
 
 }
 ?>
