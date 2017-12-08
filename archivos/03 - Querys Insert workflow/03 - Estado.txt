@@ -5,3 +5,5 @@ INSERT INTO sgr.estado(id_estado, nombre, inicio, fin) values (4,'ENTREGADO',FAL
 INSERT INTO sgr.estado(id_estado, nombre, inicio, fin) values (5,'DEVUELTO',FALSE,FALSE);
 INSERT INTO sgr.estado(id_estado, nombre, inicio, fin) values (6,'CONCRETADO',FALSE,TRUE);
 INSERT INTO sgr.estado(id_estado, nombre, inicio, fin) values (7,'CANCELADO',FALSE,TRUE);
+
+SELECT setval('sgr.estado_id_estado_seq_1_1', 8);

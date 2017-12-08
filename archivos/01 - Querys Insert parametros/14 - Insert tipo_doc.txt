@@ -6,3 +6,5 @@ INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (5,'PASAPORTE EXTRANJERO');
 INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (6,'RG');
 INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (7,'CPF');
 INSERT INTO sgr.tipo_doc(id_tipo_doc, nombre) values (8,'CARTERA MOTORISTA');
+
+SELECT setval('sgr.tipo_doc_id_tipo_doc_seq_1', 9);

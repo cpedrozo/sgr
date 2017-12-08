@@ -1,3 +1,4 @@
+Power_Architect/script_db/drop-database.txt
 Power_Architect/script_db/script create db.txt
 01 - Querys Insert parametros/01 - Insert Paises.txt
 01 - Querys Insert parametros/02 - Insert Prov.txt
@@ -17,17 +18,17 @@ Power_Architect/script_db/script create db.txt
 01 - Querys Insert parametros/15 - Inser propietario.txt
 01 - Querys Insert parametros/16 - Insert rubro.txt
 01 - Querys Insert parametros/17 - Insert notificaciones.txt
-02 - Querys Insert entidades, personas/01 - entidades.txt
-02 - Querys Insert entidades, personas/02 - personas.txt
-02 - Querys Insert entidades, personas/03 - domicilio.txt
-02 - Querys Insert entidades, personas/04 - tel.txt
-02 - Querys Insert entidades, personas/05 - correo.txt
-03 - Querys Insert workflow/01 - TipoEvento
-03 - Querys Insert workflow/02 - Evento
-03 - Querys Insert workflow/03 - Estado
-03 - Querys Insert workflow/04 - Workflow
-03 - Querys Insert workflow/05 - Flujo
-04 - Querys Insert registro, estado_actual_flujo/01 - Insert Requisitos
-04 - Querys Insert registro, estado_actual_flujo/02 - Insert Registro
-04 - Querys Insert registro, estado_actual_flujo/03 - Requisitos_registro
+02 - Querys Insert entidades, personas/sql/01 - entidades.sql
+02 - Querys Insert entidades, personas/sql/02 - personas.sql
+02 - Querys Insert entidades, personas/sql/03 - domicilio.sql
+02 - Querys Insert entidades, personas/sql/04 - tel.sql
+02 - Querys Insert entidades, personas/sql/05 - correo.sql
+03 - Querys Insert workflow/01 - TipoEvento.txt
+03 - Querys Insert workflow/02 - Evento.txt
+03 - Querys Insert workflow/03 - Estado.txt
+03 - Querys Insert workflow/04 - Workflow.txt
+03 - Querys Insert workflow/05 - Flujo.txt
+04 - Querys Insert registro, estado_actual_flujo/01 - Insert Requisitos.txt
+04 - Querys Insert registro, estado_actual_flujo/02 - Insert Registro.txt
+04 - Querys Insert registro, estado_actual_flujo/03 - Requisitos_registro.txt
 04 - Querys Insert registro, estado_actual_flujo/04 - Insert estado_actual_flujo.txt

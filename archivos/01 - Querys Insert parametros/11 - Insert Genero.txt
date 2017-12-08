@@ -1,3 +1,5 @@
 ﻿INSERT INTO sgr.genero(id_genero, nombre) values (1,'FEMENINO');
 INSERT INTO sgr.genero(id_genero, nombre) values (2,'MASCULINO');
 INSERT INTO sgr.genero(id_genero, nombre) values (3,'OTRO');
+
+SELECT setval('sgr.genero_id_genero_seq', 4);

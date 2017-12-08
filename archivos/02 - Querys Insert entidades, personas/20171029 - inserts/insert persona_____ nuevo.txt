@@ -714,4 +714,4 @@ INSERT INTO sgr.persona ( id_persona, id_camposempleado, legajo, apellido, nombr
 INSERT INTO sgr.persona ( id_persona, id_camposempleado, legajo, apellido, nombre, id_tipo_doc, doc, fnac, id_genero, id_sector, id_rol, id_nacionalidad, id_estadocivil, fbaja, id_entidad) VALUES (714,'1',55465,'RAMIREZ','YONATAN NICOLAS','1','12345678','1981-01-01','2','66','4','1','5',DEFAULT,'2');
 INSERT INTO sgr.persona ( id_persona, id_camposempleado, legajo, apellido, nombre, id_tipo_doc, doc, fnac, id_genero, id_sector, id_rol, id_nacionalidad, id_estadocivil, fbaja, id_entidad) VALUES (715,'1',55466,'BARGAS','LUIS','1','12345678','1981-01-01','2','66','4','1','5',DEFAULT,'2');
 
-SELECT setval('sgr.persona_id_persona_seq_3_1_1', 716);
+SELECT setval('sgr.domicilio_id_domicilio_seq', 4);

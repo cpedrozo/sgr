@@ -3,3 +3,5 @@ INSERT INTO sgr.workflow(id_workflow, nombre,id_evento,id_dpto,notifica) values 
 INSERT INTO sgr.workflow(id_workflow, nombre,id_evento,id_dpto,notifica) values (3,'RECEPCION FC BBT',2,6,TRUE);
 INSERT INTO sgr.workflow(id_workflow, nombre,id_evento,id_dpto,notifica) values (4,'RECEPCION DE CV',1,13,TRUE);
 INSERT INTO sgr.workflow(id_workflow, nombre,id_evento,id_dpto,notifica) values (5,'LLAMADA DE PARQUES NACIONALES',5,8,FALSE);
+
+SELECT setval('sgr.workflow_id_workflow_seq', 6);

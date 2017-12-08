@@ -67,3 +67,5 @@ INSERT INTO sgr.rubro(id_rubro, nombre) values (66,'VERDULERIA');
 INSERT INTO sgr.rubro(id_rubro, nombre) values (67,'VETERINARIA');
 INSERT INTO sgr.rubro(id_rubro, nombre) values (68,'VIDRIERIA');
 INSERT INTO sgr.rubro(id_rubro, nombre) values (69,'VINOTECA');
+
+SELECT setval('sgr.rubro_id_rubro_seq_1', 70);

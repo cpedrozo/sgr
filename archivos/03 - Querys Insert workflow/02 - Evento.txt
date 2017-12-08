@@ -9,3 +9,5 @@ INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (8,'CARTERA/BOLS
 INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (9,'LLAVE',3);
 INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (10,'ROPA',3);
 INSERT INTO sgr.evento(id_evento, nombre, id_tipoevento) values (11,'TELEFONO',3);
+
+SELECT setval('sgr.evento_id_evento_seq_1', 12);

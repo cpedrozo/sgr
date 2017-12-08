@@ -1,3 +1,0 @@
-﻿INSERT INTO sgr.registro(id_registro, id_workflow, nombre, archivo, get_usuario, fecha_inicio, fecha_fin) values (11,4,'CURRICULUM JUAN PEREZ',NULL,'toba','2017-09-09 14:29:08.308049'::TIMESTAMP,NULL);
-INSERT INTO sgr.registro(id_registro, id_workflow, nombre, archivo, get_usuario, fecha_inicio, fecha_fin) values (12,3,'FACTURA MES SEPTIEMBRE',NULL,'toba','2017-09-09 16:38:03.599437'::TIMESTAMP,NULL);
-INSERT INTO sgr.registro(id_registro, id_workflow, nombre, archivo, get_usuario, fecha_inicio, fecha_fin) values (14,4,'NUEVO CV',NULL,'toba','2017-09-30 09:37:15.278727'::TIMESTAMP,NULL);

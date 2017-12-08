@@ -1,0 +1,6 @@
+INSERT INTO sgr.requisitos(id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, nombre, obligatorio, orden) values (1,1,2,4,'Foto',TRUE,1);
+INSERT INTO sgr.requisitos(id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, nombre, obligatorio, orden) values (2,1,2,4,'Antecedentes policiales',TRUE,2);
+INSERT INTO sgr.requisitos(id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, nombre, obligatorio, orden) values (3,1,2,4,'Una manzana',TRUE,3);
+INSERT INTO sgr.requisitos(id_requisitos, id_estadoorigen, id_estadodestino, id_workflow, nombre, obligatorio, orden) values (4,2,4,4,'Fecha vigencia',FALSE,1);
+
+SELECT setval('sgr.requisitos_id_requisitos_seq', 5);

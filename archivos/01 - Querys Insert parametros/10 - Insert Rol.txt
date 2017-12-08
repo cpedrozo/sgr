@@ -2,3 +2,5 @@ INSERT INTO sgr.rol(id_rol, nombre) values (1,'GERENTE');
 INSERT INTO sgr.rol(id_rol, nombre) values (2,'SUBGERENTE');
 INSERT INTO sgr.rol(id_rol, nombre) values (3,'ADMINISTRATIVO');
 INSERT INTO sgr.rol(id_rol, nombre) values (4,'OTRO');
+
+SELECT setval('sgr.rol_id_rol_seq', 5);

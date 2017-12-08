@@ -3,3 +3,5 @@ INSERT INTO sgr.estadocivil(id_estadocivil, nombre) values (2,'CASADO');
 INSERT INTO sgr.estadocivil(id_estadocivil, nombre) values (3,'DIVORCIADO');
 INSERT INTO sgr.estadocivil(id_estadocivil, nombre) values (4,'VIUDO');
 INSERT INTO sgr.estadocivil(id_estadocivil, nombre) values (5,'OTRO');
+
+SELECT setval('sgr.estadocivil_id_estadocivil_seq', 6);

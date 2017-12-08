@@ -523,7 +523,6 @@ CREATE TABLE sgr.requisitos (
                 nombre VARCHAR(30) NOT NULL,
                 obligatorio BOOLEAN,
                 orden INTEGER,
-                persona BOOLEAN NOT NULL,
                 CONSTRAINT requisitos_pk PRIMARY KEY (id_requisitos, id_estadoorigen, id_estadodestino, id_workflow)
 );
 COMMENT ON TABLE sgr.requisitos IS 'requisitos por cada paso del workflow';
@@ -557,10 +556,8 @@ CREATE TABLE sgr.requisitos_registro (
                 id_estadoorigen BIGINT NOT NULL,
                 id_estadodestino BIGINT NOT NULL,
                 id_workflow BIGINT NOT NULL,
-                observacion VARCHAR(350),
                 archivo BYTEA,
                 completo BOOLEAN NOT NULL,
-                id_persona BIGINT,
                 CONSTRAINT requisitos_registro_pk PRIMARY KEY (id_requisitos_registro)
 );
 
@@ -781,13 +778,6 @@ ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE sgr.domicilio ADD CONSTRAINT persona_domicilio_fk
-FOREIGN KEY (id_persona)
-REFERENCES sgr.persona (id_persona)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
-NOT DEFERRABLE;
-
-ALTER TABLE sgr.requisitos_registro ADD CONSTRAINT persona_requisitos_registro_fk
 FOREIGN KEY (id_persona)
 REFERENCES sgr.persona (id_persona)
 ON DELETE NO ACTION

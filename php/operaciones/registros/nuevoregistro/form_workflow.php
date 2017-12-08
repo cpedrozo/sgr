@@ -48,12 +48,12 @@ class form_workflow extends sgr_ei_formulario
 				id_estado_x_requsito['id_estado'] = this.ef('id_estado').get_estado();
 				id_estado_x_requsito['id_estadoorigen'] = js_form_1000890_form_estado_actual.ef('id_estado').get_estado();
 				this.controlador.ajax('traerinfo_requisitos_estado', id_estado_x_requsito, this, this.resp_requsitos);
+				console.log('procesamiento del id_estado');
 			}
 		}
 
     {$this->objeto_js}.resp_requsitos = function(datos)
 		{
-      //--console.log('coment requisitos');
 			//--console.log(datos);
 			frm = js_form_1000896_form_ml_requisitos
       datos.forEach(function(elemento)
@@ -63,13 +63,13 @@ class form_workflow extends sgr_ei_formulario
 				frm.ef('obligatorio').ir_a_fila(fila).set_estado(et_ob);
 				frm.ef('nro_requisito').ir_a_fila(fila).set_estado(elemento['nro_requisito']);
 				frm.ef('nombre').ir_a_fila(fila).set_estado(elemento['nombre']);
-				if (elemento['persona'])
-				{
-					frm.ef('id_persona').ir_a_fila(fila).mostrar();
-				}
-				else{
-					frm.ef('id_persona').ir_a_fila(fila).ocultar();
-				}
+				// if (elemento['persona']) // modificado, comentado 20171208
+				// {
+				// 	frm.ef('id_persona').ir_a_fila(fila).mostrar();
+				// }
+				// else{
+				// 	frm.ef('id_persona').ir_a_fila(fila).ocultar();
+				// }
       })
 		}
 		";

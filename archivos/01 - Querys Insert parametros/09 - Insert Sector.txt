@@ -69,3 +69,5 @@ INSERT INTO sgr.sector(id_sector, nombre, id_dpto) values (68,'VIGILANCIA',17);
 INSERT INTO sgr.sector(id_sector, nombre, id_dpto) values (69,'CCTV',17);
 INSERT INTO sgr.sector(id_sector, nombre, id_dpto) values (70,'MERCADERIAS',17);
 INSERT INTO sgr.sector(id_sector, nombre, id_dpto) values (71,'GERENCIA',17);
+
+SELECT setval('sgr.sector_id_sector_seq_1_1', 72);

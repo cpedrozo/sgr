@@ -299,9 +299,7 @@ class ci_personas extends sgr_ci
 						}
 					}
 				}
-				//ei_arbol(['respuesta_antes_concatenar'=>$respuesta]);
 				$respuesta = $respuesta.'</table>';
-				//ei_arbol(['respuesta_dsp_foreach'=>$respuesta]);
 			}
 		}
 		else {

@@ -713,3 +713,5 @@ INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, 
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (713,'(03757) 15460455',DEFAULT,'1','1',DEFAULT,'713');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (714,'(03757) 15589341',DEFAULT,'1','4',DEFAULT,'714');
 INSERT INTO sgr.telefono(id_telefono, numero, interno, id_tipotel, id_compania, id_entidad, id_persona) VALUES (715,'(03757) 15524093',DEFAULT,'1','4',DEFAULT,'715');
+
+SELECT setval('sgr.telefono_id_telefono_seq', 716);

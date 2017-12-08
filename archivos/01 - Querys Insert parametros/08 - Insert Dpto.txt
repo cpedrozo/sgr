@@ -15,3 +15,5 @@ INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (14,'SISTEMAS',2);
 INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (15,'SUPERVISION',2);
 INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (16,'VENTAS',2);
 INSERT INTO sgr.dpto(id_dpto, nombre, id_sucursal) values (17,'VIGILANCIA',2);
+
+SELECT setval('sgr.dpto_id_dpto_seq_1_1_1', 18);

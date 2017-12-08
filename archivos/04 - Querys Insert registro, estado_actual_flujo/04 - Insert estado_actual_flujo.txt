@@ -1,5 +1,5 @@
-INSERT INTO sgr.estado_actual_flujo(id_estado_actual, fecha, activo, id_registro, id_estado) values (1,'2017-09-09 14:29:08.308049'::TIMESTAMP,'TRUE',11,2);
-INSERT INTO sgr.estado_actual_flujo(id_estado_actual, fecha, activo, id_registro, id_estado) values (2,'2017-09-09 16:38:03.599437'::TIMESTAMP,'TRUE',12,2);
-INSERT INTO sgr.estado_actual_flujo(id_estado_actual, fecha, activo, id_registro, id_estado) values (3,'2017-09-30 09:37:15.278727'::TIMESTAMP,'TRUE',14,2);
+INSERT INTO sgr.estado_actual_flujo(id_estado_actual, fecha, activo, id_registro, id_estado) values (1,'2017-09-09 14:29:08.308049'::TIMESTAMP,'TRUE',1,2);
+INSERT INTO sgr.estado_actual_flujo(id_estado_actual, fecha, activo, id_registro, id_estado) values (2,'2017-09-09 16:38:03.599437'::TIMESTAMP,'TRUE',2,2);
+INSERT INTO sgr.estado_actual_flujo(id_estado_actual, fecha, activo, id_registro, id_estado) values (3,'2017-09-30 09:37:15.278727'::TIMESTAMP,'TRUE',3,2);
 
-SELECT setval('sgr.estado_actual_flujo_id_estado_actual_seq', 3);
+SELECT setval('sgr.estado_actual_flujo_id_estado_actual_seq', 4);

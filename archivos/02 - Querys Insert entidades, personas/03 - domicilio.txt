@@ -713,3 +713,5 @@ INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, 
 INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (713,'ARROYOMOLINOS  ','Caminito','713','2',DEFAULT,713,'10059');
 INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (714,'BAÑOS DE MONTEMAYOR','Carabelas','714','2',DEFAULT,714,'10053');
 INSERT INTO sgr.domicilio ( id_domicilio, barrio, calle, num, piso, id_entidad, id_persona, id_ciudad )  VALUES (715,'BARRADO  ','Chirimay','715','2',DEFAULT,715,'9857');
+
+SELECT setval('sgr.domicilio_id_domicilio_seq', 716);

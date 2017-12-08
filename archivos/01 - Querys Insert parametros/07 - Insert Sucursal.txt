@@ -1,2 +1,4 @@
 ﻿INSERT INTO sgr.sucursal(id_sucursal, nombre, id_ciudad) values (1,'LONDON',204);
 INSERT INTO sgr.sucursal(id_sucursal, nombre, id_ciudad) values (2,'DFS',10053);
+
+SELECT setval('sgr.sucursal_id_sucursal_seq', 3);

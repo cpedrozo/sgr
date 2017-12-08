@@ -1,3 +1,5 @@
 INSERT INTO sgr.tipo_evento(id_tipoevento, nombre) values (1,'DOCUMENTO');
 INSERT INTO sgr.tipo_evento(id_tipoevento, nombre) values (2,'LLAMADA');
 INSERT INTO sgr.tipo_evento(id_tipoevento, nombre) values (3,'OBJ. EXTRAVIADO');
+
+SELECT setval('sgr.tipo_evento_id_tipoevento_seq_1_1', 4);

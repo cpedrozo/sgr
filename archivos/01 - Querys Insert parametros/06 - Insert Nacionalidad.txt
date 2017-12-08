@@ -3,3 +3,5 @@ INSERT INTO sgr.nacionalidad(id_nacionalidad, nombre) values (2,'BRASILERA');
 INSERT INTO sgr.nacionalidad(id_nacionalidad, nombre) values (3,'CHILENA');
 INSERT INTO sgr.nacionalidad(id_nacionalidad, nombre) values (4,'PARAGUAYA');
 INSERT INTO sgr.nacionalidad(id_nacionalidad, nombre) values (5,'URUGUAYA');
+
+SELECT setval('sgr.nacionalidad_id_nacionalidad_seq', 6);

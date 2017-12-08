@@ -1,2 +1,4 @@
 INSERT INTO sgr.camposempleado(id_camposempleado, nombre) values (1,'SI');
 INSERT INTO sgr.camposempleado(id_camposempleado, nombre) values (2,'NO');
+
+SELECT setval('sgr.camposempleado_id_camposempleado_seq_1', 3);
