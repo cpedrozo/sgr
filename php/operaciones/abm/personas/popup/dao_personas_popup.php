@@ -69,5 +69,18 @@ class dao_personas_popup
       return $resultado;
     }
 
+    /////////////////////////////////////////////////////////////////////////////
+    /////////jasper_reports /////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
+
+    static function get_nombrearchivo($id_persona)
+    {
+      $sql = "SELECT apellido||'_'||nombre apynom
+      FROM sgr.persona
+      WHERE id_persona = $id_persona";
+      $resultado = consultar_fuente($sql);
+      return $resultado[0]['apynom'];
+    }
+
 }
 ?>

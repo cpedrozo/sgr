@@ -6,10 +6,45 @@ class cn_parametrizacion extends sgr_cn
   //---- ABM sgr_propietario ----------------------------------------------------------
   //-----------------------------------------------------------------------------------
 
+  function get_servicios()
+  {
+
+    return $datos;
+  }
+
   function cargarpropietario($form)
   {
     if ($this->dep('dr_propietario')->tabla('dt_propietario')->hay_cursor()) {
     $datos = $this->dep('dr_propietario')->tabla('dt_propietario')->get();
+
+    $fp_imagen1 = $this->dep('dr_propietario')->tabla('dt_propietario')->get_blob('logo_grande');
+    $fp_imagen2 = $this->dep('dr_propietario')->tabla('dt_propietario')->get_blob('logo_chico');
+
+    if (isset($fp_imagen1)) {
+      $temp_nombre1 = 'logo_grande' . $datos['id_propietario'];
+      $temp_archivo1 = toba::proyecto()->get_www_temp($temp_nombre1);
+      $temp_imagen1 = fopen($temp_archivo1['path'], 'w');
+      stream_copy_to_stream($fp_imagen1, $temp_imagen1);
+      fclose($temp_imagen1);
+      $tamanio_imagen1 = round(filesize($temp_archivo1['path']) / 1024);
+      $datos['prevgrande'] = "<img src = '{$temp_archivo1['url']}' alt=\"Imagen\" WIDTH=400 HEIGHT=150 >";
+      $datos['logo_grande'] = 'Tamaño foto actual: '.$tamanio_imagen1.' KB';
+    } else {
+      $datos['logo_grande'] = null;
+    }
+
+    if (isset($fp_imagen2)) {
+      $temp_nombre2 = 'logo_chico' . $datos['id_propietario'];
+      $temp_archivo2 = toba::proyecto()->get_www_temp($temp_nombre2);
+      $temp_imagen2 = fopen($temp_archivo2['path'], 'w');
+      stream_copy_to_stream($fp_imagen2, $temp_imagen2);
+      fclose($temp_imagen2);
+      $tamanio_imagen2 = round(filesize($temp_archivo2['path']) / 1024);
+      $datos['prevchica'] = "<img src = '{$temp_archivo2['url']}' alt=\"Imagen\" WIDTH=180 HEIGHT=150 >";
+      $datos['logo_chico'] = 'Tamaño foto actual: '.$tamanio_imagen2.' KB';
+    } else {
+      $datos['logo_chico'] = null;
+    }
     $form->set_datos($datos);
     }
   }
@@ -28,6 +63,16 @@ class cn_parametrizacion extends sgr_cn
   function modifpropietario($datos)
   {
     $this->dep('dr_propietario')->tabla('dt_propietario')->set($datos);
+    if (is_array($datos['logo_grande'])) {
+      $temp_archivo1 = $datos['logo_grande']['tmp_name'];
+      $fp = fopen($temp_archivo1, 'rb');
+      $this->dep('dr_propietario')->tabla('dt_propietario')->set_blob('logo_grande', $fp);
+    }
+    if (is_array($datos['logo_chico'])) {
+      $temp_archivo2 = $datos['logo_chico']['tmp_name'];
+      $fp = fopen($temp_archivo2, 'rb');
+      $this->dep('dr_propietario')->tabla('dt_propietario')->set_blob('logo_chico', $fp);
+    }
   }
 
   function seleccionpropietario($seleccion)
@@ -45,7 +90,6 @@ class cn_parametrizacion extends sgr_cn
     $this->dep('dr_propietario')->tabla('dt_propietario')->set_cursor($id_fila);
     $this->dep('dr_propietario')->tabla('dt_propietario')->eliminar_fila($id_fila);
   }
-
 
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_companiastelefonicas -------------------------------------------------

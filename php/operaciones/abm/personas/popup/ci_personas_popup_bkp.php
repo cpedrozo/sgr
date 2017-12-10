@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once('operaciones/abm/personas/popup/dao_personas_popup.php');
 
 class ci_personas_popup extends sgr_ci
@@ -98,14 +98,6 @@ class ci_personas_popup extends sgr_ci
 			$usuario = toba::usuario()->get_nombre();
 			$nombre_archivo = dao_personas_popup::get_nombrearchivo($this->s__datos['form']['id_persona']).'.pdf';
 			$idpersona = $this->s__datos['form']['id_persona'];
-      $titulo = 'Detalles de '.$this->s__datos['form']['apynom'];
-      $titulodom = 'Domicilio(s)';
-      $titulotel = 'Tel�fono(s)';
-      $titulocorreo = 'Correo(s)';
-      $reporte->set_parametro('titulo','S',$titulo);
-      $reporte->set_parametro('titulodom','S',$titulodom);
-      $reporte->set_parametro('titulotel','S',$titulotel);
-      $reporte->set_parametro('titulocorreo','S',$titulocorreo);
 			$reporte->set_parametro('usuario','S',$usuario);
 			$reporte->set_parametro('idpersona','E',$idpersona);
 			$reporte->set_nombre_archivo($nombre_archivo);
@@ -114,7 +106,8 @@ class ci_personas_popup extends sgr_ci
 		}
 
 /*
-Ruta 12 Km 1645.5 (Paso de Frontera)
+​Ruta 12 Km 1645.5 (Paso de Frontera)
+3370 Puerto Iguazú - Misiones - Argentina
 Tel.: (+54) 03757 - 421050 / Interno 1174
 www.dutyfreeshoppuertoiguazu.com
 */

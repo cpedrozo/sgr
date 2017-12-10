@@ -111,7 +111,7 @@ CREATE TABLE sgr.propietario (
                 id_propietario BIGINT NOT NULL DEFAULT nextval('sgr.propietario_id_propietario_seq'),
                 nombre VARCHAR(100) NOT NULL,
                 direccion VARCHAR(150) NOT NULL,
-                telefono VARCHAR(21),
+                telefono VARCHAR(50),
                 cuit VARCHAR(13) NOT NULL,
                 logo_grande BYTEA,
                 logo_chico BYTEA,
