@@ -98,14 +98,13 @@ class ci_personas_popup extends sgr_ci
 			$usuario = toba::usuario()->get_nombre();
 			$nombre_archivo = dao_personas_popup::get_nombrearchivo($this->s__datos['form']['id_persona']).'.pdf';
 			$idpersona = $this->s__datos['form']['id_persona'];
-      $titulo = 'Detalles de '.$this->s__datos['form']['apynom'];
-      $titulodom = 'Domicilio(s)';
-      $titulotel = 'Teléfono(s)';
-      $titulocorreo = 'Correo(s)';
+			if (isset($this->s__datos['form']['legajo'])){
+				$titulo = 'Detalles del legajo '.$this->s__datos['form']['apynom'];
+			}
+			else{
+				$titulo = 'Detalles de la persona '.$this->s__datos['form']['apynom2'];
+			}
       $reporte->set_parametro('titulo','S',$titulo);
-      $reporte->set_parametro('titulodom','S',$titulodom);
-      $reporte->set_parametro('titulotel','S',$titulotel);
-      $reporte->set_parametro('titulocorreo','S',$titulocorreo);
 			$reporte->set_parametro('usuario','S',$usuario);
 			$reporte->set_parametro('idpersona','E',$idpersona);
 			$reporte->set_nombre_archivo($nombre_archivo);

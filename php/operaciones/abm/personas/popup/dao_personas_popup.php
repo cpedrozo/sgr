@@ -1,12 +1,16 @@
 <?php
+//t.numero||coalesce('('||t.interno||')', '') num
 
 class dao_personas_popup
 {
     static function get_datospersona($id_persona)
     {
       $sql = "SELECT p.id_persona,
-              coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
-              td.nombre tipodoc, p.doc, p.fnac, g.nombre genero,
+              p.legajo,
+              p.apellido||', '||p.nombre apynom2,
+              COALESCE(CAST(p.legajo AS TEXT)||': ', '')||p.apellido||', '||p.nombre apynom,
+              td.nombre tipodoc, p.doc, g.nombre genero,
+              to_char(p.fnac::TIMESTAMP, 'DD/MM/YYYY') fnac,
               e.razonsocial entidad,
               s.nombre sucursal, dp.nombre||' - '||se.nombre||' ('||s.nombre||')' dpto, r.nombre rol,
               n.nombre nacionalidad, ec.nombre ecivil
@@ -47,7 +51,7 @@ class dao_personas_popup
     static function get_datostel2($id_persona)
     {
       $sql = "SELECT
-              t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||' ('||coalesce(t.interno, '-')||')' num
+              t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||coalesce('('||t.interno||')', '') num
               FROM sgr.telefono t
               LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel
               LEFT JOIN sgr.compania c ON t.id_compania = c.id_compania

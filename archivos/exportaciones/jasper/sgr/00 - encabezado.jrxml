@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="00 - encabezado" language="groovy" pageWidth="595" pageHeight="799" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ce4312b8-4902-4218-bdaf-b3cb62446a4b">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT 	nombre,
+	cuit,
+	direccion,
+	telefono,
+	correo,
+	web,
+	encode(logo_grande::bytea, 'base64') as img1,
+	encode(logo_chico::bytea, 'base64') as img2
+              FROM sgr.propietario
+              WHERE activo = 'true']]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="cuit" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="web" class="java.lang.String"/>
+	<field name="img1" class="java.lang.String"/>
+	<field name="img2" class="java.lang.String"/>
+	<title>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="112" y="5" width="100" height="20" uuid="a7ea33e6-f1dd-4a74-bcb4-ce9dee71a5cd"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="38" width="238" height="20" uuid="0863eec1-249b-4ec0-803f-9e88f439561a"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="4" y="5" width="100" height="50" uuid="154f1197-00cf-4d0c-8624-299d4154e59e"/>
+				<imageExpression><![CDATA[net.sf.jasperreports.engine.util.JRImageLoader.getInstance(new SimpleJasperReportsContext()).loadAwtImageFromBytes(javax.xml.bind.DatatypeConverter.parseBase64Binary($F{img1}))]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="112" y="50" width="238" height="15" uuid="c39c6afa-cb21-4e6d-96ee-6cc0b954439c"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{web}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="25" width="238" height="20" uuid="2208fc52-32a0-4168-96cb-7500cd03533d"/>
+				<textElement>
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

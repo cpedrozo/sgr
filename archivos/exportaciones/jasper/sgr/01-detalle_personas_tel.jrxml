@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="01-detalle_personas_tel" language="groovy" pageWidth="496" pageHeight="842" columnWidth="496" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5bf39ef4-d84a-4c5d-befc-73f63030ce80">
+	<property name="ireport.zoom" value="3.3057851239669462"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idpersona" class="java.lang.Integer"/>
+	<parameter name="titulotel" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+              t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||coalesce('('||t.interno||')', '') num
+              FROM sgr.telefono t
+              LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel
+              LEFT JOIN sgr.compania c ON t.id_compania = c.id_compania
+              LEFT JOIN sgr.persona p ON t.id_persona = p.id_persona
+              WHERE t.id_persona =$P{idpersona}]]>
+	</queryString>
+	<field name="id_telefono" class="java.lang.Long"/>
+	<field name="tipoycompania" class="java.lang.String"/>
+	<field name="num" class="java.lang.String"/>
+	<title>
+		<band height="51">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="6" width="496" height="17" forecolor="#DFDFDF" backcolor="#DFDFDF" uuid="dab0f8dc-8fa6-42c0-8758-f974aae88559"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="8" width="496" height="12" uuid="7d8e8df5-1ddb-4378-bc01-22ac8dc1fea7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Teléfono(s)"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="13" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="-1" width="100" height="13" uuid="eaa83eb9-34a8-418b-b2be-7e292f02617f"/>
+				<text><![CDATA[Tipo: Compañía]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="-1" width="100" height="12" uuid="ae47677f-bfe9-42ee-a6d0-cb2928f3e64a"/>
+				<text><![CDATA[Número]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="6" width="100" height="12" uuid="06c1a7d1-6db1-41b3-8cf6-00038e307613"/>
+				<textFieldExpression><![CDATA[$F{tipoycompania}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="6" width="100" height="12" uuid="60abf604-b7cb-43f7-8e7d-94ab74c5ca39"/>
+				<textFieldExpression><![CDATA[$F{num}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="249" height="1" uuid="92008d22-98e1-474c-ac20-de428a16d6c1"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

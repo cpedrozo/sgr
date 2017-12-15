@@ -15,7 +15,7 @@ class dao_personas
               e.razonsocial entidad,
               dp.nombre||' - '||se.nombre||' ('||s.nombre||')' suc_dpto,
               ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
-              coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom
+              COALESCE(CAST(p.legajo AS TEXT)||': ', '')||p.apellido||', '||p.nombre apynom
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
@@ -47,7 +47,7 @@ class dao_personas
               e.razonsocial entidad,
               dp.nombre||' - '||se.nombre||' ('||s.nombre||')' suc_dpto,
               ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
-              coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom
+              COALESCE(CAST(p.legajo AS TEXT)||': ', '')||p.apellido||', '||p.nombre apynom
               FROM sgr.persona p
               LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
               LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
