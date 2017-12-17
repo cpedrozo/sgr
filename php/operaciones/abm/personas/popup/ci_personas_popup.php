@@ -90,6 +90,10 @@ class ci_personas_popup extends sgr_ci
 			}
 		}
 
+		//-----------------------------------------------------------------------------------
+		//---- reporte ----------------------------------------------------------------------
+		//-----------------------------------------------------------------------------------
+
 		function vista_jasperreports(toba_vista_jasperreports $reporte)
 		{
 			$path_toba = '/home/toba_2_6_7/toba_2_7_6';
@@ -111,12 +115,5 @@ class ci_personas_popup extends sgr_ci
 			$db = toba::db('sgr');
 			$reporte->set_conexion($db);
 		}
-
-/*
-Ruta 12 Km 1645.5 (Paso de Frontera)
-Tel.: (+54) 03757 - 421050 / Interno 1174
-www.dutyfreeshoppuertoiguazu.com
-*/
-
 }
 ?>

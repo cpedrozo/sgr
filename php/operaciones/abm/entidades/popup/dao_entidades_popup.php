@@ -39,7 +39,7 @@ class dao_entidades_popup
     static function get_datostel2($id_entidad)
     {
       $sql = "SELECT
-              t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||' ('||coalesce(t.interno, '-')||')' num
+              t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||coalesce('('||t.interno||')', '') num
               FROM sgr.telefono t
               LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel
               LEFT JOIN sgr.compania c ON t.id_compania = c.id_compania
@@ -59,6 +59,19 @@ class dao_entidades_popup
               WHERE c.id_entidad = $id_entidad";
       $resultado = consultar_fuente($sql);
       return $resultado;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
+    /////////jasper_reports /////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
+
+    static function get_nombrearchivo($id_entidad)
+    {
+      $sql = "SELECT razonsocial
+      FROM sgr.entidad
+      WHERE id_entidad = $id_entidad";
+      $resultado = consultar_fuente($sql);
+      return $resultado[0]['razonsocial'];
     }
 
 }

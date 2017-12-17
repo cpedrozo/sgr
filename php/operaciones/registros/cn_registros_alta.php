@@ -31,6 +31,11 @@ class cn_registros_alta extends sgr_cn
     }
   }
 
+  function set_dt_registro($datos)
+  {
+    $this->dep('dr_registro')->tabla('dt_registro')->set($datos);
+  }
+
   function get_estado_actual()
   {
     if ($this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->hay_cursor())

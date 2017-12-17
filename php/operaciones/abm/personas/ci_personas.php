@@ -277,33 +277,31 @@ class ci_personas extends sgr_ci
 				$respuesta = $respuesta.'</table>';
 			}
 			else {
-				$this->s__datos['operacion'] = 'modificacion';
-				$this->s__datos['datos_nuevos_form'] = dao_personas::get_empleadobaja($this->s__datos['seleccion']['id_persona']);
-				$respuesta = 'Se modificaron uno o mas datos del empleado '.$this->s__datos['datos_anteriores_form']['legajo'].': '.$this->s__datos['datos_anteriores_form']['apynom'].'<br/><br/>
-				<table style="width:40%">
+			  $this->s__datos['operacion'] = 'modificacion';
+			  $this->s__datos['datos_nuevos_form'] = dao_personas::get_empleadobaja($this->s__datos['seleccion']['id_persona']);
+			  $respuesta = 'Se modificaron uno o mas datos del empleado '.$this->s__datos['datos_anteriores_form']['legajo'].': '.$this->s__datos['datos_anteriores_form']['apynom'].'<br/><br/>
+			  <table style="width:40%">
 			  <tr style="text-align:left">
-					<th>Campo</th>
+			    <th>Campo</th>
 			    <th>Anterior</th>
 			    <th>Actual</th>
 			  </tr>';
-				foreach ($camposdao as $value) {
-					if ($this->s__datos['datos_anteriores_form'][$value]<>$this->s__datos['datos_nuevos_form'][$value]){
-						$valornuevo = $this->s__datos['datos_nuevos_form'][$value];
-						$valorviejo = $this->s__datos['datos_anteriores_form'][$value];
-						if (!(is_null ($valorviejo) and is_null($valornuevo))){
-						$respuesta = $respuesta."<tr style='text-align:left'>
-							<td>$value</td>
-					    <td>$valorviejo</td>
-					    <td>$valornuevo</td>
-					  </tr>";
-						}
-					}
-				}
-				//ei_arbol(['respuesta_antes_concatenar'=>$respuesta]);
-				$respuesta = $respuesta.'</table>';
-				//ei_arbol(['respuesta_dsp_foreach'=>$respuesta]);
+			  foreach ($camposdao as $value) {
+			    if ($this->s__datos['datos_anteriores_form'][$value]<>$this->s__datos['datos_nuevos_form'][$value]){
+			      $valornuevo = $this->s__datos['datos_nuevos_form'][$value];
+			      $valorviejo = $this->s__datos['datos_anteriores_form'][$value];
+			      if (!(is_null ($valorviejo) and is_null($valornuevo))){
+			      $respuesta = $respuesta."<tr style='text-align:left'>
+			        <td>$value</td>
+			        <td>$valorviejo</td>
+			        <td>$valornuevo</td>
+			      </tr>";
+			      }
+			    }
+			  }
+			  $respuesta = $respuesta.'</table>';
 			}
-		}
+			}
 		else {
 			$this->s__datos['operacion'] = 'baja';
 			$respuesta = 'Se dio de baja el empleado '.$this->s__datos['datos_empleado']['legajo'].': '.$this->s__datos['datos_empleado']['apynom'].'<br/><br/>
@@ -325,27 +323,6 @@ class ci_personas extends sgr_ci
 		}
 		return $respuesta;
 	}
-
-/*
-	//-----------------------------------------------------------------------------------
-	//---- reportes ---------------------------------------------------------------------
-	//-----------------------------------------------------------------------------------
-
-	function vista_jasperreports(toba_vista_jasperreports $jasper)
-	{
-		$path_toba = toba::proyecto()->get_path();
-		$path_reporte = $path_toba . '/exportaciones/jasper/sgr/personas.jasper';
-		$jasper->set_path_reporte($path_reporte);
-    $usuario = toba::usuario()->get_nombre();
-    $nombre_archivo = $this->s__datos['form_jasper']['apellido'] . '_' . $this->s__datos['form_jasper']['nombre'] . '.pdf';
-    $id_persona = $this->s__datos['form_jasper']['id_persona'];
-    $reporte->set_parametro('usuariotoba','S',$usuario);
-    $reporte->set_parametro('idpersona','E',$idpersona);
-    $reporte->set_nombre_archivo($nombre_archivo);
-    $db = toba::db('sgr');
-    $reporte->set_conexion($db);
-	}
-*/
 
 }
 ?>

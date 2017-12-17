@@ -3,6 +3,7 @@
 require_once('operaciones/registros/historicoregistro/dao_historicoregistro.php');
 require_once('operaciones/metodosconsulta/flujosyregistros.php');
 require_once('operaciones/metodosconsulta/operaciones.php');
+require_once('operaciones/abm/personas/dao_personas.php');
 
 class ci_historicoregistro extends sgr_ci
 {
@@ -26,8 +27,10 @@ class ci_historicoregistro extends sgr_ci
 
 	function evt__procesar()
 	{
+		$registroExitoso = false;
 		try{
 			$this->cn()->guardar_dr_registro();
+			$registroExitoso = true;
 		}catch (toba_error_db $error) {
 			$sql_state = $error->get_sqlstate();
 			if ($sql_state == 'db_23505'){
@@ -36,6 +39,9 @@ class ci_historicoregistro extends sgr_ci
 			else {
 				toba::notificacion()->agregar('Error de carga', 'info');
 			}
+		}
+		if ($registroExitoso) {
+			$this->set_registroExitoso();
 		}
 		$this->cn()->resetear_dr_registro();
 		$this->set_pantalla('pant_inicial');
@@ -239,6 +245,105 @@ class ci_historicoregistro extends sgr_ci
 	{
 		$datos_renglon = flujosyregistros::get_personaboolean($id_renglon);
 		$respuesta->set($datos_renglon);
+	}
+
+	//-----------------------------------------------------------------------------------
+	//---- notif_email ------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function enviar_mail()
+	{
+		$cuerpo_mail = $this->get_datos_cambiados();
+
+		if ($this->s__datos['operacion'] == 'alta'){
+			$asunto = 'Se dio de alta el empleado '.$this->s__datos['datos_nuevos_form']['legajo'].': '.$this->s__datos['datos_nuevos_form']['apynom'];
+		}
+		else if ($this->s__datos['operacion'] == 'modificacion') {
+			$asunto = 'Se modifico el legajo '.$this->s__datos['datos_anteriores_form']['apynom'];
+		}
+		else
+		$asunto = 'Se dio de baja el empleado '.$this->s__datos['datos_empleado']['apynom'];
+    try {
+        $mail = new toba_mail(dao_personas::get_correorrhh(), $asunto, $cuerpo_mail);
+        $mail->set_html(true);
+        $mail->enviar();
+    } catch (toba_error $e) {
+        toba::logger()->debug('Envio email ABM empleado: '. $e->getMessage());
+        toba::notificacion()->agregar('Se produjo un error al intentar enviar el email.', 'warning');
+    }
+	}
+
+	function get_datos_cambiados()
+	{
+		$camposform = ['id_camposempleado','apellido','nombre','id_tipo_doc','doc','fnac','id_genero','id_sector','id_rol','id_nacionalidad','id_estadocivil','fbaja','id_entidad','id_sucursal','id_dpto'];
+		$camposdao = ['apynom','legajo','tipodoc','doc','fnac','genero','rol','sector','nacionalidad','ecivil','entidad'];
+		if (isset($this->s__datos['datos_anteriores_form'])){
+			if (!is_array($this->s__datos['datos_anteriores_form'])){
+				$this->s__datos['datos_nuevos_form'] = dao_personas::get_empleadobaja($this->s__datos['idpersona_alta']);
+				$this->s__datos['operacion'] = 'alta';
+				$respuesta = 'Detalles del empleado '.$this->s__datos['datos_nuevos_form']['legajo'].': '.$this->s__datos['datos_nuevos_form']['apynom'].'<br/><br/>
+				<table style="width:40%">
+			  <tr style="text-align:left">
+					<th>Campo</th>
+			    <th>Dato</th>
+			  </tr>';
+				foreach ($camposdao as $value) {
+						$valornuevo = $this->s__datos['datos_nuevos_form'][$value];
+						if (!is_null ($valornuevo)){
+						$respuesta = $respuesta."<tr style='text-align:left'>
+							<td>$value</td>
+					    <td>$valornuevo</td>
+					  </tr>";
+						}
+				}
+				$respuesta = $respuesta.'</table>';
+			}
+			else {
+				$this->s__datos['operacion'] = 'modificacion';
+				$this->s__datos['datos_nuevos_form'] = dao_personas::get_empleadobaja($this->s__datos['seleccion']['id_persona']);
+				$respuesta = 'Se modificaron uno o mas datos del empleado '.$this->s__datos['datos_anteriores_form']['legajo'].': '.$this->s__datos['datos_anteriores_form']['apynom'].'<br/><br/>
+				<table style="width:40%">
+			  <tr style="text-align:left">
+					<th>Campo</th>
+			    <th>Anterior</th>
+			    <th>Actual</th>
+			  </tr>';
+				foreach ($camposdao as $value) {
+					if ($this->s__datos['datos_anteriores_form'][$value]<>$this->s__datos['datos_nuevos_form'][$value]){
+						$valornuevo = $this->s__datos['datos_nuevos_form'][$value];
+						$valorviejo = $this->s__datos['datos_anteriores_form'][$value];
+						if (!(is_null ($valorviejo) and is_null($valornuevo))){
+						$respuesta = $respuesta."<tr style='text-align:left'>
+							<td>$value</td>
+					    <td>$valorviejo</td>
+					    <td>$valornuevo</td>
+					  </tr>";
+						}
+					}
+				}
+				$respuesta = $respuesta.'</table>';
+			}
+		}
+		else {
+			$this->s__datos['operacion'] = 'baja';
+			$respuesta = 'Se dio de baja el empleado '.$this->s__datos['datos_empleado']['legajo'].': '.$this->s__datos['datos_empleado']['apynom'].'<br/><br/>
+			<table style="width:40%">
+			<tr style="text-align:left">
+				<th>Campo</th>
+				<th>Dato</th>
+			</tr>';
+			foreach ($camposdao as $value) {
+				$valorempleado = $this->s__datos['datos_empleado'][$value];
+					if (!is_null ($valorempleado)){
+						$respuesta = $respuesta."<tr style='text-align:left'>
+						<td>$value</td>
+						<td>$valorempleado</td>
+						</tr>";
+					}
+			}
+			$respuesta = $respuesta.'</table>';
+		}
+		return $respuesta;
 	}
 
 }

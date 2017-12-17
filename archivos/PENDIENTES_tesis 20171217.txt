@@ -1,0 +1,12 @@
+PROCESOS INTELIGENTES
+
+1 en el ci_personas
+Corregir el if que controla la tabla a mostrar/ocultar cuando se modifique un legajo.
+el php trabajado para esto esta en el archivo
+"/sgr/php/operaciones/abm/personas/bkp_ci_personas(emailnotif_por_modif).php"
+
+2 Filtro autocargado funciona solo cuando creo un nuevo registro
+3 Finalizar registro (evt__procesar2) -> No pude hacer funcionar creando un nuevo registro, solo cuando se modifica.
+
+
+	REPORTING -> REGISTROS

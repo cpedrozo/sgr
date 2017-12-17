@@ -39,6 +39,11 @@
   padding-top: 7px;
 }
 
+.ef-entidadespopup2 {
+  text-align: left;
+  padding: 7px 0px 0px 20px;
+}
+
 .ef-entidadespopup::before {
   content: '\A';
 }
