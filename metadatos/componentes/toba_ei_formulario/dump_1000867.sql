@@ -87,8 +87,12 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		<tr>
 			<td>
 				[ef id=razonsocial]</td>
+		</tr>
+		<tr>
 			<td>
 				[ef id=cuit]</td>
+		</tr>
+		<tr>
 			<td>
 				[ef id=propietario]</td>
 		</tr>
@@ -118,7 +122,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --descripcion
 	'0', --colapsado
 	'0', --desactivado
-	'ef-entidadespopup', --estilo
+	'ef-entidadespopup2', --estilo
 	NULL, --total
 	NULL, --inicializacion
 	'0', --permitir_html
@@ -198,7 +202,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --descripcion
 	'0', --colapsado
 	'0', --desactivado
-	'ef-entidadespopup', --estilo
+	'ef-entidadespopup2', --estilo
 	NULL, --total
 	NULL, --inicializacion
 	'0', --permitir_html
@@ -278,7 +282,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --descripcion
 	'0', --colapsado
 	'0', --desactivado
-	'ef-entidadespopup', --estilo
+	'ef-entidadespopup2', --estilo
 	NULL, --total
 	NULL, --inicializacion
 	'0', --permitir_html

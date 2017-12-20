@@ -72,7 +72,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'1000312', --accion_vinculo_item
 	NULL, --accion_vinculo_objeto
 	'1', --accion_vinculo_popup
-	'width: 600px, height: 650px, scrollbars: 1, resizable:0', --accion_vinculo_popup_param
+	'width: 600px, height: 680px, scrollbars: 1, resizable:0', --accion_vinculo_popup_param
 	NULL, --accion_vinculo_target
 	'popup', --accion_vinculo_celda
 	NULL, --accion_vinculo_servicio
