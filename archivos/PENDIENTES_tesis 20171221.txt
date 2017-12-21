@@ -1,0 +1,11 @@
+PROCESOS INTELIGENTES
+
+1 Filtro autocargado funciona solo cuando creo un nuevo registro
+
+2 Finalizar registro (evt__procesar2) -> No pude hacer funcionar creando un nuevo registro, solo cuando se modifica.
+
+
+	REPORTING -> REGISTROS
+
+Realizado
+Reporte: no funciona el subreporte.

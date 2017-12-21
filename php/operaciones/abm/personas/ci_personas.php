@@ -253,6 +253,7 @@ class ci_personas extends sgr_ci
 
 	function get_datos_cambiados()
 	{
+		$contador = null;
 		$camposform = ['id_camposempleado','apellido','nombre','id_tipo_doc','doc','fnac','id_genero','id_sector','id_rol','id_nacionalidad','id_estadocivil','fbaja','id_entidad','id_sucursal','id_dpto'];
 		$camposdao = ['apynom','legajo','tipodoc','doc','fnac','genero','rol','sector','nacionalidad','ecivil','entidad'];
 		if (isset($this->s__datos['datos_anteriores_form'])){
@@ -279,19 +280,22 @@ class ci_personas extends sgr_ci
 			else {
 			  $this->s__datos['operacion'] = 'modificacion';
 			  $this->s__datos['datos_nuevos_form'] = dao_personas::get_empleadobaja($this->s__datos['seleccion']['id_persona']);
-			  $respuesta = 'Se modificaron uno o mas datos del empleado '.$this->s__datos['datos_anteriores_form']['legajo'].': '.$this->s__datos['datos_anteriores_form']['apynom'].'<br/><br/>
+			  $respuesta1 = 'Se modificaron los datos de contacto del empleado '.$this->s__datos['datos_anteriores_form']['legajo'].': '.$this->s__datos['datos_anteriores_form']['apynom'].'<br/><br/>';
+			  $respuesta2 = 'Se modificaron uno o mas datos del empleado '.$this->s__datos['datos_anteriores_form']['legajo'].': '.$this->s__datos['datos_anteriores_form']['apynom'].'<br/><br/>
 			  <table style="width:40%">
 			  <tr style="text-align:left">
 			    <th>Campo</th>
 			    <th>Anterior</th>
 			    <th>Actual</th>
 			  </tr>';
+				$contador = 0;
 			  foreach ($camposdao as $value) {
 			    if ($this->s__datos['datos_anteriores_form'][$value]<>$this->s__datos['datos_nuevos_form'][$value]){
 			      $valornuevo = $this->s__datos['datos_nuevos_form'][$value];
 			      $valorviejo = $this->s__datos['datos_anteriores_form'][$value];
 			      if (!(is_null ($valorviejo) and is_null($valornuevo))){
-			      $respuesta = $respuesta."<tr style='text-align:left'>
+						$contador = $contador + 1;
+			      $respuesta2 = $respuesta2."<tr style='text-align:left'>
 			        <td>$value</td>
 			        <td>$valorviejo</td>
 			        <td>$valornuevo</td>
@@ -299,7 +303,7 @@ class ci_personas extends sgr_ci
 			      }
 			    }
 			  }
-			  $respuesta = $respuesta.'</table>';
+			  $respuesta2 = $respuesta2.'</table>';
 			}
 			}
 		else {
@@ -320,6 +324,15 @@ class ci_personas extends sgr_ci
 					}
 			}
 			$respuesta = $respuesta.'</table>';
+		}
+		if (is_null($contador)){
+			$respuesta = $respuesta;
+		}
+		else if ($contador == 0) {
+			$respuesta = $respuesta1;
+		}
+		else if ($contador > 0) {
+			$respuesta = $respuesta2;
 		}
 		return $respuesta;
 	}
