@@ -110,9 +110,11 @@ CREATE SEQUENCE sgr.propietario_id_propietario_seq;
 CREATE TABLE sgr.propietario (
                 id_propietario BIGINT NOT NULL DEFAULT nextval('sgr.propietario_id_propietario_seq'),
                 nombre VARCHAR(100) NOT NULL,
+                cuit VARCHAR(13) NOT NULL,
                 direccion VARCHAR(150) NOT NULL,
                 telefono VARCHAR(50),
-                cuit VARCHAR(13) NOT NULL,
+                correo VARCHAR(50),
+                web VARCHAR(50),
                 logo_grande BYTEA,
                 logo_chico BYTEA,
                 activo BOOLEAN,
@@ -537,12 +539,10 @@ CREATE TABLE sgr.registro (
                 id_workflow BIGINT NOT NULL,
                 nombre VARCHAR(100) NOT NULL,
                 archivo BYTEA,
-                get_usuario VARCHAR NOT NULL,
                 fecha_inicio TIMESTAMP DEFAULT current_timestamp NOT NULL,
                 fecha_fin TIMESTAMP,
                 CONSTRAINT registro_pk PRIMARY KEY (id_registro)
 );
-COMMENT ON COLUMN sgr.registro.get_usuario IS 'toma del framework';
 
 
 ALTER SEQUENCE sgr.registro_id_registro_seq_1 OWNED BY sgr.registro.id_registro;
@@ -574,9 +574,11 @@ CREATE TABLE sgr.estado_actual_flujo (
                 id_registro BIGINT NOT NULL,
                 observacion VARCHAR(350),
                 id_persona BIGINT,
+                get_usuario VARCHAR,
                 CONSTRAINT estado_actual_flujo_pk PRIMARY KEY (id_estado_actual)
 );
 COMMENT ON TABLE sgr.estado_actual_flujo IS 'contiene historico de cambios de estado';
+COMMENT ON COLUMN sgr.estado_actual_flujo.get_usuario IS 'toma del framework';
 
 
 ALTER SEQUENCE sgr.estado_actual_flujo_id_estado_actual_seq OWNED BY sgr.estado_actual_flujo.id_estado_actual;

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="03_subr_detalle_registro" language="groovy" pageWidth="422" pageHeight="566" columnWidth="422" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f13fe7bc-38af-4e72-a6d8-1e26f304bc5b">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idregistro" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT id_estado_actual,
+            to_char(fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS') fecha,
+            e.nombre estado,
+            ea.get_usuario, ea.observacion,
+            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom
+            FROM sgr.estado_actual_flujo ea
+            JOIN sgr.estado e ON ea.id_estado = e.id_estado
+            JOIN sgr.persona p ON ea.id_persona = p.id_persona
+            WHERE id_registro = $P{idregistro}
+            ORDER BY fecha ASC]]>
+	</queryString>
+	<field name="id_estado_actual" class="java.lang.Long"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="get_usuario" class="java.lang.String">
+		<fieldDescription><![CDATA[toma del framework]]></fieldDescription>
+	</field>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="apynom" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="9" width="49" height="20" uuid="e5aa971e-15bb-4249-a8d7-fa98de0ab789"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="53" y="9" width="137" height="20" uuid="0c61d4a3-7d1e-46d8-9d91-6823e70b7c4e"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="39" width="49" height="20" uuid="53c83e19-d970-4fd9-be73-90fb5d1b4e67"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="53" y="39" width="137" height="20" uuid="2a877081-2590-49f8-85e4-2d265240b96e"/>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="190" y="9" width="49" height="20" uuid="c15eed4d-e2d7-4ee1-a770-de8a7215d7dd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="239" y="9" width="178" height="20" uuid="9c3f777f-6b42-4435-bab1-d6aefbd89de4"/>
+				<textFieldExpression><![CDATA[$F{get_usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="190" y="39" width="49" height="20" uuid="5b858fbd-4d2a-4096-9590-ece15aec3033"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Persona:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="239" y="39" width="178" height="20" uuid="1b4fd350-30e5-4f90-a226-679b7a74ba60"/>
+				<textFieldExpression><![CDATA[$F{apynom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="69" width="100" height="20" uuid="d85d62f7-2351-41d5-b21d-bed8ffad74e9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="4" y="89" width="335" height="38" uuid="bc248b21-3ecd-4618-bee6-11aa81175969"/>
+				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="4" y="132" width="413" height="1" forecolor="#999999" uuid="086d4ffc-6afe-4174-9388-c6fa5f530fb2"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

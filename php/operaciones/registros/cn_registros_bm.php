@@ -147,6 +147,7 @@ class cn_registros_bm extends sgr_cn
     $datos_viejo = $this->get_estadoactual();
     $datos_viejo['activo'] = false;
     $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set($datos_viejo);
+    $datos['get_usuario'] = toba::usuario()->get_id(); // 20171220
     $id_fila = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->anexar_datos([$datos]);
     $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->forzar_insercion(false, $id_fila);
     $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set_cursor($id_fila[0]);

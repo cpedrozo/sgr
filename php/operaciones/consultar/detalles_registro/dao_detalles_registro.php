@@ -10,7 +10,7 @@ class dao_detalles_registro
       $where_armado = '';
     }
 
-    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, r.get_usuario, r.fecha_fin
+    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, ea.get_usuario, r.fecha_fin
             FROM sgr.registro r
             INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
             INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
@@ -32,7 +32,7 @@ class dao_detalles_registro
       $where_armado = '';
     }
 
-    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, r.get_usuario, to_char(r.fecha_fin::TIMESTAMP, 'DD / MM / YYYY HH24:MI:SS') fecha_fin
+    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, ea.get_usuario, to_char(r.fecha_fin::TIMESTAMP, 'DD / MM / YYYY HH24:MI:SS') fecha_fin
             FROM sgr.registro r
             INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
             INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
@@ -48,7 +48,10 @@ class dao_detalles_registro
   static function cargar_form($seleccion)
   {
     $consulta = $seleccion['id_registro'];
-    $sql = "SELECT r.id_registro||': '||w.nombre||' - '||r.nombre registro, s.nombre||' - '||d.nombre sucursal
+    $sql = "SELECT id_registro,
+            r.id_registro||': '||w.nombre||' - '||r.nombre registro,
+            s.nombre||' - '||d.nombre sucursal,
+            to_char(r.fecha_fin::TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS') fecha_fin
             FROM sgr.registro r
             JOIN sgr.workflow w ON r.id_workflow = w.id_workflow
             JOIN sgr.dpto d ON w.id_dpto = d.id_dpto
@@ -61,7 +64,11 @@ class dao_detalles_registro
   static function cargar_ml($seleccion)
   {
     $consulta = $seleccion['id_registro'];
-    $sql = "SELECT id_estado_actual, e.nombre, ea.observacion, coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom, to_char(fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS') fecha
+    $sql = "SELECT id_estado_actual,
+            e.nombre estado,
+            ea.observacion, ea.get_usuario,
+            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
+            to_char(fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS') fecha
             FROM sgr.estado_actual_flujo ea
             JOIN sgr.estado e ON ea.id_estado = e.id_estado
             JOIN sgr.persona p ON ea.id_persona = p.id_persona

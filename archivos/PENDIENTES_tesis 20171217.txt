@@ -6,7 +6,13 @@ el php trabajado para esto esta en el archivo
 "/sgr/php/operaciones/abm/personas/bkp_ci_personas(emailnotif_por_modif).php"
 
 2 Filtro autocargado funciona solo cuando creo un nuevo registro
+
 3 Finalizar registro (evt__procesar2) -> No pude hacer funcionar creando un nuevo registro, solo cuando se modifica.
 
 
 	REPORTING -> REGISTROS
+
+Realizado
+Reporte: no funciona el subreporte.
+Modificaciones en DB, se mudo el campo get_usuario. Ok
+Se modificaron los modulos para mostrar la info modificada en la DB.

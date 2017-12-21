@@ -72,6 +72,7 @@ class ci_detalles_registro extends sgr_ci
 			$datos = dao_detalles_registro::cargar_form($seleccion);
 		}
 		$form->set_datos($datos);
+		$this->s__datos['form'] = $datos;
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -93,38 +94,26 @@ class ci_detalles_registro extends sgr_ci
 		$form_ml->set_datos($datos);
 	}
 
-/*
 	//-----------------------------------------------------------------------------------
-	//---- notif_email ------------------------------------------------------------------
+	//---- reporte ----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
-	function evt__enviar_mail($seleccion)
+	function vista_jasperreports(toba_vista_jasperreports $reporte)
 	{
-		$this->enviar_mail();
+		$path_toba = '/home/toba_2_6_7/toba_2_7_6';
+		$path_reporte = $path_toba . '/exportaciones/jasper/sgr/03-detalle_registro.jasper';
+		$reporte->set_path_reporte($path_reporte);
+		$usuario = toba::usuario()->get_nombre();
+		$nombre_archivo = $this->s__datos['form']['registro'].'.pdf';
+		$idregistro = $this->s__datos['form']['id_registro'];
+		$titulo = 'Detalles del registro '.'<br/>'.$this->s__datos['form']['registro'];
+		$reporte->set_parametro('idregistro','E',$idregistro);
+		$reporte->set_parametro('titulo','S',$titulo);
+		$reporte->set_parametro('usuario','S',$usuario);
+		$reporte->set_nombre_archivo($nombre_archivo);
+		$db = toba::db('sgr');
+		$reporte->set_conexion($db);
 	}
 
-	function enviar_mail()
-	{
-		//Se envia el mail a la direccion especificada por el usuario.
-    $asunto = 'xxxAsunto de pruebaxxx';
-    $cuerpo_mail = '<p>Este mail fue enviado a esta cuenta porque se <strong>solicito un cambio de contraseña</strong>.'
-    . 'Si usted solicito dicho cambio haga click en el siguiente link: </br></br>'
-    .'</br> El mismo será válido unicamente por 24hs.</p>';
-
-    //Guardo el random asociado al usuario y envio el mail
-		$mail = new toba_mail('piguazu@gmail.com', $asunto, $cuerpo_mail);
-		$mail->set_html(true);
-		$mail->enviar();
-    /*try {
-        $mail = new toba_mail('piguazu@gmail.com', $asunto, $cuerpo_mail);
-        $mail->set_html(true);
-        $mail->enviar();
-    } catch (toba_error $e) {
-        toba::instancia()->get_db()->abortar_transaccion();
-        toba::logger()->debug('Proceso de envio de random a cuenta: '. $e->getMessage());
-        throw new toba_error('Se produjo un error en el proceso de cambio, contactese con un administrador del sistema.');
-    }
-	}
-*/
 }
 ?>

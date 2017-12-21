@@ -19,7 +19,7 @@ class cn_registros_alta extends sgr_cn
 
   function modifregistro($datos)
   {
-    $datos['get_usuario'] = toba::usuario()->get_id();
+    //$datos['get_usuario'] = toba::usuario()->get_id(); // 20171220
     $this->dep('dr_registro')->tabla('dt_registro')->set($datos);
   }
 
@@ -63,6 +63,7 @@ class cn_registros_alta extends sgr_cn
 
   function modifestado($datos)
   {
+    $datos['get_usuario'] = toba::usuario()->get_id(); // 20171220
     $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set($datos);
   }
 
