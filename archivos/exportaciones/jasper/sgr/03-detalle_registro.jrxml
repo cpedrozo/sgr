@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="01 - detalle personas" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="497" leftMargin="56" rightMargin="42" topMargin="56" bottomMargin="42" uuid="5e9d7acf-9960-4bab-b9f5-56c1df0533d8">
-	<property name="ireport.zoom" value="1.6500000000000021"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="3.215383215000009"/>
+	<property name="ireport.x" value="64"/>
+	<property name="ireport.y" value="321"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -310,50 +310,59 @@
 	<detail>
 		<band height="51" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="21" width="110" height="12" uuid="438b4a70-8b42-4823-ac3b-6abd20641ad7"/>
+				<reportElement x="0" y="21" width="89" height="12" uuid="438b4a70-8b42-4823-ac3b-6abd20641ad7"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Sucursal - Dpto:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="8" width="110" height="13" uuid="24116484-edbb-46e4-ae4a-a34708dae591"/>
+				<reportElement x="0" y="8" width="107" height="13" uuid="24116484-edbb-46e4-ae4a-a34708dae591"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[N° Gestión: Evento:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="33" width="110" height="12" uuid="f4a3e32c-bb9c-48db-bbcf-d3d8e89238dc"/>
+				<reportElement x="0" y="33" width="60" height="12" uuid="f4a3e32c-bb9c-48db-bbcf-d3d8e89238dc"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Finalizado:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="116" y="21" width="289" height="12" uuid="f4fd7187-01e5-4833-ba9f-9f1ee2f53b61"/>
+				<reportElement x="91" y="21" width="289" height="12" uuid="f4fd7187-01e5-4833-ba9f-9f1ee2f53b61"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{sucursal}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement x="116" y="8" width="289" height="13" isRemoveLineWhenBlank="true" uuid="7c52c5c5-07f6-4076-a4bb-d902a25a638b"/>
+				<reportElement x="108" y="8" width="289" height="13" isRemoveLineWhenBlank="true" uuid="7c52c5c5-07f6-4076-a4bb-d902a25a638b"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{registro}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="116" y="33" width="289" height="12" uuid="abcdf6df-759c-40d7-bfd5-c2092c27e069"/>
+				<reportElement x="62" y="33" width="289" height="12" uuid="abcdf6df-759c-40d7-bfd5-c2092c27e069"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_fin}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="47" width="473" height="1" forecolor="#CCCCCC" uuid="aea3fb86-d3e6-4090-bf02-77f5fe320a6f"/>
+			</line>
 		</band>
-		<band height="33">
+		<band height="14">
 			<subreport>
-				<reportElement x="0" y="0" width="496" height="28" uuid="5222b3e4-ed7c-41c3-afcd-24f2a09c3edb"/>
-				<subreportParameter name="SUBREPORT_DIR">
-					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
-				</subreportParameter>
-				<subreportParameter name="idregistro">
-					<subreportParameterExpression><![CDATA[$P{idregistro}]]></subreportParameterExpression>
+				<reportElement x="0" y="0" width="473" height="12" uuid="842ae510-1441-4dd0-a4d1-7f7ed3cad894"/>
+				<subreportParameter name="id_registro">
+					<subreportParameterExpression><![CDATA[$F{id_registro}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["03-detalle_registro.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "03_subr_detalle_registro.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
