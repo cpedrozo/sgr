@@ -212,5 +212,12 @@ class ci_nuevoregistro extends sgr_ci
 		return $respuesta;
 	}
 
+	function evt__procesar2()
+	{
+		$datos = $this->cn()->get_registro();
+		$datos ['fecha_fin'] = date(DATE_ATOM);
+		$this->cn()->set_dt_registro($datos);
+		$this->evt__procesar();
+	}
 }
 ?>
