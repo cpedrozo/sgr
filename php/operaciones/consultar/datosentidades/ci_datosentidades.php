@@ -15,6 +15,26 @@ class ci_datosentidades extends sgr_ci
 	//---- cuadro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
+	function conf__cuadro($cuadro)
+	{
+		$cuadro->desactivar_modo_clave_segura();
+		if (! isset($this->s__datos_filtro)) {
+			$datos = dao_datosentidades::get_datossinfiltro($this->s__sqlwhere);
+			$cuadro->set_datos($datos);
+		}
+		else{
+			$datos = dao_datosentidades::get_datos($this->s__sqlwhere);
+			$cuadro->set_datos($datos);
+		}
+	}
+
+	function conf_evt__cuadro__detalles(toba_evento_usuario $evento, $fila)
+	{
+		$datos=$this->dep('cuadro')->get_datos()[$fila];
+		$evento->vinculo()->agregar_parametro('entidad', $datos['id_entidad']);
+	}
+
+	/*
 	function conf__cuadrotel($cuadro)
 	{
 		if (! isset($this->s__datos_filtro)) {
@@ -50,7 +70,7 @@ class ci_datosentidades extends sgr_ci
 			$cuadro->set_datos($datos);
 		}
 	}
-
+*/
 	//-----------------------------------------------------------------------------------
 	//---- filtro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------

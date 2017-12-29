@@ -2,6 +2,37 @@
 
 class dao_datosentidades
 {
+  static function get_datossinfiltro($where='')
+  {
+    if ($where) {
+      $where_armado = "WHERE $where";
+    } else {
+      $where_armado = '';
+    }
+
+    $sql = "SELECT e.id_entidad, e.razonsocial, e.cuit, case when e.propietario then 'Si' else 'No' end propietario
+            FROM sgr.entidad e
+            ORDER BY razonsocial ASC
+            limit 10";
+    $resultado = consultar_fuente($sql);
+    return $resultado;
+  }
+
+  static function get_datos($where='')
+  {
+    if ($where) {
+      $where_armado = "WHERE $where";
+    } else {
+      $where_armado = '';
+    }
+
+    $sql = "SELECT e.id_entidad, e.razonsocial, e.cuit, case when e.propietario then 'Si' else 'No' end propietario
+            FROM sgr.entidad e
+            $where_armado ORDER BY razonsocial ASC";
+    $resultado = consultar_fuente($sql);
+    return $resultado;
+  }
+  /*
   static function get_datostel($where='')
   {
     if ($where) {
@@ -120,6 +151,6 @@ class dao_datosentidades
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
-
+*/
 }
 ?>

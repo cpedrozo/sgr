@@ -65,6 +65,55 @@ class dao_personas
       return $resultado;
     }
 
+    static function get_datossinfiltro2($where='')
+    {
+      if ($where) {
+        $where_armado = "WHERE $where";
+      } else {
+        $where_armado = '';
+      }
+
+      $sql = "SELECT p.id_persona,
+              td.nombre||': '||p.doc documento,
+              e.razonsocial||'-'||s.nombre||','||dp.nombre||'('||se.nombre||')' suc_dpto,
+              COALESCE(CAST(p.legajo AS TEXT)||': ', '')||p.apellido||', '||p.nombre apynom
+              FROM sgr.persona p
+              LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
+              LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
+              LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
+              LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
+              LEFT JOIN sgr.sucursal s ON dp.id_sucursal = s.id_sucursal
+              ORDER BY p.apellido, p.nombre, suc_dpto ASC
+              limit 10";
+
+      $resultado = consultar_fuente($sql);
+      return $resultado;
+    }
+
+    static function get_datos2($where='')
+    {
+      if ($where) {
+        $where_armado = "WHERE $where";
+      } else {
+        $where_armado = '';
+      }
+
+      $sql = "SELECT p.id_persona,
+              td.nombre||': '||p.doc documento,
+              e.razonsocial||'-'||s.nombre||','||dp.nombre||'('||se.nombre||')' suc_dpto,
+              COALESCE(CAST(p.legajo AS TEXT)||': ', '')||p.apellido||', '||p.nombre apynom
+              FROM sgr.persona p
+              LEFT JOIN sgr.tipo_doc td ON p.id_tipo_doc = td.id_tipo_doc
+              LEFT JOIN sgr.entidad e ON p.id_entidad = e.id_entidad
+              LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
+              LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
+              LEFT JOIN sgr.sucursal s ON dp.id_sucursal = s.id_sucursal
+              $where_armado ORDER BY p.apellido, p.nombre, suc_dpto ASC";
+
+      $resultado = consultar_fuente($sql);
+      return $resultado;
+    }
+
     static function get_tipotel($id_tipotel)
     {
       $sql = "SELECT id_tipotel, interno FROM sgr.tipotel

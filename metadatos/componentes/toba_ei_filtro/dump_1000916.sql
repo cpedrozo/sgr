@@ -134,7 +134,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'sgr', --objeto_ei_filtro_proyecto
 	'opciones', --tipo
 	'id_sucursal', --nombre
-	'su.id_sucursal', --expresion
+	's.id_sucursal', --expresion
 	'Sucursal', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio
