@@ -18,7 +18,7 @@ class dao_historicoregistro
             JOIN sgr.estado_actual_flujo ea ON r.id_registro = ea.id_registro AND ea.activo
             WHERE r.fecha_fin is null
             ORDER BY tipoevento_y_wf ASC
-            limit 10";
+            limit 30";
 
     $resultado = consultar_fuente($sql);
     return $resultado;

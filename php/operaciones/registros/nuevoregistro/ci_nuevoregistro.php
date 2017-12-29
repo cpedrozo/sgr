@@ -30,8 +30,10 @@ class ci_nuevoregistro extends sgr_ci
 			$this->cn()->guardarregistro();
 			$this->s__datos['id_persona'] = $this->cn()->get_estado_actual()['id_persona'];
 			$this->s__datos['id_registro'] = $this->cn()->get_registro()['id_registro'];
-			if (dao_personas::esempleado($this->s__datos['id_persona'])){
-				$this->enviar_mail();
+			if(isset($this->s__datos['id_persona'])){
+				if (dao_personas::esempleado($this->s__datos['id_persona'])){
+					$this->enviar_mail();
+				}
 			}
 			$registroExitoso = true;
 		}catch (toba_error_db $error) {
@@ -50,7 +52,6 @@ class ci_nuevoregistro extends sgr_ci
 		$this->set_pantalla('pant_inicial');
 	}
 
-/*
 	function evt__procesar2()
 	{
 		$datos = $this->cn()->get_registro();
@@ -58,7 +59,6 @@ class ci_nuevoregistro extends sgr_ci
 		$this->cn()->set_dt_registro($datos);
 		$this->evt__procesar();
 	}
-*/
 
 	function evt__cancelar()
 	{

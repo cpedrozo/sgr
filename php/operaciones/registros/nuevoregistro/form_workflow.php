@@ -70,7 +70,25 @@ class form_workflow extends sgr_ei_formulario
 				// else{
 				// 	frm.ef('id_persona').ir_a_fila(fila).ocultar();
 				// }
-      })
+			})
+		}
+
+		{$this->objeto_js}.evt__id_persona__procesar = function(es_inicial)
+		{
+			if (es_inicial) {
+				if (this.id_workflow_filtrodefecto) {
+					js_form_1000895_form_workflow.ef('id_persona').abrir_vinculo_sub = js_form_1000895_form_workflow.ef('id_persona').abrir_vinculo
+					js_form_1000895_form_workflow.ef('id_persona').abrir_vinculo = function() {
+						vinculador.agregar_parametros(
+							js_form_1000895_form_workflow.ef('id_persona')._vinculo,
+							{
+								id_workflow_filtrodefecto: js_form_1000895_form_workflow.id_workflow_filtrodefecto
+							}
+						);
+						js_form_1000895_form_workflow.ef('id_persona').abrir_vinculo_sub();
+					}
+				}
+			}
 		}
 		";
 	}

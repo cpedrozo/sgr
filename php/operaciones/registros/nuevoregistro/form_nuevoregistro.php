@@ -52,6 +52,7 @@ class form_nuevoregistro extends sgr_ei_formulario
 			ids_flujo['id_estadoorigen'] = js_form_1000890_form_estado_actual.ef('id_estado').get_estado();
 			this.controlador.ajax('traerinfo_flujodetrabajo', ids_flujo, this, this.respflujo);
 			vinculador.agregar_parametros(js_form_1000895_form_workflow.ef('id_persona')._vinculo, {id_workflow_filtrodefecto: ids_flujo['id_workflow']});
+			js_form_1000895_form_workflow.id_workflow_filtrodefecto = ids_flujo['id_workflow'];
 		}
 
 
