@@ -70,9 +70,8 @@ class form_workflow extends sgr_ei_formulario
 				// else{
 				// 	frm.ef('id_persona').ir_a_fila(fila).ocultar();
 				// }
-		      })
+			})
 		}
-		//---- Procesamiento de EFs --------------------------------
 
 		{$this->objeto_js}.evt__id_persona__procesar = function(es_inicial)
 		{

@@ -11,7 +11,7 @@ class dao_datospersonas
     }
     $sql = "SELECT t.id_telefono,
             coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
-            t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||' ('||coalesce(t.interno, '-')||')' num,
+            t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||coalesce('('||t.interno||')', '') num,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.telefono t
             LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel
@@ -35,7 +35,7 @@ class dao_datospersonas
     }
     $sql = "SELECT t.id_telefono,
             coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
-            t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||' ('||coalesce(t.interno, '-')||')' num,
+            t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||coalesce('('||t.interno||')', '') num,
             se.nombre sector, dp.nombre dpto, su.nombre sucursal
             FROM sgr.telefono t
             LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel

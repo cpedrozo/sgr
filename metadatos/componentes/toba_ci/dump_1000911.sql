@@ -74,6 +74,18 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 --- INICIO Grupo de desarrollo 1
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'sgr', --proyecto
+	'1000746', --dep_id
+	'1000911', --objeto_consumidor
+	'1000953', --objeto_proveedor
+	'cuadro', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'sgr', --proyecto
 	'1000706', --dep_id
 	'1000911', --objeto_consumidor
 	'1000914', --objeto_proveedor
@@ -155,27 +167,13 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'sgr', --proyecto
 	'1000472', --pantalla
 	'1000911', --objeto_ci
-	'1', --orden
-	'1000705'  --dep_id
-);
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'sgr', --proyecto
-	'1000472', --pantalla
-	'1000911', --objeto_ci
-	'2', --orden
-	'1000706'  --dep_id
-);
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'sgr', --proyecto
-	'1000472', --pantalla
-	'1000911', --objeto_ci
-	'3', --orden
-	'1000707'  --dep_id
-);
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'sgr', --proyecto
-	'1000472', --pantalla
-	'1000911', --objeto_ci
 	'0', --orden
 	'1000708'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'sgr', --proyecto
+	'1000472', --pantalla
+	'1000911', --objeto_ci
+	'1', --orden
+	'1000746'  --dep_id
 );

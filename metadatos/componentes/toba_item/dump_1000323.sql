@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000323]--  Detalles del registro 
+--[1000323]--  Detalles por registro 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -13,7 +13,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	'1000323', --item
 	NULL, --padre_id
 	'sgr', --padre_proyecto
-	'1000319', --padre
+	'1000300', --padre
 	'0', --carpeta
 	'0', --nivel_acceso
 	'web', --solicitud_tipo
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Detalles del registro', --nombre
+	'Detalles por registro', --nombre
 	NULL, --descripcion
 	'1000001', --punto_montaje
 	NULL, --actividad_accion

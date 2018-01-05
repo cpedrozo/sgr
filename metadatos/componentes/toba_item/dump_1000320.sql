@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000320]--  Datos Entidades 
+--[1000320]--  Detalles por entidad 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Datos Entidades', --nombre
+	'Detalles por entidad', --nombre
 	NULL, --descripcion
 	'1000001', --punto_montaje
 	NULL, --actividad_accion
