@@ -104,15 +104,14 @@ class ci_detalles_registro extends sgr_ci
 		$path_reporte = $path_toba . '/exportaciones/jasper/sgr/03-detalle_registro.jasper';
 		$reporte->set_path_reporte($path_reporte);
 		$usuario = toba::usuario()->get_nombre();
-		$nombre_archivo = $this->s__datos['form']['registro'].'.pdf';
-		//$nombre_archivo = 'archivo.pdf';
+		$texto_cambiado = str_replace(' ', '_', $this->s__datos['form']['registro']);
+		$nombre_archivo = $texto_cambiado.'.pdf';
 		$idregistro = $this->s__datos['form']['id_registro'];
 		$titulo = 'Detalles del registro '.$this->s__datos['form']['registro'];
 		$reporte->set_parametro('idregistro','E',$idregistro);
 		$reporte->set_parametro('titulo','S',$titulo);
 		$reporte->set_parametro('usuario','S',$usuario);
 		$reporte->set_nombre_archivo($nombre_archivo);
-		//ei_arbol(['variables'=>$idregistro,$titulo,$usuario,$nombre_archivo,$path_reporte]);
 		$db = toba::db('sgr');
 		$reporte->set_conexion($db);
 	}
