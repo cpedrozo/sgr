@@ -136,7 +136,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'1000896', --objeto_ei_formulario
 	'sgr', --objeto_ei_formulario_proyecto
 	'archivo', --identificador
-	'ef_upload', --elemento_formulario
+	'ef_oculto', --elemento_formulario
 	'archivo', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio

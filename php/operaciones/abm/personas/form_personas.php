@@ -72,7 +72,7 @@ class form_personas extends sgr_ei_formulario
 		    this.ef('id_rol').mostrar();
 		    this.ef('id_nacionalidad').mostrar();
 		    this.ef('id_estadocivil').mostrar();
-				this.ef('id_entidad').ocultar();
+				this.ef('id_entidad').mostrar();
 		  }
 			else if (resultado=='NO'){
 				this.ef('legajo').ocultar();

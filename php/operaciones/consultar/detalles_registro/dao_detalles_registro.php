@@ -71,7 +71,7 @@ class dao_detalles_registro
             to_char(fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS') fecha
             FROM sgr.estado_actual_flujo ea
             JOIN sgr.estado e ON ea.id_estado = e.id_estado
-            JOIN sgr.persona p ON ea.id_persona = p.id_persona
+            LEFT JOIN sgr.persona p ON ea.id_persona = p.id_persona
             WHERE id_registro = $consulta
             ORDER BY fecha ASC";
     $resultado = consultar_fuente($sql);

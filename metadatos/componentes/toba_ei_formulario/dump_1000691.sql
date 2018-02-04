@@ -461,7 +461,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'7', --orden
-	'Logo grande', --etiqueta
+	'Logo', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
@@ -536,7 +536,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'1000691', --objeto_ei_formulario
 	'sgr', --objeto_ei_formulario_proyecto
 	'logo_chico', --identificador
-	'ef_upload', --elemento_formulario
+	'ef_oculto', --elemento_formulario
 	'logo_chico', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
@@ -776,7 +776,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'1000691', --objeto_ei_formulario
 	'sgr', --objeto_ei_formulario_proyecto
 	'prevchica', --identificador
-	'ef_fijo', --elemento_formulario
+	'ef_oculto', --elemento_formulario
 	'prevchica', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
