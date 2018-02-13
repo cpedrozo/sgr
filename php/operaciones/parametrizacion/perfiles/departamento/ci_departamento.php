@@ -42,7 +42,6 @@ class ci_departamento extends sgr_ci
 				$this->cn()->guardar_dr_departamento();
 				$this->cn()->resetear_dr_departamento();
 			} catch (toba_error_db $error) {
-				ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
 				toba::notificacion()->agregar('Error de carga', 'info');
 				$this->cn()->resetear_dr_departamento();
 				$this->set_pantalla('pant_inicial');

@@ -17,7 +17,6 @@ class ci_entidades extends sgr_ci
 
 	function ini()
 	{
-		//ei_arbol($this->controlador()->controlador()->get_id()[1]);
 			if ($this->controlador()->get_id()[1]=='1000866')
 				{
 					$this->dep('cuadro')->eliminar_evento('seleccion2');
@@ -64,7 +63,6 @@ class ci_entidades extends sgr_ci
 			$this->cn()->guardar_dr_entidades();
 			$this->cn()->resetear_dr_entidades();
 		} catch (toba_error_db $error) {
-			//ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
 			toba::notificacion()->agregar('Error de carga', 'info');
 			$this->cn()->resetear_dr_entidades();
 			$this->set_pantalla('pant_inicial');
@@ -100,8 +98,6 @@ class ci_entidades extends sgr_ci
 				toba::notificacion()->agregar('Ya existe la entidad', 'info');
 			}
 			else {
-				//ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
-				toba::notificacion()->agregar('Error de carga', 'info');
 			}
 		}
 	}

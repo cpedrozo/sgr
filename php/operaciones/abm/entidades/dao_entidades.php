@@ -48,7 +48,6 @@ class dao_entidades
       $sql = "SELECT id_tipotel, interno FROM sgr.tipotel
             where id_tipotel = $id_tipotel";
       $resultado = consultar_fuente($sql);
-      //ei_arbol($resultado);
       if($resultado[0]['interno']==true)
       {
         return 'si';

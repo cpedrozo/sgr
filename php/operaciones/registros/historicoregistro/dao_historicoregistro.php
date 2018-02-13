@@ -1,4 +1,5 @@
 <?php
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class dao_historicoregistro
 {
@@ -10,17 +11,25 @@ class dao_historicoregistro
       $where_armado = '';
     }
 
-    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, ea.get_usuario, r.fecha_fin
+    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf,
+            r.nombre registro, r.archivo, r.archivo_nombre,
+            ea.get_usuario, es.nombre estado,
+            dp.nombre dpto,
+            to_char(r.fecha_fin::TIMESTAMP, 'DD / MM / YYYY HH24:MI:SS') fecha_fin
             FROM sgr.registro r
             INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
             INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
             INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
+            INNER JOIN sgr.dpto dp ON wf.id_dpto = dp.id_dpto
             JOIN sgr.estado_actual_flujo ea ON r.id_registro = ea.id_registro AND ea.activo
+            INNER JOIN sgr.estado es ON ea.id_estado = es.id_estado
             WHERE r.fecha_fin is null
             ORDER BY tipoevento_y_wf ASC
             limit 30";
-
     $resultado = consultar_fuente($sql);
+    foreach ($resultado as $key => $value) {
+      $resultado[$key]['archivo'] = dao_generico::get_blob_from_resource($value['archivo'], $value['archivo_nombre'])['archivodescarga'];
+    }
     return $resultado;
   }
 
@@ -32,16 +41,24 @@ class dao_historicoregistro
       $where_armado = '';
     }
 
-    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf, r.nombre, ea.get_usuario, to_char(r.fecha_fin::TIMESTAMP, 'DD / MM / YYYY HH24:MI:SS') fecha_fin
+    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf,
+            r.nombre registro, r.archivo, r.archivo_nombre,
+            ea.get_usuario, es.nombre estado,
+            dp.nombre dpto,
+            to_char(r.fecha_fin::TIMESTAMP, 'DD / MM / YYYY HH24:MI:SS') fecha_fin
             FROM sgr.registro r
             INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
             INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
             INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
+            INNER JOIN sgr.dpto dp ON wf.id_dpto = dp.id_dpto
             JOIN sgr.estado_actual_flujo ea ON r.id_registro = ea.id_registro AND ea.activo
+            INNER JOIN sgr.estado es ON ea.id_estado = es.id_estado
             $where_armado
             ORDER BY tipoevento_y_wf ASC";
-
     $resultado = consultar_fuente($sql);
+    foreach ($resultado as $key => $value) {
+      $resultado[$key]['archivo'] = dao_generico::get_blob_from_resource($value['archivo'], $value['archivo_nombre'])['archivodescarga'];
+    }
     return $resultado;
   }
 

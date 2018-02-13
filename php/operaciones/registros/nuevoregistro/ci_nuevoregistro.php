@@ -73,6 +73,7 @@ class ci_nuevoregistro extends sgr_ci
 	function evt__form__modificacion($datos)
 	{
 		$this->cn()->modifregistro($datos);
+		$this->cn()->set_blob_dt('dr_registro', 'dt_registro', $datos, 'archivo', /*es_ml?*/false);
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -173,7 +174,7 @@ class ci_nuevoregistro extends sgr_ci
 	function enviar_mail()
 	{
 		$cuerpo_mail = $this->get_datos_paraemail();
-		$asunto = 'Se registro un evento asociado al emlpeado '.$this->s__datos['datos_empleado']['apynom'];
+		$asunto = 'Se registro un evento asociado al empleado '.$this->s__datos['datos_empleado']['apynom'];
     try {
         $mail = new toba_mail(dao_historicoregistro::get_correo_empleado($this->s__datos['datos_empleado']['id_persona']), $asunto, $cuerpo_mail);
         $mail->set_html(true);

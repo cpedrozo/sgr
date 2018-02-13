@@ -76,6 +76,124 @@ class cn_registros_bm extends sgr_cn
     }
   }
 
+  /**
+  * Asocia los $datos blob al dt.
+  *
+  * @param string $nombre_dr Nombre del datos relación a usar, si no se
+  * determina, se usará $this->nombre_dr_defecto
+  * @param string $nombre_dt Nombre del datos tabla del cual obtener los datos.
+  * Si se omite, se usará this->nombres_dt_defecto[0].
+  * @param array $datos Array asociativo tipo ['nombre_columna' => valor_fila, ].
+  * Determina los datos de la tabla a sociar para, más adelante, registrar los
+  * datos en la base de datos.
+  * @param string $nombre_campo Determina el nombre del campo blob.
+  * @param bool $es_ml Determina si el dt se asocia a un $datos proviniente de
+  * un frm_ml. True = proviene de un ml.
+  */
+
+  public function set_blob_dt($nombre_dr, $nombre_dt, $datos, $nombre_campo, $es_ml = false)
+  {
+      $nom_dr = (isset($nombre_dr) ? $nombre_dr : $this->nombre_dr_defecto);
+      $dr = $this->dep($nom_dr);
+      $nom_dt = (isset($nombre_dt) ? $nombre_dt : $this->nombres_dt_defecto[0]);
+      $dt = $dr->tabla($nom_dt);
+
+      // Si es ml, procesamos las filas
+      if ($es_ml) {
+          foreach ($datos as $key => $value) {
+              $this->set_blob($dt, $nombre_campo, $datos[$key], $key);
+          }
+      } else { // Si no es ml
+          $this->set_blob($dt, $nombre_campo, $datos, null);
+      }
+  }
+
+  /**
+  * Asocia los $datos blob al dt.
+  *
+  * @param toba_datos_tabla $dt Datos tabla instanciado.
+  * @param string $nombre_campo Determina el nombre del campo blob.
+  * @param array $datos Array asociativo tipo ['nombre_columna' => valor_fila, ].
+  * Determina los datos de la tabla a sociar para, más adelante, registrar los
+  * datos en la base de datos.
+  * @param array $id_fila Array asociativo tipo ['nombre_columna' => valor_fila, ].
+  * Determina el id explícito de la fila a usar.
+  */
+
+  public function set_blob($dt, $nombre_campo, $datos, $id_fila = null)
+  {
+      if (is_array($datos[$nombre_campo])) {
+          $s__temp_archivo = $datos[$nombre_campo]['tmp_name'];
+          $imagen = fopen($s__temp_archivo, 'rb');
+
+          $dt->set_blob($nombre_campo, $imagen, $id_fila);
+      }
+  }
+
+  /**
+  * Obtiene los $datos blob del dt $nombre_dt.
+  *
+  * @param string $nombre_dr nombre del datos relación a usar, si no se
+  * determina, se usará $this->nombre_dr_defecto
+  * @param string $nombre_dt nombre del datos tabla del cual obtener los datos.
+  * Si se omite, se usará this->nombres_dt_defecto[0].
+  * @param array $datos Array asociativo tipo ['nombre_columna' => valor_fila, ].
+  * Determina los datos de la tabla a sociar para, más adelante, registrar los
+  * datos en la base de datos.
+  * @param string $nombre_campo Determina el nombre del campo blob.
+  * @param bool $es_ml Determina si el dt se asocia a un $datos proviniente de
+  * un frm_ml. True = proviene de un ml.
+  */
+  public function get_blobs($nombre_dr, $nombre_dt, $datos, $nombre_campo)
+  {
+      $datos_r = array();
+      foreach ($datos as $key => $value) {
+          $datos_r[$key] = $this->get_blob($nombre_dr, $nombre_dt, $datos[$key], $nombre_campo, $key);
+      }
+
+      return $datos_r;
+  }
+
+  public function get_blob($nombre_dr, $nombre_dt, $datos, $nombre_campo, $id_fila)
+  	{
+  		$nombre_dr = (isset($nombre_dr) ? $nombre_dr : $this->nombre_dr_defecto);
+  		$dr = $this->dep($nombre_dr);
+  		$nombre_dt = (isset($nombre_dt) ? $nombre_dt : $this->nombres_dt_defecto[0]);
+  		$dt = $dr->tabla($nombre_dt);
+
+  		if (!isset($this->s__datos['cache_imagenes'])) {
+  			$this->s__datos['cache_imagenes'] = [];
+  		}
+  		$cacheImagenes = $this->s__datos['cache_imagenes'];
+
+  		if (isset($cacheImagenes[$nombre_dr][$nombre_dt][$nombre_campo][$id_fila][$nombre_campo.'?html'])) {
+  			$fila = $cacheImagenes[$nombre_dr][$nombre_dt][$nombre_campo][$id_fila];
+  			$datos = array_merge($datos, $fila);
+  		} else {
+  			$html_imagen = null;
+  			$imagen = $dt->get_blob($nombre_campo, $id_fila);
+  			if (isset($imagen)) {
+  				$temp_nombre = md5(uniqid(time()));
+  				$s__temp_archivo = toba::proyecto()->get_www_temp($temp_nombre);
+  				$html_imagen = "<img width=\"24px\" src='{$s__temp_archivo['url']}' alt='' />";
+  				$temp_imagen = fopen($s__temp_archivo['path'], 'w');
+  				stream_copy_to_stream($imagen, $temp_imagen);
+  				fclose($temp_imagen);
+  				fclose($imagen);
+  				$tamano = round(filesize($s__temp_archivo['path']) / 1024);
+  				$fila[$nombre_campo] = '<a href="'.$s__temp_archivo['url'].'" target="_newtab">'.$html_imagen.' Tamaño archivo actual: '.$tamano.' kb</a>';
+  				$fila[$nombre_campo.'?html'] = $html_imagen;
+  				$fila[$nombre_campo.'?url'] = $s__temp_archivo['url'];
+  			} else {
+  				$fila[$nombre_campo] = null;
+  			}
+  			$datos = array_merge($datos, $fila);
+  			$this->s__datos['cache_imagenes'][$nombre_dr][$nombre_dt][$nombre_campo][$id_fila] = $fila;
+  		}
+
+  		return $datos;
+  	}
+
   //-----------------------------------------------------------------------------------
   //---- ABM sgr_form_estado_actual ---------------------------------------------------
   //-----------------------------------------------------------------------------------
