@@ -539,6 +539,7 @@ CREATE TABLE sgr.registro (
                 id_workflow BIGINT NOT NULL,
                 nombre VARCHAR(100) NOT NULL,
                 archivo BYTEA,
+                archivo_nombre VARCHAR,
                 fecha_inicio TIMESTAMP DEFAULT current_timestamp NOT NULL,
                 fecha_fin TIMESTAMP,
                 CONSTRAINT registro_pk PRIMARY KEY (id_registro)

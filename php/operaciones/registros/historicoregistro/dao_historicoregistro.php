@@ -12,15 +12,16 @@ class dao_historicoregistro
     }
 
     $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf,
-            r.nombre registro, r.archivo, r.archivo_nombre,
-            ea.get_usuario, es.nombre estado,
-            dp.nombre dpto,
+            r.nombre, r.archivo, r.archivo_nombre,
+            ea.get_usuario,
+            s.nombre ||' - '|| dp.nombre sucursal_dpto, es.nombre estado,
             to_char(r.fecha_fin::TIMESTAMP, 'DD / MM / YYYY HH24:MI:SS') fecha_fin
             FROM sgr.registro r
             INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
             INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
             INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
             INNER JOIN sgr.dpto dp ON wf.id_dpto = dp.id_dpto
+            INNER JOIN sgr.sucursal s ON dp.id_sucursal = s.id_sucursal
             JOIN sgr.estado_actual_flujo ea ON r.id_registro = ea.id_registro AND ea.activo
             INNER JOIN sgr.estado es ON ea.id_estado = es.id_estado
             WHERE r.fecha_fin is null
@@ -42,15 +43,16 @@ class dao_historicoregistro
     }
 
     $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf,
-            r.nombre registro, r.archivo, r.archivo_nombre,
-            ea.get_usuario, es.nombre estado,
-            dp.nombre dpto,
+            r.nombre, r.archivo, r.archivo_nombre,
+            ea.get_usuario,
+            s.nombre ||' - '|| dp.nombre sucursal_dpto, es.nombre estado,
             to_char(r.fecha_fin::TIMESTAMP, 'DD / MM / YYYY HH24:MI:SS') fecha_fin
             FROM sgr.registro r
             INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
             INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
             INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
             INNER JOIN sgr.dpto dp ON wf.id_dpto = dp.id_dpto
+            INNER JOIN sgr.sucursal s ON dp.id_sucursal = s.id_sucursal
             JOIN sgr.estado_actual_flujo ea ON r.id_registro = ea.id_registro AND ea.activo
             INNER JOIN sgr.estado es ON ea.id_estado = es.id_estado
             $where_armado
