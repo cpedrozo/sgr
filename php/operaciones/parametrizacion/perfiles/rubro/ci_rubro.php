@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/perfiles/rubro/dao_rubro.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_rubro extends sgr_ci
 {
@@ -37,8 +38,14 @@ class ci_rubro extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrarrubro($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_rubro($seleccion['id_rubro']);
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Rubro que está siendo utilizado por '.$cantidad.' Entidades. Para borrarlo deberá en primer lugar eliminar las Entidades que lo utilizan', 'warning');
+		}
+		else{
+			$this->cn()->borrarrubro($seleccion);
+			$this->evt__procesar();
+		}
 	}
 
 

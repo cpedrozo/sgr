@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/perfiles/nacionalidad/dao_nacionalidad.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_nacionalidad extends sgr_ci
 {
@@ -13,14 +14,12 @@ class ci_nacionalidad extends sgr_ci
 
 	function conf__cuadro($cuadro)
 	{
-		//if (isset($this->s__datos_filtro)) {
 			$filtro = $this->dep('filtro');
 			$filtro->set_datos($this->s__datos_filtro);
 			$sql_where = $filtro->get_sql_where();
 
 			$datos = dao_nacionalidad::get_datos($sql_where);
 			$cuadro->set_datos($datos);
-		//}
 	}
 
 	function evt__cuadro__seleccion($seleccion)
@@ -31,8 +30,14 @@ class ci_nacionalidad extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrarnacionalidad($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_nacionalidad($seleccion['id_nacionalidad']);
+	  if ($cantidad>0){
+	    toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Nacionalidad que está siendo utilizada por '.$cantidad.' Personas. Para borrarla deberá en primer lugar eliminar las personas que la utilizan', 'warning');
+	  }
+	  else{
+			$this->cn()->borrarnacionalidad($seleccion);
+			$this->evt__procesar();
+	  }
 	}
 
 	//-----------------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/perfiles/genero/dao_genero.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_genero extends sgr_ci
 {
@@ -31,8 +32,14 @@ class ci_genero extends sgr_ci
 
 		function evt__cuadro__borrar($seleccion)
 		{
-			$this->cn()->borrargenero($seleccion);
-			$this->evt__procesar();
+			$cantidad = dao_generico::consulta_borrado_evento($seleccion['id_evento']);
+		  if ($cantidad>0){
+		    toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Género que está siendo utilizado por '.$cantidad.' personas. Para borrarlo deberá en primer lugar eliminar las personas  que lo utilizan', 'warning');
+		  }
+		  else{
+				$this->cn()->borrargenero($seleccion);
+				$this->evt__procesar();
+		  }
 		}
 
 	//-----------------------------------------------------------------------------------

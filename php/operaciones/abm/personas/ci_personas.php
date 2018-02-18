@@ -1,6 +1,8 @@
 <?php
 require_once('operaciones/abm/personas/dao_personas.php');
 require_once('operaciones/metodosconsulta/flujosyregistros.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
+
 class ci_personas extends sgr_ci
 {
 	//-----------------------------------------------------------------------------------
@@ -53,28 +55,56 @@ class ci_personas extends sgr_ci
 		$this->s__datos['baja'] = $seleccion;
 		$this->s__datos['datos_empleado'] = dao_personas::get_empleadobaja($this->s__datos['baja']['id_persona']);
 		$this->s__datos['esempleado'] = dao_personas::esempleado($this->s__datos['baja']['id_persona']);
-		$this->cn()->cargar_dr_personas($seleccion);
-		$this->cn()->borrar_dt_personas($seleccion);
-		try{
-			$this->cn()->guardar_dr_personas();
-			unset($this->s__datos['datos_anteriores_form']);
-			if ($this->s__datos['esempleado']){
-				$this->enviar_mail();
+		$cantidad = dao_generico::consulta_borrado_persona($seleccion['id_persona']);
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Persona que posee uno o más Teléfono(s), Correo(s), Domicilio(s) y/o Estado(s) asociados. Para borrarla deberá en primer lugar eliminar los registros que la utilizan', 'warning');
+		}
+		else{
+			$this->cn()->cargar_dr_personas($seleccion);
+			$this->cn()->borrar_dt_personas($seleccion);
+			try{
+				$this->cn()->guardar_dr_personas();
+				unset($this->s__datos['datos_anteriores_form']);
+				if ($this->s__datos['esempleado']){
+					$this->enviar_mail();
+				}
+				$this->cn()->resetear_dr_personas();
+			} catch (toba_error_db $error) {
+				toba::notificacion()->agregar('Error de carga', 'info');
+				$this->cn()->resetear_dr_personas();
+				$this->set_pantalla('pant_inicial');
 			}
-			$this->cn()->resetear_dr_personas();
-		} catch (toba_error_db $error) {
-			toba::notificacion()->agregar('Error de carga', 'info');
-			$this->cn()->resetear_dr_personas();
-			$this->set_pantalla('pant_inicial');
 		}
 	}
+
+	//
+	// function evt__cuadro__borrar($seleccion) bkp 20180218
+	// {
+	// 	$this->s__datos['baja'] = $seleccion;
+	// 	$this->s__datos['datos_empleado'] = dao_personas::get_empleadobaja($this->s__datos['baja']['id_persona']);
+	// 	$this->s__datos['esempleado'] = dao_personas::esempleado($this->s__datos['baja']['id_persona']);
+	// 	$this->cn()->cargar_dr_personas($seleccion);
+	// 	$this->cn()->borrar_dt_personas($seleccion);
+	// 	try{
+	// 		$this->cn()->guardar_dr_personas();
+	// 		unset($this->s__datos['datos_anteriores_form']);
+	// 		if ($this->s__datos['esempleado']){
+	// 			$this->enviar_mail();
+	// 		}
+	// 		$this->cn()->resetear_dr_personas();
+	// 	} catch (toba_error_db $error) {
+	// 		toba::notificacion()->agregar('Error de carga', 'info');
+	// 		$this->cn()->resetear_dr_personas();
+	// 		$this->set_pantalla('pant_inicial');
+	// 	}
+	// }
 
 	function conf_evt__cuadro__detalles(toba_evento_usuario $evento, $fila)
 	{
 		$datos=$this->dep('cuadro')->get_datos()[$fila];
 		$evento->vinculo()->agregar_parametro('persona', $datos['id_persona']);
 	}
-//
+
 	//-----------------------------------------------------------------------------------
 	//---- Eventos ----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/perfiles/estado_civil/dao_estado_civil.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_estado_civil extends sgr_ci
 {
@@ -13,14 +14,11 @@ class ci_estado_civil extends sgr_ci
 
 	function conf__cuadro($cuadro)
 	{
-		//if (isset($this->s__datos_filtro)) {
 			$filtro = $this->dep('filtro');
 			$filtro->set_datos($this->s__datos_filtro);
 			$sql_where = $filtro->get_sql_where();
-
 			$datos = dao_estado_civil::get_datos($sql_where);
 			$cuadro->set_datos($datos);
-		//}
 	}
 
 	function evt__cuadro__seleccion($seleccion)
@@ -31,8 +29,14 @@ class ci_estado_civil extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrarestadocivil($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_estadocivil($seleccion['id_estadocivil']);
+	  if ($cantidad>0){
+	    toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Estado Civil que está siendo utilizado por '.$cantidad.' Personas. Para borrarlo deberá en primer lugar eliminar las Personas que lo utilizan', 'warning');
+	  }
+	  else{
+			$this->cn()->borrarestadocivil($seleccion);
+			$this->evt__procesar();
+	  }
 	}
 
 	//-----------------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/perfiles/ciudad/dao_ciudad.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_ciudad extends sgr_ci
 {
@@ -37,8 +38,14 @@ class ci_ciudad extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrarciudad($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_ciudad($seleccion['id_ciudad']);
+	  if ($cantidad>0){
+	    toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Ciudad que está siendo utilizada por '.$cantidad.' Domicilios. Para borrarla deberá en primer lugar eliminar los Domicilios asociados', 'warning');
+	  }
+	  else{
+			$this->cn()->borrarciudad($seleccion);
+			$this->evt__procesar();
+	  }
 	}
 
 	//-----------------------------------------------------------------------------------

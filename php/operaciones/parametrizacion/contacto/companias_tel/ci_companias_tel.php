@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/contacto/companias_tel/dao_companias_tel.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_companias_tel extends sgr_ci
 {
@@ -40,8 +41,14 @@ class ci_companias_tel extends sgr_ci
 
 		function evt__cuadro__borrar($seleccion)
 		{
-			$this->cn()->borrarcompania($seleccion);
-			$this->evt__procesar();
+			$cantidad = dao_generico::consulta_borrado_compania($seleccion['id_compania']);
+			if ($cantidad>0){
+				toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Compañía de Teléfono que está siendo utilizada por '.$cantidad.' Teléfonos. Para borrarla deberá en primer lugar eliminar los Teléfonos que la utilizan', 'warning');
+			}
+			else{
+				$this->cn()->borrarcompania($seleccion);
+				$this->evt__procesar();
+			}
 		}
 
 		//-----------------------------------------------------------------------------------

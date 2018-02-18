@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/operaciones/eventos/dao_eventos.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_eventos extends sgr_ci
 {
@@ -36,8 +37,14 @@ class ci_eventos extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
+		$cantidad = dao_generico::consulta_borrado_evento($seleccion['id_evento']);//
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Evento que está siendo utilizado por '.$cantidad.' flujos de trabajo. Para borrarlo deberá en primer lugar eliminar los registros asociados', 'warning');
+		}
+		else{
 		$this->cn()->borrareventos($seleccion);
 		$this->evt__procesar();
+		}
 	}
 
 	//-----------------------------------------------------------------------------------

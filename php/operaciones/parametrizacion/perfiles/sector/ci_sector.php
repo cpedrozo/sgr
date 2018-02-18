@@ -1,6 +1,7 @@
 <?php
 
 require_once ('operaciones/parametrizacion/perfiles/sector/dao_sector.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_sector extends sgr_ci
 {
@@ -39,8 +40,14 @@ class ci_sector extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrarsector($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_sector($seleccion['id_sector']);
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Sector que está siendo utilizado por '.$cantidad.' Personas. Para borrarlo deberá en primer lugar eliminar las Personas que lo utilizan', 'warning');
+		}
+		else{
+			$this->cn()->borrarsector($seleccion);
+			$this->evt__procesar();
+		}
 	}
 
 	//-----------------------------------------------------------------------------------

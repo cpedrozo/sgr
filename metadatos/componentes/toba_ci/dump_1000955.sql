@@ -98,16 +98,11 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	'pant_inicial', --identificador
 	'1', --orden
 	'Pantalla Inicial', --etiqueta
-	'<head>
-<style type="text/css">
-#myiframe {width:700px; height:100%;} 
-</style>
-</head>
+	'<html>
 <body>
-<div id="scroller">
-<iframe name="myiframe" id="myiframe" src="file:///home/toba_2_6_7/toba_2_7_6/proyectos/sgr/archivos/pdf-sample.pdf">
-</div>
-</body>', --descripcion
+<embed src=”/home/toba_2_6_7/toba_2_7_6/proyectos/sgr/archivos/pdf-sample.pdf#toolbar=0&#8243; width=”800&#8243; height=”800&#8243;>
+</body>
+</html>', --descripcion
 	NULL, --tip
 	'apex', --imagen_recurso_origen
 	NULL, --imagen
@@ -120,3 +115,14 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	'1000001'  --punto_montaje
 );
 --- FIN Grupo de desarrollo 1
+
+------------------------------------------------------------
+-- apex_objetos_pantalla
+------------------------------------------------------------
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'sgr', --proyecto
+	'1000482', --pantalla
+	'1000955', --objeto_ci
+	'0', --orden
+	'1000748'  --dep_id
+);

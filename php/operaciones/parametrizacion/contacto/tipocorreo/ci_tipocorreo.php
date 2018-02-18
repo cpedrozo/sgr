@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/contacto/tipocorreo/dao_tipocorreo.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_tipocorreo extends sgr_ci
 {
@@ -32,8 +33,14 @@ class ci_tipocorreo extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrartipocorreo($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_tipocorreo($seleccion['id_tipocorreo']);
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Tipo de Correo que está siendo utilizado por '.$cantidad.' Correos. Para borrarlo deberá en primer lugar eliminar los Correos que lo utilicen', 'warning');
+		}
+		else{
+			$this->cn()->borrartipocorreo($seleccion);
+			$this->evt__procesar();
+		}
 	}
 
 	//-----------------------------------------------------------------------------------

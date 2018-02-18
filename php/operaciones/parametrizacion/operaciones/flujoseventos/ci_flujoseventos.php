@@ -3,6 +3,17 @@
 require_once('operaciones/parametrizacion/operaciones/flujoseventos/dao_flujoseventos.php');
 require_once('operaciones/metodosconsulta/dao_generico.php');
 
+/*
+require_once('operaciones/metodosconsulta/dao_generico.php');
+
+$cantidad = dao_generico::consulta_borrado_evento($seleccion['id_evento']);
+if ($cantidad>0){
+	toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Evento que está siendo utilizado por '.$cantidad.' flujos de trabajo. Para borrarlo deberá en primer lugar eliminar los registros asociados', 'warning');
+}
+else{
+}
+*/
+
 class ci_flujoseventos extends sgr_ci
 {
 
@@ -50,7 +61,6 @@ class ci_flujoseventos extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		// ei_arbol($seleccion);
 		$cantidad = dao_generico::consulta_borrado_workflow($seleccion['id_workflow']);
 		if ($cantidad>0){
 			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Workflow que está siendo utilizado por '.$cantidad.' registros. Para borrarlo deberá en primer lugar eliminar los registros asociados', 'warning');

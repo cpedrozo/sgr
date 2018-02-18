@@ -1,0 +1,10 @@
+<head>
+<style type="text/css">
+#myiframe {width:700px; height:100%;} 
+</style>
+</head>
+<body>
+<div id="scroller">
+<iframe name="myiframe" id="myiframe" src="file:///home/toba_2_6_7/toba_2_7_6/proyectos/sgr/archivos/pdf-sample.pdf">
+</div>
+</body>

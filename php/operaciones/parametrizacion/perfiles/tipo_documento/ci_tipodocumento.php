@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/perfiles/tipo_documento/dao_tipodocumento.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_tipodocumento extends sgr_ci
 {
@@ -35,8 +36,14 @@ class ci_tipodocumento extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrartipodocumento($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_tipodocumento($seleccion['id_tipo_doc']);
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Tipo de Documento que está siendo utilizado por '.$cantidad.' Personas. Para borrarlo deberá en primer lugar eliminar las Personas que lo utilizan', 'warning');
+		}
+		else{
+			$this->cn()->borrartipodocumento($seleccion);
+			$this->evt__procesar();
+		}
 	}
 
 
