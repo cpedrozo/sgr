@@ -1,5 +1,5 @@
 <?php
-class filtro_propietario extends sgr_ei_filtro
+class filtro_desarrollador extends sgr_ei_filtro
 {
 	//-----------------------------------------------------------------------------------
 	//---- JAVASCRIPT -------------------------------------------------------------------
@@ -27,9 +27,24 @@ class filtro_propietario extends sgr_ei_filtro
 				ef.set_estado(cadena);
 			}
 
-			this.ef('direccion').input().onkeyup = function()
+			this.ef('version').input().onkeyup = function()
 			{
-				var ef = {$this->objeto_js}.ef('direccion');
+				var ef = {$this->objeto_js}.ef('version');
+				var texto = ef.get_estado().toUpperCase();
+
+				//--var texto_comprobado = texto.match(/[a-zA-Z\s]/gi);
+				var texto_comprobado = texto.match(/[a-zA-Z\[Á-Ú\[0-9\:\! ¡¿?_°./\-\']/gi);
+				var cadena = texto_comprobado.toString();
+				while(cadena.indexOf(',') >= 0)
+				{
+					cadena = cadena.replace(',','');
+				}
+				ef.set_estado(cadena);
+			}
+
+			this.ef('desarrollador').input().onkeyup = function()
+			{
+				var ef = {$this->objeto_js}.ef('desarrollador');
 				var texto = ef.get_estado().toUpperCase();
 
 				//--var texto_comprobado = texto.match(/[a-zA-Z\s]/gi);

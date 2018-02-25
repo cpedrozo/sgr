@@ -1,5 +1,21 @@
 CREATE SCHEMA sgr;
 
+CREATE SEQUENCE sgr.sgr_id_sgr_seq;
+
+CREATE TABLE sgr.sgr (
+                id_sgr BIGINT NOT NULL DEFAULT nextval('sgr.sgr_id_sgr_seq'),
+                nombre VARCHAR NOT NULL,
+                version VARCHAR NOT NULL,
+                desarrollador VARCHAR NOT NULL,
+                activo BOOLEAN DEFAULT TRUE NOT NULL,
+                logo_chico BYTEA NOT NULL,
+                logo_grande BYTEA NOT NULL,
+                CONSTRAINT sgr_pk PRIMARY KEY (id_sgr)
+);
+
+
+ALTER SEQUENCE sgr.sgr_id_sgr_seq OWNED BY sgr.sgr.id_sgr;
+
 CREATE SEQUENCE sgr.notificaciones_id_notificaciones_seq;
 
 CREATE TABLE sgr.notificaciones (
