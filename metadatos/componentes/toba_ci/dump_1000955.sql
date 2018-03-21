@@ -68,8 +68,8 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	NULL, --grupo
 	'V', --accion
 	'0', --accion_imphtml_debug
-	'1000326', --accion_vinculo_carpeta
-	'1000327', --accion_vinculo_item
+	'1000328', --accion_vinculo_carpeta
+	'1000329', --accion_vinculo_item
 	NULL, --accion_vinculo_objeto
 	'1', --accion_vinculo_popup
 	'width: 1200px, height: 800px, scrollbars: 1, resizable:0', --accion_vinculo_popup_param

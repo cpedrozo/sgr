@@ -17,7 +17,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba_ci', --clase
 	'1000001', --punto_montaje
 	'ci_ayuda', --subclase
-	'operaciones/ayuda/ci_ayuda.php', --subclase_archivo
+	'operaciones/ayuda/ayuda/ci_ayuda.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'ci_ayuda2', --nombre
