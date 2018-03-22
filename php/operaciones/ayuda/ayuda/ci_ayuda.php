@@ -3,8 +3,8 @@ class ci_ayuda extends sgr_ci
 {
 	function ini()
 	{
-		$file = 'file:///home/toba_2_6_7/toba_2_7_6/proyectos/sgr/archivos/Manual/manual_usuario_v10.pdf';
-		$filename = 'manual_usuario_v10.pdf'; // Note: Always use .pdf at the end.
+		$file = 'file:///home/toba_2_6_7/toba_2_7_6/proyectos/sgr/archivos/Manual/manual_usuario.pdf';
+		$filename = 'manual_usuario.pdf'; // Note: Always use .pdf at the end.
 
 		header('Content-type: application/pdf');
 		header('Content-Disposition: inline; filename="' . $filename . '"');
