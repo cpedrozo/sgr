@@ -24,7 +24,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
 	'Parametrización', --nombre
-	NULL, --descripcion
+	'Parámetros iniciales del sistema.', --descripcion
 	NULL, --punto_montaje
 	NULL, --actividad_accion
 	'1', --menu

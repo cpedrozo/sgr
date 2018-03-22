@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000326]--  Ayuda 
+--[1000326]--  Ayuda y Resguardo 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,8 +23,8 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Ayuda', --nombre
-	NULL, --descripcion
+	'Ayuda y Resguardo', --nombre
+	'Ayuda del Sistema y Resguardo.', --descripcion
 	NULL, --punto_montaje
 	NULL, --actividad_accion
 	'1', --menu
