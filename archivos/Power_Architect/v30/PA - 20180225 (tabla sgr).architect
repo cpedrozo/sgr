@@ -1009,7 +1009,7 @@ F/M/Otro</remarks>
    </folder>
   </table>
   <table id="TAB311" populated="true" UUID="e3a08b20-7e6c-49d9-9bbd-7d92f4457a36" name="sgr" objectType="TABLE" physicalName="sgr" >
-   <remarks></remarks>
+   <remarks>Contiene los datos del software, version, desarrollador y logo para mostrarse en la pestaña &quot;acerca de&quot;</remarks>
    <folder id="FOLTAB3111" populated="true" name="Columns" physicalName="Columns" type="1">
     <column id="COL312" populated="true" UUID="33b1f505-8589-4fab-ab53-c93a9c563ae6" autoIncrement="true" autoIncrementSequenceName="sgr_id_sgr_seq" defaultValue="" name="id_sgr" nullable="0" physicalName="id_sgr" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
@@ -1165,10 +1165,10 @@ F/M/Otro</remarks>
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="sgr"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="sgr"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="0.9999999999999989" viewportX="49" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="0.9999999999999989" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1" x="517" y="199" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB12" x="621" y="374" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB22" x="141" y="520" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>

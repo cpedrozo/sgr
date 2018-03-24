@@ -45,7 +45,7 @@ class ci_departamento extends sgr_ci
 			} catch (toba_error_db $error) {
 				$sql_state = $error->get_sqlstate();
 				if ($sql_state == 'db_23503'){
-					toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Departamento que podría estar siendo utilizado en uno o más Flujo de trabajo, Sector o Correo. Para borrarlo deberá en primer lugar eliminar los objetos asociados', 'warning');
+					toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Departamento que podría estar siendo utilizado en uno o más Flujos de trabajo, Sector o Correo. Para borrarlo deberá en primer lugar eliminar los objetos asociados', 'warning');
 				}
 				else{
 					toba::notificacion()->agregar('Error de carga', 'info');
