@@ -16,6 +16,7 @@ class ci_bkp extends sgr_ci
 	function crearBackup()
 	{
 		// Obtenemos la clave
+		$resultado = -1;
 		$this->ejecutarComando($this->scriptCrearBackup. " get-pass");
 		if ($resultado==0) {
 			if (isset($output[0])) {
