@@ -1,0 +1,59 @@
+#!/bin/bash
+
+ejecutando=$(pgrep pg_dump)
+if [ ! -z "$ejecutando" ]; then
+  echo "pg_dump ya se encuentra en ejecución"
+  exit 3
+fi
+
+cd $(dirname $0)
+
+# Se debería configurar a postgresql para que acepte únicamente la conexión desde el servidor de apache y no requerir usuario y contraseña
+# Se puede lograr este script de modo que se reciban los parámetros de usuario y contraseña a través de argumentos para el script
+usuario_postgres="postgres"
+clave_postgres="desarrollo1"
+host_postgres="localhost"
+puerto_postgres="5432"
+
+# Estos deben ser nombres aleatorios para que dos usuarios distintos no se pisen a la hora de hacer backups manuales. Además se debe tener en cuenta a la hora de borrar el bakcup del servidor.
+dir_tmp_data="temp_data"
+arc_tmp_backup="$dir_tmp_data/backup.backup"
+arc_tmp_backupgz="$arc_tmp_backup.gz"
+dir_backup="../www/temp"
+arc_backup="$dir_backup/backup.backup.gz"
+
+# Se debería configurar a postgresql para que acepte únicamente la conexión desde el servidor de apache y no requerir usuario y contraseña
+if [[ "$1" = "get-pass" ]]; then
+  echo $clave_postgres
+  exit 0
+fi
+
+if [ ! -d $dir_tmp_data ]; then
+  mkdir $dir_tmp_data
+else
+  if [ -f "$arc_tmp_backup" ]; then
+    rm -rf "$arc_tmp_backup"
+  fi
+fi
+if [ ! -d "$dir_backup/" ]; then
+  mkdir "$dir_backup/"
+fi
+
+pg_dump -h $host_postgres -p $puerto_postgres -U "$usuario_postgres" -w desarrollo > "$arc_tmp_backup" && {
+  if [ -f "$arc_tmp_backup" ]; then
+    gzip "$arc_tmp_backup"
+    if [ -f "$arc_tmp_backupgz" ]; then
+      mv "$arc_tmp_backupgz" "$arc_backup"
+      exit 0
+    else
+      echo "Falló la compresión del backup con gzip"
+      exit 1
+    fi
+  else
+    echo "Falló la creación del backup en '$arc_tmp_backup' con pg_dump"
+    exit 2
+  fi
+} || {
+  echo "Falló la creación del backup en '$arc_tmp_backup' con pg_dump"
+  exit 2
+}

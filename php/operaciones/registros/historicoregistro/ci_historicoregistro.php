@@ -7,7 +7,6 @@ require_once('operaciones/abm/personas/dao_personas.php');
 
 class ci_historicoregistro extends sgr_ci
 {
-
 	//-----------------------------------------------------------------------------------
 	//---- Variables ----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
@@ -117,7 +116,6 @@ class ci_historicoregistro extends sgr_ci
 			$this->cn()->guardar_dr_registro();
 			$this->cn()->resetear_dr_registro();
 		} catch (toba_error_db $error) {
-			ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
 			toba::notificacion()->agregar('Error de carga', 'info');
 			$this->cn()->resetear_dr_registro();
 			$this->set_pantalla('pant_inicial');
@@ -135,7 +133,11 @@ class ci_historicoregistro extends sgr_ci
 
 	function evt__form__modificacion($datos)
 	{
+		if (isset($datos['archivo'])){
+			$datos['archivo_nombre'] = preg_replace("/[^a-zA-Z0-9.]+/", "", $datos['archivo']['name']);
+		}
 		$this->cn()->modifregistro($datos);
+		$this->cn()->set_blob_dt('dr_registro', 'dt_registro', $datos, 'archivo', /*es_ml?*/false);
 	}
 
 	//-----------------------------------------------------------------------------------

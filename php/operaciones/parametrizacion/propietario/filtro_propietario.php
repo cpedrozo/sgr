@@ -29,7 +29,7 @@ class filtro_propietario extends sgr_ei_filtro
 
 			this.ef('direccion').input().onkeyup = function()
 			{
-				var ef = {$this->objeto_js}.ef('apellido');
+				var ef = {$this->objeto_js}.ef('direccion');
 				var texto = ef.get_estado().toUpperCase();
 
 				//--var texto_comprobado = texto.match(/[a-zA-Z\s]/gi);

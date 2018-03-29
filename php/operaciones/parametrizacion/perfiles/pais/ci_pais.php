@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/perfiles/pais/dao_pais.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_pais extends sgr_ci
 {
@@ -13,14 +14,12 @@ class ci_pais extends sgr_ci
 
 	function conf__cuadro($cuadro)
 	{
-		//if (isset($this->s__datos_filtro)) {
 			$filtro = $this->dep('filtro');
 			$filtro->set_datos($this->s__datos_filtro);
 			$sql_where = $filtro->get_sql_where();
 
 			$datos = dao_pais::get_datos($sql_where);
 			$cuadro->set_datos($datos);
-		//}
 	}
 
 	function evt__cuadro__seleccion($seleccion)
@@ -31,8 +30,14 @@ class ci_pais extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrarpais($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_pais($seleccion['id_pais']);
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un País que está siendo utilizado por '.$cantidad.' Provincias. Para borrarlo deberá en primer lugar eliminar las Provincias que lo utilizan', 'warning');
+		}
+		else{
+			$this->cn()->borrarpais($seleccion);
+			$this->evt__procesar();
+		}
 	}
 
 

@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/operaciones/tipoevento/dao_tipoevento.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_tipoevento extends sgr_ci
 {
@@ -36,8 +37,14 @@ class ci_tipoevento extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-	  $this->cn()->borrartipoevento($seleccion);
-	  $this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_tipoevento($seleccion['id_tipoevento']);
+	  if ($cantidad>0){
+	    toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Tipo de Evento que está siendo utilizado por '.$cantidad.' Eventos. Para borrarlo deberá en primer lugar eliminar los Eventos asociados', 'warning');
+	  }
+	  else{
+			$this->cn()->borrartipoevento($seleccion);
+			$this->evt__procesar();
+	  }
 	}
 
 	//-----------------------------------------------------------------------------------

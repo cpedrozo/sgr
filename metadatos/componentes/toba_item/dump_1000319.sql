@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000319]--  Consultar 
+--[1000319]--  Consultas 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,8 +23,8 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Consultar', --nombre
-	'Agenda de personas y entidades', --descripcion
+	'Consultas', --nombre
+	'Consultar detalles de personas y entidades', --descripcion
 	NULL, --punto_montaje
 	NULL, --actividad_accion
 	'1', --menu

@@ -1,6 +1,7 @@
 <?php
 
 require_once ('operaciones/parametrizacion/perfiles/sucursal/dao_sucursal.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_sucursal extends sgr_ci
 {
@@ -29,8 +30,14 @@ class ci_sucursal extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrarsucursal($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_sucursal($seleccion['id_sucursal']);
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Sucursal que está siendo utilizada por '.$cantidad.' Departamentos. Para borrarla deberá en primer lugar eliminar los Departamentos que la utilizan', 'warning');
+		}
+		else{
+			$this->cn()->borrarsucursal($seleccion);
+			$this->evt__procesar();
+		}
 	}
 
 	//-----------------------------------------------------------------------------------

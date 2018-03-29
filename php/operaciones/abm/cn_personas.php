@@ -171,7 +171,6 @@ class cn_personas extends sgr_cn
   function getdomicilio_personas()
   {
     return $this->dep('dr_personas')->tabla('dt_domicilio')->get_filas();
-    //ei_arbol(array(get_filas()));
   }
 
   function procesardomicilio_personas($datos)

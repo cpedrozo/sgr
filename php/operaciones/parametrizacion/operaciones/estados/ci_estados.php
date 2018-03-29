@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/operaciones/estados/dao_estados.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_estados extends sgr_ci
 {
@@ -36,8 +37,14 @@ class ci_estados extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-	  $this->cn()->borrarestados($seleccion);
-	  $this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_estado($seleccion['id_estado']);
+	  if ($cantidad>0){
+	    toba::notificacion()->agregar('La operación fue cancelada por intentar borrar un Estado que está siendo utilizado por '.$cantidad.' Estados de Registros. Para borrarlo deberá en primer lugar eliminar los registros asociados', 'warning');
+	  }
+	  else{
+			$this->cn()->borrarestados($seleccion);
+			$this->evt__procesar();
+	  }
 	}
 
 	//-----------------------------------------------------------------------------------

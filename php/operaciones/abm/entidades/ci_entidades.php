@@ -1,5 +1,6 @@
 <?php
 require_once('operaciones/abm/entidades/dao_entidades.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_entidades extends sgr_ci
 {
@@ -17,7 +18,6 @@ class ci_entidades extends sgr_ci
 
 	function ini()
 	{
-		//ei_arbol($this->controlador()->controlador()->get_id()[1]);
 			if ($this->controlador()->get_id()[1]=='1000866')
 				{
 					$this->dep('cuadro')->eliminar_evento('seleccion2');
@@ -58,16 +58,21 @@ class ci_entidades extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->cargar_dr_entidades($seleccion);
-		$this->cn()->borrar_dt_entidades($seleccion);
-		try{
-			$this->cn()->guardar_dr_entidades();
-			$this->cn()->resetear_dr_entidades();
-		} catch (toba_error_db $error) {
-			//ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
-			toba::notificacion()->agregar('Error de carga', 'info');
-			$this->cn()->resetear_dr_entidades();
-			$this->set_pantalla('pant_inicial');
+		$cantidad = dao_generico::consulta_borrado_entidad($seleccion['id_entidad']);
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Entidad que posee uno o más Teléfono(s), Correo(s), Domicilio(s) y/o Persona(s) asociadas. Para borrarla deberá en primer lugar eliminar los registros que la utilizan', 'warning');
+		}
+		else{
+			$this->cn()->cargar_dr_entidades($seleccion);
+			$this->cn()->borrar_dt_entidades($seleccion);
+			try{
+				$this->cn()->guardar_dr_entidades();
+				$this->cn()->resetear_dr_entidades();
+			} catch (toba_error_db $error) {
+				toba::notificacion()->agregar('Error de carga', 'info');
+				$this->cn()->resetear_dr_entidades();
+				$this->set_pantalla('pant_inicial');
+			}
 		}
 	}
 
@@ -100,8 +105,6 @@ class ci_entidades extends sgr_ci
 				toba::notificacion()->agregar('Ya existe la entidad', 'info');
 			}
 			else {
-				//ei_arbol(array('$error->get_sqlstate():' => $error->get_mensaje_log()));
-				toba::notificacion()->agregar('Error de carga', 'info');
 			}
 		}
 	}

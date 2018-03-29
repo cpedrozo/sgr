@@ -1,6 +1,7 @@
 <?php
 
 require_once('operaciones/parametrizacion/perfiles/provincia/dao_provincia.php');
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class ci_provincia extends sgr_ci
 {
@@ -37,8 +38,14 @@ class ci_provincia extends sgr_ci
 
 	function evt__cuadro__borrar($seleccion)
 	{
-		$this->cn()->borrarprovincia($seleccion);
-		$this->evt__procesar();
+		$cantidad = dao_generico::consulta_borrado_provincia($seleccion['id_provincia']);
+		if ($cantidad>0){
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Provincia que está siendo utilizada por '.$cantidad.' Ciudades. Para borrarla deberá en primer lugar eliminar las Ciudades que la utilizan', 'warning');
+		}
+		else{
+			$this->cn()->borrarprovincia($seleccion);
+			$this->evt__procesar();
+		}
 	}
 
 

@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[1000299]--  ABM 
+--[1000299]--  Entidades y Personas 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,8 +23,8 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'ABM', --nombre
-	NULL, --descripcion
+	'Entidades y Personas', --nombre
+	'Acceso a entidades y personas existentes y creación de nuevas.', --descripcion
 	NULL, --punto_montaje
 	NULL, --actividad_accion
 	'1', --menu
