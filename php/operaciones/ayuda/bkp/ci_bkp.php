@@ -3,6 +3,7 @@ class ci_bkp extends sgr_ci
 {
 	protected $s__datos = [];
 	protected $scriptCrearBackup = "/home/toba_2_6_7/toba_2_7_6/proyectos/sgr/bin/script_bkp_db";
+
 	function ejecutarComando($comando)
 	{
 		$output = [];
@@ -10,13 +11,13 @@ class ci_bkp extends sgr_ci
 		exec("$comando 2>&1", $output, $resultado);
 		$this->s__datos['backup-log'] =
 			['output' => $output,
-		   'resultado' => $resultado,
-		   'descargar' => '<a href="temp/backup.backup.gz">Descargar Backup</a>'];
+			 'resultado' => $resultado,
+			 'descargar' => '<a href="temp/backup.backup.gz">Descargar Backup</a>'];
 	}
 	function crearBackup()
 	{
+		$resultado = 0;
 		// Obtenemos la clave
-		$resultado = -1;
 		$this->ejecutarComando($this->scriptCrearBackup. " get-pass");
 		if ($resultado==0) {
 			if (isset($output[0])) {
@@ -30,7 +31,7 @@ class ci_bkp extends sgr_ci
 	function ini()
 	{
 		// Esto se puede implementar usando AJAX para mostrar al usuario una
-		// animación con la que brindarle una aproximación al porcentaje de completado de la acción
+		// Animación con la que brindarlee un aproximación al porcentaje de completado de la acción
 		$this->crearBackup();
 	}
 	//-----------------------------------------------------------------------------------
@@ -61,7 +62,7 @@ class ci_bkp extends sgr_ci
 		} else {
 			$funcionDescargar = "";
 			$accionDefecto = "";
-			$accionBoton = "alert('No se pudo generar el backup. Intente nuevamente más tarde.');";
+			$accionBoton = "alert('No se pudo generar el bakcup. Intente nuevamente más tarde.');";
 			// Aquí se puede utilizar el log $this->s__datos['backup-log']
 			// para dar un mensaje más concreto sobre qué falló.
 			toba::notificacion()->agregar("Falló la creación del backup. Intente nuevamente más tarde.", 'error');
