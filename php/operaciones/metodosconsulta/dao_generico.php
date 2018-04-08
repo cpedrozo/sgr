@@ -40,20 +40,8 @@ class dao_generico
                 FROM sgr.estado_actual_flujo
                 WHERE id_persona = $id_evaluar";
       $resultadoea = consultar_fuente($sqlea);
-      $sqlcorreo = "SELECT count(id_persona) cantidad
-                    FROM sgr.correo
-                    WHERE id_persona = $id_evaluar";
-      $resultadocorreo = consultar_fuente($sqlcorreo);
-      $sqltel = "SELECT count(id_persona) cantidad
-                FROM sgr.telefono
-                WHERE id_persona = $id_evaluar";
-      $resultadotel = consultar_fuente($sqltel);
-      $sqldom = "SELECT count(id_persona) cantidad
-                FROM sgr.domicilio
-                WHERE id_persona = $id_evaluar";
-      $resultadodom = consultar_fuente($sqldom);
-      if (($resultadoea[0]['cantidad'] + $resultadocorreo[0]['cantidad'] + $resultadotel[0]['cantidad'] + $resultadodom[0]['cantidad'])>=1){
-        return 1;
+      if (($resultadoea[0]['cantidad'])>=1){
+        return 1;////
       }
       else{
         return 0;
@@ -66,19 +54,7 @@ class dao_generico
                 FROM sgr.persona
                 WHERE id_entidad = $id_evaluar";
       $resultadoper = consultar_fuente($sqlper);
-      $sqlcorreo = "SELECT count(id_entidad) cantidad
-                    FROM sgr.correo
-                    WHERE id_entidad = $id_evaluar";
-      $resultadocorreo = consultar_fuente($sqlcorreo);
-      $sqltel = "SELECT count(id_entidad) cantidad
-                FROM sgr.telefono
-                WHERE id_entidad = $id_evaluar";
-      $resultadotel = consultar_fuente($sqltel);
-      $sqldom = "SELECT count(id_entidad) cantidad
-                FROM sgr.domicilio
-                WHERE id_entidad = $id_evaluar";
-      $resultadodom = consultar_fuente($sqldom);
-      if (($resultadoper[0]['cantidad'] + $resultadocorreo[0]['cantidad'] + $resultadotel[0]['cantidad'] + $resultadodom[0]['cantidad'])>=1){
+      if (($resultadoper[0]['cantidad'])>=1){
         return 1;
       }
       else{

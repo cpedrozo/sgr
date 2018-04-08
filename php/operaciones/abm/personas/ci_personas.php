@@ -57,7 +57,7 @@ class ci_personas extends sgr_ci
 		$this->s__datos['esempleado'] = dao_personas::esempleado($this->s__datos['baja']['id_persona']);
 		$cantidad = dao_generico::consulta_borrado_persona($seleccion['id_persona']);
 		if ($cantidad>0){
-			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Persona que posee uno o más Teléfono(s), Correo(s), Domicilio(s) y/o Estado(s) asociados. Para borrarla deberá en primer lugar eliminar los registros que la utilizan', 'warning');
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Persona que posee uno o más Registro(s) asociados. Para borrarla deberá en primer lugar eliminar los registros que la utilizan', 'warning');
 		}
 		else{
 			$this->cn()->cargar_dr_personas($seleccion);

@@ -60,7 +60,7 @@ class ci_entidades extends sgr_ci
 	{
 		$cantidad = dao_generico::consulta_borrado_entidad($seleccion['id_entidad']);
 		if ($cantidad>0){
-			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Entidad que posee uno o más Teléfono(s), Correo(s), Domicilio(s) y/o Persona(s) asociadas. Para borrarla deberá en primer lugar eliminar los registros que la utilizan', 'warning');
+			toba::notificacion()->agregar('La operación fue cancelada por intentar borrar una Entidad que posee uno o más Persona(s) asociadas. Para borrarla deberá en primer lugar eliminar los registros que la utilizan', 'warning');
 		}
 		else{
 			$this->cn()->cargar_dr_entidades($seleccion);
