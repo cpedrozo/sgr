@@ -1,0 +1,17 @@
+- Cuando definis el flujo sugiero indicar cual es el primer estado, porque cuando vos generes un expediente de ese tipo, lo primero que va a hacer es ponerte el estado inicial, si no tenes definido esta hardcodeado, tampoco indica cual o cuales son los estados finales de ese flujo, esto claramente debería ser parametrizable.
+
+- Sugiero incorporar 2 cosas en los flujos:
+1- El nivel de urgencia, (Ok workflow)
+2- La cantidad de días máximos que puede estar en ese estado, eso te da el pie para hacer mucha inteligencia y reclamos. (Ok en abm de flujos, falta la logica de valor agregado, notificaciones)
+
+- En los reportes ademas de los datos que ya tenes pone la fecha de impresión.
+
+- Seria útil contar con un reporte de todas las gestiones generadas en el que yo pueda filtrar por departamento por ejemplo o por tipo de gestión y tener un reporte impreso, donde deben incluirse esos filtros.
+
+- Cuando mostras las gestiones que hiciste, en el listado principal pone la fecha de inicio del tramite y la fecha de ultima modificación de estado o adjunto de información, entonces vos podes ordenar por las entradas mas viejas, ademas tene en cuenta que hay flujos que son mas urgentes que otros, seria excelente que puedas incorporar esta info, inclusive mostrando hace cuantos días que esa gestión no tiene movimientos, con eso minimizas la posibilidad de que quede colgado algún doc.
+
+- Al nombre del backup ponele fecha hora
+
+- Sugiero que para la presentación te armes un set de perfiles funcionales, así por ejemplo los de legales solo pueden ver sus cosas, los de mesa de entrada solo pueden cargar y el administrador puede sacar reportes generales.
+
+Si, por eso, ponele en la configuración del flujo cual de los estados es el primero con una fk (o sea vas a tener dos fk que apunten en la cabecera de flujo a la tabla de estados), lo mismo para el final, y chau, asi solucionas la hardcodeada. La otra es que pongas en cada linea del detalle del flujo booleano si es primer estado o final (esta me parece mas solida, porque te permite tener varios estados finales de acuerdo a de donde vienen). Los perfiles funcionales armalo desde el toba usuarios, los creas, y después los asocias a tus usuarios y listo, fin de la historia.

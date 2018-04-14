@@ -135,6 +135,15 @@ class dao_generico
     return $resultado[0]['cantidad'];
   }
 
+  static function consulta_borrado_nivelurgencia($id_evaluar)
+  {
+    $sql = "SELECT count(id_nivelurgencia) cantidad
+            FROM sgr.workflow
+            WHERE id_nivelurgencia = $id_evaluar";
+    $resultado = consultar_fuente($sql);
+    return $resultado[0]['cantidad'];
+  }
+
 //////////////////////////////////////////////////////////////////////////////
 /////////// Consultas para borrado inteligente de tablas relacionadas ////////
 ///////////////////      Perfiles: Contacto, Pais, etc     ///////////////////

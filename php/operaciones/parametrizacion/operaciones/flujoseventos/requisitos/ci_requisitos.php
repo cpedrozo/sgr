@@ -79,7 +79,9 @@ class ci_requisitos extends sgr_ci
 
 	function evt__form_ml_flujos__requisitos($seleccion)
 	{
-		$datos=$this->dep('form_ml_flujos')->get_datos();
+		$this->s__datos['cursorflujos']['0'] = $this->cn()->get_cursorflujo();
+		$this->s__datos['cursorflujos']['1'] = $seleccion;
+		//$datos=$this->dep('form_ml_flujos')->get_datos();
 		$this->cn()->seleccionflujo($seleccion);
 	}
 
@@ -148,7 +150,9 @@ class ci_requisitos extends sgr_ci
 
 	function evt__form_ml_requisitos__modificacion($datos)
 	{
+		$this->cn()->seleccionflujo($this->s__datos['cursorflujos']['0']);
 	  $this->cn()->procesarrequisitos($datos);
+		$this->cn()->seleccionflujo($this->s__datos['cursorflujos']['1']);
 	}
 
 	function evt__form_ml_requisitos__guardar($datos)

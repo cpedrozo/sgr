@@ -1,6 +1,6 @@
 <?php
 
-class dao_estados
+class dao_nivelurgencia
 {
   static function get_datossinfiltro($where='')
   {
@@ -16,21 +16,20 @@ class dao_estados
     }
     $limite=($limit ? 'limit 10':'');
     $sql = "SELECT *
-            FROM sgr.estado
-            WHERE inicio <> true
-            AND ($where_armado)
+            FROM sgr.nivelurgencia
+            WHERE $where_armado
             ORDER BY nombre ASC
             $limite";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
 
-  static function existe_db_nombreestado($nombreestado) ////20180414
+  static function existe_db_nivelurgencia($nombreurgencia) ////20180414
   {
-    $nombreestado = quote($nombreestado);
+    $nombreurgencia = quote($nombreurgencia);
     $sql = "SELECT COUNT(*) cantidad
-            FROM sgr.estado
-            WHERE nombre = $nombreestado";
+            FROM sgr.nivelurgencia
+            WHERE nombre = $nombreurgencia";
     $resultado = consultar_fuente($sql);
     return $resultado[0]['cantidad']>0;
   }

@@ -30,7 +30,7 @@ class form_estado_actual extends sgr_ei_formulario
 
       {$this->objeto_js}.resp_estadoactual = function(datos)
   		{
-        --console.log('saarasa');
+        //console.log('saarasa');
         var opciones = [];
         datos.forEach(function(elemento)
         {

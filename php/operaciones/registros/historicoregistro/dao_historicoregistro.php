@@ -64,6 +64,20 @@ class dao_historicoregistro
     return $resultado;
   }
 
+  static function es_final(array $esfinal) ////20180414
+  {
+    $id_workflow = quote($esfinal['id_workflow']);
+    $id_estadoactual = quote($esfinal['id_estadoactual']);
+    $id_estadonuevo = quote($esfinal['id_estadonuevo']);
+    $sql = "SELECT esfinal
+            FROM sgr.flujo
+            WHERE id_workflow = $id_workflow
+            AND id_estadoorigen = $id_estadoactual
+            AND id_estadodestino = $id_estadonuevo";
+    $resultado = consultar_fuente($sql);
+    return $resultado[0]['esfinal'];
+  }
+
   static function get_empleado_xreg($id_persona)
   {
     $sql = "SELECT p.id_persona, coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom, tc.nombre, c.correo

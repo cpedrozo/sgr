@@ -12,6 +12,7 @@ class ci_nuevoregistro extends sgr_ci
 	protected $s__datos_filtro;
 	protected $s__sqlwhere;
 	protected $s__datos;
+	protected $s__esfinal;
 
 	//-----------------------------------------------------------------------------------
 	//---- Eventos ----------------------------------------------------------------------
@@ -52,12 +53,30 @@ class ci_nuevoregistro extends sgr_ci
 		$this->set_pantalla('pant_inicial');
 	}
 
+	function comprobar_estado_final()
+	{
+		ei_arbol(['entro a comprobar'=>$this->s__esfinal]);
+		if (dao_historicoregistro::es_final($this->s__esfinal))
+		{
+			ei_arbol(['dentro del if'=>$this->s__esfinal]);
+			return true;
+		}
+		return false;
+	}
+
 	function evt__procesar2()
 	{
-		$datos = $this->cn()->get_registro();
-		$datos ['fecha_fin'] = date(DATE_ATOM);
-		$this->cn()->set_dt_registro($datos);
-		$this->evt__procesar();
+		if($this->comprobar_estado_final())
+		{
+			$datos = $this->cn()->get_registro();
+			$datos ['fecha_fin'] = date(DATE_ATOM);
+			$this->cn()->set_dt_registro($datos);
+			$this->evt__procesar();
+		}
+		else
+		{
+			toba::notificacion()->agregar('No se puede finalizar el registro porque el estado no es de finalización', 'warning');
+		}
 	}
 
 	function evt__cancelar()
@@ -72,6 +91,7 @@ class ci_nuevoregistro extends sgr_ci
 
 	function evt__form__modificacion($datos)
 	{
+		$this->s__esfinal['id_workflow'] = $datos['id_workflow'];
 		$this->cn()->modifregistro($datos);
 		$this->cn()->set_blob_dt('dr_registro', 'dt_registro', $datos, 'archivo', /*es_ml?*/false);
 	}
@@ -83,6 +103,11 @@ class ci_nuevoregistro extends sgr_ci
 	function conf__form_estado_actual($form)
 	{
 		$this->cn()->cargarestadoactual($form);
+	}
+
+	function evt__form_estado_actual__modificacion($datos)
+	{
+		$this->s__esfinal['id_estadoactual'] = $datos['id_estado'];
 	}
 
 	function get_estado_inicial()
@@ -101,6 +126,7 @@ class ci_nuevoregistro extends sgr_ci
 
 	function evt__form_workflow__modificacion($datos)
 	{
+		$this->s__esfinal['id_estadonuevo'] = $datos['id_estado'];
 		$this->cn()->modifestado($datos);
 	}
 

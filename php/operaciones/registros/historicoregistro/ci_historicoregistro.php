@@ -46,12 +46,30 @@ class ci_historicoregistro extends sgr_ci
 		$this->set_pantalla('pant_inicial');
 	}
 
+	function comprobar_estado_final()
+	{
+		ei_arbol(['entro a comprobar'=>$this->s__esfinal]);
+		if (dao_historicoregistro::es_final($this->s__esfinal))
+		{
+			ei_arbol(['dentro del if'=>$this->s__esfinal]);
+			return true;
+		}
+		return false;
+	}
+
 	function evt__procesar2()
 	{
-		$datos = $this->cn()->get_registro();
-		$datos ['fecha_fin'] = date(DATE_ATOM);
-		$this->cn()->set_dt_registro($datos);
-		$this->evt__procesar();
+		// if($this->comprobar_estado_final())
+		// {
+		// 	$datos = $this->cn()->get_registro();
+		// 	$datos ['fecha_fin'] = date(DATE_ATOM);
+		// 	$this->cn()->set_dt_registro($datos);
+		// 	$this->evt__procesar();
+		// }
+		// else
+		// {
+		// 	toba::notificacion()->agregar('No se puede finalizar el registro en el estado seleccionado', 'warning');
+		// }
 	}
 
 	function evt__cancelar()
@@ -133,6 +151,7 @@ class ci_historicoregistro extends sgr_ci
 
 	function evt__form__modificacion($datos)
 	{
+		$this->s__esfinal['id_workflow'] = $datos['id_workflow'];
 		if (isset($datos['archivo'])){
 			$datos['archivo_nombre'] = preg_replace("/[^a-zA-Z0-9.]+/", "", $datos['archivo']['name']);
 		}
@@ -152,6 +171,7 @@ class ci_historicoregistro extends sgr_ci
 
 	function evt__form_estado_actual__modificacion($datos)
 	{
+		$this->s__esfinal['id_estadoactual'] = $datos['id_estado'];
 		$this->cn()->modifestadoactual($datos);
 	}
 
@@ -183,6 +203,7 @@ class ci_historicoregistro extends sgr_ci
 
 	function evt__form_workflow__modificacion($datos)
 	{
+		$this->s__esfinal['id_estadonuevo'] = $datos['id_estado'];
 		$this->cn()->modifestado($datos);
 	}
 

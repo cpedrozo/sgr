@@ -136,8 +136,61 @@ class cn_operaciones extends sgr_cn
   }
 
   //-----------------------------------------------------------------------------------
+  //---- ABM sgr_nivelurgencia --------------------------------------------------------
+  //-----------------------------------------------------------------------------------
+
+  function cargarnivelurgencia($form)
+  {
+    if ($this->dep('dr_nivelurgencia')->tabla('dt_nivelurgencia')->hay_cursor()) {
+    $datos = $this->dep('dr_nivelurgencia')->tabla('dt_nivelurgencia')->get();
+    $form->set_datos($datos);
+    }
+  }
+
+  function guardarnivelurgencia()
+  {
+    $this->dep('dr_nivelurgencia')->sincronizar();
+    $this->dep('dr_nivelurgencia')->resetear();
+  }
+
+  function resetnivelurgencia()
+  {
+    $this->dep('dr_nivelurgencia')->resetear();
+  }
+
+  function modifnivelurgencia($datos)
+  {
+    $this->dep('dr_nivelurgencia')->tabla('dt_nivelurgencia')->set($datos);
+  }
+
+  function seleccionnivelurgencia($seleccion)
+  {
+    if($this->dep('dr_nivelurgencia')->cargar($seleccion)){
+      $id_fila = $this->dep('dr_nivelurgencia')->tabla('dt_nivelurgencia')->get_id_fila_condicion($seleccion)[0];
+      $this->dep('dr_nivelurgencia')->tabla('dt_nivelurgencia')->set_cursor($id_fila);
+    }
+  }
+
+  function borrarnivelurgencia($seleccion)
+  {
+    $this->dep('dr_nivelurgencia')->tabla('dt_nivelurgencia')->cargar($seleccion);
+    $id_fila = $this->dep('dr_nivelurgencia')->tabla('dt_nivelurgencia')->get_id_fila_condicion($seleccion)[0];
+    $this->dep('dr_nivelurgencia')->tabla('dt_nivelurgencia')->set_cursor($id_fila);
+    $this->dep('dr_nivelurgencia')->tabla('dt_nivelurgencia')->eliminar_fila($id_fila);
+  }
+
+  //-----------------------------------------------------------------------------------
   //---- ABM sgr_flujosevento ---------------------------------------------------------
   //-----------------------------------------------------------------------------------
+
+  function get_nuevoestado() //Controla el ef para la carga de un estado inicial
+  {
+    $sql = "SELECT id_estado, nombre, 'Si' activo
+    FROM sgr.estado
+    WHERE inicio = true";
+    $datos = consultar_fuente($sql);
+    return $datos;
+  }
 
   function cargar_dr_flujoseventos($seleccion=null)
     {
@@ -203,6 +256,15 @@ class cn_operaciones extends sgr_cn
   function hay_cursor_flujo()
   {
     return $this->dep('dr_flujoseventos')->tabla('dt_flujos')->hay_cursor();
+  }
+
+  function get_cursorflujo()
+  {
+    if($this->hay_cursor_flujo()){
+      return $this->dep('dr_flujoseventos')->tabla('dt_flujos')->get_cursor();
+    } else {
+      return null;
+    }
   }
 
   function getflujos()

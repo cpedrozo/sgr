@@ -87,7 +87,8 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'&Cancelar', --etiqueta
 	'0', --maneja_datos
 	NULL, --sobre_fila
-	NULL, --confirmacion
+	'¿Desea cancelar la carga del registro?
+Se perderán los datos no guardados.', --confirmacion
 	NULL, --estilo
 	'apex', --imagen_recurso_origen
 	'prohibido', --imagen
@@ -100,11 +101,11 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	NULL, --display_datos_cargados
 	NULL, --grupo
 	NULL, --accion
-	NULL, --accion_imphtml_debug
+	'0', --accion_imphtml_debug
 	NULL, --accion_vinculo_carpeta
 	NULL, --accion_vinculo_item
 	NULL, --accion_vinculo_objeto
-	NULL, --accion_vinculo_popup
+	'0', --accion_vinculo_popup
 	NULL, --accion_vinculo_popup_param
 	NULL, --accion_vinculo_target
 	NULL, --accion_vinculo_celda

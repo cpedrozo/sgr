@@ -216,6 +216,8 @@ class cn_registros_bm extends sgr_cn
         $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set_cursor($id_fila);
       }
       $datos = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->get();
+      toba::logger()->error('unacosa');
+      toba::logger()->var_dump($datos);
       $datos['activo']=$datos['activo']?'Si':'No';
       $ea = [];
       $ea[]=[['id_estado'=>$datos['id_estado'],'nombre'=>$datos['nombre']]];

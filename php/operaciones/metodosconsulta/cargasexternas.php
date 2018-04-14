@@ -64,6 +64,27 @@ class cargasexternas
   }
 
   //////////////////////////////////////////////////////////////////////////////
+  /////////// carga externa flujos /////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
+  static function get_poseereq($id_workflow, $id_estadoorigen, $id_estadodestino) /// Carga checkbox para estado con requisitos
+  {
+    $id_estadodestino = quote($id_estadodestino);
+    $id_estadoorigen = quote($id_estadoorigen);
+    $id_workflow = quote($id_workflow);
+    $sql = "SELECT (COUNT(*) > 0) tienereq
+            FROM sgr.requisitos r
+            JOIN sgr.flujo f ON f.id_workflow = r.id_workflow
+            AND f.id_estadoorigen = r.id_estadoorigen
+            AND f.id_estadodestino = r.id_estadodestino
+            WHERE f.id_workflow = $id_workflow
+            AND f.id_estadoorigen = $id_estadoorigen
+            AND f.id_estadodestino = $id_estadodestino";
+    $resultado = consultar_fuente($sql);
+    return $resultado[0];
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
   /////////// carga externa Workflow ///////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 

@@ -1,5 +1,24 @@
 CREATE SCHEMA sgr;
 
+CREATE SEQUENCE sgr.nivelurgencia_id_nivelurgencia_seq_1;
+
+CREATE TABLE sgr.nivelurgencia (
+                id_nivelurgencia BIGINT NOT NULL DEFAULT nextval('sgr.nivelurgencia_id_nivelurgencia_seq_1'),
+                nombre VARCHAR(20) NOT NULL,
+                CONSTRAINT nivelurgencia_pk PRIMARY KEY (id_nivelurgencia)
+);
+COMMENT ON TABLE sgr.nivelurgencia IS 'Contiene los dif niveles de urgencia que pueden ser utilizados para un flujo de trabajo
+- Bajo
+- Medio
+- Alto';
+
+
+ALTER SEQUENCE sgr.nivelurgencia_id_nivelurgencia_seq_1 OWNED BY sgr.nivelurgencia.id_nivelurgencia;
+
+CREATE UNIQUE INDEX nivelurgencia_idx
+ ON sgr.nivelurgencia
+ ( nombre );
+
 CREATE SEQUENCE sgr.sgr_id_sgr_seq;
 
 CREATE TABLE sgr.sgr (
@@ -12,6 +31,7 @@ CREATE TABLE sgr.sgr (
                 logo_grande BYTEA NOT NULL,
                 CONSTRAINT sgr_pk PRIMARY KEY (id_sgr)
 );
+COMMENT ON TABLE sgr.sgr IS 'Contiene los datos del software, version, desarrollador y logo para mostrarse en la pestaña "acerca de"';
 
 
 ALTER SEQUENCE sgr.sgr_id_sgr_seq OWNED BY sgr.sgr.id_sgr;
@@ -490,6 +510,7 @@ CREATE SEQUENCE sgr.workflow_id_workflow_seq;
 CREATE TABLE sgr.workflow (
                 id_workflow BIGINT NOT NULL DEFAULT nextval('sgr.workflow_id_workflow_seq'),
                 nombre VARCHAR(30) NOT NULL,
+                id_nivelurgencia BIGINT NOT NULL,
                 id_evento BIGINT NOT NULL,
                 id_dpto BIGINT NOT NULL,
                 notifica BOOLEAN DEFAULT FALSE NOT NULL,
@@ -526,6 +547,8 @@ CREATE TABLE sgr.flujo (
                 id_estadoorigen BIGINT NOT NULL,
                 id_estadodestino BIGINT NOT NULL,
                 orden INTEGER,
+                esfinal BOOLEAN DEFAULT false NOT NULL,
+                caducidad INTEGER DEFAULT 14 NOT NULL,
                 CONSTRAINT flujo_pk PRIMARY KEY (id_workflow, id_estadoorigen, id_estadodestino)
 );
 COMMENT ON TABLE sgr.flujo IS 'Pasos';
@@ -599,6 +622,13 @@ COMMENT ON COLUMN sgr.estado_actual_flujo.get_usuario IS 'toma del framework';
 
 
 ALTER SEQUENCE sgr.estado_actual_flujo_id_estado_actual_seq OWNED BY sgr.estado_actual_flujo.id_estado_actual;
+
+ALTER TABLE sgr.workflow ADD CONSTRAINT nivelurgencia_workflow_fk
+FOREIGN KEY (id_nivelurgencia)
+REFERENCES sgr.nivelurgencia (id_nivelurgencia)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
 
 ALTER TABLE sgr.entidad ADD CONSTRAINT rubro_entidad_fk
 FOREIGN KEY (id_rubro)

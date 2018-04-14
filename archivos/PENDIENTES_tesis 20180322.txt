@@ -1,8 +1,0 @@
-PROCESOS INTELIGENTES
-
-1 Resguardo BD automático
-
-OTROS
-
-1 Funcionalidad creacion bkp db (da error)
-2 Implementacion usuarios
