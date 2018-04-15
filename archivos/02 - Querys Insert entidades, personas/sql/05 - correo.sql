@@ -713,5 +713,20 @@ INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo)
 INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (713,'piguazu+fermusmec@gmail.com',713,DEFAULT,'1');
 INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (714,'piguazu+yonramire@gmail.com',714,DEFAULT,'1');
 INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo) VALUES (715,'piguazu+luibargas@gmail.com',715,DEFAULT,'1');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (716,'piguazu+adm@gmail.com',DEFAULT,DEFAULT,'1','');
 
-SELECT setval('sgr.correo_id_correo_seq', 716);
+
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (716,'piguazu+adm@gmail.com',DEFAULT,DEFAULT,'1','6');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (717,'piguazu+bar@gmail.com',DEFAULT,DEFAULT,'1','7');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (718,'piguazu+ger@gmail.com',DEFAULT,DEFAULT,'1','8');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (719,'piguazu+limp@gmail.com',DEFAULT,DEFAULT,'1','9');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (720,'piguazu+log@gmail.com',DEFAULT,DEFAULT,'1','10');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (721,'piguazu+mant@gmail.com',DEFAULT,DEFAULT,'1','11');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (722,'piguazu+mkt@gmail.com',DEFAULT,DEFAULT,'1','12');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (723,'piguazu+rrhh@gmail.com',DEFAULT,DEFAULT,'1','13');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (724,'piguazu+sis@gmail.com',DEFAULT,DEFAULT,'1','14');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (725,'piguazu+sup@gmail.com',DEFAULT,DEFAULT,'1','15');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (726,'piguazu+vta@gmail.com',DEFAULT,DEFAULT,'1','16');
+INSERT INTO sgr.correo(id_correo, correo, id_persona, id_entidad, id_tipocorreo, id_dpto) VALUES (727,'piguazu+vig@gmail.com',DEFAULT,DEFAULT,'1','17');
+
+SELECT setval('sgr.correo_id_correo_seq', 728);

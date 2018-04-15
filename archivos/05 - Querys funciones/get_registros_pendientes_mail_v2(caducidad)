@@ -1,0 +1,20 @@
+﻿CREATE OR REPLACE FUNCTION sgr.get_registros_pendientes_mail()
+  RETURNS TABLE(urgencia TEXT, registro TEXT, dpto VARCHAR, caduca INTEGER, correo VARCHAR) AS
+$$
+BEGIN
+ RETURN QUERY
+ 
+SELECT nv.nombre urgencia, r.id_registro||': '||w.nombre||' - '||r.nombre registro, d.nombre dpto, cad.caducidad caduca, c.correo 
+FROM sgr.registro r
+JOIN sgr.workflow w on w.id_workflow = r.id_workflow
+JOIN sgr.nivelurgencia nv on nv.id_nivelurgencia = w.id_nivelurgencia
+JOIN sgr.dpto d on d.id_dpto = w.id_dpto
+JOIN sgr.correo c on c.id_dpto = d.id_dpto
+JOIN sgr.vw_caducidad_registros cad ON cad.id_registro = r.id_registro
+WHERE r.fecha_fin is null
+AND w.notifica is TRUE
+ORDER BY 2,1 ASC;
+
+END; $$
+ 
+LANGUAGE plpgsql;
