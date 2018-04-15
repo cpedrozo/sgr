@@ -59,17 +59,17 @@ class ci_historicoregistro extends sgr_ci
 
 	function evt__procesar2()
 	{
-		// if($this->comprobar_estado_final())
-		// {
-		// 	$datos = $this->cn()->get_registro();
-		// 	$datos ['fecha_fin'] = date(DATE_ATOM);
-		// 	$this->cn()->set_dt_registro($datos);
-		// 	$this->evt__procesar();
-		// }
-		// else
-		// {
-		// 	toba::notificacion()->agregar('No se puede finalizar el registro en el estado seleccionado', 'warning');
-		// }
+		if($this->comprobar_estado_final())
+		{
+			$datos = $this->cn()->get_registro();
+			$datos ['fecha_fin'] = date(DATE_ATOM);
+			$this->cn()->set_dt_registro($datos);
+			$this->evt__procesar();
+		}
+		else
+		{
+			toba::notificacion()->agregar('No se puede finalizar el registro en el estado seleccionado', 'warning');
+		}
 	}
 
 	function evt__cancelar()

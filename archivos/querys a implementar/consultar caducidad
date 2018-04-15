@@ -1,0 +1,55 @@
+﻿SELECT caducidad
+FROM sgr.flujo
+WHERE id_workflow = 4
+AND id_estadoorigen = 
+(SELECT id_estado
+from sgr.estado_actual_flujo
+where id_registro = 1
+and id_estado_actual <> coalesce((SELECT id_estado_actual
+from sgr.estado_actual_flujo
+where id_registro = 1
+and activo), -1)
+ORDER by fecha desc
+limit 1)
+AND id_estadodestino =
+(SELECT id_estado
+from sgr.estado_actual_flujo
+where id_registro = 1
+and activo)
+
+
+
+
+
+(SELECT id_estado_actual
+from sgr.estado_actual_flujo
+where id_registro = 1
+and id_estado_actual <> coalesce(, -1)
+ORDER by fecha desc
+limit 1)
+
+(SELECT id_estado_actual
+from sgr.estado_actual_flujo
+where id_registro = 1
+and activo)
+
+SELECT *
+FROM sgr.estado_actual_flujo
+where id_registro = 1
+
+SELECT *
+FROM sgr.estado
+where id_estado = 6
+
+update sgr.registro
+set fecha_fin = null
+where id_registro = 19
+
+update sgr.estado_actual_flujo
+set id_estado = 2
+where id_estado_actual = 64
+and activo = true
+
+select *
+from sgr.registro
+where id_registro = 19

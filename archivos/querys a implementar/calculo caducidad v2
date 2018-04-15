@@ -1,0 +1,24 @@
+﻿CREATE VIEW sgr.vw_caducidad_registros AS
+SELECT id_registro, 
+(SELECT (SELECT caducidad
+FROM sgr.flujo
+WHERE id_workflow = 4
+AND id_estadoorigen = 
+(SELECT id_estado
+FROM sgr.estado_actual_flujo
+WHERE id_registro = reg.id_registro
+and id_estado_actual <> coalesce((SELECT id_estado_actual
+FROM sgr.estado_actual_flujo
+WHERE id_registro = reg.id_registro
+AND activo), -1)
+ORDER by fecha desc
+limit 1)
+AND id_estadodestino =
+(SELECT id_estado
+FROM sgr.estado_actual_flujo
+WHERE id_registro = reg.id_registro
+AND activo)) - (SELECT DATE_PART('day', current_timestamp - (SELECT fecha
+FROM sgr.estado_actual_flujo
+WHERE id_registro = reg.id_registro
+AND activo)))) caducidad
+FROM sgr.registro reg;
