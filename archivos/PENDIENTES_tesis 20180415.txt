@@ -14,6 +14,7 @@ Modifique la funcion que ejecuta pyton, falta editar el codigo que crea el email
 ///////////////////////////////////////////////////////////
 
 - Seria útil contar con un reporte de todas las gestiones generadas en el que yo pueda filtrar por departamento por ejemplo o por tipo de gestión y tener un reporte impreso, donde deben incluirse esos filtros.
+No me sale la query y lpmqlrp
 
 - Sugiero que para la presentación te armes un set de perfiles funcionales, así por ejemplo los de legales solo pueden ver sus cosas, los de mesa de entrada solo pueden cargar y el administrador puede sacar reportes generales.
 Los perfiles funcionales armalo desde el toba usuarios, los creas, y después los asocias a tus usuarios y listo, fin de la historia.

@@ -1,5 +1,4 @@
 <?php
-require_once('operaciones/consultar/datospersonas/dao_datospersonas.php');
 require_once('operaciones/abm/personas/dao_personas.php');
 
 class ci_reportetramites extends sgr_ci

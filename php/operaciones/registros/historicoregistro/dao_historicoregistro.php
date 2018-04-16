@@ -59,7 +59,7 @@ class dao_historicoregistro
 
   static function get_empleado_xreg($id_persona)
   {
-    $sql = "SELECT p.id_persona, coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom, tc.nombre, c.correo
+    $sql = "SELECT p.id_persona, coalesce(p.legajo||':', '')||p.apellido||', '||p.nombre apynom, tc.nombre, c.correo
             FROM sgr.persona p
             LEFT JOIN sgr.correo c ON p.id_persona = c.id_persona
             LEFT JOIN sgr.tipocorreo tc ON c.id_tipocorreo = tc.id_tipocorreo
@@ -84,7 +84,7 @@ class dao_historicoregistro
   {
     $sql = "SELECT ea.id_estado_actual, to_char(ea.fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI') fecha,
             ea.activo, e.nombre estado, r.id_registro||': '||r.nombre registro, ea.observacion,
-            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom
+            coalesce(p.legajo||':', '')||p.apellido||', '||p.nombre apynom
             FROM sgr.estado_actual_flujo ea
             JOIN sgr.estado e ON ea.id_estado = e.id_estado
             JOIN sgr.registro r ON ea.id_registro = r.id_registro

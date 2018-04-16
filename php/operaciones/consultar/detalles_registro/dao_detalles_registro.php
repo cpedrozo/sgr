@@ -66,7 +66,7 @@ class dao_detalles_registro
     $sql = "SELECT id_estado_actual,
             e.nombre estado,
             ea.observacion, ea.get_usuario,
-            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
+            coalesce(p.legajo||':', '')||p.apellido||', '||p.nombre apynom,
             to_char(fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI') fecha
             FROM sgr.estado_actual_flujo ea
             JOIN sgr.estado e ON ea.id_estado = e.id_estado

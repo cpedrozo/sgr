@@ -1,153 +1,80 @@
 <?php
+require_once('operaciones/metodosconsulta/dao_generico.php');
 
 class dao_reportetramites
 {
-  static function get_datostel($where='')
+  static function get_datossinfiltro($where='')
+  {
+    return self::get_datos('', true); ////20180414
+  }
+
+  static function get_datos($where='', $limit=false)
   {
     if ($where) {
-      $where_armado = "WHERE $where";
+      $where_armado = "$where";
     } else {
-      $where_armado = '';
+      $where_armado = 'true';
     }
-    $sql = "SELECT t.id_telefono,
-            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
-            t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||coalesce('('||t.interno||')', '') num,
-            se.nombre sector, dp.nombre dpto, su.nombre sucursal
-            FROM sgr.telefono t
-            LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel
-            LEFT JOIN sgr.compania c ON t.id_compania = c.id_compania
-            LEFT JOIN sgr.persona p ON t.id_persona = p.id_persona
-            LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
-            LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
-            LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
-            $where_armado AND t.id_persona IS NOT NULL
-            ORDER BY apynom, tipoycompania ASC";
+    $limite=($limit ? 'limit 10':'');
+    $sql = "SELECT r.id_registro, substring(te.nombre from 1 for 3) ||': '|| substring(e.nombre from 1 for 8) ||' - '|| wf.nombre tipoevento_y_wf,
+            substring(r.nombre from 1 for 20)||'..' nombre, r.archivo, r.archivo_nombre, nu.nombre urgencia, c.caducidad,
+            ea.get_usuario,
+            s.nombre ||' - '|| dp.nombre sucursal_dpto, es.nombre estado,
+            to_char(r.fecha_inicio::TIMESTAMP, 'DD/MM/YYYY HH24:MI') fecha_inicio,
+            to_char(r.fecha_fin::TIMESTAMP, 'DD/MM/YYYY HH24:MI') fecha_fin,
+            to_char(ea.fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI') ultedicion
+            FROM sgr.registro r
+            INNER JOIN sgr.workflow wf on wf.id_workflow = r.id_workflow
+            INNER JOIN sgr.evento e ON e.id_evento = wf.id_evento
+            INNER JOIN sgr.tipo_evento te ON e.id_tipoevento = te.id_tipoevento
+            INNER JOIN sgr.dpto dp ON wf.id_dpto = dp.id_dpto
+            INNER JOIN sgr.sucursal s ON dp.id_sucursal = s.id_sucursal
+            INNER JOIN sgr.estado_actual_flujo ea ON r.id_registro = ea.id_registro AND ea.activo
+            INNER JOIN sgr.estado es ON ea.id_estado = es.id_estado
+            INNER JOIN sgr.nivelurgencia nu ON nu.id_nivelurgencia = wf.id_nivelurgencia
+            INNER JOIN sgr.vw_caducidad_registros c ON c.id_registro = r.id_registro
+            WHERE $where_armado
+            ORDER BY tipoevento_y_wf ASC
+            $limite";
     $resultado = consultar_fuente($sql);
+    foreach ($resultado as $key => $value) {
+      $resultado[$key]['archivo'] = dao_generico::get_blob_from_resource($value['archivo'], $value['archivo_nombre'])['archivodescarga'];
+    }
     return $resultado;
   }
 
-  static function get_datossinfiltrotel($where='')
+  static function cargar_form($seleccion)
   {
-    if ($where) {
-      $where_armado = "WHERE $where";
-    } else {
-      $where_armado = '';
-    }
-    $sql = "SELECT t.id_telefono,
-            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
-            t.id_telefono, tt.nombre||': '||c.nombre tipoycompania, t.numero||coalesce('('||t.interno||')', '') num,
-            se.nombre sector, dp.nombre dpto, su.nombre sucursal
-            FROM sgr.telefono t
-            LEFT JOIN sgr.tipotel tt ON t.id_tipotel = tt.id_tipotel
-            LEFT JOIN sgr.compania c ON t.id_compania = c.id_compania
-            LEFT JOIN sgr.persona p ON t.id_persona = p.id_persona
-            LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
-            LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
-            LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
-            WHERE t.id_persona IS NOT NULL
-            ORDER BY apynom, tipoycompania ASC
-            LIMIT 10";
+    $consulta = $seleccion['id_registro'];
+    $sql = "SELECT id_registro,
+            r.id_registro||': '||w.nombre||' - '||r.nombre registro, r.archivo, r.archivo_nombre,
+            s.nombre||' - '||d.nombre sucursal,
+            to_char(r.fecha_fin::TIMESTAMP, 'DD/MM/YYYY HH24:MI') fecha_fin
+            FROM sgr.registro r
+            JOIN sgr.workflow w ON r.id_workflow = w.id_workflow
+            JOIN sgr.dpto d ON w.id_dpto = d.id_dpto
+            JOIN sgr.sucursal s ON d.id_sucursal = s.id_sucursal
+            WHERE r.id_registro = $consulta";
+    $resultado = consultar_fuente($sql);
+    $resultado[0]['archivo'] = dao_generico::get_blob_from_resource($resultado[0]['archivo'], $resultado[0]['archivo_nombre'])['archivodescarga'];
+    return $resultado[0];
+  }
+
+  static function cargar_ml($seleccion)
+  {
+    $consulta = $seleccion['id_registro'];
+    $sql = "SELECT id_estado_actual,
+            e.nombre estado,
+            ea.observacion, ea.get_usuario,
+            coalesce(p.legajo||':', '')||p.apellido||', '||p.nombre apynom,
+            to_char(fecha::TIMESTAMP, 'DD/MM/YYYY HH24:MI') fecha
+            FROM sgr.estado_actual_flujo ea
+            JOIN sgr.estado e ON ea.id_estado = e.id_estado
+            LEFT JOIN sgr.persona p ON ea.id_persona = p.id_persona
+            WHERE id_registro = $consulta
+            ORDER BY fecha ASC";
     $resultado = consultar_fuente($sql);
     return $resultado;
   }
-
-  static function get_datosdom($where='')
-  {
-    if ($where) {
-      $where_armado = "WHERE $where";
-    } else {
-      $where_armado = '';
-    }
-    $sql = "SELECT d.id_domicilio,
-            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
-            d.calle||': '||d.num||' ('||d.barrio||')' dir, d.piso, ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
-            se.nombre sector, dp.nombre dpto, su.nombre sucursal
-            FROM sgr.domicilio d
-            LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
-            LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
-            LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
-            LEFT JOIN sgr.persona p ON d.id_persona = p.id_persona
-            LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
-            LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
-            LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
-            $where_armado AND d.id_persona IS NOT NULL
-            ORDER BY apynom, localidad ASC";
-    $resultado = consultar_fuente($sql);
-    return $resultado;
-  }
-
-  static function get_datossinfiltrodom($where='')
-  {
-    if ($where) {
-      $where_armado = "WHERE $where";
-    } else {
-      $where_armado = '';
-    }
-    $sql = "SELECT d.id_domicilio,
-            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
-            d.calle||': '||d.num||' ('||d.barrio||')' dir, d.piso, ci.nombre||', '||pro.nombre||' - '||pa.nombre localidad,
-            se.nombre sector, dp.nombre dpto, su.nombre sucursal
-            FROM sgr.domicilio d
-            LEFT JOIN sgr.ciudad ci ON d.id_ciudad = ci.id_ciudad
-            LEFT JOIN sgr.provincia pro ON ci.id_provincia = pro.id_provincia
-            LEFT JOIN sgr.pais pa ON pro.id_pais = pa.id_pais
-            LEFT JOIN sgr.persona p ON d.id_persona = p.id_persona
-            LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
-            LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
-            LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
-            WHERE d.id_persona IS NOT NULL
-            ORDER BY apynom, localidad ASC
-            LIMIT 10";
-    $resultado = consultar_fuente($sql);
-    return $resultado;
-  }
-
-  static function get_datoscorreo($where='')
-  {
-    if ($where) {
-      $where_armado = "WHERE $where";
-    } else {
-      $where_armado = '';
-    }
-    $sql = "SELECT c.id_correo,
-            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
-            tc.nombre tipocorreo, c.correo,
-            se.nombre sector, dp.nombre dpto, su.nombre sucursal
-            FROM sgr.correo c
-            LEFT JOIN sgr.tipocorreo tc ON c.id_tipocorreo = tc.id_tipocorreo
-            LEFT JOIN sgr.persona p ON c.id_persona = p.id_persona
-            LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
-            LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
-            LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
-            $where_armado AND c.id_persona IS NOT NULL
-            ORDER BY apynom, tipocorreo ASC";
-    $resultado = consultar_fuente($sql);
-    return $resultado;
-  }
-
-  static function get_datossinfiltrocorreo($where='')
-  {
-    if ($where) {
-      $where_armado = "WHERE $where";
-    } else {
-      $where_armado = '';
-    }
-    $sql = "SELECT c.id_correo,
-            coalesce(p.legajo, '0')||': '||p.apellido||', '||p.nombre apynom,
-            tc.nombre tipocorreo, c.correo,
-            se.nombre sector, dp.nombre dpto, su.nombre sucursal
-            FROM sgr.correo c
-            LEFT JOIN sgr.tipocorreo tc ON c.id_tipocorreo = tc.id_tipocorreo
-            LEFT JOIN sgr.persona p ON c.id_persona = p.id_persona
-            LEFT JOIN sgr.sector se ON p.id_sector = se.id_sector
-            LEFT JOIN sgr.dpto dp ON se.id_dpto = dp.id_dpto
-            LEFT JOIN sgr.sucursal su ON dp.id_sucursal = su.id_sucursal
-            WHERE c.id_persona IS NOT NULL
-            ORDER BY apynom, tipocorreo ASC
-            LIMIT 10";
-    $resultado = consultar_fuente($sql);
-    return $resultado;
-  }
-
 }
 ?>
