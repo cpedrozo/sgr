@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="01 - detalle personas" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="497" leftMargin="56" rightMargin="42" topMargin="56" bottomMargin="42" uuid="5e9d7acf-9960-4bab-b9f5-56c1df0533d8">
 	<property name="ireport.zoom" value="1.6500000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="6"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -495,21 +495,25 @@
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="10" width="100" height="13" uuid="e8705685-ff6f-4951-891d-c4276ebec633"/>
+				<reportElement x="0" y="12" width="100" height="13" uuid="e8705685-ff6f-4951-891d-c4276ebec633"/>
 				<text><![CDATA[Usuario:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="43" y="10" width="100" height="13" uuid="237db115-cf5f-4c27-8937-b0877dce1c53"/>
+				<reportElement x="43" y="12" width="100" height="13" uuid="237db115-cf5f-4c27-8937-b0877dce1c53"/>
 				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="456" y="3" width="40" height="20" uuid="f7439ad5-871b-4ab3-b7f0-6845ea9f747e"/>
+				<reportElement x="268" y="12" width="40" height="13" uuid="f7439ad5-871b-4ab3-b7f0-6845ea9f747e"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="376" y="3" width="80" height="20" uuid="3f6b2f0a-1a48-42a1-a0b2-a472766f6952"/>
+				<reportElement x="187" y="12" width="80" height="13" uuid="3f6b2f0a-1a48-42a1-a0b2-a472766f6952"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Pág "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yy HH:mm">
+				<reportElement x="390" y="10" width="113" height="15" uuid="83e3bd97-94e8-4fc1-b88e-4fd6ed580516"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

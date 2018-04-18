@@ -35,7 +35,7 @@ class dao_reportetramites
             INNER JOIN sgr.vw_caducidad_registros c ON c.id_registro = r.id_registro
             WHERE $where_armado
             ) CONSULTA
-            ORDER BY tipoevento_y_wf ASC
+            ORDER BY sucursal_dpto ASC
             $limite";
     $resultado = consultar_fuente($sql);
     return $resultado;

@@ -96,30 +96,6 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	NULL, --inicializar
 	NULL  --orden
 );
-INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
-	'sgr', --proyecto
-	'1000765', --dep_id
-	'1000969', --objeto_consumidor
-	'1000981', --objeto_proveedor
-	'form', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
-	NULL, --parametros_c
-	NULL, --inicializar
-	NULL  --orden
-);
-INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
-	'sgr', --proyecto
-	'1000766', --dep_id
-	'1000969', --objeto_consumidor
-	'1000982', --objeto_proveedor
-	'form_ml_reporte_registros', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
-	NULL, --parametros_c
-	NULL, --inicializar
-	NULL  --orden
-);
 --- FIN Grupo de desarrollo 1
 
 ------------------------------------------------------------
@@ -133,7 +109,7 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	'1000488', --pantalla
 	'pant_inicial', --identificador
 	'1', --orden
-	'Reporte Registros', --etiqueta
+	'Reporte trámites', --etiqueta
 	NULL, --descripcion
 	NULL, --tip
 	'apex', --imagen_recurso_origen
@@ -145,25 +121,6 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	NULL, --template
 	NULL, --template_impresion
 	'1000001'  --punto_montaje
-);
-INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
-	'sgr', --objeto_ci_proyecto
-	'1000969', --objeto_ci
-	'1000492', --pantalla
-	'pant_edicion', --identificador
-	'2', --orden
-	'Detalles del Registro', --etiqueta
-	NULL, --descripcion
-	NULL, --tip
-	'apex', --imagen_recurso_origen
-	NULL, --imagen
-	NULL, --objetos
-	NULL, --eventos
-	NULL, --subclase
-	NULL, --subclase_archivo
-	NULL, --template
-	NULL, --template_impresion
-	NULL  --punto_montaje
 );
 --- FIN Grupo de desarrollo 1
 
@@ -183,18 +140,4 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'1000969', --objeto_ci
 	'0', --orden
 	'1000763'  --dep_id
-);
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'sgr', --proyecto
-	'1000492', --pantalla
-	'1000969', --objeto_ci
-	'0', --orden
-	'1000765'  --dep_id
-);
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'sgr', --proyecto
-	'1000492', --pantalla
-	'1000969', --objeto_ci
-	'1', --orden
-	'1000766'  --dep_id
 );
