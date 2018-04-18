@@ -42,18 +42,20 @@ class cn_registros_bm extends sgr_cn
   function guardar_dr_registro()
   {
     $this->dep('dr_registro')->sincronizar();
-    $this->dep('dr_registro')->resetear();
+    $this->resetear_dr_registro();
   }
 
   function resetear_dr_registro()
   {
+    unset($this->s__indices_estado_actual_flujo);
     $this->dep('dr_registro')->resetear();
   }
 
   function cargarregistro($form)
   {
-    if ($this->dep('dr_registro')->tabla('dt_registro')->hay_cursor()) {
-      $datos = $this->dep('dr_registro')->tabla('dt_registro')->get();
+    $dt = $this->dep('dr_registro')->tabla('dt_registro');
+    if ($dt->hay_cursor()) {
+      $datos = $dt->get();
       $form->set_datos($datos);
     }
   }
@@ -63,16 +65,17 @@ class cn_registros_bm extends sgr_cn
     $this->dep('dr_registro')->tabla('dt_registro')->set($datos);
   }
 
-  function modifregistro($datos)
+  function set_datos_dtregistro($datos)
   {
     $this->dep('dr_registro')->tabla('dt_registro')->set($datos);
   }
 
   function seleccionregistro($seleccion)
   {
-    if($this->dep('dr_registro')->tabla('dt_registro')->cargar($seleccion)){
-      $id_fila = $this->dep('dr_registro')->tabla('dt_registro')->get_id_fila_condicion($seleccion)[0];
-      $this->dep('dr_registro')->tabla('dt_registro')->set_cursor($id_fila);
+    $dt = $this->dep('dr_registro')->tabla('dt_registro');
+    if ($dt->cargar($seleccion)) {
+      $id_fila = $dt->get_id_fila_condicion($seleccion)[0];
+      $dt->set_cursor($id_fila);
     }
   }
 
@@ -209,18 +212,32 @@ class cn_registros_bm extends sgr_cn
 
   function get_estadoactual_activo()
   {
-    if ($this->dep('dr_registro')->tabla('dt_registro')->hay_cursor()) {
-      if (!$this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->hay_cursor()) {
-        $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->cargar();
-        $id_fila = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->get_id_fila_condicion(['activo'=>true])[0];
-        $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set_cursor($id_fila);
+    $dt_registro = $this->dep('dr_registro')->tabla('dt_registro');
+    $dt_estado_actual_flujo = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo');
+
+    if ($dt_registro->hay_cursor()) {
+      if (!isset($this->s__indices_estado_actual_flujo['viejo'])) {
+        if (!$dt_estado_actual_flujo->hay_cursor()) {
+          $dt_estado_actual_flujo->cargar();
+          $id_fila = $dt_estado_actual_flujo->get_id_fila_condicion(['activo'=>true])[0];
+          $this->s__indices_estado_actual_flujo['viejo'] = $id_fila;
+          $dt_estado_actual_flujo->set_cursor($id_fila);
+        }
+      } else {
+        $dt_estado_actual_flujo->set_cursor($this->s__indices_estado_actual_flujo['viejo']);
       }
-      $datos = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->get();
-      toba::logger()->error('unacosa');
-      toba::logger()->var_dump($datos);
-      $datos['activo']=$datos['activo']?'Si':'No';
+      $datos = $dt_estado_actual_flujo->get();
+      if (isset($datos['activo'])) {
+        $datos['activo']=$datos['activo']?'Si':'No';
+      } else {
+        $datos['activo']=null;
+      }
       $ea = [];
-      $ea[]=[['id_estado'=>$datos['id_estado'],'nombre'=>$datos['nombre']]];
+      if (isset($datos['nombre'])) {
+        $ea[]=[['id_estado'=>$datos['id_estado'],'nombre'=>$datos['nombre']]];
+      } else {
+        $ea[]=[['id_estado'=>$datos['id_estado'],'nombre'=>null]];
+      }
       $ea[]=$datos;
       return $ea;
     } else {
@@ -262,15 +279,46 @@ class cn_registros_bm extends sgr_cn
     }
   }
 
+  protected $s__indices_estado_actual_flujo = [];
+
+  function desactivarEstadoActual()
+  {
+    $dt_estado_actual_flujo = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo');
+
+    if (isset($this->s__indices_estado_actual_flujo['viejo'])) {
+      $dt_estado_actual_flujo->set_cursor($this->s__indices_estado_actual_flujo['viejo']);
+    }
+
+    $datos_viejo = $this->get_estadoactual();
+    $this->s__indices_estado_actual_flujo['viejo'] = $dt_estado_actual_flujo->get_cursor();
+    $xxx = $this->s__indices_estado_actual_flujo['viejo'];
+
+    $datos_viejo['activo'] = false;
+
+    $dt_estado_actual_flujo->set($datos_viejo);
+  }
+
+  function set_nuevoEstado($datos)
+  {
+    $dt_estado_actual_flujo = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo');
+    $datos['get_usuario'] = toba::usuario()->get_id(); // 20171220
+
+    if (isset($this->s__indices_estado_actual_flujo['nuevo'])) {
+      $dt_estado_actual_flujo->set_cursor($this->s__indices_estado_actual_flujo['nuevo']);
+      $id_fila = $dt_estado_actual_flujo->set([$datos]);
+    } else {
+      $id_fila = $dt_estado_actual_flujo->anexar_datos([$datos]);
+      $dt_estado_actual_flujo->forzar_insercion(false, $id_fila);
+      $dt_estado_actual_flujo->set_cursor($id_fila[0]);
+      $this->s__indices_estado_actual_flujo['nuevo'] = $id_fila[0];
+      $xxx = $this->s__indices_estado_actual_flujo['nuevo'];
+    }
+  }
+
   function modifestado($datos)
   {
-    $datos_viejo = $this->get_estadoactual();
-    $datos_viejo['activo'] = false;
-    $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set($datos_viejo);
-    $datos['get_usuario'] = toba::usuario()->get_id(); // 20171220
-    $id_fila = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->anexar_datos([$datos]);
-    $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->forzar_insercion(false, $id_fila);
-    $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->set_cursor($id_fila[0]);
+    $this->desactivarEstadoActual();
+    $this->set_NuevoEstado($datos);
   }
 
   //-----------------------------------------------------------------------------------
@@ -301,9 +349,23 @@ class cn_registros_bm extends sgr_cn
         }
       }
     }
+    $this->dep('dr_registro')->tabla('dt_requisitos_registro')->resetear();
     $this->dep('dr_registro')->tabla('dt_requisitos_registro')->procesar_filas($datos);
   }
 
+  function imprimirDatosARegistrar()
+  {
+    $dt_registro = $this->dep('dr_registro')->tabla('dt_registro');
+    $dt_estado_actual_flujo = $this->dep('dr_registro')->tabla('dt_estado_actual_flujo');
+    $dt_requisitos_registro = $this->dep('dr_registro')->tabla('dt_requisitos_registro');
+    toba::logger()->error("fake error xxx");
+    toba::logger()->var_dump(array('datos a imprimirDatosARegistrar:' => [
+      'dt_registro-get' => $dt_registro->get(),
+      'dt_estado_actual_flujo-get' => $dt_estado_actual_flujo->get(),
+      'dt_estado_actual_flujo-getFilas' => $dt_estado_actual_flujo->get_filas(),
+      '$dt_requisitos_registro-getFilas' => $dt_requisitos_registro->get_filas(),
+      ]));
+  }
 }
 
 ?>
