@@ -92,7 +92,7 @@ class ci_nuevoregistro extends sgr_ci
 	function evt__form__modificacion($datos)
 	{
 		$this->s__esfinal['id_workflow'] = $datos['id_workflow'];
-		$this->cn()->modifregistro($datos);
+		$this->cn()->set_datos_dtregistro($datos);
 		$this->cn()->set_blob_dt('dr_registro', 'dt_registro', $datos, 'archivo', /*es_ml?*/false);
 	}
 

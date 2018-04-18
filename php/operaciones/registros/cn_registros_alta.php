@@ -17,7 +17,7 @@ class cn_registros_alta extends sgr_cn
     $this->dep('dr_registro')->resetear();
   }
 
-  function modifregistro($datos)
+  function set_datos_dtregistro($datos)
   {
     //$datos['get_usuario'] = toba::usuario()->get_id(); // 20171220
     $this->dep('dr_registro')->tabla('dt_registro')->set($datos);
@@ -204,6 +204,13 @@ class cn_registros_alta extends sgr_cn
     $this->dep('dr_registro')->tabla('dt_requisitos_registro')->procesar_filas($datos);
   }
 
+  function imprimirEstado()
+  {
+    ei_arbol(array('datos del CN:'
+      => ['dt_registro'             => $this->dep('dr_registro')->tabla('dt_registro')->get()
+         ,'dt_reqisitos_registro'   => $this->dep('dr_registro')->tabla('dt_requisitos_registro')->get_filas()
+         ,'dt_estado_actual_flujo'  => $this->dep('dr_registro')->tabla('dt_estado_actual_flujo')->get_filas()]));
+  }
 }
 
 ?>

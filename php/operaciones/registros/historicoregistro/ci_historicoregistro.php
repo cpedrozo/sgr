@@ -46,12 +46,10 @@ class ci_historicoregistro extends sgr_ci
 		$this->set_pantalla('pant_inicial');
 	}
 
-	function comprobar_estado_final()
+	function b_esFinal()
 	{
-		ei_arbol(['entro a comprobar'=>$this->s__esfinal]);
 		if (dao_historicoregistro::es_final($this->s__esfinal))
 		{
-			ei_arbol(['dentro del if'=>$this->s__esfinal]);
 			return true;
 		}
 		return false;
@@ -59,7 +57,7 @@ class ci_historicoregistro extends sgr_ci
 
 	function evt__procesar2()
 	{
-		if($this->comprobar_estado_final())
+		if($this->b_esFinal())
 		{
 			$datos = $this->cn()->get_registro();
 			$datos ['fecha_fin'] = date(DATE_ATOM);
@@ -155,7 +153,7 @@ class ci_historicoregistro extends sgr_ci
 		if (isset($datos['archivo'])){
 			$datos['archivo_nombre'] = preg_replace("/[^a-zA-Z0-9.]+/", "", $datos['archivo']['name']);
 		}
-		$this->cn()->modifregistro($datos);
+		$this->cn()->set_datos_dtregistro($datos);
 		$this->cn()->set_blob_dt('dr_registro', 'dt_registro', $datos, 'archivo', /*es_ml?*/false);
 	}
 
@@ -248,20 +246,20 @@ class ci_historicoregistro extends sgr_ci
 
 	function ajax__traerinfo_requisitos_estado($variable, toba_ajax_respuesta $respuesta)
 	{
-		if (($variable['id_estado'] == '') or ($variable['id_estado'] == 'nopar'))
-		{
+		if (($variable['id_estado'] == '') or ($variable['id_estado'] == 'nopar')) {
 			$datos = [];
-		}
-		else {
-			if (isset($variable['id_estadoorigen'])){
-				$datos = flujosyregistros::get_requisitosxestado($variable['id_estadoorigen'], $variable['id_estado'],$variable['id_workflow']);
-			}
-			else {
+		} else {
+			if (isset($variable['id_estadoorigen'])) {
+				$datos = flujosyregistros::get_requisitosxestado(
+					$variable['id_estadoorigen'],
+					$variable['id_estado'],$variable['id_workflow']
+				);
+			} else {
 				$datos = flujosyregistros::get_requisitosxestadoNuevo($variable['id_estado'],$variable['id_workflow']);
 			}
 		}
-	$this->s__datos['datos_ml_requisitos'] = $datos;
-	$respuesta->set($datos);
+		$this->s__datos['datos_ml_requisitos'] = $datos;
+		$respuesta->set($datos);
 	}
 
 	function ajax__traerinfo_personaboolean($id_renglon, toba_ajax_respuesta $respuesta)
