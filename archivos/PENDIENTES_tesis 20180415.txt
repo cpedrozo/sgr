@@ -1,4 +1,4 @@
-estados finales de flujo: al guardar y finalizar debe validar que sea un estado de fin (da error)
+Estados finales de flujo: al guardar y finalizar debe validar que sea un estado de fin (da error)
 
 - Al nombre del backup ponele fecha hora
 
@@ -6,15 +6,6 @@ estados finales de flujo: al guardar y finalizar debe validar que sea un estado 
 
 - Se tiene que poder cambiar la observacion sin cambiar de estado
 
-- Sugiero incorporar en los flujos:
-Caducidad: falta la logica de valor agregado.
-Modifique la funcion que ejecuta pyton, falta editar el codigo que crea el email.
+- Caducidad: Modifique la funcion que ejecuta pyton, falta editar el codigo que crea el email.
 
-///////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////
-
-- Seria útil contar con un reporte de todas las gestiones generadas en el que yo pueda filtrar por departamento por ejemplo o por tipo de gestión y tener un reporte impreso, donde deben incluirse esos filtros.
-No me sale la query y lpmqlrp
-
-- Sugiero que para la presentación te armes un set de perfiles funcionales, así por ejemplo los de legales solo pueden ver sus cosas, los de mesa de entrada solo pueden cargar y el administrador puede sacar reportes generales.
-Los perfiles funcionales armalo desde el toba usuarios, los creas, y después los asocias a tus usuarios y listo, fin de la historia.
+- Necesito que al guardar por 1ra vez un registro se inserte un estado actual de id_estado 1 (NUEVO) para que calcule la caducidad del mismo

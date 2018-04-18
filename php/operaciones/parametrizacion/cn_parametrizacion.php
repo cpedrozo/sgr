@@ -48,7 +48,7 @@ class cn_parametrizacion extends sgr_cn
       fclose($temp_imagen1);
       $tamanio_imagen1 = round(filesize($temp_archivo1['path']) / 1024);
       $datos['prevgrande'] = "<img src = '{$temp_archivo1['url']}' alt=\"Imagen\" WIDTH=200 HEIGHT=150 >";
-      $datos['logo_grande'] = 'Tamaño foto actual: '.$tamanio_imagen1.' KB';
+      $datos['logo_grande'] = 'TamaÃ±o foto actual: '.$tamanio_imagen1.' KB';
     } else {
       $datos['logo_grande'] = null;
     }
@@ -61,7 +61,7 @@ class cn_parametrizacion extends sgr_cn
       fclose($temp_imagen2);
       $tamanio_imagen2 = round(filesize($temp_archivo2['path']) / 1024);
       $datos['prevchica'] = "<img src = '{$temp_archivo2['url']}' alt=\"Imagen\" WIDTH=120 HEIGHT=100 >";
-      $datos['logo_chico'] = 'Tamaño foto actual: '.$tamanio_imagen2.' KB';
+      $datos['logo_chico'] = 'TamaÃ±o foto actual: '.$tamanio_imagen2.' KB';
     } else {
       $datos['logo_chico'] = null;
     }
@@ -181,6 +181,43 @@ class cn_parametrizacion extends sgr_cn
       $fp = fopen($temp_archivo2, 'rb');
       $this->dep('dr_propietario')->tabla('dt_propietario')->set_blob('logo_chico', $fp);
     }
+    /*Copia del logo para los reportes pdf generados desde toba*/
+    if (isset($datos['logo_grande']))
+    {
+      $extension = pathinfo($datos['logo_grande']['name'], PATHINFO_EXTENSION);
+      if (in_array($extension, ['exe','pdf','doc','xls','bin','iso'])) {
+          throw new toba_error_usuario('Error: Intentó cargar un archivo de extensión "'.$extension.'". Seleccione un archivo con formato de imagen (jpg,bmp,tif).');
+      }
+      $arc_logopdforig = toba::proyecto()->get_www_temp('../img/logo_pdf.jpg')['path'];
+      // Stream hacia el archivo temporal
+      $stream_logopdforig = fopen($arc_logopdforig, 'w');
+      // Stream desde archivo subido
+      $stream_archivosubido = fopen(/*Archivo subido*/$datos['logo_grande']['tmp_name'], 'rb');
+      stream_copy_to_stream($stream_archivosubido, $stream_logopdforig);
+      fclose($stream_logopdforig);
+      fclose($stream_archivosubido);
+      $this->convertImage($arc_logopdforig, $arc_logopdforig, 90, $extension);
+      //$tamanio = round(filesize($arc_logopdforig['path']) / 1024);
+    }
+  }
+
+  function convertImage($originalImage, $outputImage, $quality, $ext)
+  {
+    if (preg_match('/jpg|jpeg/i',$ext))
+        $imageTmp=imagecreatefromjpeg($originalImage);
+    else if (preg_match('/png/i',$ext))
+        $imageTmp=imagecreatefrompng($originalImage);
+    else if (preg_match('/gif/i',$ext))
+        $imageTmp=imagecreatefromgif($originalImage);
+    else if (preg_match('/bmp/i',$ext))
+        $imageTmp=imagecreatefrombmp($originalImage);
+    else
+        return 0;
+
+    imagejpeg($imageTmp, $outputImage, $quality);
+    imagedestroy($imageTmp);
+
+    return 1;
   }
 
   function seleccionpropietario($seleccion)

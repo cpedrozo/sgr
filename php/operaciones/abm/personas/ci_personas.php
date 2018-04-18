@@ -77,28 +77,6 @@ class ci_personas extends sgr_ci
 		}
 	}
 
-	//
-	// function evt__cuadro__borrar($seleccion) bkp 20180218
-	// {
-	// 	$this->s__datos['baja'] = $seleccion;
-	// 	$this->s__datos['datos_empleado'] = dao_personas::get_empleadobaja($this->s__datos['baja']['id_persona']);
-	// 	$this->s__datos['esempleado'] = dao_personas::esempleado($this->s__datos['baja']['id_persona']);
-	// 	$this->cn()->cargar_dr_personas($seleccion);
-	// 	$this->cn()->borrar_dt_personas($seleccion);
-	// 	try{
-	// 		$this->cn()->guardar_dr_personas();
-	// 		unset($this->s__datos['datos_anteriores_form']);
-	// 		if ($this->s__datos['esempleado']){
-	// 			$this->enviar_mail();
-	// 		}
-	// 		$this->cn()->resetear_dr_personas();
-	// 	} catch (toba_error_db $error) {
-	// 		toba::notificacion()->agregar('Error de carga', 'info');
-	// 		$this->cn()->resetear_dr_personas();
-	// 		$this->set_pantalla('pant_inicial');
-	// 	}
-	// }
-
 	function conf_evt__cuadro__detalles(toba_evento_usuario $evento, $fila)
 	{
 		$datos=$this->dep('cuadro')->get_datos()[$fila];

@@ -1,5 +1,5 @@
 <?php
-require_once('operaciones/abm/personas/dao_personas.php');
+require_once('operaciones/consultar/reporte_tramites/dao_reportetramites.php');
 
 class ci_reportetramites extends sgr_ci
 {
@@ -17,13 +17,33 @@ class ci_reportetramites extends sgr_ci
 
 	function conf__cuadro($cuadro)
 	{
-		$cuadro->desactivar_modo_clave_segura();
+		$cuadro->eliminar_columnas(['sucursal_dpto']);
+		if (!isset($this->s__datos_filtro['fecha_fin']))
+		{
+			$cuadro->eliminar_columnas(['fecha_fin']);
+		}
+		if (!isset($this->s__datos_filtro['id_registro']))
+		{
+			$cuadro->eliminar_columnas(['id_registro']);
+		}
+		if (!isset($this->s__datos_filtro['fecha_inicio']))
+		{
+			$cuadro->eliminar_columnas(['fecha_inicio']);
+		}
+		if (!isset($this->s__datos_filtro['ultedicion']))
+		{
+			$cuadro->eliminar_columnas(['ultedicion']);
+		}
+		if (!isset($this->s__datos_filtro['caducidad']))
+		{
+			$cuadro->eliminar_columnas(['caducidad']);
+		}
 		if (! isset($this->s__datos_filtro)) {
-			$datos = dao_personas::get_datossinfiltro2($this->s__sqlwhere);
+			$datos = dao_reportetramites::get_datossinfiltro($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
 		}
 		else{
-			$datos = dao_personas::get_datos2($this->s__sqlwhere);
+			$datos = dao_reportetramites::get_datos($this->s__sqlwhere);
 			$cuadro->set_datos($datos);
 		}
 	}
@@ -33,43 +53,7 @@ class ci_reportetramites extends sgr_ci
 		$datos=$this->dep('cuadro')->get_datos()[$fila];
 		$evento->vinculo()->agregar_parametro('persona', $datos['id_persona']);
 	}
-/*
-	function conf__cuadrotel($cuadro)
-	{
-		if (! isset($this->s__datos_filtro)) {
-			$datos = dao_datospersonas::get_datossinfiltrotel($this->s__sqlwhere);
-			$cuadro->set_datos($datos);
-		}
-		else{
-			$datos = dao_datospersonas::get_datostel($this->s__sqlwhere);
-			$cuadro->set_datos($datos);
-		}
-	}
 
-	function conf__cuadrodom($cuadro)
-	{
-		if (! isset($this->s__datos_filtro)) {
-			$datos = dao_datospersonas::get_datossinfiltrodom($this->s__sqlwhere);
-			$cuadro->set_datos($datos);
-		}
-		else{
-			$datos = dao_datospersonas::get_datosdom($this->s__sqlwhere);
-			$cuadro->set_datos($datos);
-		}
-	}
-
-	function conf__cuadrocorreo($cuadro)
-	{
-		if (! isset($this->s__datos_filtro)) {
-			$datos = dao_datospersonas::get_datossinfiltrocorreo($this->s__sqlwhere);
-			$cuadro->set_datos($datos);
-		}
-		else{
-			$datos = dao_datospersonas::get_datoscorreo($this->s__sqlwhere);
-			$cuadro->set_datos($datos);
-		}
-	}
-*/
 	//-----------------------------------------------------------------------------------
 	//---- filtro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------

@@ -16,7 +16,7 @@ class dao_detalles_registro
       $where_armado = 'true';
     }
     $limite=($limit ? 'limit 10':'');
-    $sql = "SELECT r.id_registro, te.nombre ||': '|| e.nombre ||' - '|| wf.nombre tipoevento_y_wf,
+    $sql = "SELECT r.id_registro, substring(te.nombre from 1 for 3) ||': '|| substring(e.nombre from 1 for 8) ||' - '|| wf.nombre tipoevento_y_wf,
             r.nombre, r.archivo, r.archivo_nombre, nu.nombre urgencia, c.caducidad,
             ea.get_usuario,
             s.nombre ||' - '|| dp.nombre sucursal_dpto, es.nombre estado,

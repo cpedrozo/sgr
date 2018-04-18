@@ -17,9 +17,10 @@ class dao_generico
       $temp_imagen = fopen($s__temp_archivo['path'], 'w');
       stream_copy_to_stream($resource, $temp_imagen);
       fclose($temp_imagen);
-      // fclose($resource); //< Para evitar errores en la recarga de formularios
+      fclose($resource); //< Para evitar errores en la recarga de formularios
       $tamano = round(filesize($s__temp_archivo['path']) / 1024);
-      //$fila[$nombre_campo] = '<a href="'.$s__temp_archivo['url'].'" target="_newtab">'.$html_imagen.' Tamaño archivo actual: '.$tamano.' kb</a>';
+      $fila[$nombre_campo] = '<a href="'.$s__temp_archivo['url'].'" target="_newtab">'.$html_imagen.' Tamaño archivo actual: '.$tamano.' kb</a>';
+      // $fila[$nombre_campo] = '<a href="'.$s__temp_archivo['url'].'" target="_newtab"> Descargar archivo ('.$tamano.' kb)</a>';
       $fila[$nombre_campo] = '<a href="'.$s__temp_archivo['url'].'" target="_newtab">'.$html_imagen.' Descargar archivo ('.$tamano.' kb)</a>';
       $fila[$nombre_campo.'?html'] = $html_imagen;
       $fila[$nombre_campo.'?url'] = $s__temp_archivo['url'];
