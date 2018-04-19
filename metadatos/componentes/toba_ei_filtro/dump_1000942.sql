@@ -132,9 +132,9 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'1000098', --objeto_ei_filtro_col
 	'1000942', --objeto_ei_filtro
 	'sgr', --objeto_ei_filtro_proyecto
-	'cadena', --tipo
+	'numero', --tipo
 	'id_registro', --nombre
-	'id_registro', --expresion
+	'r.id_registro', --expresion
 	'Registro Nº', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio

@@ -320,7 +320,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000590', --objeto_cuadro_col
 	'propietario', --clave
 	'3', --orden
-	'Propietario', --titulo
+	'Sucursal', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
 	NULL, --ancho

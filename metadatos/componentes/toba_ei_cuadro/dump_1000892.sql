@@ -169,11 +169,11 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000601', --objeto_cuadro_col
 	'nombre', --clave
-	'5', --orden
+	'4', --orden
 	'Nombre', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'240', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -204,7 +204,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'Usuario', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'80', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -231,11 +231,11 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000604', --objeto_cuadro_col
 	'tipoevento_y_wf', --clave
-	'7', --orden
-	'Evento', --titulo
+	'3', --orden
+	'Tipo Evento: Evento', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	'280', --ancho
+	'250', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -262,11 +262,11 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000606', --objeto_cuadro_col
 	'fecha_fin', --clave
-	'12', --orden
+	'13', --orden
 	'Fecha Fin', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'100', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -324,11 +324,11 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000689', --objeto_cuadro_col
 	'archivo', --clave
-	'13', --orden
+	'10', --orden
 	'Archivo asociado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'130', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -355,11 +355,11 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000693', --objeto_cuadro_col
 	'sucursal_dpto', --clave
-	'10', --orden
+	'12', --orden
 	'Sucursal - Dpto', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'150', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -386,11 +386,11 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000695', --objeto_cuadro_col
 	'estado', --clave
-	'8', --orden
+	'7', --orden
 	'Estado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'60', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -421,7 +421,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'Fecha Inicio', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'100', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -448,11 +448,11 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000701', --objeto_cuadro_col
 	'ultedicion', --clave
-	'3', --orden
+	'8', --orden
 	'Ultima Edición', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'100', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -479,11 +479,11 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000702', --objeto_cuadro_col
 	'urgencia', --clave
-	'9', --orden
+	'6', --orden
 	'Nivel Urgencia', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'60', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -510,11 +510,11 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000708', --objeto_cuadro_col
 	'caducidad', --clave
-	'4', --orden
+	'9', --orden
 	'Caduca', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
-	NULL, --ancho
+	'40', --ancho
 	'1', --formateo
 	NULL, --vinculo_indice
 	NULL, --no_ordenar
@@ -541,7 +541,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'1000892', --objeto_cuadro
 	'1000722', --objeto_cuadro_col
 	'finalizado', --clave
-	'6', --orden
+	'5', --orden
 	'Finalizado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo

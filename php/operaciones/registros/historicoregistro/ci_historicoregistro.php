@@ -108,8 +108,9 @@ class ci_historicoregistro extends sgr_ci
 
 	function conf__cuadro($cuadro)
 	{
+
 		if (! isset($this->s__datos_filtro)) {
-			$datos = dao_historicoregistro::get_datossinfiltro($this->s__sqlwhere);
+			$datos = dao_historicoregistro::get_datossinfiltro();
 			$cuadro->set_datos($datos);
 		}
 		else{
